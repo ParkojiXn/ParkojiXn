@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowUp, ShieldCheck } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { profileData } from '../data/cv-data';
 
 export const Footer: React.FC = () => {
@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
               {profileData.name}
             </span>
             <p className="text-sm font-mono text-[#A3A3A3] mt-1">
-              CIVIL ENGINEERING GRADUATE // QUANTITY SURVEYOR // BIM MODELER
+              CIVIL ENGINEER // QUANTITY SURVEYOR // BIM &amp; CAD MODELER
             </p>
           </div>
 
@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
               onClick={scrollToTop}
               className="border-2 border-[#FAFAFA] text-[#FAFAFA] px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#EF4444] hover:border-[#EF4444] transition-colors flex items-center gap-2"
             >
-              <span>KEMBALI KE ATAS</span>
+              <span>BACK TO TOP</span>
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
@@ -39,23 +39,23 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs font-mono text-[#A3A3A3]">
           <div>
-            <span className="text-[#FAFAFA] font-bold block mb-2">// SISTEM DESAIN</span>
+            <span className="text-[#FAFAFA] font-bold block mb-2">// DESIGN FOUNDATION</span>
             <p className="leading-relaxed">
-              Dibangun dengan kepatuhan penuh pada VoiceBox Design System — Editorial Magazine Aesthetic. Flat architecture, 2px borders, typography Archivo Black & Work Sans.
+              Crafted in strict accordance with the VoiceBox Editorial Design System. Sharp flat architecture, 2px borders, Archivo Black headlines, and Work Sans typography.
             </p>
           </div>
 
           <div>
-            <span className="text-[#FAFAFA] font-bold block mb-2">// STANDAR KUALIFIKASI</span>
+            <span className="text-[#FAFAFA] font-bold block mb-2">// LICENSING &amp; ETHICS</span>
             <p className="leading-relaxed">
-              Sertifikasi Kompetensi Kerja (SKK) Jenjang 5 BNSP No. Registrasi Pelaksana Lapangan Gedung Madya, diselenggarakan oleh Kementerian PU BJKW I Banda Aceh.
+              Government-certified Level 5 BNSP Building Construction Supervisor administered by the Ministry of Public Works (BJKW I Banda Aceh) and accredited under JAC Japan construction standards.
             </p>
           </div>
 
           <div>
-            <span className="text-[#FAFAFA] font-bold block mb-2">// HAK CIPTA & LISENSI</span>
+            <span className="text-[#FAFAFA] font-bold block mb-2">// COPYRIGHT &amp; AUTHENTICITY</span>
             <p className="leading-relaxed">
-              © {new Date().getFullYear()} Reza Sepdide. Seluruh hak cipta dilindungi undang-undang. Dokumen teknis dan data diverifikasi dari berkas resmi.
+              &copy; {new Date().getFullYear()} Reza Sepdide. All rights reserved. Every project, metric, and certification is authenticated from official curriculum vitae records.
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { profileData } from '../data/cv-data';
 
 export const Navbar: React.FC = () => {
@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['hero', 'proyek', 'pengalaman', 'keahlian', 'edukasi', 'kontak'];
+      const sections = ['hero', 'principles', 'projects', 'experience', 'skills', 'education', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -34,12 +34,13 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: 'PROFIL', href: '#hero', id: 'hero' },
-    { label: 'PROYEK', href: '#proyek', id: 'proyek' },
-    { label: 'PENGALAMAN', href: '#pengalaman', id: 'pengalaman' },
-    { label: 'KEAHLIAN', href: '#keahlian', id: 'keahlian' },
-    { label: 'EDUKASI & SKK', href: '#edukasi', id: 'edukasi' },
-    { label: 'KONTAK', href: '#kontak', id: 'kontak' },
+    { label: 'ABOUT', href: '#hero', id: 'hero' },
+    { label: 'PRINCIPLES', href: '#principles', id: 'principles' },
+    { label: 'PROJECTS', href: '#projects', id: 'projects' },
+    { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
+    { label: 'SKILLS', href: '#skills', id: 'skills' },
+    { label: 'EDUCATION', href: '#education', id: 'education' },
+    { label: 'CONTACT', href: '#contact', id: 'contact' },
   ];
 
   return (
@@ -51,13 +52,13 @@ export const Navbar: React.FC = () => {
       {/* Top micro-bar for editorial feel */}
       <div className="bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono py-1 px-4 flex justify-between items-center tracking-wider">
         <div className="flex items-center gap-3">
-          <span className="text-[#EF4444] font-bold">● LIVE</span>
-          <span>CIVIL ENG // QUANTITY SURVEYOR // BIM MODELER</span>
+          <span className="text-[#EF4444] font-bold">● ACTIVE</span>
+          <span className="truncate">CIVIL ENGINEER // QUANTITY SURVEYOR // BIM MODELER</span>
         </div>
         <div className="hidden md:flex items-center gap-4 text-[#A3A3A3]">
-          <span>BNSP JENJANG 5</span>
+          <span>BNSP LEVEL 5 SUPERVISOR</span>
           <span>•</span>
-          <span>SUMATERA BARAT, ID</span>
+          <span>PADANG, WEST SUMATRA (UTC+7)</span>
         </div>
       </div>
 
@@ -69,7 +70,7 @@ export const Navbar: React.FC = () => {
               {profileData.name}
             </span>
             <span className="text-[10px] font-mono tracking-widest text-[#525252] uppercase">
-              PORTFOLIO // EDISI 2026
+              ENGINEERING DOSSIER // 2026 EDITION
             </span>
           </a>
 
@@ -97,14 +98,14 @@ export const Navbar: React.FC = () => {
           <div className="hidden sm:flex items-center space-x-3">
             <div className="status-chip-success">
               <span className="w-2 h-2 bg-[#16A34A] inline-block animate-pulse" />
-              <span>SIAP BEKERJA</span>
+              <span>OPEN FOR WORK</span>
             </div>
 
             <a
-              href="#kontak"
+              href="#contact"
               className="btn-primary !py-2 !px-4 text-xs"
             >
-              <span>HUBUNGI</span>
+              <span>GET IN TOUCH</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -114,7 +115,7 @@ export const Navbar: React.FC = () => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors"
-              aria-label="Toggle Menu"
+              aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -143,14 +144,14 @@ export const Navbar: React.FC = () => {
           <div className="pt-4 flex flex-col gap-2">
             <div className="status-chip-success self-start">
               <span className="w-2 h-2 bg-[#16A34A] inline-block" />
-              <span>TERBUKA UNTUK PELUANG KERJA</span>
+              <span>AVAILABLE FOR NEW PROJECTS</span>
             </div>
             <a
-              href="#kontak"
+              href="#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="btn-primary text-center mt-2"
             >
-              HUBUNGI REZA SEPDIDE
+              CONTACT REZA SEPDIDE
             </a>
           </div>
         </div>

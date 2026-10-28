@@ -12,32 +12,32 @@ export const ExperienceTimeline: React.FC = () => {
   };
 
   return (
-    <section id="pengalaman" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+    <section id="experience" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // REKAM JEJAK PROFESIONAL LAPANGAN
+              // ON-SITE REPUTATION & PROFESSIONAL MILESTONES
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              PENGALAMAN KERJA & MILESTONE
+              PROFESSIONAL WORK EXPERIENCE
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Pengalaman teruji di industri konstruksi, meliputi perencana teknis konsultan, fasilitator kementerian, quantity surveyor freelance, hingga quality control lapangan.
+            Battle-tested engineering experience spanning educational revitalizations, ministry program auditing, industrial plant quality control, and freelance quantity surveying.
           </p>
         </div>
 
         {/* Vertical Editorial Timeline */}
         <div className="relative border-l-2 border-[#0A0A0A] ml-4 md:ml-32 pl-6 md:pl-10 space-y-12">
-          {workExperiences.map((exp, index) => {
+          {workExperiences.map((exp) => {
             const isExpanded = expandedId === exp.id;
 
             return (
               <div key={exp.id} className="relative group">
-                {/* Timeline Square Marker (VoiceBox: Sharp 0px radius) */}
+                {/* Timeline Square Marker */}
                 <div className="absolute -left-[31px] md:-left-[47px] top-0.5 w-4 h-4 bg-[#FAFAFA] border-2 border-[#0A0A0A] group-hover:bg-[#EF4444] group-hover:border-[#EF4444] transition-colors" />
 
                 {/* Timeline Date Label on Left for Desktop */}
@@ -74,7 +74,7 @@ export const ExperienceTimeline: React.FC = () => {
 
                       <button
                         className="p-1 border border-[#D4D4D4] hover:border-[#0A0A0A] transition-colors"
-                        aria-label="Toggle Detail"
+                        aria-label="Toggle Experience Details"
                       >
                         {isExpanded ? (
                           <ChevronUp className="w-4 h-4 text-[#0A0A0A]" />
@@ -88,10 +88,10 @@ export const ExperienceTimeline: React.FC = () => {
                   {/* Collapsible Content */}
                   {isExpanded && (
                     <div className="mt-6 pt-6 border-t-2 border-[#E5E5E5] space-y-6">
-                      {/* Tanggung Jawab Utama */}
+                      {/* Responsibilities */}
                       <div>
                         <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-3">
-                          TANGGUNG JAWAB & RUANG LINGKUP PEKERJAAN
+                          CORE RESPONSIBILITIES & SCOPE OF WORK
                         </h4>
                         <ul className="space-y-2 text-sm text-[#0A0A0A]">
                           {exp.responsibilities.map((resp, idx) => (
@@ -103,17 +103,17 @@ export const ExperienceTimeline: React.FC = () => {
                         </ul>
                       </div>
 
-                      {/* Dampak Terukur / Key Impacts */}
+                      {/* Measured Impacts */}
                       <div className="bg-[#F5F5F5] border-l-4 border-[#0A0A0A] p-4">
                         <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2 flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-[#16A34A]" />
-                          DAMPAK TERUKUR & EFISIENSI PROYEK
+                          MEASURABLE IMPACT & DELIVERED VALUE
                         </h4>
                         <ul className="space-y-1.5 text-xs sm:text-sm text-[#525252]">
                           {exp.keyImpacts.map((impact, idx) => (
                             <li key={idx} className="flex items-start gap-2">
                               <span className="text-[#0A0A0A] font-bold">✓</span>
-                              <span>{impact}</span>
+                              <span className="font-body">{impact}</span>
                             </li>
                           ))}
                         </ul>
@@ -122,7 +122,7 @@ export const ExperienceTimeline: React.FC = () => {
                       {/* Tools Used */}
                       <div>
                         <h4 className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#525252] mb-2">
-                          PERANGKAT & METODOLOGI TERAPKAN
+                          SOFTWARE & METHODOLOGIES DEPLOYED
                         </h4>
                         <div className="flex flex-wrap gap-1.5">
                           {exp.toolsUsed.map((tool, idx) => (

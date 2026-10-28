@@ -6,31 +6,31 @@ import { Project } from '../types';
 import { Layers, CheckSquare, Calendar, MapPin, Building, ArrowRight, X } from 'lucide-react';
 
 export const FeaturedProjects: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('SEMUA');
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
-  const categories = ['SEMUA', 'Planning & QS', 'BIM & CAD', 'Industrial & QC', 'Tender & Research'];
+  const categories = ['ALL', 'Planning & QS', 'BIM & CAD', 'Industrial & QC', 'Tender & Research'];
 
-  const filteredProjects = selectedCategory === 'SEMUA'
+  const filteredProjects = selectedCategory === 'ALL'
     ? featuredProjects
     : featuredProjects.filter(p => p.category === selectedCategory);
 
   return (
-    <section id="proyek" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+    <section id="projects" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-10 gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // REKAM JEJAK TEKNIS & HASIL KARYA
+              // TECHNICAL TRACK RECORD & FIELD STUDIES
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              PROYEK & STUDI PERENCANAAN
+              FEATURED PROJECTS & FIELD STUDIES
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Dokumentasi rekayasa konstruksi, Detailed Engineering Design (DED), kalkulasi Rencana Anggaran Biaya (RAB), dan pemodelan struktur berdasarkan data riil.
+            Selected engineering design packages, Detailed Engineering Design (DED) blueprints, Bill of Quantities (BoQ/RAB), and finite element structural simulations.
           </p>
         </div>
 
@@ -92,12 +92,12 @@ export const FeaturedProjects: React.FC = () => {
                 {/* Key Metrics / Highlights */}
                 <div className="bg-[#F5F5F5] border border-[#E5E5E5] p-3 mb-5 space-y-2">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A0A0A] font-bold block border-b border-[#E5E5E5] pb-1">
-                    METRIK UTAMA PROYEK
+                    KEY PERFORMANCE METRICS
                   </span>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     {project.metrics.slice(0, 2).map((m, idx) => (
                       <div key={idx}>
-                        <span className="text-[10px] text-[#525252] block">{m.label}:</span>
+                        <span className="text-[10px] text-[#525252] block font-mono">{m.label}:</span>
                         <span className="font-bold text-[#0A0A0A] font-mono block">{m.value}</span>
                       </div>
                     ))}
@@ -123,7 +123,7 @@ export const FeaturedProjects: React.FC = () => {
                   type="button"
                   className="w-full border-t-2 border-[#0A0A0A] pt-3 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors"
                 >
-                  <span>LIHAT RINCIAN TEKNIS</span>
+                  <span>VIEW TECHNICAL DETAILS</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -139,7 +139,7 @@ export const FeaturedProjects: React.FC = () => {
               <button
                 onClick={() => setActiveModalProject(null)}
                 className="absolute top-4 right-4 p-2 bg-[#0A0A0A] text-[#FAFAFA] hover:bg-[#EF4444] transition-colors"
-                aria-label="Tutup Rincian"
+                aria-label="Close Project Details"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -147,50 +147,50 @@ export const FeaturedProjects: React.FC = () => {
               {/* Modal Header */}
               <div className="border-b-2 border-[#0A0A0A] pb-4 mb-6 pr-12">
                 <span className="text-overline text-[#EF4444] font-bold block">
-                  {activeModalProject.category} // DOKUMEN PROYEK
+                  {activeModalProject.category} // PROJECT DOSSIER
                 </span>
                 <h3 className="font-display text-xl sm:text-2xl text-[#0A0A0A] mt-1">
                   {activeModalProject.title}
                 </h3>
                 <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#525252] mt-2">
-                  <span>Peran: <strong className="text-[#0A0A0A]">{activeModalProject.role}</strong></span>
+                  <span>Role: <strong className="text-[#0A0A0A]">{activeModalProject.role}</strong></span>
                   <span>•</span>
-                  <span>Institusi: <strong className="text-[#0A0A0A]">{activeModalProject.clientOrInstitution}</strong></span>
+                  <span>Institution / Client: <strong className="text-[#0A0A0A]">{activeModalProject.clientOrInstitution}</strong></span>
                   <span>•</span>
-                  <span>Periode: <strong className="text-[#0A0A0A]">{activeModalProject.period}</strong></span>
+                  <span>Period: <strong className="text-[#0A0A0A]">{activeModalProject.period}</strong></span>
                 </div>
               </div>
 
-              {/* Ringkasan */}
+              {/* Summary */}
               <div className="space-y-6">
                 <div>
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                    RINGKASAN EKSEKUTIF
+                    PROJECT OBJECTIVE & EXECUTIVE SUMMARY
                   </h4>
                   <p className="text-sm font-body text-[#0A0A0A] leading-relaxed bg-[#F5F5F5] p-4 border border-[#E5E5E5]">
                     {activeModalProject.summary}
                   </p>
                 </div>
 
-                {/* Arsitektur Solusi & Metodologi */}
+                {/* Technical Solutions & Methodology */}
                 <div>
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                    SOLUSI TEKNIS & METODE PELAKSANAAN
+                    TECHNICAL METHODOLOGY & SITE EXECUTION
                   </h4>
                   <ul className="space-y-2 text-sm text-[#0A0A0A]">
                     {activeModalProject.architectureAndSolution.map((sol, idx) => (
                       <li key={idx} className="flex items-start gap-2 border-b border-[#E5E5E5] pb-2">
                         <CheckSquare className="w-4 h-4 text-[#EF4444] mt-0.5 flex-shrink-0" />
-                        <span>{sol}</span>
+                        <span className="font-body leading-relaxed">{sol}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Metrik Terukur */}
+                {/* Measured Metrics */}
                 <div>
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                    PENCAPAIAN & METRIK KUALITAS
+                    MEASURABLE IMPACT & QUALITY BENCHMARKS
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {activeModalProject.metrics.map((m, idx) => (
@@ -206,13 +206,13 @@ export const FeaturedProjects: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                   <div>
                     <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                      PRODUK DOKUMEN / OUTPUT
+                      KEY DELIVERABLES & DOCUMENTATION
                     </h4>
-                    <ul className="space-y-1 text-xs font-mono text-[#525252]">
+                    <ul className="space-y-1.5 text-xs font-mono text-[#525252]">
                       {activeModalProject.deliverables.map((d, idx) => (
                         <li key={idx} className="flex items-center gap-1.5">
-                          <span className="text-[#EF4444]">▪</span>
-                          <span>{d}</span>
+                          <span className="text-[#EF4444] font-bold">▪</span>
+                          <span className="text-[#0A0A0A]">{d}</span>
                         </li>
                       ))}
                     </ul>
@@ -220,7 +220,7 @@ export const FeaturedProjects: React.FC = () => {
 
                   <div>
                     <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                      PERANGKAT LUNAK & INSTRUMEN
+                      SOFTWARE & ENGINEERING TOOLS
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
                       {activeModalProject.techStack.map((tech, idx) => (
@@ -242,7 +242,7 @@ export const FeaturedProjects: React.FC = () => {
                   onClick={() => setActiveModalProject(null)}
                   className="btn-primary"
                 >
-                  TUTUP RINCIAN
+                  CLOSE DOSSIER
                 </button>
               </div>
             </div>

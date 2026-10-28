@@ -9,20 +9,23 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Reza Sepdide | Civil Engineer, Quantity Surveyor & BIM Modeler',
   description:
-    'Website Portofolio Profesional Reza Sepdide — Lulusan Teknik Sipil Politeknik Negeri Padang (IPK 3,72), Bersertifikasi BNSP Pelaksana Gedung Madya Jenjang 5, Perencana Teknis DED/RAB, Kurva S, dan BIM/AutoCAD Modeler.',
+    'Professional Engineering Portfolio of Reza Sepdide — Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72), BNSP Level 5 Certified Building Construction Supervisor, Quantity Surveyor, Detailed Engineering Design (DED/BoQ), S-Curve Planner, and BIM/CAD Modeler.',
   keywords: [
     'Reza Sepdide',
-    'Teknik Sipil',
+    'Civil Engineer',
     'Quantity Surveyor',
     'Construction Planner',
     'BIM Modeler',
+    'Autodesk Revit',
     'AutoCAD',
-    'Revit',
-    'RAB',
+    'Bill of Quantities',
+    'BoQ',
+    'Detailed Engineering Design',
     'DED',
-    'Kurva S',
-    'BNSP Jenjang 5',
-    'Politeknik Negeri Padang'
+    'S-Curve',
+    'BNSP Level 5',
+    'Politeknik Negeri Padang',
+    'Civil Engineering Portfolio'
   ],
   authors: [{ name: 'Reza Sepdide' }],
 };
@@ -33,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

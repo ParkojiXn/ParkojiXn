@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { profileData } from '../data/cv-data';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Linkedin, FileText, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Linkedin, FileText, ArrowUpRight, MessageSquare } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -28,39 +28,39 @@ export const ContactSection: React.FC = () => {
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setFormStatus('error');
-      setErrorMessage('Harap isi Nama, Email, dan Pesan sebelum mengirim.');
+      setErrorMessage('Please fill in your Name, Email, and Message before sending.');
       return;
     }
 
     setFormStatus('submitting');
 
-    // Simulate sending with realistic feedback
     setTimeout(() => {
       setFormStatus('success');
-      // Create mailto link as fallback to open default email client
-      const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(formData.subject || 'Inquiry Proyek dari Portofolio')}&body=${encodeURIComponent(
-        `Nama: ${formData.name}\nEmail: ${formData.email}\nPerusahaan: ${formData.company}\n\nPesan:\n${formData.message}`
+      const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
+        formData.subject || 'Engineering Inquiry from Portfolio'
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
       )}`;
       window.location.href = mailtoUrl;
     }, 800);
   };
 
   return (
-    <section id="kontak" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+    <section id="contact" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // INISIASI KERJASAMA & KONSULTASI
+              // DIRECT INITIATIVE & CONSULTATION
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              HUBUNGI REZA SEPDIDE
+              LET&apos;S BUILD TOGETHER
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Siap mendiskusikan peluang kerja penuh waktu, proyek konsultansi DED/RAB, pemodelan BIM Revit/AutoCAD, maupun supervisi lapangan.
+            Available for full-time civil engineering positions, DED &amp; BoQ quantity surveying consultancies, Revit/AutoCAD BIM modeling, and on-site field supervision.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export const ContactSection: React.FC = () => {
           <div className="lg:col-span-5 space-y-6">
             <div className="card-editorial border-2 border-[#0A0A0A]">
               <span className="text-overline text-[#EF4444] font-bold block mb-4">
-                SALURAN KOMUNIKASI LANGSUNG
+                DIRECT COMMUNICATION CHANNELS
               </span>
 
               <div className="space-y-6">
@@ -79,7 +79,7 @@ export const ContactSection: React.FC = () => {
                     <Mail className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">SUREL ELEKTRONIK</span>
+                    <span className="text-[11px] font-mono text-[#525252] uppercase block">ELECTRONIC MAIL</span>
                     <a
                       href={`mailto:${profileData.email}`}
                       className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors break-all"
@@ -89,34 +89,47 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Telepon / WhatsApp */}
+                {/* WhatsApp / Phone */}
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[#0A0A0A] text-[#FAFAFA]">
                     <Phone className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">TELEPON / WHATSAPP</span>
-                    <a
-                      href={`https://wa.me/6289644590915`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors"
-                    >
-                      {profileData.phone}
-                    </a>
+                    <span className="text-[11px] font-mono text-[#525252] uppercase block">PHONE &amp; WHATSAPP</span>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="https://wa.me/6289644590915"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors"
+                      >
+                        {profileData.phone}
+                      </a>
+                      <a
+                        href="https://wa.me/6289644590915"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-mono bg-[#16A34A] text-white px-2 py-0.5 font-bold hover:bg-[#15803d] transition-colors"
+                      >
+                        CHAT ON WA
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                {/* Lokasi */}
+                {/* Location */}
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[#0A0A0A] text-[#FAFAFA]">
                     <MapPin className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">DOMISILI SAAT INI</span>
+                    <span className="text-[11px] font-mono text-[#525252] uppercase block">LOCATION &amp; RELOCATION</span>
                     <p className="font-display text-sm sm:text-base text-[#0A0A0A]">
                       {profileData.location}
                     </p>
+                    <span className="text-xs font-mono text-[#525252] mt-0.5 block">
+                      Open to domestic &amp; international site deployment
+                    </span>
                   </div>
                 </div>
 
@@ -126,7 +139,7 @@ export const ContactSection: React.FC = () => {
                     <Linkedin className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">JARINGAN PROFESIONAL</span>
+                    <span className="text-[11px] font-mono text-[#525252] uppercase block">PROFESSIONAL NETWORK</span>
                     <a
                       href={profileData.linkedin}
                       target="_blank"
@@ -140,7 +153,7 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Unduh CV Banner */}
+              {/* Download Resume Banner */}
               <div className="mt-8 pt-6 border-t-2 border-[#E5E5E5]">
                 <a
                   href="/CV_Reza_Sepdide_Profesional.docx"
@@ -148,7 +161,7 @@ export const ContactSection: React.FC = () => {
                   className="btn-secondary w-full"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>UNDUH CURRICULUM VITAE LENGKAP</span>
+                  <span>DOWNLOAD FULL RESUME (.DOCX)</span>
                 </a>
               </div>
             </div>
@@ -158,20 +171,20 @@ export const ContactSection: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="card-editorial border-2 border-[#0A0A0A] p-6 sm:p-8">
               <span className="text-overline text-[#EF4444] font-bold block mb-2">
-                FORMULIR PESAN INTERAKTIF
+                INTERACTIVE MESSAGE DISPATCH
               </span>
               <h3 className="font-display text-xl text-[#0A0A0A] mb-6">
-                KIRIM PESAN ATAU PENAWARAN KERJA
+                SEND A MESSAGE OR WORK PROPOSAL
               </h3>
 
               {formStatus === 'success' ? (
                 <div className="p-6 bg-[#F0FDF4] border-2 border-[#16A34A] text-[#16A34A] space-y-3">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-6 h-6" />
-                    <h4 className="font-display text-lg">Pesan Terkirim dengan Sukses!</h4>
+                    <h4 className="font-display text-lg">Message Dispatched Successfully!</h4>
                   </div>
-                  <p className="text-sm font-body">
-                    Terima kasih telah menghubungi Reza Sepdide. Pesan Anda telah diproses dan akan dibalas melalui email dalam waktu 1x24 jam kerja.
+                  <p className="text-sm font-body text-[#15803d]">
+                    Thank you for reaching out to Reza Sepdide. Your inquiry has been forwarded and will be answered directly via email within 24 business hours.
                   </p>
                   <button
                     onClick={() => {
@@ -180,7 +193,7 @@ export const ContactSection: React.FC = () => {
                     }}
                     className="btn-primary !bg-[#16A34A] !border-[#16A34A] text-xs mt-3"
                   >
-                    KIRIM PESAN LAIN
+                    SEND ANOTHER INQUIRY
                   </button>
                 </div>
               ) : (
@@ -194,14 +207,14 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        NAMA LENGKAP *
+                        FULL NAME *
                       </label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Contoh: Budi Santoso"
+                        placeholder="e.g. John Anderson"
                         required
                         className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
                       />
@@ -209,14 +222,14 @@ export const ContactSection: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        ALAMAT EMAIL *
+                        EMAIL ADDRESS *
                       </label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="budi@perusahaan.co.id"
+                        placeholder="john@constructionfirm.com"
                         required
                         className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
                       />
@@ -226,28 +239,28 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        PERUSAHAAN / INSTITUSI
+                        COMPANY / ORGANIZATION
                       </label>
                       <input
                         type="text"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        placeholder="PT Maju Konstruksi"
+                        placeholder="e.g. Pacific Infrastructure Ltd."
                         className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        SUBJEK
+                        INQUIRY SUBJECT
                       </label>
                       <input
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Peluang Kerja / Konsultasi DED"
+                        placeholder="e.g. Quantity Surveying & Scheduling Role"
                         className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
                       />
                     </div>
@@ -255,16 +268,16 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                      PESAN ATAU PERTANYAAN *
+                      MESSAGE OR PROJECT SCOPE *
                     </label>
                     <textarea
                       name="message"
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Jelaskan kebutuhan proyek, posisi kerja yang ditawarkan, atau lingkup kerjasama teknis..."
+                      placeholder="Share details regarding your project requirements, timeline, open engineering roles, or consulting scope..."
                       required
-                      className="w-full bg-[#FAFAFA] border-2 border-[#D4D4D4] p-3 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors resize-y"
+                      className="w-full bg-[#FAFAFA] border-2 border-[#D4D4D4] p-3 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors resize-y font-body"
                     />
                   </div>
 
@@ -275,10 +288,10 @@ export const ContactSection: React.FC = () => {
                       className="btn-primary w-full sm:w-auto"
                     >
                       {formStatus === 'submitting' ? (
-                        <span>MENGIRIM PESAN...</span>
+                        <span>DISPATCHING MESSAGE...</span>
                       ) : (
                         <>
-                          <span>KIRIM PESAN SEKARANG</span>
+                          <span>SEND INQUIRY DIRECTLY</span>
                           <Send className="w-4 h-4" />
                         </>
                       )}

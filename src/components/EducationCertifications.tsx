@@ -6,21 +6,21 @@ import { GraduationCap, Award, CheckCircle2, Calendar, MapPin } from 'lucide-rea
 
 export const EducationCertifications: React.FC = () => {
   return (
-    <section id="edukasi" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+    <section id="education" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // KREDENSIAL AKADEMIK & LISENSI RESMI
+              // ACADEMIC CREDENTIALS & ACCREDITATIONS
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              EDUKASI & SERTIFIKASI PROFESIONAL
+              EDUCATION & CERTIFICATIONS
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Landasan teoretis teknik sipil yang kokoh didukung sertifikasi resmi BNSP jenjang 5 serta kualifikasi konstruksi internasional.
+            A solid theoretical and practical foundation in civil engineering, verified by government-issued Level 5 supervisory certification and international qualifications.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export const EducationCertifications: React.FC = () => {
             <div className="flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-3">
               <GraduationCap className="w-5 h-5 text-[#EF4444]" />
               <h3 className="font-display text-lg text-[#0A0A0A]">
-                RIWAYAT PENDIDIKAN FORMAL
+                FORMAL ACADEMIC DEGREES
               </h3>
             </div>
 
@@ -49,7 +49,7 @@ export const EducationCertifications: React.FC = () => {
                   </div>
 
                   <h4 className="font-display text-lg text-[#0A0A0A]">
-                    {edu.degree} {edu.field}
+                    {edu.degree} — {edu.field}
                   </h4>
                   <p className="text-sm font-semibold text-[#525252] font-body mt-0.5">
                     {edu.institution}
@@ -57,7 +57,7 @@ export const EducationCertifications: React.FC = () => {
 
                   {edu.gpa && (
                     <div className="mt-3 inline-block bg-[#0A0A0A] text-[#FAFAFA] px-3 py-1 text-xs font-mono font-bold">
-                      IPK: {edu.gpa} (Predikat Sangat Memuaskan)
+                      GPA: {edu.gpa} (Graduated with High Honors)
                     </div>
                   )}
 
@@ -81,7 +81,7 @@ export const EducationCertifications: React.FC = () => {
             <div className="flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-3">
               <Award className="w-5 h-5 text-[#EF4444]" />
               <h3 className="font-display text-lg text-[#0A0A0A]">
-                SERTIFIKASI & LISENSI KOMPETENSI
+                PROFESSIONAL LICENSES & CERTIFICATIONS
               </h3>
             </div>
 
@@ -109,7 +109,7 @@ export const EducationCertifications: React.FC = () => {
                     </h4>
 
                     <p className="text-xs text-[#525252] font-body mt-2">
-                      Penerbit: <strong className="text-[#0A0A0A]">{cert.issuer}</strong>
+                      Issuing Body: <strong className="text-[#0A0A0A]">{cert.issuer}</strong>
                     </p>
                   </div>
                 </div>

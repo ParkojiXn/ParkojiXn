@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { skillCategories } from '../data/cv-data';
-import { Wrench, Monitor, Globe, Award, Sparkles, Check } from 'lucide-react';
+import { Wrench, Monitor, Globe, Sparkles, Check } from 'lucide-react';
 
 export const SkillsMatrix: React.FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -21,21 +21,21 @@ export const SkillsMatrix: React.FC = () => {
   };
 
   return (
-    <section id="keahlian" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+    <section id="skills" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // MATRIKS KOMPETENSI TEKNIS
+              // TECHNICAL SKILLS & PROFICIENCY MATRIX
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              KEAHLIAN & TECH STACK MATRIX
+              SKILLS MATRIX & TOOLKIT
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Kombinasi keahlian kuantitatif sipil, penguasaan pemodelan BIM/CAD mutakhir, dan sertifikasi bahasa internasional.
+            A cohesive synthesis of quantitative civil calculations, contemporary BIM/CAD modeling, and certified multilingual communication.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export const SkillsMatrix: React.FC = () => {
               </p>
             </div>
             <span className="text-xs font-mono font-bold text-[#EF4444] bg-[#F5F5F5] px-3 py-1 border border-[#E5E5E5] self-start sm:self-auto">
-              {skillCategories[activeTab].items.length} KOMPETENSI TERVALIDASI
+              {skillCategories[activeTab].items.length} VERIFIED COMPETENCIES
             </span>
           </div>
 
@@ -112,9 +112,9 @@ export const SkillsMatrix: React.FC = () => {
                 </div>
 
                 <div className="mt-4 pt-2 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#525252]">
-                  <span>VERIFIKASI:</span>
+                  <span>APPLICATION:</span>
                   <span className="text-[#16A34A] font-bold flex items-center gap-1">
-                    <Check className="w-3 h-3" /> SIAP APLIKASI
+                    <Check className="w-3 h-3" /> FIELD VALIDATED
                   </span>
                 </div>
               </div>
