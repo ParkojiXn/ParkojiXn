@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['hero', 'principles', 'projects', 'experience', 'skills', 'education', 'contact'];
+      const sections = ['hero', 'projects', 'experience', 'skills', 'education', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -35,7 +35,6 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'ABOUT', href: '#hero', id: 'hero' },
-    { label: 'PRINCIPLES', href: '#principles', id: 'principles' },
     { label: 'PROJECTS', href: '#projects', id: 'projects' },
     { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
     { label: 'SKILLS', href: '#skills', id: 'skills' },
@@ -50,7 +49,7 @@ export const Navbar: React.FC = () => {
       }`}
     >
       {/* Top micro-bar for editorial feel */}
-      <div className="bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono py-1 px-4 flex justify-between items-center tracking-wider">
+      <div className="bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono py-1.5 px-4 flex justify-between items-center tracking-wider">
         <div className="flex items-center gap-3">
           <span className="text-[#EF4444] font-bold">● ACTIVE</span>
           <span className="truncate">CIVIL ENGINEER // QUANTITY SURVEYOR // BIM MODELER</span>
@@ -66,11 +65,11 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo / Masthead */}
           <a href="#hero" className="flex flex-col group">
-            <span className="font-display text-xl sm:text-2xl text-[#0A0A0A] tracking-tighter group-hover:text-[#EF4444] transition-colors">
+            <span className="font-display text-xl sm:text-2xl text-[#0A0A0A] tracking-tight group-hover:text-[#EF4444] transition-colors">
               {profileData.name}
             </span>
             <span className="text-[10px] font-mono tracking-widest text-[#525252] uppercase">
-              ENGINEERING DOSSIER // 2026 EDITION
+              ENGINEERING PORTFOLIO // 2026 EDITION
             </span>
           </a>
 
@@ -98,7 +97,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden sm:flex items-center space-x-3">
             <div className="status-chip-success">
               <span className="w-2 h-2 bg-[#16A34A] inline-block animate-pulse" />
-              <span>OPEN FOR WORK</span>
+              <span>AVAILABLE FOR WORK</span>
             </div>
 
             <a
@@ -144,7 +143,7 @@ export const Navbar: React.FC = () => {
           <div className="pt-4 flex flex-col gap-2">
             <div className="status-chip-success self-start">
               <span className="w-2 h-2 bg-[#16A34A] inline-block" />
-              <span>AVAILABLE FOR NEW PROJECTS</span>
+              <span>AVAILABLE FOR ROLES</span>
             </div>
             <a
               href="#contact"

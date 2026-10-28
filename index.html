@@ -270,10 +270,6 @@
             ABOUT
             <span class="nav-line absolute bottom-0 left-3 right-3 h-[3px] bg-[#EF4444]"></span>
           </a>
-          <a href="#principles" class="nav-item px-3 py-2 text-xs font-bold tracking-wider uppercase font-body text-[#525252] hover:text-[#0A0A0A] relative">
-            PRINCIPLES
-            <span class="nav-line hidden absolute bottom-0 left-3 right-3 h-[3px] bg-[#EF4444]"></span>
-          </a>
           <a href="#projects" class="nav-item px-3 py-2 text-xs font-bold tracking-wider uppercase font-body text-[#525252] hover:text-[#0A0A0A] relative">
             PROJECTS
             <span class="nav-line hidden absolute bottom-0 left-3 right-3 h-[3px] bg-[#EF4444]"></span>
@@ -319,7 +315,6 @@
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden border-t-2 border-[#0A0A0A] bg-[#FAFAFA] px-4 pt-3 pb-6 space-y-2">
       <a href="#hero" class="mobile-nav-link block px-3 py-2 text-sm font-bold border-b border-[#E5E5E5] uppercase text-[#0A0A0A]">ABOUT</a>
-      <a href="#principles" class="mobile-nav-link block px-3 py-2 text-sm font-bold border-b border-[#E5E5E5] uppercase text-[#0A0A0A]">PRINCIPLES</a>
       <a href="#projects" class="mobile-nav-link block px-3 py-2 text-sm font-bold border-b border-[#E5E5E5] uppercase text-[#0A0A0A]">PROJECTS</a>
       <a href="#experience" class="mobile-nav-link block px-3 py-2 text-sm font-bold border-b border-[#E5E5E5] uppercase text-[#0A0A0A]">EXPERIENCE</a>
       <a href="#skills" class="mobile-nav-link block px-3 py-2 text-sm font-bold border-b border-[#E5E5E5] uppercase text-[#0A0A0A]">SKILLS</a>
@@ -329,16 +324,21 @@
   </header>
 
   <!-- 1. HERO SECTION -->
-  <section id="hero" class="border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-20 lg:pb-24">
+  <section id="hero" class="border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-16 lg:pb-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Top Meta -->
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#0A0A0A] pb-4 mb-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#0A0A0A] pb-4 mb-10">
         <div class="flex items-center gap-3">
-          <span class="text-overline text-[#EF4444] font-bold">PROFESSIONAL PROFILE</span>
+          <span class="text-overline text-[#EF4444] font-bold">PROFESSIONAL DOSSIER</span>
           <span class="text-[#A3A3A3]">•</span>
-          <span class="text-xs font-mono text-[#525252] flex items-center gap-1">
+          <span class="text-xs font-mono text-[#525252] flex items-center gap-1.5">
             <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-            Padang, West Sumatra, Indonesia (UTC+7)
+            Padang, West Sumatra, Indonesia
+          </span>
+          <span class="hidden sm:inline text-[#A3A3A3]">•</span>
+          <span class="hidden sm:flex text-xs font-mono text-[#525252] items-center gap-1.5">
+            <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+            UTC+7 (WIB)
           </span>
         </div>
 
@@ -348,12 +348,12 @@
         </div>
       </div>
 
-      <!-- Main Headline & Photo -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Main Headline & Profile Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
         <div class="lg:col-span-8 flex flex-col space-y-6">
           <div>
             <span class="text-xs font-mono tracking-widest text-[#525252] uppercase block mb-1">
-              // CIVIL ENGINEER // QUANTITY SURVEYOR // BIM MODELER
+              // CIVIL ENGINEER &amp; CONSTRUCTION PLANNER
             </span>
             <h1 class="text-display text-[#0A0A0A]">
               PRECISION ENGINEERING, <br class="hidden sm:inline">
@@ -361,28 +361,18 @@
             </h1>
           </div>
 
-          <p class="text-xl font-body font-medium text-[#0A0A0A] leading-snug">
+          <p className="text-lg sm:text-xl font-body font-medium text-[#0A0A0A] leading-snug">
             Quantity Surveyor &amp; Construction Planner | BIM &amp; CAD Modeler
           </p>
 
-          <div class="pull-quote my-4">
-            <p class="text-base sm:text-lg text-[#0A0A0A] font-body italic leading-relaxed">
+          <div class="pull-quote my-2">
+            <p class="text-base text-[#0A0A0A] font-body italic leading-relaxed">
               &ldquo;Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72/4.00) and certified BNSP Level 5 (Jenjang 5) Construction Supervisor. Specializing in Quantity Surveying (QS), Detailed Engineering Design (DED), Cost Budgeting (BoQ/RAB), and S-Curve project scheduling. Experienced in bridging digital modeling (Autodesk Revit BIM, AutoCAD, SketchUp, SAP2000) with on-site quality control, rebar optimization, and contract change administration—with certified Japanese and English communication.&rdquo;
             </p>
           </div>
 
-          <!-- Human Personal Philosophy Box -->
-          <div class="border border-[#E5E5E5] bg-[#F5F5F5] p-4 text-sm font-body text-[#525252] border-l-4 border-l-[#0A0A0A]">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-[#0A0A0A] font-bold block mb-1">
-              PERSONAL WORK PHILOSOPHY
-            </span>
-            <p class="text-[#0A0A0A] leading-relaxed">
-              I believe great civil engineering isn&apos;t just about drawing lines in CAD or running structural formulas—it&apos;s about making sure that what&apos;s designed gets built safely, on schedule, and without wasted capital or materials. Whether I&apos;m optimizing rebar cutting schedules on high-stakes industrial sites, auditing government school revitalizations, or modeling dynamic structures, I bring an honest field-first mindset and meticulous accountability to every project.
-            </p>
-          </div>
-
           <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-4 pt-2">
+          <div class="flex flex-wrap items-center gap-3 pt-2">
             <a href="#projects" class="btn-primary">
               <span>EXPLORE FEATURED PROJECTS</span>
               <i data-lucide="arrow-down" class="w-4 h-4"></i>
@@ -393,20 +383,15 @@
               <i data-lucide="mail" class="w-4 h-4"></i>
             </a>
 
-            <a href="https://wa.me/6289644590915" target="_blank" rel="noopener noreferrer" class="btn-secondary !border-[#16A34A] !text-[#16A34A] hover:!bg-[#16A34A] hover:!text-white transition-colors">
-              <i data-lucide="message-square" class="w-4 h-4"></i>
-              <span>CHAT ON WHATSAPP</span>
-            </a>
-
             <a href="CV_Reza_Sepdide_Profesional.docx" download class="btn-secondary !border-[#525252] !text-[#525252] hover:!border-[#0A0A0A] hover:!text-[#0A0A0A]" title="Download Reza's Official Resume">
               <i data-lucide="file-text" class="w-4 h-4"></i>
-              <span>DOWNLOAD CV (.DOCX)</span>
+              <span>DOWNLOAD RESUME (.DOCX)</span>
             </a>
           </div>
         </div>
 
         <!-- Profile Card -->
-        <div class="lg:col-span-4 flex flex-col space-y-6">
+        <div class="lg:col-span-4 flex flex-col space-y-5">
           <div class="border-2 border-[#0A0A0A] bg-[#FAFAFA] p-3 relative group">
             <div class="overflow-hidden border border-[#D4D4D4] bg-[#F5F5F5] aspect-[4/5] relative">
               <img src="public/profile.jpg" alt="Reza Sepdide" class="w-full h-full object-cover object-top grayscale contrast-125 group-hover:grayscale-0 transition-all duration-300">
@@ -424,26 +409,27 @@
             </div>
           </div>
 
-          <div class="card-editorial space-y-3 text-xs font-mono">
-            <div class="flex justify-between border-b border-[#E5E5E5] pb-2">
+          <div class="card-editorial space-y-2.5 text-xs font-mono">
+            <div class="flex justify-between items-center border-b border-[#E5E5E5] pb-2">
               <span class="text-[#525252]">EMAIL:</span>
-              <a href="mailto:rezasepdide@gmail.com" class="text-[#0A0A0A] font-bold hover:text-[#EF4444] truncate max-w-[200px]">
+              <a href="mailto:rezasepdide@gmail.com" class="text-[#0A0A0A] font-bold hover:text-[#EF4444] truncate max-w-[190px]">
                 rezasepdide@gmail.com
               </a>
             </div>
-            <div class="flex justify-between border-b border-[#E5E5E5] pb-2">
-              <span class="text-[#525252]">PHONE / WA:</span>
-              <a href="https://wa.me/6289644590915" target="_blank" class="text-[#0A0A0A] font-bold hover:text-[#EF4444]">
+            <div class="flex justify-between items-center border-b border-[#E5E5E5] pb-2">
+              <span class="text-[#525252]">WHATSAPP:</span>
+              <a href="https://wa.me/6289644590915" target="_blank" class="text-[#16A34A] font-bold hover:underline flex items-center gap-1">
+                <i data-lucide="message-square" class="w-3 h-3"></i>
                 +62 896-4459-0915
               </a>
             </div>
-            <div class="flex justify-between border-b border-[#E5E5E5] pb-2">
+            <div class="flex justify-between items-center border-b border-[#E5E5E5] pb-2">
               <span class="text-[#525252]">LINKEDIN:</span>
               <a href="https://linkedin.com/in/rezasepdide" target="_blank" class="text-[#0A0A0A] font-bold underline hover:text-[#EF4444]">
                 linkedin.com/in/rezasepdide
               </a>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between items-center">
               <span class="text-[#525252]">LOCATION:</span>
               <span class="text-[#0A0A0A] font-bold">Sumatra &amp; Open to Relocate</span>
             </div>
@@ -452,8 +438,8 @@
       </div>
 
       <!-- Metrics Ribbon -->
-      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-0 border-2 border-[#0A0A0A] bg-[#FAFAFA]">
-        <div class="p-6 flex flex-col justify-between hover:bg-[#F5F5F5] transition-colors">
+      <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-0 border-2 border-[#0A0A0A] bg-[#FAFAFA]">
+        <div class="p-5 sm:p-6 flex flex-col justify-between hover:bg-[#F5F5F5] transition-colors">
           <div>
             <span class="text-display font-display text-[#0A0A0A] block leading-none">3.72</span>
             <span class="text-overline text-[#EF4444] block mt-2">GRADUATION GPA / 4.00</span>
@@ -461,7 +447,7 @@
           <p class="text-xs text-[#525252] mt-3 font-body">Politeknik Negeri Padang — D3 Civil Engineering (High Distinction)</p>
         </div>
 
-        <div class="p-6 flex flex-col justify-between border-t-2 md:border-t-0 md:border-l-2 border-[#0A0A0A] hover:bg-[#F5F5F5] transition-colors">
+        <div class="p-5 sm:p-6 flex flex-col justify-between border-t-2 md:border-t-0 md:border-l-2 border-[#0A0A0A] hover:bg-[#F5F5F5] transition-colors">
           <div>
             <span class="text-display font-display text-[#0A0A0A] block leading-none">LEVEL 5</span>
             <span class="text-overline text-[#EF4444] block mt-2">BNSP ACCREDITATION</span>
@@ -469,7 +455,7 @@
           <p class="text-xs text-[#525252] mt-3 font-body">Intermediate Building Construction Supervisor (Ministry of Public Works)</p>
         </div>
 
-        <div class="p-6 flex flex-col justify-between border-t-2 md:border-t-0 md:border-l-2 border-[#0A0A0A] hover:bg-[#F5F5F5] transition-colors">
+        <div class="p-5 sm:p-6 flex flex-col justify-between border-t-2 md:border-t-0 md:border-l-2 border-[#0A0A0A] hover:bg-[#F5F5F5] transition-colors">
           <div>
             <span class="text-display font-display text-[#0A0A0A] block leading-none">5+</span>
             <span class="text-overline text-[#EF4444] block mt-2">REAL-WORLD PROJECTS</span>
@@ -477,7 +463,7 @@
           <p class="text-xs text-[#525252] mt-3 font-body">School Revitalizations, Industrial Waste Gas Recovery, Tenders, &amp; Commercial QS</p>
         </div>
 
-        <div class="p-6 flex flex-col justify-between border-t-2 md:border-t-0 md:border-l-2 border-[#0A0A0A] hover:bg-[#F5F5F5] transition-colors">
+        <div class="p-5 sm:p-6 flex flex-col justify-between border-t-2 md:border-t-0 md:border-l-2 border-[#0A0A0A] hover:bg-[#F5F5F5] transition-colors">
           <div>
             <span class="text-display font-display text-[#0A0A0A] block leading-none">3 LANGUAGES</span>
             <span class="text-overline text-[#EF4444] block mt-2">GLOBAL READINESS</span>
@@ -488,141 +474,8 @@
     </div>
   </section>
 
-  <!-- 2. CORE PRINCIPLES & HUMAN ETHIC -->
-  <section id="principles" class="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-12 gap-6">
-        <div>
-          <span class="text-overline text-[#EF4444] font-bold block mb-1">// HOW I WORK &amp; PERSONAL ETHIC</span>
-          <h2 class="text-headline text-[#0A0A0A]">ENGINEERING PRINCIPLES &amp; MINDSET</h2>
-        </div>
-        <p class="text-sm text-[#525252] max-w-md font-body">
-          Engineering isn&apos;t just calculation spreadsheets; it is human collaboration, site safety, and a personal obligation to turn investments into enduring physical structures.
-        </p>
-      </div>
-
-      <!-- 4 Pillars Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="card-editorial-elevated p-6 sm:p-8 flex flex-col justify-between group hover:bg-[#F5F5F5] transition-colors">
-          <div>
-            <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-3 mb-4">
-              <span class="text-xs font-mono font-bold text-[#525252]">PRINCIPLE // 01</span>
-              <div class="p-2 bg-[#FAFAFA] border border-[#D4D4D4]">
-                <i data-lucide="hard-hat" class="w-5 h-5 text-[#EF4444]"></i>
-              </div>
-            </div>
-            <h3 class="font-display text-xl text-[#0A0A0A] mb-1 group-hover:text-[#EF4444] transition-colors">
-              Field-First Practicality
-            </h3>
-            <span class="text-xs font-mono text-[#EF4444] font-bold uppercase tracking-wider block mb-3">
-              Bridging Drawings &amp; Ground Realities
-            </span>
-            <p class="text-sm text-[#525252] font-body leading-relaxed">
-              Blueprints and schedules only matter if they can be executed smoothly on-site. I spend time understanding actual ground conditions, constructability, and labor workflows before locking in estimates.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#A3A3A3]">
-            <span>CORE STANDARD</span>
-            <span class="text-[#0A0A0A] font-bold">NON-NEGOTIABLE</span>
-          </div>
-        </div>
-
-        <div class="card-editorial-elevated p-6 sm:p-8 flex flex-col justify-between group hover:bg-[#F5F5F5] transition-colors">
-          <div>
-            <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-3 mb-4">
-              <span class="text-xs font-mono font-bold text-[#525252]">PRINCIPLE // 02</span>
-              <div class="p-2 bg-[#FAFAFA] border border-[#D4D4D4]">
-                <i data-lucide="file-spreadsheet" class="w-5 h-5 text-[#EF4444]"></i>
-              </div>
-            </div>
-            <h3 class="font-display text-xl text-[#0A0A0A] mb-1 group-hover:text-[#EF4444] transition-colors">
-              Respect for Every Dollar &amp; Metric
-            </h3>
-            <span class="text-xs font-mono text-[#EF4444] font-bold uppercase tracking-wider block mb-3">
-              Zero-Waste Cost &amp; Material Governance
-            </span>
-            <p class="text-sm text-[#525252] font-body leading-relaxed">
-              From precision Bar Bending Schedules (BBS) that curb expensive scrap steel to airtight Bill of Quantities (BoQ), I treat client and public budgets with meticulous care.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#A3A3A3]">
-            <span>COST DISCIPLINE</span>
-            <span class="text-[#0A0A0A] font-bold">AUDIT READY</span>
-          </div>
-        </div>
-
-        <div class="card-editorial-elevated p-6 sm:p-8 flex flex-col justify-between group hover:bg-[#F5F5F5] transition-colors">
-          <div>
-            <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-3 mb-4">
-              <span class="text-xs font-mono font-bold text-[#525252]">PRINCIPLE // 03</span>
-              <div class="p-2 bg-[#FAFAFA] border border-[#D4D4D4]">
-                <i data-lucide="users" class="w-5 h-5 text-[#EF4444]"></i>
-              </div>
-            </div>
-            <h3 class="font-display text-xl text-[#0A0A0A] mb-1 group-hover:text-[#EF4444] transition-colors">
-              Transparent, Human Communication
-            </h3>
-            <span class="text-xs font-mono text-[#EF4444] font-bold uppercase tracking-wider block mb-3">
-              Alignment Across Owners, Engineers &amp; Trades
-            </span>
-            <p class="text-sm text-[#525252] font-body leading-relaxed">
-              Smooth construction hinges on shared clarity. I bridge technical specifications with honest daily reporting, substantiated progress billings, and constructive conflict resolution.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#A3A3A3]">
-            <span>STAKEHOLDER GOVERNANCE</span>
-            <span class="text-[#0A0A0A] font-bold">ZERO DISPUTES</span>
-          </div>
-        </div>
-
-        <div class="card-editorial-elevated p-6 sm:p-8 flex flex-col justify-between group hover:bg-[#F5F5F5] transition-colors">
-          <div>
-            <div class="flex items-center justify-between border-b border-[#E5E5E5] pb-3 mb-4">
-              <span class="text-xs font-mono font-bold text-[#525252]">PRINCIPLE // 04</span>
-              <div class="p-2 bg-[#FAFAFA] border border-[#D4D4D4]">
-                <i data-lucide="sparkles" class="w-5 h-5 text-[#EF4444]"></i>
-              </div>
-            </div>
-            <h3 class="font-display text-xl text-[#0A0A0A] mb-1 group-hover:text-[#EF4444] transition-colors">
-              Relentless Craft &amp; Lifelong Learning
-            </h3>
-            <span class="text-xs font-mono text-[#EF4444] font-bold uppercase tracking-wider block mb-3">
-              Continuing Advanced Studies &amp; Global Standards
-            </span>
-            <p class="text-sm text-[#525252] font-body leading-relaxed">
-              Currently pursuing an advanced D4 in Construction Engineering Management, mastering Revit BIM workflows, and certified to Japanese construction industry standards (SSW).
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#A3A3A3]">
-            <span>PROFESSIONAL GROWTH</span>
-            <span class="text-[#0A0A0A] font-bold">GLOBAL CERTIFIED</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Human Story Banner -->
-      <div class="mt-12 bg-[#0A0A0A] text-[#FAFAFA] p-8 border-2 border-[#0A0A0A] flex flex-col lg:flex-row items-center justify-between gap-6">
-        <div class="space-y-2 max-w-2xl">
-          <span class="text-xs font-mono text-[#EF4444] uppercase tracking-widest font-bold">
-            // BEHIND THE BLUEPRINTS
-          </span>
-          <h3 class="font-display text-xl sm:text-2xl text-[#FAFAFA]">
-            THE PERSON BEHIND THE QUANTITIES
-          </h3>
-          <p class="text-sm text-[#A3A3A3] font-body leading-relaxed">
-            When I&apos;m not running structural simulations or auditing unit prices, I dedicate time to mastering the Japanese language (JLPT N4 / SSW certified for Japanese construction) and advancing into D4 Construction Engineering Management. I thrive on connecting with builders from different backgrounds and continually raising the bar of what careful engineering can achieve.
-          </p>
-        </div>
-
-        <a href="#contact" class="btn-primary !bg-[#FAFAFA] !text-[#0A0A0A] hover:!bg-[#EF4444] hover:!text-[#FAFAFA] whitespace-nowrap self-start lg:self-center">
-          LET&apos;S CONNECT DIRECTLY
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. FEATURED PROJECTS SECTION -->
-  <section id="projects" class="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+  <!-- 2. FEATURED PROJECTS SECTION -->
+  <section id="projects" class="py-16 lg:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-10 gap-6">
         <div>
@@ -650,29 +503,30 @@
     </div>
   </section>
 
-  <!-- 4. WORK EXPERIENCES SECTION -->
-  <section id="experience" class="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+  <!-- 3. WORK EXPERIENCES SECTION -->
+  <section id="experience" class="py-16 lg:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <span class="text-overline text-[#EF4444] font-bold block mb-1">// ON-SITE REPUTATION &amp; PROFESSIONAL MILESTONES</span>
           <h2 class="text-headline text-[#0A0A0A]">PROFESSIONAL WORK EXPERIENCE</h2>
         </div>
         <p class="text-sm text-[#525252] max-w-md font-body">
-          Battle-tested engineering experience spanning educational revitalizations, ministry program auditing, industrial plant quality control, and freelance quantity surveying.
+          Demonstrated engineering competency across school revitalizations, ministerial auditing, industrial EPC quality control, and quantity surveying.
         </p>
       </div>
 
-      <div class="relative border-l-2 border-[#0A0A0A] ml-4 md:ml-32 pl-6 md:pl-10 space-y-12" id="timeline-container">
+      <!-- Clean Proportional Timeline -->
+      <div class="relative border-l-2 border-[#0A0A0A] ml-2 sm:ml-4 pl-6 sm:pl-8 space-y-8" id="timeline-container">
         <!-- Rendered via JS -->
       </div>
     </div>
   </section>
 
-  <!-- 5. SKILLS & TECH STACK SECTION -->
-  <section id="skills" class="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+  <!-- 4. SKILLS & TECH STACK SECTION -->
+  <section id="skills" class="py-16 lg:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <span class="text-overline text-[#EF4444] font-bold block mb-1">// TECHNICAL SKILLS &amp; PROFICIENCY MATRIX</span>
           <h2 class="text-headline text-[#0A0A0A]">SKILLS MATRIX &amp; TOOLKIT</h2>
@@ -694,10 +548,10 @@
     </div>
   </section>
 
-  <!-- 6. EDUCATION & CERTIFICATIONS -->
-  <section id="education" class="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+  <!-- 5. EDUCATION & CERTIFICATIONS -->
+  <section id="education" class="py-16 lg:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <span class="text-overline text-[#EF4444] font-bold block mb-1">// ACADEMIC CREDENTIALS &amp; ACCREDITATIONS</span>
           <h2 class="text-headline text-[#0A0A0A]">EDUCATION &amp; CERTIFICATIONS</h2>
@@ -707,7 +561,7 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
         <!-- Education Column -->
         <div class="lg:col-span-6 space-y-6">
           <div class="flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-3">
@@ -855,10 +709,10 @@
     </div>
   </section>
 
-  <!-- 7. CONTACT SECTION -->
-  <section id="contact" class="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+  <!-- 6. CONTACT SECTION -->
+  <section id="contact" class="py-16 lg:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="border-b-2 border-[#0A0A0A] pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <span class="text-overline text-[#EF4444] font-bold block mb-1">// DIRECT INITIATIVE &amp; CONSULTATION</span>
           <h2 class="text-headline text-[#0A0A0A]">LET&apos;S BUILD TOGETHER</h2>
@@ -868,7 +722,7 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
         <div class="lg:col-span-5 space-y-6">
           <div class="card-editorial border-2 border-[#0A0A0A]">
             <span class="text-overline text-[#EF4444] font-bold block mb-4">DIRECT COMMUNICATION CHANNELS</span>
@@ -1479,28 +1333,43 @@
       if (e.target.id === 'project-modal') closeModal();
     });
 
-    // Render Timeline
+    // Render Timeline with Proportional Layout and Working Button
     function renderTimeline() {
       const container = document.getElementById('timeline-container');
       container.innerHTML = timelineData.map((exp, idx) => `
         <div class="relative group">
-          <div class="absolute -left-[31px] md:-left-[47px] top-0.5 w-4 h-4 bg-[#FAFAFA] border-2 border-[#0A0A0A] group-hover:bg-[#EF4444] group-hover:border-[#EF4444] transition-colors"></div>
-          <div class="hidden md:block absolute -left-36 top-0 w-28 text-right font-mono text-xs font-bold text-[#0A0A0A]">${exp.period}</div>
+          <div class="absolute -left-[33px] sm:-left-[41px] top-5 w-4 h-4 bg-[#FAFAFA] border-2 border-[#0A0A0A] group-hover:bg-[#EF4444] group-hover:border-[#EF4444] transition-colors"></div>
           <div class="card-editorial transition-all duration-200 hover:border-[#0A0A0A]">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5E5E5] pb-3 mb-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#0A0A0A] text-[#FAFAFA] text-xs font-mono font-bold tracking-wider">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#EF4444]"></i>
+                  <span>${exp.period}</span>
+                </span>
+                <span class="text-xs font-mono text-[#525252] flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#A3A3A3]"></i>
+                  ${exp.location}
+                </span>
+              </div>
+              <button
+                type="button"
+                onclick="toggleTimelineDetail('${exp.id}')"
+                class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-bold uppercase border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors cursor-pointer"
+                id="btn-${exp.id}"
+                aria-label="Toggle details for ${exp.role}"
+              >
+                <span id="label-${exp.id}">${idx === 0 ? 'HIDE DETAILS' : 'VIEW DETAILS'}</span>
+                <span id="chevron-${exp.id}">${idx === 0 ? '▲' : '▼'}</span>
+              </button>
+            </div>
+
             <div class="cursor-pointer select-none" onclick="toggleTimelineDetail('${exp.id}')">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="md:hidden text-xs font-mono font-bold text-[#EF4444] bg-[#F5F5F5] px-2 py-0.5 border border-[#E5E5E5]">${exp.period}</span>
-                <span class="text-xs font-mono text-[#525252] flex items-center gap-1">📍 ${exp.location}</span>
-              </div>
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 class="font-display text-lg sm:text-xl text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors">${exp.role}</h3>
-                  <p class="text-sm font-semibold text-[#525252] font-body mt-0.5">${exp.company} <span class="text-[#0A0A0A] font-mono">(${exp.type})</span></p>
-                </div>
-                <button class="p-1 border border-[#D4D4D4] hover:border-[#0A0A0A] transition-colors" aria-label="Toggle details">
-                  <span id="chevron-${exp.id}">${idx === 0 ? '▲' : '▼'}</span>
-                </button>
-              </div>
+              <h3 class="font-display text-lg sm:text-xl text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors">
+                ${exp.role}
+              </h3>
+              <p class="text-sm font-semibold text-[#525252] font-body mt-1">
+                ${exp.company} <span class="text-[#0A0A0A] font-mono font-normal">(${exp.type})</span>
+              </p>
             </div>
 
             <div id="detail-${exp.id}" class="${idx === 0 ? '' : 'hidden'} mt-6 pt-6 border-t-2 border-[#E5E5E5] space-y-6">
@@ -1545,12 +1414,15 @@
     window.toggleTimelineDetail = function(id) {
       const detail = document.getElementById(`detail-${id}`);
       const chevron = document.getElementById(`chevron-${id}`);
+      const label = document.getElementById(`label-${id}`);
       if (detail.classList.contains('hidden')) {
         detail.classList.remove('hidden');
-        chevron.innerText = '▲';
+        if (chevron) chevron.innerText = '▲';
+        if (label) label.innerText = 'HIDE DETAILS';
       } else {
         detail.classList.add('hidden');
-        chevron.innerText = '▼';
+        if (chevron) chevron.innerText = '▼';
+        if (label) label.innerText = 'VIEW DETAILS';
       }
     };
 
