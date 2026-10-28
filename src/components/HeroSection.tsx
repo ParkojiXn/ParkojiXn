@@ -163,16 +163,31 @@ export const HeroSection: React.FC = () => {
               } hover:bg-[#F5F5F5] transition-colors`}
             >
               <div>
-                <span className="text-display font-display text-[#0A0A0A] block leading-none">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-display text-[#0A0A0A] block leading-none tracking-tight">
                   {stat.value}
                 </span>
-                <span className="text-overline text-[#EF4444] block mt-2">
+                <span className="text-overline text-[#EF4444] block mt-2.5">
                   {stat.label}
                 </span>
               </div>
-              <p className="text-xs text-[#525252] mt-3 font-body">
-                {stat.description}
-              </p>
+
+              {stat.value === '3' ? (
+                <div className="flex flex-wrap gap-1.5 mt-3 pt-1">
+                  <span className="bg-[#0A0A0A] text-[#FAFAFA] px-2 py-0.5 text-[10px] font-mono font-bold">
+                    ID (Native)
+                  </span>
+                  <span className="bg-[#F5F5F5] border border-[#D4D4D4] text-[#0A0A0A] px-2 py-0.5 text-[10px] font-mono font-bold">
+                    JP (JLPT N4)
+                  </span>
+                  <span className="bg-[#F5F5F5] border border-[#D4D4D4] text-[#0A0A0A] px-2 py-0.5 text-[10px] font-mono font-bold">
+                    EN (TOEIC 640)
+                  </span>
+                </div>
+              ) : (
+                <p className="text-xs text-[#525252] mt-3 font-body leading-relaxed">
+                  {stat.description}
+                </p>
+              )}
             </div>
           ))}
         </div>

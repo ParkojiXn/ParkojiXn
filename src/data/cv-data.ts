@@ -31,9 +31,9 @@ export const profileData: ProfileData = {
       description: "School Revitalizations, Industrial Waste Gas Recovery, Tenders, & Commercial QS",
     },
     {
-      value: "3 LANGUAGES",
-      label: "GLOBAL COMMUNICATION",
-      description: "Indonesian (Native), Japanese (JLPT N4 / SSW Certified), English (TOEIC 640)",
+      value: "3",
+      label: "LANGUAGES SPOKEN",
+      description: "Indonesian (Native) • Japanese (JLPT N4/SSW) • English (TOEIC 640)",
     },
   ],
   coreValues: [
