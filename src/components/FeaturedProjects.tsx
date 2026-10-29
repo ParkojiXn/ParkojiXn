@@ -61,8 +61,8 @@ export const FeaturedProjects: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Chips Bar */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Filter Chips Bar (Hidden in Print) */}
+        <div className="flex flex-wrap gap-2 mb-10 print:hidden">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -79,7 +79,7 @@ export const FeaturedProjects: React.FC = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="card-editorial-elevated flex flex-col justify-between group cursor-pointer overflow-hidden p-0"
+              className="card-editorial-elevated flex flex-col justify-between group cursor-pointer overflow-hidden p-0 page-break-avoid"
               onClick={() => openProjectModal(project)}
             >
               <div>
@@ -161,8 +161,8 @@ export const FeaturedProjects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="px-5 pb-5">
+              {/* Action Button (Hidden in Print) */}
+              <div className="px-5 pb-5 print:hidden">
                 <button
                   type="button"
                   className="w-full border-t-2 border-[#0A0A0A] pt-3 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors"
@@ -175,9 +175,9 @@ export const FeaturedProjects: React.FC = () => {
           ))}
         </div>
 
-        {/* Modal for In-depth Project Details & Real Blueprints/Photos */}
+        {/* Modal for In-depth Project Details & Real Blueprints/Photos (Hidden in Print) */}
         {activeModalProject && (
-          <div className="fixed inset-0 z-50 bg-[#0A0A0A]/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 bg-[#0A0A0A]/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto print:hidden">
             <div className="bg-[#FAFAFA] border-4 border-[#0A0A0A] max-w-4xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 relative shadow-2xl my-auto">
               {/* Close Button */}
               <button

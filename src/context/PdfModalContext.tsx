@@ -8,6 +8,10 @@ interface PdfModalContextType {
   pdfTitle: string;
   openPdf: (url: string, title?: string) => void;
   closePdf: () => void;
+  isExportOpen: boolean;
+  openExportModal: () => void;
+  closeExportModal: () => void;
+  triggerExportPdf: () => void;
 }
 
 const PdfModalContext = createContext<PdfModalContextType | undefined>(undefined);
@@ -16,6 +20,7 @@ export const PdfModalProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [isOpen, setIsOpen] = useState(false);
   const [pdfUrl, setPdfUrl] = useState('');
   const [pdfTitle, setPdfTitle] = useState('');
+  const [isExportOpen, setIsExportOpen] = useState(false);
 
   const openPdf = useCallback((url: string, title: string = 'Official Technical Document (PDF)') => {
     setPdfUrl(url);
@@ -29,8 +34,36 @@ export const PdfModalProvider: React.FC<{ children: ReactNode }> = ({ children }
     setPdfTitle('');
   }, []);
 
+  const openExportModal = useCallback(() => {
+    setIsExportOpen(true);
+  }, []);
+
+  const closeExportModal = useCallback(() => {
+    setIsExportOpen(false);
+  }, []);
+
+  const triggerExportPdf = useCallback(() => {
+    setIsExportOpen(false);
+    // Small timeout to allow modal animation to unmount before browser takes screenshot for print
+    setTimeout(() => {
+      window.print();
+    }, 200);
+  }, []);
+
   return (
-    <PdfModalContext.Provider value={{ isOpen, pdfUrl, pdfTitle, openPdf, closePdf }}>
+    <PdfModalContext.Provider
+      value={{
+        isOpen,
+        pdfUrl,
+        pdfTitle,
+        openPdf,
+        closePdf,
+        isExportOpen,
+        openExportModal,
+        closeExportModal,
+        triggerExportPdf,
+      }}
+    >
       {children}
     </PdfModalContext.Provider>
   );

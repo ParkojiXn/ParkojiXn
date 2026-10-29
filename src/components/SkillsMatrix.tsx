@@ -39,8 +39,8 @@ export const SkillsMatrix: React.FC = () => {
           </p>
         </div>
 
-        {/* Tab Buttons (Magazine Style) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-8">
+        {/* Tab Buttons (Magazine Style - Hidden in Print) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-8 print:hidden">
           {skillCategories.map((cat, idx) => (
             <button
               key={idx}
@@ -64,8 +64,8 @@ export const SkillsMatrix: React.FC = () => {
           ))}
         </div>
 
-        {/* Active Category Display */}
-        <div className="card-editorial border-2 border-[#0A0A0A]">
+        {/* Active Category Display (Screen Only) */}
+        <div className="card-editorial border-2 border-[#0A0A0A] print:hidden">
           {/* Header of Active Tab */}
           <div className="border-b-2 border-[#E5E5E5] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
@@ -120,6 +120,57 @@ export const SkillsMatrix: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Complete Skills Compendium (Print / PDF Only - All 4 Categories Visible) */}
+        <div className="hidden print:block space-y-6">
+          {skillCategories.map((cat, catIdx) => (
+            <div key={catIdx} className="border-2 border-[#0A0A0A] bg-[#FAFAFA] p-4 page-break-avoid">
+              <div className="border-b-2 border-[#0A0A0A] pb-2 mb-3 flex items-center justify-between">
+                <div>
+                  <span className="text-[9px] font-mono text-[#EF4444] font-bold tracking-widest uppercase block">
+                    CATEGORY 0{catIdx + 1} //
+                  </span>
+                  <h3 className="font-display text-base text-[#0A0A0A]">
+                    {cat.category}
+                  </h3>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-[#0A0A0A] bg-[#E5E5E5] px-2 py-0.5">
+                  {cat.items.length} COMPETENCIES
+                </span>
+              </div>
+              <p className="text-xs text-[#525252] mb-3 font-body">
+                {cat.description}
+              </p>
+
+              <div className="grid grid-cols-2 gap-2.5">
+                {cat.items.map((item, iIdx) => (
+                  <div key={iIdx} className="p-2.5 border border-[#D4D4D4] bg-[#FFFFFF] flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[9px] font-mono uppercase bg-[#F5F5F5] px-1.5 py-0.5 border border-[#E5E5E5] text-[#525252]">
+                          {item.categoryTag}
+                        </span>
+                        {item.level && (
+                          <span className="text-[10px] font-mono font-bold text-[#EF4444]">
+                            {item.level}
+                          </span>
+                        )}
+                      </div>
+                      <h4 className="font-display text-xs text-[#0A0A0A] leading-snug">
+                        {item.name}
+                      </h4>
+                      {item.details && (
+                        <p className="text-[10px] text-[#525252] mt-1 leading-snug font-body">
+                          {item.details}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

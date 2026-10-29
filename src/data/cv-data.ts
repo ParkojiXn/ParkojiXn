@@ -1041,3 +1041,5 @@ export const skillCategories: SkillCategory[] = [
     ]
   }
 ];
+
+export const projects = featuredProjects;

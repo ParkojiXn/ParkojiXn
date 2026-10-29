@@ -43,7 +43,7 @@ export const ExperienceTimeline: React.FC = () => {
                 <div className="absolute -left-[33px] sm:-left-[41px] top-5 w-4 h-4 bg-[#FAFAFA] border-2 border-[#0A0A0A] group-hover:bg-[#EF4444] group-hover:border-[#EF4444] transition-colors" />
 
                 {/* Card Container */}
-                <div className="card-editorial transition-all duration-200 hover:border-[#0A0A0A]">
+                <div className="card-editorial transition-all duration-200 hover:border-[#0A0A0A] page-break-avoid">
                   {/* Top Bar: Date Badge, Location, and Expand Button */}
                   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5E5E5] pb-3 mb-4">
                     <div className="flex flex-wrap items-center gap-2.5">
@@ -60,11 +60,11 @@ export const ExperienceTimeline: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Dedicated Toggle Button */}
+                    {/* Dedicated Toggle Button (Hidden in Print) */}
                     <button
                       type="button"
                       onClick={() => toggleExpand(exp.id)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-bold uppercase border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-bold uppercase border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors print:hidden"
                       aria-expanded={isExpanded}
                       aria-label={`${isExpanded ? 'Collapse' : 'Expand'} details for ${exp.role}`}
                     >
@@ -90,9 +90,8 @@ export const ExperienceTimeline: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Collapsible Content */}
-                  {isExpanded && (
-                    <div className="mt-6 pt-6 border-t-2 border-[#E5E5E5] space-y-6">
+                  {/* Collapsible Content (Expanded on Screen when Toggled, ALWAYS Expanded in Print) */}
+                  <div className={`mt-6 pt-6 border-t-2 border-[#E5E5E5] space-y-6 ${isExpanded ? 'block animate-fadeIn' : 'hidden print:block'}`}>
                       {/* Responsibilities */}
                       <div>
                         <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-3">
@@ -182,10 +181,9 @@ export const ExperienceTimeline: React.FC = () => {
                               {tool}
                             </span>
                           ))}
-                        </div>
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             );

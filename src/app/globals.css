@@ -251,3 +251,88 @@ h1, h2, h3, .font-display {
 ::-webkit-scrollbar-thumb:hover {
   background: #EF4444;
 }
+
+/* ==========================================================================
+   PRINT / PDF EXPORT ENGINE STYLESHEET
+   Ensures the entire portfolio exports to A4 vector PDF with pristine
+   VoiceBox editorial typography, zero clipping, and clean page breaks.
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm 14mm 10mm;
+  }
+
+  html, body {
+    background-color: #FFFFFF !important;
+    color: #0A0A0A !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive web chrome, fixed elements, and modals */
+  header,
+  nav,
+  .no-print,
+  .filter-chip,
+  button:not(.print-include),
+  .pdf-modal,
+  footer button,
+  .status-chip-success span.animate-pulse {
+    display: none !important;
+  }
+
+  /* Structural page break control */
+  .page-break-avoid,
+  .card-editorial,
+  .card-editorial-elevated,
+  article,
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: always !important;
+  }
+
+  h1, h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Section padding scaled for paper boundaries */
+  section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    border-bottom: 2px solid #0A0A0A !important;
+  }
+
+  /* Do not append URL destinations to links when printed */
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  a[href^="http"]:after,
+  a[href^="#"]:after {
+    content: "" !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

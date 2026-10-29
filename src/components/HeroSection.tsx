@@ -1,17 +1,43 @@
 'use client';
 
 import React from 'react';
-import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download } from 'lucide-react';
+import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download, Printer, Sparkles } from 'lucide-react';
 import { profileData } from '../data/cv-data';
+import { usePdfModal } from '../context/PdfModalContext';
 
 export const HeroSection: React.FC = () => {
   const officialPhoto = '/portfolio/profile/professional-photo.jpeg';
+  const { openExportModal } = usePdfModal();
 
   return (
     <section id="hero" className="relative border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-16 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Meta Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#0A0A0A] pb-4 mb-10">
+        {/* Print-Only Executive Letterhead Banner */}
+        <div className="hidden print:block pb-6 mb-8 border-b-4 border-[#0A0A0A]">
+          <div className="flex justify-between items-start gap-4">
+            <div>
+              <span className="text-[10px] font-mono text-[#EF4444] font-bold tracking-widest uppercase block mb-1">
+                AUTHENTICATED PROFESSIONAL DOSSIER // CIVIL ENGINEERING
+              </span>
+              <h1 className="font-display text-3xl text-[#0A0A0A] tracking-tight">
+                {profileData.name}
+              </h1>
+              <p className="text-xs font-mono font-bold text-[#525252] mt-1">
+                {profileData.headline}
+              </p>
+            </div>
+            <div className="text-right text-xs font-mono text-[#0A0A0A] space-y-1">
+              <div><strong>STATE LICENSE:</strong> BNSP KKNI Level 5 Site Supervisor</div>
+              <div><strong>ACADEMIC:</strong> D3 Civil Engineering (GPA 3.72 Magna Cum Laude)</div>
+              <div><strong>EMAIL:</strong> {profileData.email}</div>
+              <div><strong>PHONE:</strong> {profileData.phone}</div>
+              <div><strong>LOCATION:</strong> {profileData.location}</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Top Meta Bar (Hidden in Print) */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#0A0A0A] pb-4 mb-10 print:hidden">
           <div className="flex items-center gap-3">
             <span className="text-overline text-[#EF4444] font-bold">PROFESSIONAL DOSSIER</span>
             <span className="text-[#A3A3A3]">•</span>
@@ -58,13 +84,23 @@ export const HeroSection: React.FC = () => {
               </p>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            {/* CTAs (Hidden in Print) */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 print:hidden">
+              <button
+                type="button"
+                onClick={openExportModal}
+                className="btn-primary !bg-[#EF4444] hover:!bg-[#DC2626] !border-[#EF4444] text-[#FAFAFA] flex items-center gap-2 cursor-pointer shadow-sm"
+                title="Export Entire Portfolio to A4 PDF Dossier"
+              >
+                <Printer className="w-4 h-4 text-[#FAFAFA]" />
+                <span>EXPORT PORTFOLIO (PDF)</span>
+              </button>
+
               <a
                 href="#projects"
                 className="btn-primary"
               >
-                <span>EXPLORE DOSSIER &amp; BLUEPRINTS</span>
+                <span>EXPLORE BLUEPRINTS</span>
                 <ArrowDown className="w-4 h-4" />
               </a>
 
@@ -72,7 +108,7 @@ export const HeroSection: React.FC = () => {
                 href="#contact"
                 className="btn-secondary"
               >
-                <span>GET IN TOUCH WITH REZA</span>
+                <span>CONTACT REZA</span>
                 <Mail className="w-4 h-4" />
               </a>
 
@@ -84,7 +120,7 @@ export const HeroSection: React.FC = () => {
                   title="Download Latest CV (English)"
                 >
                   <Download className="w-4 h-4 text-[#EF4444]" />
-                  <span>CV ENGLISH (.DOCX)</span>
+                  <span>CV ENGLISH</span>
                 </a>
 
                 <a
@@ -94,7 +130,7 @@ export const HeroSection: React.FC = () => {
                   title="Download Professional CV (Indonesian)"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>CV INDO (.DOCX)</span>
+                  <span>CV INDO</span>
                 </a>
               </div>
             </div>
