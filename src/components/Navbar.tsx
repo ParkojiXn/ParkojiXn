@@ -1,15 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Printer } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { profileData } from '../data/cv-data';
-import { usePdfModal } from '../context/PdfModalContext';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const { openExportModal } = usePdfModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,16 +93,6 @@ export const Navbar: React.FC = () => {
 
           {/* Right Action & Status */}
           <div className="hidden sm:flex items-center space-x-3">
-            <button
-              type="button"
-              onClick={openExportModal}
-              className="btn-secondary !py-2 !px-3 text-xs !border-[#0A0A0A] hover:!bg-[#EF4444] hover:!border-[#EF4444] hover:!text-[#FAFAFA] flex items-center gap-1.5 transition-colors cursor-pointer group"
-              title="Export Full Portfolio Dossier to PDF"
-            >
-              <Printer className="w-3.5 h-3.5 text-[#EF4444] group-hover:text-[#FAFAFA] transition-colors" />
-              <span>EXPORT PDF</span>
-            </button>
-
             <div className="status-chip-success">
               <span className="w-2 h-2 bg-[#16A34A] inline-block animate-pulse" />
               <span>AVAILABLE</span>
@@ -150,18 +138,6 @@ export const Navbar: React.FC = () => {
           ))}
 
           <div className="pt-4 flex flex-col gap-2">
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openExportModal();
-              }}
-              className="btn-secondary text-center flex items-center justify-center gap-2 !border-[#EF4444] !text-[#EF4444] hover:!bg-[#EF4444] hover:!text-[#FAFAFA] cursor-pointer"
-            >
-              <Printer className="w-4 h-4" />
-              <span>EXPORT PORTFOLIO (PDF)</span>
-            </button>
-
             <div className="status-chip-success self-start">
               <span className="w-2 h-2 bg-[#16A34A] inline-block" />
               <span>AVAILABLE FOR ROLES</span>

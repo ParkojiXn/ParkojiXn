@@ -1,0 +1,3 @@
+﻿Menyusun karya tulis ilmiah berjudul “Analisa Biaya Scaffolding pada Proyek Waste Gas Recovery IBR Purwakarta” yang mengevaluasi efisiensi biaya antara skema pembelian dan penyewaan scaffolding
+
+dengan hasil kesimpulan Harga scaffolding bergantung pada lama pemakaian, jika lama maka akan lebih efisien membeli begitupun sebaliknya

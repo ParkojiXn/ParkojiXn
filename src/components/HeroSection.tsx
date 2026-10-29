@@ -1,13 +1,11 @@
 'use client';
 
 import React from 'react';
-import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download, Printer, ShieldCheck, ExternalLink } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download, ShieldCheck, ExternalLink } from 'lucide-react';
 import { profileData } from '../data/cv-data';
-import { usePdfModal } from '../context/PdfModalContext';
 
 export const HeroSection: React.FC = () => {
   const officialPhoto = '/portfolio/profile/professional-photo.jpeg';
-  const { openExportModal } = usePdfModal();
 
   return (
     <section id="hero" className="relative border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-8 pb-14 lg:pt-12 lg:pb-16">
@@ -100,15 +98,13 @@ export const HeroSection: React.FC = () => {
                   <ArrowDown className="w-4 h-4" />
                 </a>
 
-                <button
-                  type="button"
-                  onClick={openExportModal}
-                  className="btn-primary !bg-[#EF4444] hover:!bg-[#DC2626] !border-[#EF4444] text-[#FAFAFA] flex items-center gap-2 cursor-pointer shadow-sm"
-                  title="Export Entire Portfolio to A4 PDF Dossier"
+                <a
+                  href="#contact"
+                  className="btn-secondary !bg-[#FFFFFF] hover:!bg-[#0A0A0A] hover:!text-[#FAFAFA] flex items-center gap-2 cursor-pointer shadow-sm transition-colors"
                 >
-                  <Printer className="w-4 h-4 text-[#FAFAFA]" />
-                  <span>EXPORT PORTFOLIO (PDF)</span>
-                </button>
+                  <span>GET IN TOUCH</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
               </div>
 
               {/* Row 2: Curriculum Vitae Downloads */}

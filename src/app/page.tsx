@@ -10,7 +10,6 @@ import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 import { PdfModalProvider } from '../context/PdfModalContext';
 import { PdfViewerModal } from '../components/PdfViewerModal';
-import { PdfExportModal } from '../components/PdfExportModal';
 
 export default function HomePage() {
   return (
@@ -26,7 +25,6 @@ export default function HomePage() {
         <ContactSection />
         <Footer />
         <PdfViewerModal />
-        <PdfExportModal />
       </main>
     </PdfModalProvider>
   );

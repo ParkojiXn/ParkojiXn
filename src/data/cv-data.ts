@@ -18,7 +18,7 @@ export const profileData: ProfileData = {
     {
       value: "3.72",
       label: "GRADUATION GPA / 4.00",
-      description: "Politeknik Negeri Padang — D3 Civil Engineering (Graduated with High Honors / Magna Cum Laude)",
+      description: "Politeknik Negeri Padang — D3 Teknik Sipil (Lulus dengan Predikat Pujian / With Honors, IPK 3.72/4.00)",
     },
     {
       value: "LEVEL 5",
@@ -937,9 +937,9 @@ export const certifications: Certification[] = [
     name: "Certificate of Completion: Revit Masterclass for Beginners (BIM)",
     issuer: "Arsisten Academy",
     levelOrScore: "Building Information Modeling (BIM)",
-    year: "Certified BIM Modeler",
+    year: "Course Completion Credential",
     verificationFile: "/portfolio/certificates/sertifikat-revit.pdf",
-    description: "Parametric 3D Building Information Modeling (BIM) training in Autodesk Revit covering structural concrete frames, architectural components, automated material schedules, and construction drawing extraction."
+    description: "Pelatihan Building Information Modeling (BIM) Autodesk Revit tingkat pemula di Arsisten Academy yang mencakup pengenalan konsep dasar BIM serta pemodelan 3D komponen struktur dan elemen arsitektur gedung."
   },
   {
     name: "Specified Skilled Worker (SSW) Evaluation Exam for Construction Industry: Civil Engineering",
@@ -977,17 +977,17 @@ export const certifications: Certification[] = [
     description: "Official credential recognizing full-time engineering performance as Site Quality Control Inspector & Quantity Surveyor on a major chemical plant EPC project."
   },
   {
-    name: "Test of English for International Communication (TOEIC®)",
-    issuer: "UPT Bahasa Politeknik Negeri Padang & ETS",
-    levelOrScore: "Official Score: 640 (Listening: 400 | Reading: 240)",
+    name: "Test of English for International Communication (TOEIC®) Prediction Test",
+    issuer: "UPT Bahasa Politeknik Negeri Padang",
+    levelOrScore: "Score: 640 (Listening: 400 | Reading: 240)",
     year: "Working Professional English",
     verificationFile: "/portfolio/certificates/toeic-640.pdf",
-    description: "Verified working-level English proficiency for international engineering documentation, commercial tender proposals, and cross-border project team collaboration."
+    description: "Notification Letter Prediction Test Score for TOEIC Test yang diselenggarakan oleh UPT Bahasa Politeknik Negeri Padang dengan perolehan skor total 640 (Listening: 400, Reading: 240)."
   },
   {
     name: "Official Academic Transcript — Diploma III Civil Engineering (GPA 3.72)",
     issuer: "Politeknik Negeri Padang",
-    levelOrScore: "Cumulative GPA: 3.72 / 4.00 (High Honors / Magna Cum Laude)",
+    levelOrScore: "Cumulative GPA: 3.72 / 4.00 (Predikat Kelulusan: Dengan Pujian / With Honors)",
     year: "Official State Transcript",
     verificationFile: "/portfolio/certificates/transkrip-nilai.pdf",
     description: "Official certified academic graduation transcript reflecting honors coursework in structural analysis, cost engineering, surveying, and construction management."
