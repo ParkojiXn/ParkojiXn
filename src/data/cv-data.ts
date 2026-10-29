@@ -4,58 +4,58 @@ export const profileData: ProfileData = {
   name: "REZA SEPDIDE",
   roleTitle: "Civil Engineer & Construction Planner",
   headline: "Quantity Surveyor & Construction Planner | BIM & CAD Modeler",
-  location: "Padang, Sumatera Barat, Indonesia",
+  location: "Padang, West Sumatra, Indonesia",
   timezone: "UTC+7 (WIB)",
   phone: "+62 896-4459-0915",
   email: "rezasepdide@gmail.com",
   linkedin: "https://linkedin.com/in/rezasepdide",
   status: "OPEN FOR ROLES & CONSULTANCIES",
   bioSummary:
-    "Lulusan Diploma III Teknik Sipil Politeknik Negeri Padang (IPK 3,72/4,00) bersertifikasi BNSP Pelaksana Bangunan Gedung Madya (Jenjang 5) dengan rekam jejak teruji dalam perencanaan teknis, Quantity Surveying (QS), pengawasan mutu lapangan, dan penjadwalan konstruksi (Kurva S). Mahir dalam pemodelan BIM Revit, AutoCAD DED (layout publish to PDF), SAP2000 seismic analysis, MS Project CPM, serta memiliki sertifikasi bahasa Jepang (JLPT N4 & JFT-Basic) dan Inggris (TOEIC 640).",
+    "Diploma III Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72/4.00, High Honors), certified as BNSP Level 5 Intermediate Building Construction Supervisor with a proven track record in technical planning, Quantity Surveying (QS), on-site Quality Control, and S-Curve construction scheduling. Highly proficient in Autodesk Revit BIM modeling, AutoCAD DED (standardized paper layout viewports to PDF), SAP2000 seismic analysis, MS Project CPM scheduling, as well as certified proficiency in Japanese (JLPT N4 & JFT-Basic) and English (TOEIC 640).",
   personalStatement:
-    "Bagi saya, rekayasa sipil yang berkualitas tidak hanya berhenti pada lembar gambar kerja atau simulasi teoritis—tetapi bagaimana rancangan tersebut dapat dieksekusi di lapangan dengan presisi tinggi, tepat mutu, tepat waktu, dan efisien tanpa pemborosan material. Dari optimasi Bar Bending Schedule di proyek industri kimia berisiko tinggi hingga audit revitalisasi sekolah pemerintah, saya senantiasa mengedepankan integritas data, ketelitian matematis, dan akuntabilitas teknis.",
+    "To me, sound civil engineering does not end with theoretical calculations or blueprint drawings—it is defined by how safely, accurately, timely, and cost-efficiently those designs are executed on site. From optimizing Bar Bending Schedules (BBS) to minimize rebar scrap on high-stakes chemical industrial plants to auditing government school revitalization projects, I consistently uphold mathematical precision, rigorous field verification, and uncompromised technical accountability.",
   keyStats: [
     {
       value: "3.72",
-      label: "IPK KELULUSAN / 4.00",
-      description: "Politeknik Negeri Padang — D3 Teknik Sipil (Lulus Dengan Pujian / High Honors)",
+      label: "GRADUATION GPA / 4.00",
+      description: "Politeknik Negeri Padang — D3 Civil Engineering (Graduated with High Honors / Magna Cum Laude)",
     },
     {
-      value: "JENJANG 5",
-      label: "SERTIFIKASI BNSP",
-      description: "SKK Pelaksana Lapangan Pekerjaan Gedung Madya (Kementerian PU Balai Jasa Konstruksi Wilayah I)",
+      value: "LEVEL 5",
+      label: "BNSP CERTIFICATION",
+      description: "National SKK Certified Building Construction Site Supervisor (Ministry of Public Works Construction Center I)",
     },
     {
       value: "10+",
-      label: "PROYEK & STUDI TEKNIS",
-      description: "Revitalisasi Sekolah, EPC Waste Gas Recovery, Re-Measurement QS, Tender Nasional, & BIM",
+      label: "PROJECTS & TECHNICAL STUDIES",
+      description: "School Revitalization, EPC Waste Gas Recovery, QS Re-Measurement, National Tender, & BIM Modeling",
     },
     {
       value: "3",
-      label: "BAHASA TERVERIFIKASI",
-      description: "Bahasa Indonesia (Native) • Jepang (JLPT N4 / SSW JAC / JFT) • Inggris (TOEIC 640)",
+      label: "VERIFIED LANGUAGES",
+      description: "Indonesian (Native) • Japanese (JLPT N4 / SSW JAC / JFT) • English (TOEIC 640)",
     },
   ],
   coreValues: [
     {
       title: "Field-First Rigor & Constructability",
-      subtitle: "Menghubungkan Gambar Kerja dengan Realitas Lapangan",
-      description: "Gambar kerja dan jadwal hanya bernilai bila dapat dibangun secara aman dan realistis di lapangan. Setiap estimasi dan jadwal selalu disinkronkan dengan kondisi aktual medan proyek."
+      subtitle: "Bridging Blueprint Design with Jobsite Reality",
+      description: "Drawings and schedules only deliver true value when they can be built safely, realistically, and accurately on site. Every estimate and timeline is continuously reconciled with actual ground conditions and field constructability."
     },
     {
       title: "Zero-Waste Cost & Material Governance",
-      subtitle: "Ketelitian Kuantitas Hingga Potongan Terkecil",
-      description: "Mulai dari penyusunan Bar Bending Schedule (BBS) untuk menekan scrap baja tulangan hingga penyusunan BoQ/RAB yang transparan dan terukur tanpa deviasi liar."
+      subtitle: "Sub-Millimeter Quantity Precision to Eliminate Scrap",
+      description: "From developing detailed Bar Bending Schedules (BBS) that aggressively minimize rebar scrap to engineering transparent, audit-proof Bills of Quantities (BoQ) with zero unaccounted variances."
     },
     {
       title: "Audit-Ready Technical Documentation",
-      subtitle: "Dokumentasi Lengkap, Rapi, & Dapat Dipertanggungjawabkan",
-      description: "Setiap volume penagihan (Progress Billing) didukung Backup Volume yang sah, dokumen CCO dengan justifikasi teknis kuat, serta RKS yang terstandarisasi SNI/PUPR."
+      subtitle: "Legally Sound, Transparent, & Thorough Records",
+      description: "Every Progress Billing milestone is verified with authentic Backup Volume spreadsheets, robust Contract Change Orders (CCO) supported by engineering justifications, and technical specifications meeting national SNI/PUPR standards."
     },
     {
       title: "Continuous Mastery & Global Standards",
-      subtitle: "Pendidikan Lanjutan D4 & Kualifikasi Internasional",
-      description: "Sedang menempuh jenjang D4 Manajemen Rekayasa Konstruksi, mendalami ekosistem BIM Revit terintegrasi, dan tersertifikasi standar industri konstruksi Jepang (SSW)."
+      subtitle: "Advanced D4 Education & International Qualifications",
+      description: "Currently pursuing a D4 in Construction Engineering Management, advancing integrated multi-disciplinary BIM Revit workflows, and certified in Japanese industrial construction standards (SSW Tokutei Ginou)."
     }
   ]
 };
@@ -63,93 +63,93 @@ export const profileData: ProfileData = {
 export const featuredProjects: Project[] = [
   {
     id: "sdn-19-kuamang",
-    title: "Perencanaan Teknis Revitalisasi Fasilitas SDN 19 Kuamang",
+    title: "Technical Planning & Revitalization of SDN 19 Kuamang Facilities",
     category: "Planning & QS",
-    role: "Perencana Teknis (Konsultan Perencana Revitalisasi SD)",
+    role: "Technical Planner & Quantity Surveyor (School Revitalization Consultant)",
     period: "Sep 2026",
-    clientOrInstitution: "Konsultan Perencana / Dinas Pendidikan",
-    location: "Pasaman, Sumatera Barat, Indonesia",
+    clientOrInstitution: "Planning Consultant / Education Department",
+    location: "Pasaman, West Sumatra, Indonesia",
     summary:
-      "Perencanaan teknis menyeluruh untuk revitalisasi gedung sekolah SDN 19 Kuamang. Bertanggung jawab atas survei identifikasi kerusakan, perhitungan volume pekerjaan (Quantity Take-Off), penyusunan Rencana Anggaran Biaya (RAB), dokumen spesifikasi teknis RKS, Time Schedule & Kurva S, serta produksi Detailed Engineering Design (DED) lengkap menggunakan AutoCAD dengan pemanfaatan layout viewports siap cetak PDF.",
+      "Comprehensive technical planning and cost engineering for the revitalization of public elementary school SDN 19 Kuamang. Spearheaded structural and architectural damage assessments, detailed Quantity Take-Off (QTO), Bill of Quantities (BoQ/RAB) formulation, technical specification (RKS) documents, Time Schedule & S-Curve control charts, and complete Detailed Engineering Design (DED) production in AutoCAD utilizing paper space layout viewports for standardized PDF publishing.",
     architectureAndSolution: [
-      "Melakukan perhitungan volume pekerjaan rinci (Backup Volume) berdasarkan survei kerusakan struktur dan arsitektur fasilitas sekolah.",
-      "Menyusun dokumen Rencana Anggaran Biaya (RAB) mengacu pada standar Analisa Harga Satuan Pekerjaan (AHSP) yang berlaku.",
-      "Merancang dokumen Rencana Kerja dan Syarat-Syarat (RKS) sebagai pedoman mutu material, tata cara pelaksanaan, dan pengujian lapangan.",
-      "Menyusun jadwal waktu pelaksanaan (Time Schedule) dan memetakan bobot mingguan ke dalam grafik Kurva S untuk pengendalian proyek.",
-      "Memproduksi lembar kerja DED arsitektur dan struktur menggunakan AutoCAD Layout viewports untuk publikasi standar PDF."
+      "Conducted on-site damage assessment surveys of educational facilities and computed detailed mathematical Backup Volume calculations.",
+      "Formulated comprehensive Bill of Quantities (BoQ/RAB) adhering strictly to standard regional Unit Price Analyses (AHSP).",
+      "Drafted standard Technical Work Requirements & Specifications (RKS) outlining material quality thresholds, installation tolerances, and field testing protocols.",
+      "Established project execution timelines (Time Schedule) and distributed weighted weekly tasks into an S-Curve for rigorous progress monitoring.",
+      "Engineered comprehensive architectural and structural DED drawings using AutoCAD layout viewports for professional multi-sheet PDF export."
     ],
     metrics: [
-      { label: "Paket Dokumen", value: "DED, RAB, RKS, & Kurva S" },
-      { label: "Sistem Drafting", value: "AutoCAD Paper Layout Viewports" },
-      { label: "Jadwal Pengendalian", value: "Kurva S Berbobot Akurat" }
+      { label: "Document Dossier", value: "DED, BoQ/RAB, RKS, & S-Curve" },
+      { label: "Drafting Architecture", value: "AutoCAD Paper Layout Viewports" },
+      { label: "Schedule Control", value: "Weighted S-Curve Milestone Matrix" }
     ],
-    techStack: ["AutoCAD", "Microsoft Excel", "Time Schedule & Kurva S", "Spesifikasi Teknis (RKS)", "Analisis Biaya (RAB)"],
+    techStack: ["AutoCAD", "Microsoft Excel", "Time Schedule & S-Curve", "Technical Specs (RKS)", "Cost Estimation (BoQ)"],
     deliverables: [
-      "Gambar Kerja Perencanaan DED AutoCAD Lengkap",
-      "Rencana Anggaran Biaya (RAB) & Rekapitulasi",
-      "Dokumen Rencana Kerja dan Syarat-Syarat (RKS)",
-      "Time Schedule & Grafik Kurva S",
-      "Form Identifikasi Kerusakan Bangunan"
+      "Complete AutoCAD DED Architectural & Structural Blueprints",
+      "Comprehensive Bill of Quantities (BoQ/RAB) & Cost Recapitulation",
+      "Technical Work Requirements & Specifications Document (RKS)",
+      "Master Time Schedule & S-Curve Progress Chart",
+      "Structural & Architectural Damage Assessment Record"
     ],
     featured: true,
     coverImage: "/portfolio/sdn-19-kuamang/menggunakan-layout-autocad.png",
     mediaGallery: [
       {
-        title: "Sistem Layout AutoCAD ke PDF",
+        title: "AutoCAD Layout-to-PDF Publishing System",
         url: "/portfolio/sdn-19-kuamang/menggunakan-layout-autocad.png",
-        caption: "Pengaturan viewport dan layout lembar kerja di AutoCAD untuk menghasilkan cetak PDF presisi dengan etiket standar konsultan."
+        caption: "Configured multi-viewport sheets and paper layout in AutoCAD to generate crisp, consultant-standard PDF blueprint packages."
       },
       {
-        title: "DED Denah Bangunan & Tata Ruang",
+        title: "DED Floor Plans & Spatial Layout",
         url: "/portfolio/sdn-19-kuamang/1.png",
-        caption: "Gambar kerja denah revitalisasi ruang kelas, ruang guru, dan fasilitas penunjang SDN 19 Kuamang."
+        caption: "Architectural blueprint layout showing revitalized classrooms, faculty administrative offices, and supporting facilities."
       },
       {
-        title: "DED Tampak Bangunan & Elevasi",
+        title: "DED Building Elevations & Facades",
         url: "/portfolio/sdn-19-kuamang/2.png",
-        caption: "Tampak depan, belakang, dan samping bangunan yang memperlihatkan elevasi finishing dan bukaan."
+        caption: "Front, rear, and lateral architectural elevations detailing exterior finishes, natural ventilation, and window openings."
       },
       {
-        title: "DED Rencana Atap & Kuda-kuda",
+        title: "DED Roof Framing & Truss Engineering",
         url: "/portfolio/sdn-19-kuamang/3.png",
-        caption: "Rencana perkuatan rangka atap dan sambungan struktur atap terhadap ring balok."
+        caption: "Structural timber and steel truss reinforcement plans, anchor connections, and ring beam anchoring details."
       },
       {
-        title: "DED Detail Sanitasi & Plafond",
+        title: "DED Sanitation & Ceiling Construction Details",
         url: "/portfolio/sdn-19-kuamang/4.png",
-        caption: "Detail konstruksi langit-langit plafond gypsum dan instalasi pemipaan air bersih/kotor."
+        caption: "Cross-sections of acoustic gypsum board ceilings, plumbing schematic diagrams, and clean/waste water routing."
       },
       {
-        title: "DED Detail Kusen, Pintu & Jendela",
+        title: "DED Fenestration, Doors & Windows Schedule",
         url: "/portfolio/sdn-19-kuamang/5.png",
-        caption: "Spesifikasi tipe kusen, ukuran kaca, dan aksesoris engsel/kunci sesuai standar keselamatan."
+        caption: "Detailed dimensions, glazing thickness, security ironmongery, and hardware specifications complying with safety codes."
       },
       {
-        title: "Spreadsheet Backup Volume Pekerjaan",
+        title: "Mathematical Backup Volume Spreadsheet",
         url: "/portfolio/sdn-19-kuamang/backup-volume.png",
-        caption: "Tabel perhitungan kuantitas matematis tiap sub-pekerjaan sebagai landasan legal volume RAB."
+        caption: "Transparent geometric quantity take-off breakdown per division validating every line item in the BoQ."
       },
       {
-        title: "Dokumen Rencana Kerja dan Syarat (RKS)",
+        title: "Technical Specifications & Conditions (RKS)",
         url: "/portfolio/sdn-19-kuamang/rks.png",
-        caption: "Uraian teknis spesifikasi material, toleransi dimensi pelaksanaan, dan metode kerja kontraktor."
+        caption: "Contractor guidelines governing ASTM/SNI material grades, construction methodologies, and quality control tolerances."
       }
     ],
     documents: [
       {
-        name: "Kurva S Proyek SDN 19 Kuamang",
+        name: "SDN 19 Kuamang Project S-Curve",
         url: "/portfolio/sdn-19-kuamang/kurva-s.pdf",
         format: "PDF",
         size: "146 KB"
       },
       {
-        name: "Rencana Anggaran Biaya (RAB) Lengkap",
+        name: "Comprehensive Bill of Quantities (BoQ/RAB)",
         url: "/portfolio/sdn-19-kuamang/RAB.pdf",
         format: "PDF",
         size: "426 KB"
       },
       {
-        name: "Form Hasil Penilaian Kerusakan Fisik",
+        name: "Facility Physical Damage Assessment Form",
         url: "/portfolio/sdn-19-kuamang/form-kerusakan.pdf",
         format: "PDF",
         size: "1.96 MB"
@@ -158,97 +158,97 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "slbn-2-pariaman",
-    title: "Perencanaan Teknis Revitalisasi Bangunan SLBN 2 Pariaman",
+    title: "Technical Revitalization Planning of SLBN 2 Pariaman Special School",
     category: "Planning & QS",
-    role: "Perencana Teknis (Konsultan Perencana Revitalisasi SLB)",
+    role: "Technical Planner & Quantity Surveyor (Special School Revitalization Consultant)",
     period: "Jul 2026",
-    clientOrInstitution: "Konsultan Perencana / Sekolah Luar Biasa Negeri 2 Pariaman",
-    location: "Pariaman, Sumatera Barat, Indonesia",
+    clientOrInstitution: "Planning Consultant / SLBN 2 Pariaman (State Special Needs School)",
+    location: "Pariaman, West Sumatra, Indonesia",
     summary:
-      "Perencanaan teknis revitalisasi fasilitas Sekolah Luar Biasa Negeri (SLBN) 2 Pariaman yang menuntut kepatuhan spesifik terhadap standar aksesibilitas inklusif (ramp kursi roda, handrail, sanitasi difabel). Menyusun Detailed Engineering Design (DED), perhitungan RAB, spesifikasi RKS, Time Schedule & Kurva S, serta menyusun adendum Contract Change Order (CCO) untuk penyesuaian volume akibat kondisi lapangan.",
+      "Technical revitalization planning for SLBN 2 Pariaman Special Education School, demanding strict compliance with universal accessibility standards (wheelchair ramps, tactile guidance, tactile safety handrails, and accessible sanitation). Produced Detailed Engineering Designs (DED), detailed Bill of Quantities (BoQ/RAB), technical specifications (RKS), Time Schedule & S-Curve, and formulated official Contract Change Order (CCO) addenda to reconcile scope variations against verified field conditions.",
     architectureAndSolution: [
-      "Merancang DED dengan mempertimbangkan kebutuhan khusus peserta didik disabilitas (desain ramp, kemiringan aksesibel, lebar pintu, dan toilet khusus).",
-      "Menghitung volume pekerjaan dan menyusun Rencana Anggaran Biaya (RAB) secara terperinci.",
-      "Menyusun Rencana Kerja dan Syarat-Syarat (RKS) yang mengatur spesifikasi lantai anti-slip, material dinding ramah benturan, dan instalasi mekanikal.",
-      "Membuat adendum Contract Change Order (CCO) resmi akibat ditemukannya perbedaan antara gambar rencana awal dengan kondisi struktur eksisting di lokasi.",
-      "Menyusun Time Schedule dan grafik Kurva S untuk pengendalian waktu dan tahapan kerja konstruksi."
+      "Engineered comprehensive DED blueprints optimized for special needs accessibility (maximum 1:12 ramp gradients, widened clear door widths, and disability-compliant sanitation).",
+      "Calculated exact quantities and compiled detailed Bill of Quantities (BoQ/RAB) according to regional unit cost data.",
+      "Authored Technical Specifications (RKS) enforcing non-slip flooring materials, impact-resistant wall coatings, and ergonomic MEP fixtures.",
+      "Formulated official Contract Change Order (CCO) addenda with technical justifications following the discovery of field variances against original preliminary drawings.",
+      "Engineered master Time Schedule and weighted S-Curve chart for schedule control and phase-gate milestones."
     ],
     metrics: [
-      { label: "Standar Desain", value: "Aksesibilitas SLB Inklusif" },
-      { label: "Administrasi Kontrak", value: "Adendum CCO Disetujui" },
-      { label: "Instrumen Waktu", value: "Time Schedule & Kurva S" }
+      { label: "Design Code", value: "Universal Accessibility & Inclusive Norms" },
+      { label: "Contract Governance", value: "Official Approved CCO Addendum" },
+      { label: "Timeline Instrument", value: "Master Schedule & Weighted S-Curve" }
     ],
-    techStack: ["AutoCAD", "Contract Change Order (CCO)", "Microsoft Excel", "RKS Spesifikasi", "Time Schedule & Kurva S"],
+    techStack: ["AutoCAD", "Contract Change Order (CCO)", "Microsoft Excel", "RKS Specifications", "Time Schedule & S-Curve"],
     deliverables: [
-      "Gambar Kerja Arsitektur & Struktur SLB (DED AutoCAD)",
-      "Dokumen Contract Change Order (CCO) & Justifikasi",
-      "Dokumen Rekapitulasi Rencana Anggaran Biaya",
-      "Rencana Kerja dan Syarat-Syarat (RKS)",
-      "Master Time Schedule & Kurva S (PDF)"
+      "Accessible Architectural & Structural DED Blueprints (AutoCAD)",
+      "Official Contract Change Order (CCO) Dossier & Technical Justification",
+      "Comprehensive Bill of Quantities (BoQ/RAB) Recapitulation",
+      "Technical Work Requirements & Specifications (RKS)",
+      "Master Time Schedule & S-Curve Control Chart (PDF)"
     ],
     featured: true,
     coverImage: "/portfolio/slbn-2-pariaman/layout-autocad.png",
     mediaGallery: [
       {
-        title: "AutoCAD Multi-Sheet Layout to PDF",
+        title: "AutoCAD Multi-Sheet Layout to PDF System",
         url: "/portfolio/slbn-2-pariaman/layout-autocad.png",
-        caption: "Pengelolaan viewport dan tata letak gambar kerja di AutoCAD untuk publikasi cetak format PDF profesional."
+        caption: "Configured multi-viewport title blocks and drawing sheets in AutoCAD for high-resolution vector PDF distribution."
       },
       {
-        title: "DED Denah Penataan Ruang Inklusif",
+        title: "DED Inclusive Classroom & Therapy Spatial Layout",
         url: "/portfolio/slbn-2-pariaman/1.png",
-        caption: "Denah ruang kelas, ruang terapi wicara, dan jalur sirkulasi aksesibel bagi anak berkebutuhan khusus."
+        caption: "Floor plans displaying specialized classrooms, speech therapy facilities, and unobstructed barrier-free circulation corridors."
       },
       {
-        title: "DED Tampak Bangunan & Fasad",
+        title: "DED Architectural Elevations & Daylighting Facades",
         url: "/portfolio/slbn-2-pariaman/2.png",
-        caption: "Tampak arsitektural yang menampilkan ventilasi alami dan bukaan ramah cahaya."
+        caption: "Exterior elevations featuring natural cross-ventilation, optimized daylight distribution, and sensory-friendly acoustic finishes."
       },
       {
-        title: "DED Potongan Melintang Bangunan",
+        title: "DED Building Transverse Cross-Sections",
         url: "/portfolio/slbn-2-pariaman/3.png",
-        caption: "Gambar potongan memperlihatkan peil lantai, perkuatan balok, dan elevasi atap."
+        caption: "Transverse structural cross-sections illustrating floor slab levels, tie beam reinforcements, and truss apex heights."
       },
       {
-        title: "DED Rencana Pondasi & Struktur Bawah",
+        title: "DED Foundation & Substructure Engineering Plan",
         url: "/portfolio/slbn-2-pariaman/4.png",
-        caption: "Struktur sloof, pondasi tapak, dan perkuatan kolom praktis anti-gempa."
+        caption: "Reinforced concrete continuous footings, ground tie beams (sloof), and earthquake-resistant tie column details."
       },
       {
-        title: "DED Detail Ramp & Toilet Aksesibel",
+        title: "DED Accessible Ramp & Specialized Restroom Details",
         url: "/portfolio/slbn-2-pariaman/5.png",
-        caption: "Detail kemiringan ram kursi roda (maksimal 1:12) dan instalasi handrail pengaman disabilitas."
+        caption: "Wheelchair ramp gradient profiles (1:12), handrail ergonomics, and accessible bathroom grab-bar dimensions."
       },
       {
-        title: "DED Rencana Elektrikal & Sanitasi",
+        title: "DED Electrical Layout & Sanitation Schematics",
         url: "/portfolio/slbn-2-pariaman/6.png",
-        caption: "Titik instalasi penerangan, saklar ramah jangkauan, dan sistem plumbing."
+        caption: "Lighting fixtures, accessible low-reach switches, distribution boards, and plumbing drainage schematics."
       },
       {
-        title: "Adendum Contract Change Order (CCO)",
+        title: "Contract Change Order (CCO) Addendum Documentation",
         url: "/portfolio/slbn-2-pariaman/cco.png",
-        caption: "Penyusunan berita acara perubahan volume pekerjaan tambah/kurang dan justifikasi teknis resmi."
+        caption: "Official variance log accounting for quantity modifications, cost impacts, and engineering field justifications."
       },
       {
-        title: "Spreadsheet Backup Volume Pekerjaan",
+        title: "Backup Volume Mathematical Calculations",
         url: "/portfolio/slbn-2-pariaman/backup-volume.png",
-        caption: "Lembar verifikasi volume aktual untuk memastikan akurasi nilai pembayaran kontrak."
+        caption: "Transparent quantity take-off verification sheets ensuring contractor billing accuracy against actual site scope."
       },
       {
-        title: "Dokumen RKS Spesifikasi Mutu Material",
+        title: "RKS Material Quality Specification Document",
         url: "/portfolio/slbn-2-pariaman/rks.png",
-        caption: "Standar mutu material non-toksik, ubin anti-slip, dan toleransi pemasangan pekerjaan."
+        caption: "Technical standards enforcing non-toxic materials, slip-resistant ceramic tiles, and strict structural tolerances."
       }
     ],
     documents: [
       {
-        name: "Time Schedule Resmi Pelaksanaan (PDF)",
+        name: "Official Master Execution Schedule (PDF)",
         url: "/portfolio/slbn-2-pariaman/TS.pdf",
         format: "PDF",
         size: "806 KB"
       },
       {
-        name: "Rekapitulasi Anggaran Biaya Revitalisasi (PDF)",
+        name: "Revitalization Cost Budget Recapitulation (PDF)",
         url: "/portfolio/slbn-2-pariaman/REKAP.pdf",
         format: "PDF",
         size: "468 KB"
@@ -257,92 +257,92 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "magang-sie-purwakarta",
-    title: "Proyek Waste Gas Recovery PT Indo-Bharat Rayon Plant",
+    title: "Waste Gas Recovery EPC Plant Project — PT Indo-Bharat Rayon",
     category: "Industrial & QC",
     role: "Quality Control & Quantity Surveyor Intern",
-    period: "Agu 2024 – Des 2024",
+    period: "Aug 2024 – Dec 2024",
     clientOrInstitution: "PT Solusi Industri Energi (Main EPC Contractor) / PT Indo-Bharat Rayon",
-    location: "Purwakarta, Jawa Barat, Indonesia",
+    location: "Purwakarta, West Java, Indonesia",
     summary:
-      "Pengawasan mutu konstruksi (Quality Control) dan Quantity Surveying pada proyek fasilitas pemulihan gas buang (Waste Gas Recovery) di kawasan industri kimia aktif PT Indo-Bharat Rayon. Bertanggung jawab atas pembuatan Bar Bending Schedule (BBS) untuk efisiensi pemotongan baja tulangan, perhitungan Backup Volume pekerjaan terpasang untuk pengajuan Progress Billing, pengujian Slump Test beton segar di lapangan, checklist penulangan sebelum pengecoran, pemetaan lapangan (Site Mapping), serta penyusunan Punch List serah terima pekerjaan.",
+      "Site Quality Control (QC) inspection and Quantity Surveying on an industrial Waste Gas Recovery facility within the active chemical plant of PT Indo-Bharat Rayon. Responsible for drafting Bar Bending Schedules (BBS) to optimize rebar cut lengths, calculating verified Backup Volume sheets for monthly Progress Billing applications, conducting fresh concrete Slump Tests on site, executing pre-pour rebar checklists, site progress mapping, and assembling Punch Lists for zone handovers.",
     architectureAndSolution: [
-      "Menyusun Bar Bending Schedule (BBS) untuk optimasi pemotongan dan pembengkokan baja tulangan, menekan scrap besi di lapangan.",
-      "Menghitung volume pekerjaan terpasang aktual (Backup Volume) sebagai dasar resmi penagihan berkala (Progress Billing) tanpa perselisihan.",
-      "Melakukan perhitungan kuantitas dan biaya tambahan akibat adanya pengerjaan ulang (QTO Rework) pada elemen struktur.",
-      "Melaksanakan inspeksi QC lapangan: pengujian Slump Test beton segar untuk memastikan workability sesuai mix design, cek dimensi bekisting, dan jarak pembesian.",
-      "Melakukan pemetaan lapangan (Site Mapping) dan mengelola Punch List serah terima parsial antar sub-area proyek.",
-      "Menyusun laporan progres harian (Daily Progress), mingguan (Weekly Report), dan bulanan (Monthly Report) untuk koordinasi lintas pemangku kepentingan."
+      "Engineered Bar Bending Schedules (BBS) for rebar fabrication, reducing industrial steel reinforcement scrap to negligible margins.",
+      "Computed installed structural Backup Volume calculations as legal supporting proof for monthly Progress Billing approvals with zero client disputes.",
+      "Evaluated additional quantities and financial cost impacts resulting from field modifications and structural rework (QTO Rework).",
+      "Conducted rigorous on-site QC inspections: fresh concrete slump cone testing to verify water-cement ratio and workability, formwork alignment checks, and rebar clearance audits.",
+      "Mapped spatial construction progress (Site Mapping) and tracked punch list items prior to zone turnover to the facility owner.",
+      "Authored Daily Progress logs, Weekly Reports, and Monthly Progress dossiers for multi-stakeholder management coordination."
     ],
     metrics: [
-      { label: "Inspeksi Beton Segar", value: "100% Slump Test & QC Sesuai Mutu" },
-      { label: "Efisiensi Rebar", value: "BBS Terukur Minimal Scrap" },
-      { label: "Penagihan Progres", value: "Backup Volume Terverifikasi" }
+      { label: "Fresh Concrete QC", value: "100% Slump Tested & Specification Compliant" },
+      { label: "Rebar Efficiency", value: "BBS Engineered for Minimum Scrap Waste" },
+      { label: "Billing Accuracy", value: "100% Verified Backup Volumes" }
     ],
     techStack: ["Bar Bending Schedule (BBS)", "Slump Testing", "AutoCAD", "Punch List Resolution", "Progress Billing", "Microsoft Excel"],
     deliverables: [
-      "Bar Bending Schedule (BBS) Fabrikasi Tulangan",
-      "Dossier Backup Volume Penagihan Bulanan",
-      "Laporan Hasil Pengujian Slump Test & Inspeksi Pembesian",
-      "Peta Kerja Lapangan (Site Mapping) & Punch List",
-      "Daily, Weekly, & Monthly Progress Reports"
+      "Rebar Fabrication Bar Bending Schedules (BBS)",
+      "Monthly Progress Billing Backup Volume Dossier",
+      "Slump Test Quality Inspection & Pre-Pour Checklists",
+      "Site Mapping Progress Overlays & Handover Punch Lists",
+      "Daily, Weekly, & Monthly Executive Progress Reports"
     ],
     featured: true,
     coverImage: "/portfolio/magang-sie/slump-test.jpg",
     mediaGallery: [
       {
-        title: "Pengujian Slump Test Beton Segar di Lapangan",
+        title: "On-Site Fresh Concrete Slump Testing",
         url: "/portfolio/magang-sie/slump-test.jpg",
-        caption: "Uji slump cone untuk memastikan workability dan nilai fas beton ready-mix sebelum diizinkan masuk ke cetakan struktur industri."
+        caption: "Standard slump cone testing of ready-mix concrete to verify workability and water-cement ratio before structural placement."
       },
       {
-        title: "Penyusunan Bar Bending Schedule (BBS)",
+        title: "Bar Bending Schedule (BBS) Engineering",
         url: "/portfolio/magang-sie/bbs.png",
-        caption: "Tabel potong dan tekuk baja tulangan untuk meminimalkan sisa potongan besi (waste minimization)."
+        caption: "Optimized cutting and bending rebar schedule designed to minimize off-cut steel scrap on heavy foundation structures."
       },
       {
-        title: "Dossier Dokumen Backup Volume",
+        title: "Physical Backup Volume Calculation Dossier",
         url: "/portfolio/magang-sie/dokumen.jpeg",
-        caption: "Arsip fisik bukti hitung volume terpasang lengkap dengan tanda tangan verifikasi engineer proyek."
+        caption: "Archival binder of mathematical quantity take-offs complete with field engineer sign-offs for progress invoicing."
       },
       {
-        title: "Lampiran Perhitungan Backup Volume",
+        title: "Progress Billing Mathematical Breakdown",
         url: "/portfolio/magang-sie/dokumen-2.jpeg",
-        caption: "Rincian lembar matematis kuantitas beton, bekisting, dan pembesian untuk progress billing bulanan."
+        caption: "Detailed spreadsheets calculating actual concrete volumes, formwork contact areas, and rebar tonnage for billing."
       },
       {
-        title: "Pemetaan Area Kerja (Site Mapping Work)",
+        title: "Spatial Work Area Progress Mapping",
         url: "/portfolio/magang-sie/mapping-work.png",
-        caption: "Visualisasi status kemajuan konstruksi pada denah fasilitas Waste Gas Recovery."
+        caption: "Color-coded construction progress mapping across distinct sectors of the Waste Gas Recovery facility."
       },
       {
-        title: "Daftar Perbaikan Cacat (Punch List)",
+        title: "Defect Correction Checklist (Punch List)",
         url: "/portfolio/magang-sie/punch-list.png",
-        caption: "Log checklist perbaikan pekerjaan sebelum dan sesudah serah terima zona kerja kepada owner."
+        caption: "Punch list log tracking defect remediation items before and after official zone handover to the facility owner."
       },
       {
-        title: "Kalkulasi QTO Rework Lapangan",
+        title: "On-Site QTO Rework Calculation",
         url: "/portfolio/magang-sie/qto-rework-1.png",
-        caption: "Perhitungan kuantitas dan estimasi dampak biaya atas pekerjaan yang memerlukan modifikasi/rework."
+        caption: "Precise quantity and cost impact evaluation for structural components requiring field adjustment and rework."
       },
       {
-        title: "Daily Progress Log Proyek",
+        title: "Daily Construction Progress Log",
         url: "/portfolio/magang-sie/daily-proggres.png",
-        caption: "Catatan harian pencapaian fisik, tenaga kerja, alat berat, dan kondisi cuaca di tapak industri."
+        caption: "Daily tracking of workforce allocation, equipment usage, physical milestones achieved, and jobsite weather conditions."
       },
       {
         title: "Weekly Construction Progress Summary",
         url: "/portfolio/magang-sie/weekly-report.png",
-        caption: "Rekapitulasi performa mingguan membandingkan deviasi target rencana terhadap realisasi lapangan."
+        caption: "Weekly report tracking planned vs. actual progress curves to identify and mitigate schedule deviations immediately."
       },
       {
-        title: "Laporan Manajemen Bulanan (Monthly Report)",
+        title: "Executive Monthly Management Dossier",
         url: "/portfolio/magang-sie/monthly-report.png",
-        caption: "Laporan bulanan eksekutif mencakup status material, K3/HSE, pencapaian Kurva S, dan dokumentasi foto."
+        caption: "Comprehensive monthly report covering materials procurement, HSE safety statistics, S-Curve trends, and photo logs."
       }
     ],
     documents: [
       {
-        name: "Sertifikat Resmi Magang PT Solusi Industri Energi",
+        name: "PT Solusi Industri Energi Official Internship Certificate",
         url: "/portfolio/certificates/sertifikat-magang-sie.pdf",
         format: "PDF",
         size: "298 KB"
@@ -351,177 +351,177 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "fasilitator-kemendikdasmen",
-    title: "Pengawasan & Reviu Teknis Revitalisasi Sekolah Dasar — Kemendikdasmen",
+    title: "Technical Review & Oversight of Elementary School Revitalization — Kemendikdasmen",
     category: "Government & Supervision",
-    role: "Fasilitator Teknis - Program Revitalisasi Sekolah Dasar",
-    period: "Jun 2025 – Des 2025",
-    clientOrInstitution: "Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen)",
-    location: "Sumatera Barat, Indonesia",
+    role: "Technical Facilitator — Primary School Revitalization Program",
+    period: "Jun 2025 – Dec 2025",
+    clientOrInstitution: "Ministry of Primary and Secondary Education (Kemendikdasmen)",
+    location: "West Sumatra, Indonesia",
     summary:
-      "Bertindak sebagai Fasilitator Teknis yang ditugaskan oleh Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen) untuk mengawal program revitalisasi infrastruktur sekolah dasar. Bertanggung jawab atas reviu dan evaluasi kelayakan dokumen teknis & administrasi (DED, RAB, RKS) sekolah penerima bantuan, melaksanakan monitoring berkala progres fisik konstruksi di lapangan, serta memverifikasi keabsahan laporan kemajuan sebagai syarat mutlak pencairan dana termin bantuan pemerintah.",
+      "Appointed Technical Facilitator by the Ministry of Primary and Secondary Education to oversee the government-funded school infrastructure revitalization initiative. Entrusted with auditing technical and administrative submissions (DED blueprints, BoQ/RAB budgets, and RKS specifications) across recipient schools, executing periodic field monitoring audits of on-site construction quality, and certifying progress reports as mandatory prerequisites for state funding disbursement milestones.",
     architectureAndSolution: [
-      "Melakukan audit teknis terhadap kelayakan Detailed Engineering Design (DED), kesesuaian harga RAB terhadap AHSP daerah, dan kejelasan RKS.",
-      "Melaksanakan kunjungan monitoring berkala ke lokasi proyek sekolah di berbagai wilayah untuk mengevaluasi mutu bahan dan kesesuaian fisik.",
-      "Menilai deviasi jadwal dan membantu tim swakelola sekolah mencari solusi percepatan saat terjadi kendala material.",
-      "Memeriksa kelengkapan administrasi dan fisik laporan kemajuan pekerjaan sebagai prasyarat persetujuan rekomendasi pencairan dana termin pemerintah.",
-      "Menyelenggarakan Bimbingan Teknis (BIMTEK) bersama panitia pembangunan sekolah guna memastikan kepatuhan tata kelola teknis."
+      "Conducted comprehensive technical audits of DED blueprints, validated BoQ prices against regional AHSP indices, and ensured clarity of technical specifications (RKS).",
+      "Conducted periodic monitoring inspections to recipient school jobsites to verify construction quality, material compliance, and structural integrity.",
+      "Assessed schedule variances and partnered with school construction management committees to implement recovery plans during material delays.",
+      "Audited administrative records and verified physical field achievements required to issue formal disbursement recommendation certificates.",
+      "Facilitated Technical Guidance Workshops (BIMTEK) for school building committees to enforce regulatory governance and safety compliance."
     ],
     metrics: [
-      { label: "Cakupan Peran", value: "Audit DED, RAB, RKS, & Fisik" },
-      { label: "Akuntabilitas", value: "100% Termin Berkas Terverifikasi" },
-      { label: "Program Negara", value: "Revitalisasi Sekolah Kemendikdasmen" }
+      { label: "Scope of Oversight", value: "DED, BoQ, RKS & On-Site Audits" },
+      { label: "Accountability", value: "100% Milestone Disbursements Verified" },
+      { label: "State Program", value: "National School Revitalization" }
     ],
     techStack: ["Technical Review DED/RAB/RKS", "Field Site Monitoring", "Disbursement Milestone Audit", "BIMTEK Facilitation"],
     deliverables: [
-      "Lembar Form Review Dokumen Perencanaan Teknis",
-      "Laporan Monitoring dan Evaluasi Fisik Berkala",
-      "Berita Acara Verifikasi Kemajuan Fisik Termin Bantuan",
-      "Dokumentasi Pengawasan dan Bimbingan Teknis (BIMTEK)"
+      "Technical Planning Document Review Evaluation Sheets",
+      "Periodic Physical Monitoring & Quality Inspection Reports",
+      "Official Milestone Physical Progress Verification Minutes",
+      "Technical Guidance Workshop (BIMTEK) Training Documentation"
     ],
     featured: true,
     coverImage: "/portfolio/fasilitator/site-monitoring.jpeg",
     mediaGallery: [
       {
-        title: "Monitoring Fisik Proyek di Lapangan",
+        title: "On-Site Physical Construction Monitoring",
         url: "/portfolio/fasilitator/site-monitoring.jpeg",
-        caption: "Inspeksi berkala ke lokasi sekolah penerima bantuan untuk memeriksa mutu pengerjaan dan struktur bangunan."
+        caption: "Periodic on-site inspections of recipient elementary schools to evaluate workmanship and structural integrity."
       },
       {
-        title: "Verifikasi Lapangan Bersama Komite Sekolah",
+        title: "Field Quality Audit with School Committee",
         url: "/portfolio/fasilitator/site-monitoring-2.jpeg",
-        caption: "Pengecekan langsung material yang digunakan di tapak bangunan untuk menjamin standar mutu Kemendikdasmen."
+        caption: "Direct on-site verification of delivered materials ensuring strict compliance with Ministry technical standards."
       },
       {
-        title: "Pelaksanaan Bimbingan Teknis (BIMTEK)",
+        title: "Technical Guidance Workshop (BIMTEK) Session",
         url: "/portfolio/fasilitator/bimtek.jpeg",
-        caption: "Pemberian materi bimbingan teknis mengenai tata kelola administrasi dan mutu konstruksi kepada pengelola sekolah."
+        caption: "Leading technical guidance sessions for school construction committees covering quality control and budget administration."
       },
       {
-        title: "Form Evaluasi & Review Dokumen Teknis",
+        title: "Technical Review & Document Evaluation Form",
         url: "/portfolio/fasilitator/form-review.png",
-        caption: "Format audit kelayakan gambar DED, perhitungan RAB, dan RKS sebelum pelaksanaan konstruksi dimulai."
+        caption: "Formal audit checklist evaluating blueprint feasibility, BoQ calculations, and specification clarity prior to construction."
       },
       {
-        title: "Format Laporan Berkala Fasilitator Teknis",
+        title: "Technical Facilitator Periodic Progress Reporting",
         url: "/portfolio/fasilitator/laporan-fasilitator.png",
-        caption: "Instrumen pelaporan status kemajuan fisik dan realisasi serapan anggaran bantuan revitalisasi."
+        caption: "Standardized reporting instrument recording physical milestones achieved and financial budget absorption."
       },
       {
-        title: "Sesi Koordinasi Reviewer Teknis",
+        title: "Technical Reviewers Coordination Session",
         url: "/portfolio/fasilitator/reviewer.jpeg",
-        caption: "Rapat pleno penelaahan berkas laporan kemajuan proyek bersama tim fasilitator daerah."
+        caption: "Plenary coordination meeting with regional facilitator teams to review progress dossiers and verify compliance."
       }
     ]
   },
   {
     id: "qs-mulia-djasmine",
-    title: "Quantity Surveying & Re-Measurement MC-100 — PT Perfetti Van Melle Indonesia",
+    title: "Quantity Surveying & MC-100 Re-Measurement — PT Perfetti Van Melle Indonesia",
     category: "Planning & QS",
     role: "Quantity Surveyor (Freelance)",
     period: "Sep 2025",
-    clientOrInstitution: "PT Mulia Djasmine Sentosa (Subkontraktor PT Perfetti Van Melle Indonesia)",
-    location: "Cikarang / Jawa Barat, Indonesia",
+    clientOrInstitution: "PT Mulia Djasmine Sentosa (Subcontractor to PT Perfetti Van Melle Indonesia)",
+    location: "Cikarang, West Java, Indonesia",
     summary:
-      "Quantity Surveyor freelance yang menangani perhitungan ulang kuantitas pekerjaan aktual di lapangan (Mutual Check 100 / MC-100) pada proyek fasilitas pabrik multinasional PT Perfetti Van Melle Indonesia. Menyusun rekapitulasi biaya dan valuasi harga berdasarkan kuantitas fisik yang telah diverifikasi sebagai dasar resmi pengajuan klaim pembayaran subkontraktor, penyusunan Bar Bending Schedule (BBS), serta formulasi adendum Contract Change Order (CCO).",
+      "Freelance Quantity Surveyor managing on-site re-measurement (Mutual Check 100 / MC-100) on a multinational manufacturing facility expansion for confectionery leader PT Perfetti Van Melle Indonesia. Formulated final cost recapitulations and commercial valuations based on verified physical quantities to underpin subcontractor payment claims, drafted structural Bar Bending Schedules (BBS), and formulated Contract Change Order (CCO) variance documentation.",
     architectureAndSolution: [
-      "Melaksanakan opname lapangan dan re-measurement aktual bersama perwakilan main contractor untuk memastikan angka MC-100 valid.",
-      "Menyusun lembar Backup Volume terperinci untuk membuktikan setiap meter kubik beton, luas bekisting, dan tonase baja yang terpasang.",
-      "Menyusun rekapitulasi biaya dan valuasi klaim tagihan subkontraktor berbasis kuantitas riil lapangan.",
-      "Menyusun daftar perubahan item pekerjaan dari kontrak awal (CCO) disertai rincian analisa harga satuan.",
-      "Menyusun Bar Bending Schedule (BBS) untuk kebutuhan fabrikasi besi struktur subkontraktor."
+      "Conducted joint field opnames and actual physical re-measurements alongside main contractor representatives to establish agreed MC-100 values.",
+      "Engineered comprehensive mathematical Backup Volume calculation sheets validating every cubic meter of concrete, formwork area, and rebar tonnage installed.",
+      "Formulated valuation recapitulations for subcontractor progress billing claims grounded entirely in authentic field data.",
+      "Drafted comprehensive Contract Change Order (CCO) variance registers complete with customized unit price analysis breakdowns.",
+      "Engineered Bar Bending Schedules (BBS) to guide structural steel reinforcement fabrication."
     ],
     metrics: [
-      { label: "Validasi Lapangan", value: "100% Selesai MC-100 Tanpa Dispute" },
-      { label: "Penyusunan Kontrak", value: "Klaim Valuasi & CCO Terverifikasi" },
-      { label: "Manajemen Material", value: "Bar Bending Schedule Presisi" }
+      { label: "Field Validation", value: "100% MC-100 Signed Off with Zero Disputes" },
+      { label: "Contract Governance", value: "Verified Valuation Claims & CCO Dossiers" },
+      { label: "Material Engineering", value: "Sub-Millimeter Bar Bending Schedules" }
     ],
     techStack: ["Quantity Surveying", "Mutual Check (MC-100)", "Contract Change Order (CCO)", "Bar Bending Schedule (BBS)", "Microsoft Excel"],
     deliverables: [
-      "Dossier Backup Volume Pekerjaan Terpasang MC-100",
-      "Dokumen Rekapitulasi Valuasi Klaim Pembayaran",
-      "Form Perubahan Kontrak (CCO) & Justifikasi Biaya",
-      "Bar Bending Schedule (BBS) Fabrikasi"
+      "Installed Works MC-100 Backup Volume Dossier",
+      "Subcontractor Valuation Claim Recapitulation Document",
+      "Contract Change Order (CCO) Forms & Price Justifications",
+      "Structural Steel Bar Bending Schedules (BBS)"
     ],
     featured: true,
     coverImage: "/portfolio/qs-mulia-djasmine/backup-vol.png",
     mediaGallery: [
       {
-        title: "Backup Volume Perhitungan MC-100",
+        title: "MC-100 Mathematical Backup Volume Sheets",
         url: "/portfolio/qs-mulia-djasmine/backup-vol.png",
-        caption: "Lembar hitung matematis kuantitas aktual terpasang sebagai acuan verifikasi klaim pembayaran subkontraktor."
+        caption: "Mathematical quantity calculations proving installed works as definitive proof for subcontractor payment approvals."
       },
       {
-        title: "Bar Bending Schedule (BBS) Subkontraktor",
+        title: "Subcontractor Bar Bending Schedule (BBS)",
         url: "/portfolio/qs-mulia-djasmine/bbs.png",
-        caption: "Tabel kebutuhan baja tulangan dengan spesifikasi diameter, panjang potong, dan bentuk tekukan standar."
+        caption: "Rebar fabrication schedules specifying bar diameters, cut lengths, bend shapes, and unit weight totals."
       },
       {
-        title: "Dokumen Contract Change Order (CCO)",
+        title: "Contract Change Order (CCO) Addendum Documentation",
         url: "/portfolio/qs-mulia-djasmine/cco.png",
-        caption: "Dokumentasi pergantian item dan volume pekerjaan dari kontrak awal dengan analisis biaya transparan."
+        caption: "Comprehensive documentation of modified line items and scope variations with transparent unit price analyses."
       },
       {
-        title: "Rapat Koordinasi Evaluasi & Klarifikasi",
+        title: "Joint Clarification & Review Coordination Meeting",
         url: "/portfolio/qs-mulia-djasmine/meeting.jpeg",
-        caption: "Pertemuan koordinasi teknis bersama manajemen kontraktor utama terkait verifikasi hasil opname lapangan."
+        caption: "Technical review meeting with main contractor leadership to finalize and approve joint field measurement findings."
       }
     ]
   },
   {
     id: "revit-bim-modeling",
-    title: "Pemodelan 3D Terintegrasi Struktur & Arsitektur — Autodesk Revit (BIM)",
+    title: "Integrated 3D Structural & Architectural BIM Modeling — Autodesk Revit",
     category: "BIM & CAD",
     role: "BIM Modeler & Digital Drafter",
     period: "2025",
     clientOrInstitution: "Arsisten Academy (Revit Masterclass for Beginners)",
     location: "Indonesia",
     summary:
-      "Penerapan alur kerja Building Information Modeling (BIM) profesional menggunakan Autodesk Revit. Melakukan pemodelan parametrik 3D struktur beton bertulang (kolom, balok, plat lantai, dan perkuatan struktur) serta integrasi elemen arsitektural (dinding, partisi, kusen jendela, pintu, dan material schedules). Menghasilkan model digital terpadu yang meminimalkan benturan elemen (clash) serta mampu menghasilkan kuantitas material otomatis.",
+      "Implementation of professional Building Information Modeling (BIM) workflows utilizing Autodesk Revit. Engineered parametric 3D structural reinforced concrete components (columns, beams, floor slabs, structural footings) and integrated architectural building elements (walls, interior partitions, window/door schedules, and finishes). Produced a clash-minimized digital twin capable of instant material takeoff schedule extraction.",
     architectureAndSolution: [
-      "Membangun grid dan level elevasi bangunan sesuai datum koordinat referensi arsitektural.",
-      "Memodelkan komponen struktur primer (kolom, balok portal, dan sloof) dengan konfigurasi sambungan yang akurat.",
-      "Melakukan penggambaran ulang (re-modeling) dari gambar 2D CAD ke dalam objek parametrik 3D BIM yang kaya informasi.",
-      "Mengintegrasikan elemen arsitektural (dinding bata, finishing lantai, plafond, dan kusen jendela/pintu).",
-      "Memanfaatkan fitur schedule otomatis Revit untuk ekstraksi volume beton dan material secara cepat."
+      "Constructed precise building grids and elevation datum levels based on architectural project coordinates.",
+      "Modeled primary structural elements (columns, moment-resisting frame beams, and tie beams) with accurate node connections.",
+      "Converted 2D CAD architectural and structural drawings into information-rich 3D parametric BIM models.",
+      "Integrated architectural components (masonry walls, floor finishes, ceiling systems, and window/door schedules).",
+      "Utilized native Revit Schedule capabilities for automated extraction of concrete volumes and material quantities."
     ],
     metrics: [
-      { label: "Metodologi", value: "Building Information Modeling (BIM)" },
-      { label: "Sertifikasi", value: "Arsisten Academy Revit Completion" },
-      { label: "Integrasi Desain", value: "Struktur & Arsitektur Terpadu" }
+      { label: "Methodology", value: "Building Information Modeling (BIM)" },
+      { label: "Credential", value: "Arsisten Academy Revit Completion Certificate" },
+      { label: "Design Integration", value: "Unified Structural & Architectural Model" }
     ],
     techStack: ["Autodesk Revit", "Building Information Modeling (BIM)", "Parametric Modeling", "Quantity Scheduling"],
     deliverables: [
-      "Model 3D Revit (.rvt) Struktur dan Arsitektur",
-      "Gambar Kerja Ekstraksi 2D Denah & Tampak",
-      "Tabel Ekstraksi Kuantitas Material Otomatis"
+      "Integrated 3D Revit Project Model (.rvt)",
+      "Extracted 2D Architectural & Structural Plans and Sections",
+      "Automated Material Take-Off & Quantity Extraction Schedules"
     ],
     featured: true,
     coverImage: "/portfolio/revit-bim/screenshot-2026-10-29-123810.png",
     mediaGallery: [
       {
-        title: "Model 3D Struktur Balok & Kolom Revit",
+        title: "3D Structural Beam & Column Revit Frame",
         url: "/portfolio/revit-bim/screenshot-2026-10-29-123810.png",
-        caption: "Pemodelan kerangka struktur portal beton bertulang dengan level elevasi dan grid struktural presisi."
+        caption: "Parametric 3D reinforced concrete structural framing configured with precise elevation datums and structural grids."
       },
       {
-        title: "Detailing Geometri Pertemuan Elemen",
+        title: "Geometric Node Intersection Detailing",
         url: "/portfolio/revit-bim/screenshot-2026-10-29-123739.png",
-        caption: "Konfigurasi sambungan dan join geometri balok terhadap kolom untuk mencegah benturan volume pemodelan."
+        caption: "Beam-column joint geometry configuration preventing duplicate volume calculation and clash issues."
       },
       {
-        title: "Pemodelan Dinding & Bukaan Arsitektural",
+        title: "Architectural Walls & Fenestration Modeling",
         url: "/portfolio/revit-bim/screenshot-2026-10-29-123825.png",
-        caption: "Penyusunan komponen dinding, partisi ruang, dan bukaan pintu/jendela pada model arsitektural Revit."
+        caption: "Placement of layered wall assemblies, interior space partitions, and parametric door/window families."
       },
       {
-        title: "Tampilan Perspektif Massa Bangunan",
+        title: "Isometric 3D Perspective Building Massing",
         url: "/portfolio/revit-bim/screenshot-2026-10-29-123933.png",
-        caption: "Visualisasi menyeluruh perpaduan struktur dan arsitektur dalam tampilan 3D isometrik terintegrasi."
+        caption: "Complete visualization demonstrating integrated structural framework and architectural finishes in isometric 3D."
       }
     ],
     documents: [
       {
-        name: "Sertifikat Revit Masterclass Arsisten Academy",
+        name: "Arsisten Academy Revit Masterclass Certificate",
         url: "/portfolio/certificates/sertifikat-revit.pdf",
         format: "PDF",
         size: "440 KB"
@@ -530,53 +530,53 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "tugas-akhir-dprd-pasaman",
-    title: "Tugas Akhir: Rencana Pelaksanaan Pembangunan Gedung DPRD Kab. Pasaman",
+    title: "Senior Capstone Project: Construction Execution Plan for Pasaman Regency Parliament Building",
     category: "Planning & QS",
-    role: "Lead Project Planner & Cost Estimator (Tugas Akhir D3)",
+    role: "Lead Project Planner & Cost Estimator (Diploma III Capstone)",
     period: "2025",
-    clientOrInstitution: "Politeknik Negeri Padang (Jurusan Teknik Sipil)",
-    location: "Kabupaten Pasaman, Sumatera Barat",
+    clientOrInstitution: "Politeknik Negeri Padang (Civil Engineering Department)",
+    location: "Pasaman Regency, West Sumatra, Indonesia",
     summary:
-      "Tugas Akhir kelulusan Diploma III Teknik Sipil dengan judul 'Rencana Pelaksanaan Pembangunan Gedung DPRD Kabupaten Pasaman'. Merancang estimasi Rencana Anggaran Biaya (RAB) menyeluruh, penjadwalan proyek menggunakan Microsoft Project (Time Schedule), serta pemetaan distribusi bobot pekerjaan ke dalam Kurva S.",
+      "Diploma III Civil Engineering capstone graduation thesis entitled 'Construction Execution Planning for the Pasaman Regency Regional Parliament (DPRD) Building'. Formulated a comprehensive Bill of Quantities (BoQ/RAB) estimate, advanced scheduling on Microsoft Project utilizing Critical Path Method (CPM), and mapped weighted progress curves into an S-Curve for time and cash-flow control.",
     architectureAndSolution: [
-      "Menghitung Quantity Take-Off (QTO) pekerjaan struktur bawah (pondasi, pile cap), struktur atas (kolom, balok, plat, tangga), arsitektur, dan MEP.",
-      "Menyusun Rencana Anggaran Biaya (RAB) dengan analisis harga satuan standar SNI/AHSP.",
-      "Menyusun penjadwalan komprehensif pada Microsoft Project menggunakan Critical Path Method (CPM) untuk mengidentifikasi lintasan kritis.",
-      "Menyusun Kurva S distribusi bobot mingguan sebagai instrumen monitoring progres konstruksi dan arus kas (cash-flow)."
+      "Computed detailed Quantity Take-Off (QTO) for substructure (footings, tie beams), superstructure (columns, beams, floor slabs, stairs), architectural finishes, and MEP systems.",
+      "Engineered comprehensive Bill of Quantities (BoQ/RAB) applying standardized national SNI/AHSP unit price analyses.",
+      "Built comprehensive Microsoft Project schedule utilizing Critical Path Method (CPM) to determine driving activities and schedule float.",
+      "Formulated weighted weekly progress S-Curve as an executive instrument for schedule monitoring and project cash-flow forecasting."
     ],
     metrics: [
-      { label: "IPK Kelulusan", value: "3.72 / 4.00 (Dengan Pujian)" },
-      { label: "Software Scheduling", value: "Microsoft Project CPM & Kurva S" },
-      { label: "Objek Studi", value: "Gedung Bertingkat Pemerintahan" }
+      { label: "Graduation GPA", value: "3.72 / 4.00 (High Honors)" },
+      { label: "Scheduling Software", value: "Microsoft Project CPM & S-Curve" },
+      { label: "Case Study", value: "Multi-Story Government Building" }
     ],
-    techStack: ["Microsoft Project", "Microsoft Excel", "AutoCAD", "Cost Estimating (RAB)", "Critical Path Method (CPM)"],
+    techStack: ["Microsoft Project", "Microsoft Excel", "AutoCAD", "Cost Estimating (BoQ)", "Critical Path Method (CPM)"],
     deliverables: [
-      "Buku Laporan Tugas Akhir Lengkap",
-      "Dokumen Rencana Anggaran Biaya (RAB) Detail",
-      "Master Schedule Microsoft Project & Kurva S Rencana"
+      "Complete Senior Capstone Final Thesis Book",
+      "Detailed Bill of Quantities (BoQ/RAB) Calculation Dossier",
+      "Master CPM Schedule on Microsoft Project & S-Curve Chart"
     ],
     featured: true,
     coverImage: "/portfolio/final-project-dprd/kurva-s.png",
     mediaGallery: [
       {
-        title: "Kurva S Rencana Pelaksanaan Gedung DPRD",
+        title: "Project Execution S-Curve Chart",
         url: "/portfolio/final-project-dprd/kurva-s.png",
-        caption: "Grafik distribusi kumulatif bobot mingguan pekerjaan sebagai tolok ukur pengendalian waktu dan deviasi progres."
+        caption: "Cumulative weighted weekly progress curve serving as benchmark for schedule control and progress deviation analysis."
       },
       {
-        title: "Time Schedule Microsoft Project & Gantt Chart",
+        title: "Microsoft Project Schedule & Gantt Chart",
         url: "/portfolio/final-project-dprd/schedule-ms-project.png",
-        caption: "Penyusunan dependensi aktivitas, durasi kerja, dan identifikasi jalur kritis (CPM) pada MS Project."
+        caption: "Activity sequencing, duration estimation, and Critical Path Method (CPM) analysis modeled in MS Project."
       },
       {
-        title: "Lembar Rencana Anggaran Biaya (RAB)",
+        title: "Bill of Quantities (BoQ/RAB) Calculation Spreadsheet",
         url: "/portfolio/final-project-dprd/rab.png",
-        caption: "Kalkulasi terstruktur biaya konstruksi per divisi pekerjaan berdasarkan analisa harga satuan."
+        caption: "Structured cost modeling per construction division calculated through standard unit price analyses."
       }
     ],
     documents: [
       {
-        name: "Transkrip Nilai Kelulusan D3 (IPK 3.72)",
+        name: "Official Civil Engineering Academic Transcript (GPA 3.72)",
         url: "/portfolio/certificates/transkrip-nilai.pdf",
         format: "PDF",
         size: "755 KB"
@@ -585,159 +585,159 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "tender-fondasi-days-uns",
-    title: "Kompetisi Tender Konstruksi Nasional 'Fondasi Days 2025' — UNS",
+    title: "National Construction Tender Competition 'Fondasi Days 2025' — UNS",
     category: "Tender & Research",
-    role: "Cost Estimator, 3D Modeler & Presenter (Tim Jaya Jaya)",
+    role: "Cost Estimator, 3D Modeler & Pitch Presenter (Jaya Jaya Team)",
     period: "2025",
     clientOrInstitution: "Universitas Sebelas Maret (UNS) Surakarta",
-    location: "Tingkat Nasional / Surakarta, Indonesia",
+    location: "National Level / Surakarta, Indonesia",
     summary:
-      "Berpartisipasi dalam kompetisi tender konstruksi bergengsi tingkat nasional 'Fondasi Days 2025' di Universitas Sebelas Maret. Terlibat langsung dalam penyusunan proposal dokumen penawaran tender komersial dan teknis: pemodelan 3D tahapan konstruksi menggunakan SketchUp, analisis metode pelaksanaan teknis (site logistics dan mobile crane), perhitungan RAB bersaing, time schedule MS Project & Kurva S, penyusunan poster tender, serta materi PPT penawaran.",
+      "Competed in the prestigious national construction tender competition 'Fondasi Days 2025' at Universitas Sebelas Maret. Directed technical and commercial proposal authoring: 3D construction phasing in SketchUp, site logistics and mobile crane placement strategy, competitive cost bidding (BoQ), MS Project scheduling & S-Curve formulation, technical poster design, and pitching presentation delivery.",
     architectureAndSolution: [
-      "Menyusun perhitungan volume pekerjaan dan kalkulasi penawaran harga bersaing dengan pemodelan margin kontingensi.",
-      "Memodelkan visualisasi 3D pentahapan konstruksi (phasing) pada SketchUp untuk memperjelas tata letak site logistik, tower crane, dan alur sirkulasi alat berat.",
-      "Menyusun Master Time Schedule menggunakan Microsoft Project dan menurunkan kurva S bobot pelaksanaan.",
-      "Merancang materi slide PPT penawaran dan poster teknis komprehensif untuk mempresentasikan strategi rekayasa nilai (value engineering)."
+      "Formulated detailed quantity calculations and competitive commercial bidding with contingency margin modeling.",
+      "Modeled 3D construction staging visualizations in SketchUp illustrating site logistics, crane coverage radiuses, and traffic flow.",
+      "Engineered Master Time Schedule in Microsoft Project and derived weighted progress S-Curves.",
+      "Crafted presentation decks and comprehensive technical posters communicating value engineering and sustainable construction innovations."
     ],
     metrics: [
-      { label: "Skala Kompetisi", value: "Tingkat Nasional (UNS Fondasi Days)" },
-      { label: "Simulasi 3D", value: "SketchUp Phasing & Site Logistics" },
-      { label: "Kelengkapan Dokumen", value: "Tender Proposal, Kurva S, & Poster" }
+      { label: "Competition Scale", value: "National Level (UNS Fondasi Days)" },
+      { label: "3D Phasing", value: "SketchUp Staging & Site Logistics" },
+      { label: "Submission Dossier", value: "Tender Proposal, S-Curve, & Technical Poster" }
     ],
     techStack: ["SketchUp 3D", "Microsoft Project", "Microsoft Excel", "Tender Estimation", "PowerPoint Pitching"],
     deliverables: [
-      "Dokumen Proposal Penawaran Tender Teknis & Biaya",
-      "Model 3D Visualisasi Metode Kerja (SketchUp)",
-      "Time Schedule MS Project & Kurva S Penawaran",
-      "Poster Teknis Kompetisi & Slide Penawaran"
+      "Commercial & Technical Tender Bidding Proposal Document",
+      "3D Method Statement Phasing Models (SketchUp)",
+      "MS Project Master Time Schedule & Bidding S-Curve",
+      "Competition Technical Infographic Poster & Pitch Deck"
     ],
     featured: false,
     coverImage: "/portfolio/tender-uns/render-uns-2.jpg",
     mediaGallery: [
       {
-        title: "3D Render Metode Pelaksanaan Konstruksi (SketchUp)",
+        title: "3D Construction Method Statement Rendering (SketchUp)",
         url: "/portfolio/tender-uns/render-uns-2.jpg",
-        caption: "Visualisasi 3D staging konstruksi, posisi tower crane, drop zone material, dan proteksi keselamatan kerja."
+        caption: "3D visualization showing construction phasing, tower crane positioning, material laydown yards, and site safety perimeters."
       },
       {
-        title: "Time Schedule Microsoft Project",
+        title: "Microsoft Project Execution Schedule",
         url: "/portfolio/tender-uns/ms-project.png",
-        caption: "Gantt chart jadwal kerja dengan integrasi ketergantungan antar aktivitas konstruksi."
+        caption: "Gantt chart schedule incorporating predecessor relationships and critical milestones."
       },
       {
-        title: "Estimasi Biaya Penawaran (RAB Kompetisi)",
+        title: "Competitive Tender Cost Estimate (Bidding BoQ)",
         url: "/portfolio/tender-uns/rab.png",
-        caption: "Perhitungan harga penawaran bersaing dengan optimalisasi koefisien alat dan tenaga kerja."
+        caption: "Competitive bid pricing optimized through labor efficiency coefficients and heavy machinery scheduling."
       },
       {
-        title: "Slide Pitching Penawaran Tender",
+        title: "Tender Pitch Presentation Slides",
         url: "/portfolio/tender-uns/ppt-penawaran.png",
-        caption: "Dek presentasi strategi metode pelaksanaan dan manajemen risiko di hadapan dewan juri."
+        caption: "Slide deck presenting method statements, value engineering, and risk management to the board of expert judges."
       },
       {
-        title: "Poster Tender Tim Jaya Jaya",
+        title: "Jaya Jaya Team Technical Infographic Poster",
         url: "/portfolio/tender-uns/poster-jaya-jaya-team.jpg",
-        caption: "Poster infografis komprehensif mencakup metode kerja, time schedule, Kurva S, K3, dan inovasi ramah lingkungan."
+        caption: "Comprehensive technical poster illustrating methodology, schedule, S-Curve, HSE safeguards, and green building innovations."
       }
     ]
   },
   {
     id: "pra-proyek-sap2000",
-    title: "Pemodelan Elemen Hingga & Analisis Beban Gempa Gedung — SAP2000",
+    title: "Finite Element Modeling & Seismic Response Spectrum Analysis — SAP2000",
     category: "BIM & CAD",
     role: "Structural Modeling & Dynamic Analysis Modeler",
     period: "2024",
-    clientOrInstitution: "Studio Pra-Proyek Perancangan Gedung (Politeknik Negeri Padang)",
-    location: "Padang, Sumatera Barat",
+    clientOrInstitution: "Building Design Studio (Politeknik Negeri Padang)",
+    location: "Padang, West Sumatra, Indonesia",
     summary:
-      "Melaksanakan pemodelan struktur rangka 3D dan analisis pembebanan struktur bertingkat berbasis Finite Element Method menggunakan software SAP2000. Menerapkan kombinasi beban mati, beban hidup, serta beban gempa dinamik respons spektrum sesuai standar ketahanan gempa SNI 1726, guna mengevaluasi gaya dalam (aksial, geser, momen lentur) dan memeriksa kelayakan dimensi penampang beton bertulang.",
+      "Conducted 3D structural frame modeling and finite element dynamic load analysis on a multi-story building using SAP2000. Applied load combinations of dead loads, live loads, and dynamic response spectrum seismic forces in accordance with Indonesian seismic code SNI 1726 to extract internal force envelopes (axial, shear, bending moment) and verify section member adequacy.",
     architectureAndSolution: [
-      "Membangun model rangka ruang 3D balok, kolom, dan pelat beton bertulang pada software SAP2000.",
-      "Menghitung preliminary design dimensi penampang komponen struktur sebelum analisis dilakukan.",
-      "Menginput parameter respon spektrum gempa rencana berdasarkan koordinat wilayah gempa dan jenis tanah tapak gedung sesuai SNI 1726.",
-      "Mengekstraksi diagram envelope gaya dalam (gaya aksial, gaya geser, dan momen lentur) untuk perancangan tulangan lentur dan geser.",
-      "Memeriksa simpangan antar tingkat (story drift) gedung untuk memastikan struktur berada dalam batas elastis aman."
+      "Constructed 3D spatial frame model of reinforced concrete beams, columns, and slabs in SAP2000 software.",
+      "Calculated preliminary dimensioning of structural frame sections prior to numerical finite element execution.",
+      "Configured regional seismic response spectrum functions according to site geographical coordinates and soil class classification (SNI 1726).",
+      "Extracted internal force envelopes (axial forces, shear diagrams, and bending moments) for flexural and shear reinforcement design.",
+      "Verified inter-story drift limits against permissible seismic safety thresholds under SNI standards."
     ],
     metrics: [
-      { label: "Software Analisis", value: "SAP2000 Finite Element Method" },
-      { label: "Standar Gempa", value: "Respons Spektrum SNI 1726" },
-      { label: "Evaluasi Struktur", value: "Diagram Gaya Dalam (Aksial, Geser, Momen)" }
+      { label: "Analysis Engine", value: "SAP2000 Finite Element Method" },
+      { label: "Seismic Code", value: "SNI 1726 Dynamic Response Spectrum" },
+      { label: "Evaluation", value: "Internal Force Envelopes (Axial, Shear, Moment)" }
     ],
-    techStack: ["SAP2000", "AutoCAD", "SNI Gempa 1726", "Desain Struktur Beton Bertulang (SNI 2847)"],
+    techStack: ["SAP2000", "AutoCAD", "SNI Seismic Code 1726", "Reinforced Concrete Code (SNI 2847)"],
     deliverables: [
-      "File Pemodelan Struktur 3D SAP2000",
-      "Diagram Gaya Aksial, Momen Lentur, & Gaya Geser",
-      "Kurva Analisis Respons Spektrum Beban Gempa Dinamik",
-      "Dokumen Perhitungan Primary Design Dimensi Struktur"
+      "SAP2000 3D Structural Analysis Model File",
+      "Axial, Bending Moment, and Shear Force Envelope Diagrams",
+      "Dynamic Seismic Response Spectrum Acceleration Curves",
+      "Preliminary Structural Member Sizing Calculation Report"
     ],
     featured: false,
     coverImage: "/portfolio/pra-proyek-sap2000/sap2000.png",
     mediaGallery: [
       {
-        title: "Model Struktur Portal 3D SAP2000",
+        title: "SAP2000 3D Structural Portal Frame Model",
         url: "/portfolio/pra-proyek-sap2000/sap2000.png",
-        caption: "Pemodelan 3D rangka beton bertulang gedung bertingkat dengan penomoran joint dan elemen batang."
+        caption: "3D reinforced concrete space frame modeled with node coordinates, element connectivity, and support constraints."
       },
       {
-        title: "Kurva Analisis Respons Spektrum Gempa SNI",
+        title: "SNI Dynamic Response Spectrum Acceleration Curve",
         url: "/portfolio/pra-proyek-sap2000/beban-gempa.png",
-        caption: "Input fungsi respon spektrum percepatan gempa sesuai zona wilayah dan kelas situs tanah."
+        caption: "Seismic spectral acceleration input function tailored to regional seismic hazard zone and soil site class."
       },
       {
-        title: "Diagram Envelope Momen Lentur & Gaya Geser",
+        title: "Bending Moment & Shear Envelope Diagrams",
         url: "/portfolio/pra-proyek-sap2000/momen,-geser.png",
-        caption: "Grafik distribusi momen maksimum dan gaya lintang untuk penentuan rasio penulangan balok dan kolom."
+        caption: "Distribution of peak bending moments and shear forces used to determine longitudinal and tie reinforcement ratios."
       },
       {
-        title: "Distribusi Gaya Aksial pada Kolom Struktur",
+        title: "Cumulative Axial Force Distribution in Columns",
         url: "/portfolio/pra-proyek-sap2000/axial.png",
-        caption: "Visualisasi beban aksial tekan kumulatif dari lantai atas menuju kolom lantai dasar."
+        caption: "Stress visualization of cumulative compressive gravity and lateral loads transferring down to ground-level columns."
       },
       {
-        title: "Kalkulasi Primary Design Dimensi Struktur",
+        title: "Preliminary Structural Sizing Calculations",
         url: "/portfolio/pra-proyek-sap2000/primery-design.png",
-        caption: "Perhitungan awal kekakuan dan ukuran penampang balok-kolom sebelum running analisis numerik."
+        caption: "Preliminary stiffness and cross-sectional sizing calculations for structural beams and columns before numerical simulation."
       },
       {
-        title: "Evaluasi Story Drift & Deformasi Struktur",
+        title: "Inter-Story Drift & Lateral Deflection Assessment",
         url: "/portfolio/pra-proyek-sap2000/screenshot-2026-10-29-114714.png",
-        caption: "Pengecekan perpindahan lateral gedung akibat gempa guna memenuhi batas izin SNI ketahanan gempa."
+        caption: "Verification of lateral inelastic drift against code allowances to prevent structural pounding and collapse."
       }
     ]
   },
   {
     id: "artikel-ilmiah-scaffolding",
-    title: "Artikel Ilmiah: Analisa Biaya Scaffolding Proyek Waste Gas Recovery — PKM-AI",
+    title: "Scientific Research: Life-Cycle Cost Analysis of Scaffolding in Industrial EPC — PKM-AI",
     category: "Tender & Research",
-    role: "Penulis Utama & Peneliti Studi Biaya",
+    role: "Lead Author & Cost Engineering Researcher",
     period: "2025",
-    clientOrInstitution: "Pekan Kreativitas Mahasiswa – Artikel Ilmiah (PKM-AI) Kemendikbudristek",
-    location: "Tingkat Nasional",
+    clientOrInstitution: "Student Scientific Creativity Program (PKM-AI) — Ministry of Education & Culture",
+    location: "National Level, Indonesia",
     summary:
-      "Menyusun karya tulis ilmiah berjudul 'Analisa Biaya Scaffolding pada Proyek Waste Gas Recovery IBR Purwakarta' yang didanai dalam program PKM-AI Kemendikbudristek. Penelitian ini mengevaluasi efisiensi biaya konstruksi antara skema pembelian aset tetap (CapEx) dengan skema penyewaan berkala (OpEx) scaffolding berdasarkan data aktual durasi dan frekuensi pemakaian di lapangan.",
+      "Authored a scientific research paper entitled 'Cost Analysis of Modular Scaffolding on the Waste Gas Recovery Project at PT Indo-Bharat Rayon Purwakarta', funded under the national PKM-AI program. Investigated construction cost efficiency by evaluating capital expenditure (CapEx outright purchasing) versus operational expenditure (OpEx periodic leasing) based on empirical field utilization durations and turnover rates.",
     architectureAndSolution: [
-      "Mengumpulkan data empiris lapangan terkait biaya sewa harian/bulanan, biaya transportasi, mobilisasi/demobilisasi, dan biaya pengadaan baru scaffolding.",
-      "Menghitung perbandingan titik impas (break-even point) biaya total antara opsi sewa vs opsi beli.",
-      "Menghasilkan kesimpulan strategis: efisiensi biaya scaffolding sangat bergantung pada durasi pemakaian proyek; pada durasi proyek jangka panjang skema pembelian jauh lebih efisien, sedangkan untuk durasi singkat skema penyewaan menjadi opsi paling optimal.",
-      "Memformulasikan pedoman pengambilan keputusan finansial alat bantu kerja bagi kontraktor industri."
+      "Gathered empirical jobsite data regarding daily/monthly rental rates, freight logistics, mobilization/demobilization costs, and capital procurement pricing.",
+      "Calculated comparative break-even points across project lifespans between leasing and purchasing models.",
+      "Delivered key strategic conclusions: scaffolding cost efficiency is directly governed by site duration—long-term projects achieve superior ROI via capital purchase, whereas short-duration jobs maximize savings through leased systems.",
+      "Formulated a financial decision-making matrix for industrial contractors to optimize temporary work equipment expenditures."
     ],
     metrics: [
-      { label: "Program", value: "PKM-AI Kemendikbudristek" },
-      { label: "Fokus Studi", value: "Analisis Kelayakan Biaya (Beli vs Sewa)" },
-      { label: "Data Acuan", value: "Proyek Waste Gas Recovery IBR Purwakarta" }
+      { label: "Research Grant", value: "PKM-AI National Research Program" },
+      { label: "Study Focus", value: "Feasibility Analysis (CapEx Buy vs OpEx Rent)" },
+      { label: "Empirical Site", value: "Waste Gas Recovery Project Purwakarta" }
     ],
-    techStack: ["Cost Engineering Analysis", "Microsoft Excel", "Penulisan Ilmiah", "Life-Cycle Costing"],
+    techStack: ["Cost Engineering Analysis", "Microsoft Excel", "Scientific Writing", "Life-Cycle Costing"],
     deliverables: [
-      "Naskah Artikel Ilmiah PKM-AI Kemendikbudristek",
-      "Model Matriks Keputusan Finansial Scaffolding"
+      "Official PKM-AI Scientific Research Manuscript",
+      "Scaffolding Financial Decision-Making Matrix Model"
     ],
     featured: false,
     coverImage: "/portfolio/artikel-ilmiah/screenshot-2026-10-29-120442.png",
     mediaGallery: [
       {
-        title: "Dokumen Artikel Ilmiah PKM-AI",
+        title: "PKM-AI Scientific Manuscript Document",
         url: "/portfolio/artikel-ilmiah/screenshot-2026-10-29-120442.png",
-        caption: "Naskah karya tulis ilmiah evaluasi efisiensi biaya perancah modular scaffolding pada proyek industri Purwakarta."
+        caption: "Published manuscript analyzing modular scaffolding cost efficiency in heavy industrial EPC environments."
       }
     ]
   }
@@ -746,133 +746,133 @@ export const featuredProjects: Project[] = [
 export const workExperiences: Experience[] = [
   {
     id: "exp-sdn19-kuamang",
-    role: "Perencana Teknis (Konsultan Perencana Revitalisasi SD)",
-    company: "Konsultan Perencana Revitalisasi Sekolah",
-    type: "Proyek Revitalisasi SDN 19 Kuamang",
+    role: "Technical Planner & Quantity Surveyor (School Revitalization Consultant)",
+    company: "School Revitalization Engineering Consultant",
+    type: "SDN 19 Kuamang Revitalization Project",
     period: "Sep 2026",
-    location: "Pasaman, Sumatera Barat, Indonesia",
+    location: "Pasaman, West Sumatra, Indonesia",
     responsibilities: [
-      "Menyusun perhitungan volume pekerjaan (Quantity Take-Off) serta Rencana Anggaran Biaya (RAB) revitalisasi fasilitas sekolah.",
-      "Merancang dokumen Rencana Kerja dan Syarat-Syarat (RKS) sebagai pedoman spesifikasi teknis dan standar mutu material di lapangan.",
-      "Menyusun jadwal pelaksanaan proyek (Time Schedule) dan memetakan bobot pekerjaan ke dalam Kurva S.",
-      "Memproduksi gambar kerja perencanaan (Detailed Engineering Design/DED) bangunan sekolah menggunakan AutoCAD.",
-      "Mengoptimalkan sistem layout viewport pada AutoCAD untuk publikasi cetak format PDF siap lelang dan siap kerja."
+      "Calculated comprehensive Quantity Take-Off (QTO) and formulated Bill of Quantities (BoQ/RAB) for school facility revitalizations.",
+      "Authored Technical Specifications & Requirements (RKS) defining material quality thresholds and on-site workmanship standards.",
+      "Developed master construction timelines (Time Schedule) and distributed weekly weighting into an S-Curve for progress monitoring.",
+      "Engineered architectural and structural Detailed Engineering Design (DED) blueprints in AutoCAD.",
+      "Configured AutoCAD paper layout viewports to publish standardized, high-resolution PDF document sets ready for bidding and execution."
     ],
     keyImpacts: [
-      "Menghasilkan dokumen DED dan RAB yang akurat tanpa duplikasi item pekerjaan, mencegah pembengkakan biaya saat konstruksi.",
-      "Penerapan layout AutoCAD to PDF yang rapi mempercepat proses approval berkas oleh pihak dinas terkait."
+      "Delivered zero-redundancy DED blueprints and BoQs, successfully preventing cost overruns and material discrepancies during construction.",
+      "Professional layout-to-PDF formatting streamlined client and municipal education department approvals without bureaucratic delays."
     ],
-    toolsUsed: ["AutoCAD (Layout Viewports)", "Microsoft Excel", "Microsoft Project", "RKS Spesifikasi Teknis", "Kurva S"],
+    toolsUsed: ["AutoCAD (Layout Viewports)", "Microsoft Excel", "Microsoft Project", "RKS Technical Specs", "S-Curve"],
     mediaPreview: [
-      { title: "Layout AutoCAD", url: "/portfolio/sdn-19-kuamang/menggunakan-layout-autocad.png" },
-      { title: "Kurva S Proyek", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" }
+      { title: "AutoCAD Layout System", url: "/portfolio/sdn-19-kuamang/menggunakan-layout-autocad.png" },
+      { title: "Project S-Curve", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" }
     ],
     documents: [
-      { name: "Kurva S SDN 19 Kuamang (PDF)", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" },
-      { name: "RAB Revitalisasi (PDF)", url: "/portfolio/sdn-19-kuamang/RAB.pdf" }
+      { name: "SDN 19 Kuamang S-Curve (PDF)", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" },
+      { name: "Revitalization BoQ/RAB (PDF)", url: "/portfolio/sdn-19-kuamang/RAB.pdf" }
     ]
   },
   {
     id: "exp-slbn2-pariaman",
-    role: "Perencana Teknis (Konsultan Perencana Revitalisasi SLB)",
-    company: "Konsultan Perencana Revitalisasi Sekolah",
-    type: "Proyek Revitalisasi SLBN 2 Pariaman",
+    role: "Technical Planner & Quantity Surveyor (Special School Revitalization Consultant)",
+    company: "School Revitalization Engineering Consultant",
+    type: "SLBN 2 Pariaman Special School Revitalization Project",
     period: "Jul 2026",
-    location: "Pariaman, Sumatera Barat, Indonesia",
+    location: "Pariaman, West Sumatra, Indonesia",
     responsibilities: [
-      "Menyusun perhitungan volume pekerjaan serta Rencana Anggaran Biaya (RAB) revitalisasi fasilitas sekolah ramah disabilitas.",
-      "Merancang dokumen Rencana Kerja dan Syarat-Syarat (RKS) spesifikasi teknis dan standar mutu material ramah kebutuhan khusus.",
-      "Menyusun jadwal pelaksanaan proyek (Time Schedule) dan memetakan bobot pekerjaan ke dalam Kurva S.",
-      "Memproduksi gambar kerja Detailed Engineering Design (DED) lengkap menggunakan AutoCAD layout to PDF.",
-      "Menyusun adendum pergantian rancangan rencana dari kontrak awal (Contract Change Order / CCO) akibat kondisi eksisting lapangan."
+      "Engineered mathematical Quantity Take-Off (QTO) and detailed Bill of Quantities (BoQ/RAB) for universal accessible school facilities.",
+      "Drafted specialized Technical Specifications (RKS) governing accessibility fixtures, non-slip surfaces, and sensory-friendly materials.",
+      "Developed master Time Schedules and mapped task distribution into S-Curve progress tracking charts.",
+      "Produced complete Detailed Engineering Design (DED) blueprints using standardized AutoCAD multi-sheet layout viewports.",
+      "Formulated formal Contract Change Order (CCO) addenda reconciling design adjustments with actual verified jobsite conditions."
     ],
     keyImpacts: [
-      "Penyusunan CCO yang akurat menjaga legalitas dan transparansi perubahan volume tanpa memicu klaim sengketa kontrak.",
-      "Standar aksesibilitas disabilitas (ramp kursi roda dan toilet difabel) terpenuhi 100% sesuai pedoman teknis keselamatan."
+      "Rigorous CCO engineering maintained legal clarity and transparent unit pricing, averting contract disputes.",
+      "Universal accessibility standards (ramps, handrails, accessible restrooms) achieved 100% compliance with safety regulations."
     ],
-    toolsUsed: ["AutoCAD", "Contract Change Order (CCO)", "Microsoft Excel", "Time Schedule & Kurva S", "Spesifikasi RKS"],
+    toolsUsed: ["AutoCAD", "Contract Change Order (CCO)", "Microsoft Excel", "Time Schedule & S-Curve", "RKS Specifications"],
     mediaPreview: [
-      { title: "DED Layout AutoCAD", url: "/portfolio/slbn-2-pariaman/layout-autocad.png" },
-      { title: "Dokumen CCO", url: "/portfolio/slbn-2-pariaman/cco.png" }
+      { title: "AutoCAD DED Layout", url: "/portfolio/slbn-2-pariaman/layout-autocad.png" },
+      { title: "CCO Addendum Document", url: "/portfolio/slbn-2-pariaman/cco.png" }
     ],
     documents: [
-      { name: "Time Schedule Pelaksanaan (PDF)", url: "/portfolio/slbn-2-pariaman/TS.pdf" },
-      { name: "Rekapitulasi Anggaran (PDF)", url: "/portfolio/slbn-2-pariaman/REKAP.pdf" }
+      { name: "Official Master Schedule (PDF)", url: "/portfolio/slbn-2-pariaman/TS.pdf" },
+      { name: "Cost Budget Recapitulation (PDF)", url: "/portfolio/slbn-2-pariaman/REKAP.pdf" }
     ]
   },
   {
     id: "exp-qs-freelance",
     role: "Quantity Surveyor (Freelance)",
     company: "PT Mulia Djasmine Sentosa",
-    type: "Subkontraktor Proyek PT Perfetti Van Melle Indonesia",
+    type: "Subcontractor to PT Perfetti Van Melle Indonesia Project",
     period: "Sep 2025",
-    location: "Cikarang, Indonesia",
+    location: "Cikarang, West Java, Indonesia",
     responsibilities: [
-      "Melaksanakan perhitungan ulang volume pekerjaan berdasarkan kondisi aktual (Mutual Check 100 / MC-100) di lokasi proyek pabrik.",
-      "Menyusun rekapitulasi biaya dan valuasi harga pekerjaan berdasarkan kuantitas aktual terverifikasi sebagai dasar pengajuan klaim pembayaran subkontraktor.",
-      "Menyusun dokumen pergantian item pekerjaan dari kontrak awal (Contract Change Order / CCO).",
-      "Menyusun Bar Bending Schedule (BBS) untuk kebutuhan fabrikasi besi struktur subkontraktor."
+      "Conducted physical on-site re-measurement (Mutual Check 100 / MC-100) across industrial manufacturing plant facilities.",
+      "Formulated valuation recapitulations and commercial billing claims based strictly on verified installed field quantities.",
+      "Drafted Contract Change Order (CCO) registers documenting scope adjustments and transparent unit price calculations.",
+      "Engineered structural Bar Bending Schedules (BBS) to direct rebar cutting and bending fabrication for the subcontractor."
     ],
     keyImpacts: [
-      "Klaim penagihan pembayaran subkontraktor disetujui penuh oleh kontraktor utama tanpa deviasi berkat backup volume terverifikasi.",
-      "Seluruh pergantian item pekerjaan terdokumentasi rapi dalam CCO dengan penyesuaian biaya yang transparan."
+      "Subcontractor payment invoices achieved 100% main contractor approval without deductions thanks to verified Backup Volume proofs.",
+      "All scope adjustments were cleanly recorded in CCO dossiers with transparent cost reconciliation."
     ],
     toolsUsed: ["Quantity Surveying (MC-100)", "Bar Bending Schedule (BBS)", "CCO Administration", "Microsoft Excel"],
     mediaPreview: [
-      { title: "Backup Volume MC-100", url: "/portfolio/qs-mulia-djasmine/backup-vol.png" },
-      { title: "BBS Fabrikasi", url: "/portfolio/qs-mulia-djasmine/bbs.png" }
+      { title: "MC-100 Backup Volume", url: "/portfolio/qs-mulia-djasmine/backup-vol.png" },
+      { title: "Fabrication BBS", url: "/portfolio/qs-mulia-djasmine/bbs.png" }
     ]
   },
   {
     id: "exp-kemendikdasmen",
-    role: "Fasilitator Teknis - Program Revitalisasi Sekolah Dasar",
-    company: "Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen)",
-    type: "Program Revitalisasi Sekolah Bantuan Pemerintah",
-    period: "Jun 2025 – Des 2025",
-    location: "Sumatera Barat, Indonesia",
+    role: "Technical Facilitator — Primary School Revitalization Program",
+    company: "Ministry of Primary and Secondary Education (Kemendikdasmen)",
+    type: "Government School Infrastructure Revitalization Initiative",
+    period: "Jun 2025 – Dec 2025",
+    location: "West Sumatra, Indonesia",
     responsibilities: [
-      "Melakukan reviu dan evaluasi kelayakan dokumen administrasi serta teknis perencanaan (Detailed Engineering Design/DED, RAB, dan RKS) sekolah penerima bantuan.",
-      "Melaksanakan pemantauan (monitoring) dan evaluasi berkala terhadap progres fisik pelaksanaan program revitalisasi di lapangan agar sesuai dengan jadwal dan standar mutu.",
-      "Memverifikasi kelengkapan dan keabsahan dokumen laporan kemajuan pekerjaan sebagai syarat pencairan dana termin bantuan pemerintah.",
-      "Memfasilitasi Bimbingan Teknis (BIMTEK) bagi tim pelaksana sekolah mengenai kepatuhan teknis dan pengelolaan anggaran."
+      "Audited administrative and engineering dossiers (DED blueprints, BoQ budgets, and RKS specs) for grant recipient schools.",
+      "Conducted on-site monitoring inspections across participating schools to enforce construction quality and adherence to schedules.",
+      "Verified completeness and authenticity of physical milestone reports as mandatory prerequisites for state funding disbursements.",
+      "Conducted Technical Guidance Workshops (BIMTEK) for school construction committees regarding budget governance and building codes."
     ],
     keyImpacts: [
-      "Memastikan 100% pencairan dana termin bantuan pemerintah didukung oleh bukti fisik lapangan yang sah dan terverifikasi.",
-      "Mencegah potensi kegagalan konstruksi dan penyimpangan spesifikasi mutu bahan material pada sekolah sasaran."
+      "Ensured 100% of state grant fund disbursements were backed by legitimate, verified physical site milestones.",
+      "Averted structural quality defects and material substandard substitutions across all assigned schools."
     ],
     toolsUsed: ["DED / RAB Technical Audit", "Field Monitoring & Quality Inspection", "Disbursement Verification", "BIMTEK Facilitation"],
     mediaPreview: [
       { title: "Site Monitoring", url: "/portfolio/fasilitator/site-monitoring.jpeg" },
-      { title: "Dokumen Review", url: "/portfolio/fasilitator/form-review.png" }
+      { title: "Review Form Dossier", url: "/portfolio/fasilitator/form-review.png" }
     ]
   },
   {
     id: "exp-magang-sie",
-    role: "Praktek Kerja Lapangan (Magang) — QC & Quantity Surveyor",
+    role: "Quality Control & Quantity Surveyor Intern",
     company: "PT Solusi Industri Energi",
-    type: "Waste Gas Recovery Project (PT Indo-Bharat Rayon)",
-    period: "Agu 2024 – Des 2024",
-    location: "Purwakarta, Jawa Barat, Indonesia",
+    type: "Waste Gas Recovery EPC Project (PT Indo-Bharat Rayon Plant)",
+    period: "Aug 2024 – Dec 2024",
+    location: "Purwakarta, West Java, Indonesia",
     responsibilities: [
-      "Menyusun Bar Bending Schedule (BBS) untuk pemotongan dan pembengkokan baja tulangan.",
-      "Menghitung volume pekerjaan terpasang (Backup Volume) sebagai dokumen pendukung penagihan progres pekerjaan (Progress Billing).",
-      "Menghitung volume pekerjaan serta dampak biaya akibat adanya pekerjaan ulang (QTO Rework).",
-      "Melaksanakan inspeksi pengendalian mutu (Quality Control) di lapangan: pengujian Slump Test beton segar, pengecekan pemasangan tulangan sebelum pengecoran, serta pengisian checklist pekerjaan.",
-      "Melakukan pemetaan lapangan (Site Mapping) dan menyusun daftar perbaikan pekerjaan (Punch List) sebelum dan sesudah serah terima area kerja.",
-      "Menyusun laporan progres proyek harian (Daily), mingguan (Weekly), dan bulanan (Monthly Report)."
+      "Engineered Bar Bending Schedules (BBS) to optimize rebar cutting, bending, and placement on structural foundations.",
+      "Computed installed structural Backup Volumes as verified mathematical proof for monthly Progress Billing applications.",
+      "Quantified re-measurement volumes and cost impacts arising from structural field modifications (QTO Rework).",
+      "Conducted quality control field inspections: fresh concrete Slump Testing, pre-pour rebar clearance audits, and checklist sign-offs.",
+      "Conducted spatial jobsite mapping (Site Mapping) and assembled detailed Punch Lists for zone handovers.",
+      "Compiled Daily Progress logs, Weekly Reports, and Monthly Progress dossiers for multi-stakeholder project coordination."
     ],
     keyImpacts: [
-      "Mengurangi sisa potongan baja tulangan (scrap waste) berkat penyusunan BBS yang optimal.",
-      "Seluruh batch beton yang dicor terverifikasi nilai slump dan workability-nya sesuai spesifikasi teknis ketat pabrik kimia.",
-      "Menyediakan dokumen Backup Volume audit-ready sehingga penagihan termin Progress Billing disetujui tanpa penundaan."
+      "Aggressively minimized rebar scrap through optimized Bar Bending Schedules (BBS).",
+      "Verified 100% of concrete batches met slump workability and strength thresholds required in high-hazard chemical facilities.",
+      "Maintained audit-ready Backup Volume documentation, securing on-time milestone Progress Billing approvals with zero deductions."
     ],
     toolsUsed: ["Bar Bending Schedule (BBS)", "Slump Testing", "AutoCAD", "Punch List Resolution", "Progress Billing Backup", "Site Mapping"],
     mediaPreview: [
-      { title: "Slump Test Lapangan", url: "/portfolio/magang-sie/slump-test.jpg" },
-      { title: "Punch List Serah Terima", url: "/portfolio/magang-sie/punch-list.png" }
+      { title: "On-Site Slump Test", url: "/portfolio/magang-sie/slump-test.jpg" },
+      { title: "Handover Punch List", url: "/portfolio/magang-sie/punch-list.png" }
     ],
     documents: [
-      { name: "Sertifikat Magang PT Solusi Industri Energi (PDF)", url: "/portfolio/certificates/sertifikat-magang-sie.pdf" }
+      { name: "PT Solusi Industri Energi Official Internship Certificate (PDF)", url: "/portfolio/certificates/sertifikat-magang-sie.pdf" }
     ]
   }
 ];
@@ -882,139 +882,145 @@ export const educationHistory: Education[] = [
     institution: "Politeknik Negeri Padang",
     degree: "Diploma IV (D4)",
     field: "Manajemen Rekayasa Konstruksi",
-    period: "Agus 2026 – Sekarang",
+    period: "Aug 2026 – Present",
     location: "Padang, Indonesia",
+    status: "CURRENTLY ACTIVE / IN PROGRESS (ONGOING)",
+    isOngoing: true,
     details: [
-      "Program studi lanjutan terapan yang mendalami manajemen proyek konstruksi tingkat lanjut, tata kelola pengadaan barang/jasa pemerintah, analisis risiko rekayasa, dan implementasi BIM multidimensi."
+      "Currently pursuing an advanced vocational degree in Construction Engineering Management (D4) focusing on advanced construction project management, government public procurement regulations, engineering risk governance, and integrated multi-dimensional BIM implementation."
     ]
   },
   {
     institution: "Politeknik Negeri Padang",
     degree: "Diploma III (D3)",
-    field: "Teknik Sipil",
+    field: "Civil Engineering",
     period: "Sep 2022 – Jul 2025",
     location: "Padang, Indonesia",
+    status: "GRADUATED WITH HIGH HONORS (MAGNA CUM LAUDE)",
+    isOngoing: false,
     gpa: "3.72 / 4.00",
     details: [
-      "Tugas Akhir: Merancang estimasi Rencana Anggaran Biaya (RAB) dan penjadwalan proyek (Time Schedule & Kurva S) pada studi kasus 'Rencana Pelaksanaan Pembangunan Gedung DPRD Kabupaten Pasaman'.",
-      "Kompetisi Tender Nasional 'Fondasi Days 2025' di Universitas Sebelas Maret (UNS): Dokumen tender, pemodelan 3D SketchUp, metode pelaksanaan, dan RAB.",
-      "Pekan Kreativitas Mahasiswa – Artikel Ilmiah (PKM-AI) Kemendikbudristek: Penulis utama karya ilmiah 'Analisa Biaya Scaffolding pada Proyek Waste Gas Recovery IBR Purwakarta'.",
-      "Pra-Proyek Perancangan Gedung: Pemodelan struktur 3D dan analisis respons spektrum beban gempa dinamik gedung bertingkat menggunakan SAP2000."
+      "Senior Capstone Thesis: Engineered comprehensive Cost Budgeting (BoQ) and CPM project scheduling (Time Schedule & S-Curve) on the 'Construction Execution Planning of Pasaman Regency DPRD Building'.",
+      "National Tender Competition 'Fondasi Days 2025' at Universitas Sebelas Maret (UNS): Commercial tender dossier, 3D SketchUp method statements, and competitive cost modeling.",
+      "National Student Scientific Creativity Program (PKM-AI) Grantee: Lead author of 'Life-Cycle Cost Analysis of Modular Scaffolding in Industrial EPC Projects'.",
+      "Building Design Studio: Finite element 3D frame modeling and dynamic seismic response spectrum analysis using SAP2000 under SNI codes."
     ],
     transcriptUrl: "/portfolio/certificates/transkrip-nilai.pdf"
   },
   {
     institution: "SMA Negeri 1 Padang",
-    degree: "Pendidikan Menengah Atas",
-    field: "Jurusan Matematika & Ilmu Pengetahuan Alam (MIPA)",
+    degree: "Senior High School Diploma",
+    field: "Natural Sciences & Mathematics (MIPA)",
     period: "2019 – 2022",
-    location: "Padang, Indonesia"
+    location: "Padang, Indonesia",
+    status: "GRADUATED",
+    isOngoing: false
   }
 ];
 
 export const certifications: Certification[] = [
   {
-    name: "Sertifikat Kompetensi Kerja (SKK) Pelaksana Lapangan Pekerjaan Gedung Madya",
-    issuer: "Badan Nasional Sertifikasi Profesi (BNSP) & Kementerian PU Balai Jasa Konstruksi Wilayah I Banda Aceh",
-    levelOrScore: "Jenjang 5 KKNI (Pelaksana Lapangan Madya)",
-    year: "Tersertifikasi Resmi BNSP",
+    name: "Certificate of Work Competency (SKK) — Building Construction Site Supervisor",
+    issuer: "National Professional Certification Board (BNSP) & Ministry of Public Works Construction Center I",
+    levelOrScore: "KKNI Level 5 (Intermediate Building Construction Site Supervisor)",
+    year: "Nationally Accredited BNSP License",
     verificationFile: "/portfolio/certificates/skk-bnsp-jenjang5.pdf",
-    description: "Kompetensi terakreditasi negara untuk supervisi teknis pekerjaan bangunan gedung bertingkat, pengendalian mutu lapangan, keselamatan konstruksi, dan koordinasi subkontraktor."
+    description: "State-accredited competency credential authorizing technical oversight of multi-story building construction, structural quality assurance, site safety governance, and subcontractor coordination."
   },
   {
     name: "Certificate of Completion: Revit Masterclass for Beginners (BIM)",
     issuer: "Arsisten Academy",
     levelOrScore: "Building Information Modeling (BIM)",
-    year: "Tersertifikasi BIM",
+    year: "Certified BIM Modeler",
     verificationFile: "/portfolio/certificates/sertifikat-revit.pdf",
-    description: "Pelatihan pemodelan informasi bangunan (BIM) Autodesk Revit mencakup pemodelan parametrik struktur portal, arsitektur, scheduling material, dan integrasi gambar kerja."
+    description: "Parametric 3D Building Information Modeling (BIM) training in Autodesk Revit covering structural concrete frames, architectural components, automated material schedules, and construction drawing extraction."
   },
   {
     name: "Specified Skilled Worker (SSW) Evaluation Exam for Construction Industry",
-    issuer: "Japan Association for Construction Human Resources (JAC) — Jepang",
-    levelOrScore: "Kualifikasi Standar Konstruksi Jepang",
-    year: "Tersertifikasi Internasional",
+    issuer: "Japan Association for Construction Human Resources (JAC) — Japan",
+    levelOrScore: "Japanese Construction Industry Standard Qualification",
+    year: "Internationally Certified",
     verificationFile: "/portfolio/certificates/ssw-japan.pdf",
-    description: "Ujian evaluasi keahlian pekerja konstruksi berstandar industri Jepang (Tokutei Ginou) untuk kesiapan kerja di sektor konstruksi Jepang."
+    description: "Certified qualification exam under the Japanese Tokutei Ginou framework validating technical proficiency, construction safety, and operational readiness for Japan's construction sector."
   },
   {
     name: "Japan Foundation Test for Basic Japanese (JFT-Basic) & JLPT N4",
     issuer: "The Japan Foundation",
-    levelOrScore: "JFT-Basic Skor: 250 / 250 | JLPT N4 Skor: 165 / 180",
-    year: "Kemampuan Bahasa Jepang Menengah",
+    levelOrScore: "JFT-Basic Score: 250 / 250 | JLPT N4 Score: 165 / 180",
+    year: "Certified Intermediate Japanese",
     verificationFile: "/portfolio/certificates/jft-basic.pdf",
-    description: "Sertifikasi resmi kemahiran bahasa Jepang lisan dan tulisan untuk komunikasi teknis dan operasional lingkungan kerja profesional."
+    description: "Official certifications verifying spoken and written Japanese language capabilities for technical communication, daily operations, and collaborative jobsite environments."
   },
   {
     name: "Test of English for International Communication (TOEIC)",
     issuer: "Educational Testing Service (ETS) / Politeknik Negeri Padang",
-    levelOrScore: "Skor: 640",
-    year: "Bahasa Inggris Profesional",
+    levelOrScore: "Official Score: 640",
+    year: "Working Professional English",
     verificationFile: "/portfolio/certificates/toeic-640.pdf",
-    description: "Kemampuan bahasa Inggris tingkat kerja operasional untuk komunikasi teknis, penyusunan proposal tender internasional, dan kolaborasi tim global."
+    description: "Verified working-level English proficiency for international engineering documentation, commercial tender proposals, and cross-border project team collaboration."
   },
   {
-    name: "Sertifikat Praktek Kerja Lapangan (PKL)",
+    name: "Industrial Internship Certificate of Excellence (PKL)",
     issuer: "PT Solusi Industri Energi",
-    levelOrScore: "Waste Gas Recovery Project (PT Indo-Bharat Rayon)",
-    year: "Sertifikasi Pengalaman Industri",
+    levelOrScore: "Waste Gas Recovery EPC Project (PT Indo-Bharat Rayon)",
+    year: "Certified Industrial Experience",
     verificationFile: "/portfolio/certificates/sertifikat-magang-sie.pdf",
-    description: "Surat keterangan resmi pelaksanaan magang industri penuh waktu sebagai Quality Control & Quantity Surveyor."
+    description: "Official credential recognizing full-time engineering performance as Site Quality Control Inspector & Quantity Surveyor on a major chemical plant EPC project."
   },
   {
-    name: "Transkrip Nilai Akademik Resmi D3 Teknik Sipil (IPK 3,72)",
+    name: "Official Academic Transcript — Diploma III Civil Engineering (GPA 3.72)",
     issuer: "Politeknik Negeri Padang",
-    levelOrScore: "IPK 3.72 / 4.00 (Dengan Pujian)",
-    year: "Transkrip Nilai Resmi",
+    levelOrScore: "Cumulative GPA: 3.72 / 4.00 (High Honors / Magna Cum Laude)",
+    year: "Official State Transcript",
     verificationFile: "/portfolio/certificates/transkrip-nilai.pdf",
-    description: "Dokumen resmi nilai akademik kelulusan Program Studi Teknik Sipil Politeknik Negeri Padang."
+    description: "Official certified academic graduation transcript reflecting honors coursework in structural analysis, cost engineering, surveying, and construction management."
   }
 ];
 
 export const skillCategories: SkillCategory[] = [
   {
-    category: "Hard Skills & Engineering Practice",
-    description: "Kompetensi inti perhitungan kuantitas, estimasi biaya konstruksi, administrasi kontrak, dan kendali mutu.",
+    category: "Core Engineering & Quantity Surveying",
+    description: "Foundational mastery in quantity takeoff, construction cost engineering, contract administration, and site quality assurance.",
     items: [
-      { name: "Quantity Take-Off (QTO)", level: "Advanced", categoryTag: "Estimasi" },
-      { name: "Cost Estimation & BoQ/RAB", level: "Advanced", categoryTag: "Analisis Biaya" },
-      { name: "Rencana Kerja & Syarat (RKS)", level: "Advanced", categoryTag: "Spesifikasi Teknis" },
-      { name: "Time Schedule & Kurva S", level: "Advanced", categoryTag: "Penjadwalan" },
-      { name: "Bar Bending Schedule (BBS)", level: "Advanced", categoryTag: "Detailing Rebar" },
-      { name: "Detailed Engineering Design (DED)", level: "Advanced", categoryTag: "Gambar Kerja" },
-      { name: "Contract Change Orders (CCO)", level: "Proficient", categoryTag: "Kontrak & Variasi" },
-      { name: "Field Quality Control (Slump & Rebar)", level: "Proficient", categoryTag: "Kendali Mutu Lapangan" }
+      { name: "Quantity Take-Off (QTO)", level: "Advanced", categoryTag: "Estimation" },
+      { name: "Cost Estimation & BoQ/RAB", level: "Advanced", categoryTag: "Cost Engineering" },
+      { name: "Technical Specifications (RKS)", level: "Advanced", categoryTag: "Specifications" },
+      { name: "Time Schedule & S-Curve", level: "Advanced", categoryTag: "Scheduling" },
+      { name: "Bar Bending Schedule (BBS)", level: "Advanced", categoryTag: "Rebar Detailing" },
+      { name: "Detailed Engineering Design (DED)", level: "Advanced", categoryTag: "Working Drawings" },
+      { name: "Contract Change Orders (CCO)", level: "Proficient", categoryTag: "Contracts & Variations" },
+      { name: "Field Quality Control (Slump & Rebar)", level: "Proficient", categoryTag: "Site QC & Inspection" }
     ]
   },
   {
-    category: "Software & BIM / CAD Suite",
-    description: "Perangkat lunak standar industri untuk pemodelan informasi bangunan, analisis struktur elemen hingga, dan simulasi jadwal.",
+    category: "Software & Digital BIM / CAD Suite",
+    description: "Industry-standard software tools for Building Information Modeling, finite element structural analysis, and construction scheduling.",
     items: [
-      { name: "Autodesk Revit (BIM)", level: "Certified", details: "Certified BIM Modeler Arsisten Academy (Struktur & Arsitektur)", categoryTag: "BIM" },
-      { name: "AutoCAD", level: "Advanced", details: "DED 2D, detail penulangan, shop drawing, layout viewports to PDF", categoryTag: "CAD" },
-      { name: "SketchUp", level: "Advanced", details: "Visualisasi 3D pentahapan konstruksi & site logistics tender", categoryTag: "3D Modeling" },
-      { name: "SAP2000", level: "Proficient", details: "Analisis elemen hingga & respons spektrum beban gempa dinamik SNI", categoryTag: "Struktur Dinamis" },
-      { name: "Microsoft Project", level: "Advanced", details: "Critical Path Method (CPM), alokasi sumber daya & bobot Kurva S", categoryTag: "Project Scheduling" },
-      { name: "Microsoft Excel", level: "Expert", details: "Pemodelan perhitungan QTO, AHSP, formula BoQ/RAB, dan backup volume", categoryTag: "Kalkulasi Data" }
+      { name: "Autodesk Revit (BIM)", level: "Certified", details: "Certified BIM Modeler Arsisten Academy (Structural & Architectural Modeling)", categoryTag: "BIM" },
+      { name: "AutoCAD", level: "Advanced", details: "2D DED, rebar detailing, shop drawings, standardized multi-sheet layout viewports to PDF", categoryTag: "CAD" },
+      { name: "SketchUp", level: "Advanced", details: "3D construction staging visualizations & tender site logistics modeling", categoryTag: "3D Modeling" },
+      { name: "SAP2000", level: "Proficient", details: "Finite element modeling & dynamic seismic response spectrum analysis under SNI codes", categoryTag: "Structural Analysis" },
+      { name: "Microsoft Project", level: "Advanced", details: "Critical Path Method (CPM), resource allocation & weighted S-Curve derivation", categoryTag: "Scheduling" },
+      { name: "Microsoft Excel", level: "Expert", details: "Advanced QTO modeling, unit price analysis formulas, BoQ automation, and backup volume registers", categoryTag: "Data & Modeling" }
     ]
   },
   {
-    category: "Bahasa & Komunikasi Global",
-    description: "Kemampuan komunikasi tersertifikasi untuk koordinasi lokal maupun tim ekspatriat/internasional.",
+    category: "Languages & Global Communication",
+    description: "Certified multi-lingual communication for local jobsite leadership and international expat collaboration.",
     items: [
-      { name: "Bahasa Indonesia", level: "Native", details: "Komunikasi profesional, pelaporan resmi dinas, dan koordinasi lapangan", categoryTag: "Native" },
-      { name: "Bahasa Jepang (日本語)", level: "Menengah (Bilingual)", details: "JFT-Basic Skor 250 & JLPT N4 Skor 165 (Tersertifikasi JAC SSW Jepang)", categoryTag: "Tersertifikasi" },
-      { name: "Bahasa Inggris", level: "Working Proficiency", details: "TOEIC Skor 640 — Dokumentasi teknis, proposal tender, dan kolaborasi tim global", categoryTag: "Tersertifikasi" }
+      { name: "Indonesian (Bahasa Indonesia)", level: "Native", details: "Native command in engineering reporting, government liaison, and site workforce leadership", categoryTag: "Native" },
+      { name: "Japanese (日本語)", level: "Intermediate (Bilingual)", details: "JFT-Basic Score: 250 & JLPT N4 Score: 165 (JAC SSW Certified for Japan Construction)", categoryTag: "Certified" },
+      { name: "English", level: "Working Proficiency", details: "TOEIC Score: 640 — Technical engineering documentation, tender proposals, and international collaboration", categoryTag: "Certified" }
     ]
   },
   {
-    category: "Karakter Profesional & Kepemimpinan Lapangan",
-    description: "Karakter kerja, ketelitian, dan disiplin lapangan yang terasah langsung di tapak proyek.",
+    category: "Professional Discipline & Jobsite Leadership",
+    description: "Work ethic, uncompromising precision, and field-tested leadership developed on high-demand construction sites.",
     items: [
-      { name: "Adaptabilitas & Pemecahan Masalah Lapangan", details: "Cepat merespons perbedaan kondisi aktual tanah atau perubahan desain dengan solusi teknis tepat", categoryTag: "Mindset" },
-      { name: "Ketelitian & Presisi Tinggi", details: "Nol toleransi terhadap kekeliruan hitung kuantitas dan potongan rebar hingga milimeter", categoryTag: "Presisi" },
-      { name: "Integritas & Akuntabilitas Teknis", details: "Kepatuhan penuh pada checklist mutu, standar SNI, dan prosedur K3/HSE di tapak proyek", categoryTag: "Integritas" },
-      { name: "Kerja Sama Tim Multidisiplin", details: "Komunikator lugas yang menyatukan mandor/pekerja lapangan, konsultan, dan pihak pemilik proyek", categoryTag: "Kolaborasi" }
+      { name: "Field Adaptability & Problem Solving", details: "Swiftly resolving discrepancies between blueprint drawings and actual ground conditions with sound engineering solutions", categoryTag: "Mindset" },
+      { name: "Meticulous Precision & Zero Defect", details: "Zero tolerance for quantity calculation errors, accounting for rebar cuts down to millimeters", categoryTag: "Precision" },
+      { name: "Technical Integrity & Accountability", details: "Strict compliance with safety checklists, SNI engineering codes, and jobsite HSE regulations", categoryTag: "Integrity" },
+      { name: "Cross-Disciplinary Team Collaboration", details: "Articulate communicator effectively bridging foremen, specialty trades, consultant engineers, and project owners", categoryTag: "Collaboration" }
     ]
   }
 ];

@@ -161,7 +161,7 @@ export const ContactSection: React.FC = () => {
                   className="btn-primary w-full text-center flex items-center justify-center gap-2"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>UNDUH RESUME LENGKAP (ENGLISH .DOCX)</span>
+                  <span>DOWNLOAD COMPLETE CV (ENGLISH .DOCX)</span>
                 </a>
                 <a
                   href="/CV_Reza_Sepdide_Profesional.docx"
@@ -169,7 +169,7 @@ export const ContactSection: React.FC = () => {
                   className="btn-secondary w-full text-center flex items-center justify-center gap-2"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>UNDUH RESUME (BAHASA INDONESIA .DOCX)</span>
+                  <span>DOWNLOAD PROFESSIONAL CV (INDONESIAN .DOCX)</span>
                 </a>
               </div>
             </div>

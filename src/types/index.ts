@@ -60,6 +60,8 @@ export interface Education {
   field: string;
   period: string;
   location: string;
+  status?: string;
+  isOngoing?: boolean;
   gpa?: string;
   details?: string[];
   transcriptUrl?: string;

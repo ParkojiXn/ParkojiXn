@@ -38,7 +38,7 @@ export const CorePrinciples: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-10 gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // CARA KERJA &amp; PRINSIP PROFESIONAL
+              // ENGINEERING METHODOLOGY &amp; WORK ETHIC
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
               HOW I WORK &amp; PERSONAL ETHIC
@@ -46,7 +46,7 @@ export const CorePrinciples: React.FC = () => {
           </div>
 
           <p className="text-sm text-[#525252] max-w-lg font-body leading-relaxed">
-            Rekayasa teknik sipil bukan sekadar angka di atas kertas kalkulasi, melainkan tanggung jawab moral atas keselamatan pengguna bangunan, efisiensi modal, dan ketahanan konstruksi di lapangan.
+            Civil engineering is far more than numbers on a calculation spreadsheet; it is an uncompromising obligation toward human safety, capital efficiency, and long-term structural durability.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export const CorePrinciples: React.FC = () => {
 
               {/* Pillar Footer */}
               <div className="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#737373]">
-                <span>STANDAR KERJA</span>
+                <span>CORE BENCHMARK</span>
                 <span className="text-[#0A0A0A] font-bold">NON-NEGOTIABLE</span>
               </div>
             </div>
@@ -103,10 +103,10 @@ export const CorePrinciples: React.FC = () => {
               // BEHIND THE BLUEPRINTS
             </span>
             <h3 className="font-display text-xl sm:text-2xl text-[#FAFAFA]">
-              INTEGRITAS LAPANGAN &amp; KOMUNIKASI MULTI-KULTUR
+              JOBSITE INTEGRITY &amp; CROSS-CULTURAL COLLABORATION
             </h3>
             <p className="text-sm text-[#A3A3A3] font-body leading-relaxed">
-              Di luar pemodelan BIM Revit dan perhitungan volume BoQ, saya mengutamakan komunikasi yang jelas dengan mandor lapangan, subkontraktor, dan pengawas. Penguasaan bahasa Jepang (JLPT N4 &amp; SSW) serta Inggris (TOEIC 640) memperluas adaptabilitas saya dalam standar kerja bertaraf internasional.
+              Beyond BIM Revit modeling and mathematical BoQ audits, I prioritize transparent, direct communication with foremen, specialty subcontractors, and project owners. Certified fluency in Japanese (JLPT N4 / SSW Japan Construction) and English (TOEIC 640) enables seamless collaboration across international and multicultural engineering environments.
             </p>
           </div>
 
@@ -114,7 +114,7 @@ export const CorePrinciples: React.FC = () => {
             href="#contact"
             className="btn-primary !bg-[#FAFAFA] !text-[#0A0A0A] hover:!bg-[#EF4444] hover:!text-[#FAFAFA] whitespace-nowrap flex items-center gap-2 self-start lg:self-center"
           >
-            <span>HUBUNGI SAYA</span>
+            <span>GET IN TOUCH DIRECTLY</span>
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

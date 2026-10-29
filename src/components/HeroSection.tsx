@@ -13,7 +13,7 @@ export const HeroSection: React.FC = () => {
         {/* Top Meta Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#0A0A0A] pb-4 mb-10">
           <div className="flex items-center gap-3">
-            <span className="text-overline text-[#EF4444] font-bold">DOSSIER PROFESIONAL</span>
+            <span className="text-overline text-[#EF4444] font-bold">PROFESSIONAL DOSSIER</span>
             <span className="text-[#A3A3A3]">•</span>
             <span className="text-xs font-mono text-[#525252] flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
@@ -41,8 +41,8 @@ export const HeroSection: React.FC = () => {
                 // CIVIL ENGINEER &amp; CONSTRUCTION PLANNER
               </span>
               <h1 className="text-display text-[#0A0A0A]">
-                PRESISI REKAYASA, <br className="hidden sm:inline" />
-                <span className="text-[#0A0A0A] underline decoration-[#EF4444] decoration-[6px]">ESTIMASI BIAYA REALISTIS</span>, &amp; DISIPLIN LAPANGAN.
+                ENGINEERING RIGOR, <br className="hidden sm:inline" />
+                <span className="text-[#0A0A0A] underline decoration-[#EF4444] decoration-[6px]">REALISTIC COST ESTIMATION</span>, &amp; JOBSITE DISCIPLINE.
               </h1>
             </div>
 
@@ -64,7 +64,7 @@ export const HeroSection: React.FC = () => {
                 href="#projects"
                 className="btn-primary"
               >
-                <span>EKSPLORASI PORTOFOLIO &amp; DOKUMEN</span>
+                <span>EXPLORE DOSSIER &amp; BLUEPRINTS</span>
                 <ArrowDown className="w-4 h-4" />
               </a>
 
@@ -72,7 +72,7 @@ export const HeroSection: React.FC = () => {
                 href="#contact"
                 className="btn-secondary"
               >
-                <span>HUBUNGI REZA</span>
+                <span>GET IN TOUCH WITH REZA</span>
                 <Mail className="w-4 h-4" />
               </a>
 
@@ -81,7 +81,7 @@ export const HeroSection: React.FC = () => {
                   href="/CV_Reza_Sepdide_English.docx"
                   download
                   className="btn-secondary !border-[#0A0A0A] !text-[#0A0A0A] hover:!bg-[#0A0A0A] hover:!text-[#FAFAFA]"
-                  title="Unduh CV Terbaru (English)"
+                  title="Download Latest CV (English)"
                 >
                   <Download className="w-4 h-4 text-[#EF4444]" />
                   <span>CV ENGLISH (.DOCX)</span>
@@ -91,7 +91,7 @@ export const HeroSection: React.FC = () => {
                   href="/CV_Reza_Sepdide_Profesional.docx"
                   download
                   className="btn-secondary !border-[#525252] !text-[#525252] hover:!border-[#0A0A0A] hover:!text-[#0A0A0A]"
-                  title="Unduh CV Profesional (Bahasa Indonesia)"
+                  title="Download Professional CV (Indonesian)"
                 >
                   <FileText className="w-4 h-4" />
                   <span>CV INDO (.DOCX)</span>
@@ -112,16 +112,16 @@ export const HeroSection: React.FC = () => {
                 />
 
                 <div className="absolute bottom-0 left-0 right-0 bg-[#0A0A0A] text-[#FAFAFA] p-2 text-center text-xs font-mono">
-                  REZA SEPDIDE // D3 TEKNIK SIPIL PNP
+                  REZA SEPDIDE // D3 CIVIL ENGINEERING PNP
                 </div>
               </div>
 
               {/* Verified badge tag */}
               <div className="mt-3 pt-3 border-t-2 border-[#E5E5E5] flex items-center justify-between text-xs font-mono">
-                <span className="text-[#525252]">AKREDITASI NEGARA:</span>
+                <span className="text-[#525252]">STATE ACCREDITATION:</span>
                 <span className="font-bold text-[#0A0A0A] flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A]" />
-                  BNSP JENJANG 5 (MADYA)
+                  BNSP LEVEL 5 (SUPERVISOR)
                 </span>
               </div>
             </div>
@@ -158,8 +158,8 @@ export const HeroSection: React.FC = () => {
                 </a>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-[#525252]">LOKASI:</span>
-                <span className="text-[#0A0A0A] font-bold">Padang &amp; Siap Relokasi</span>
+                <span className="text-[#525252]">LOCATION:</span>
+                <span className="text-[#0A0A0A] font-bold">Padang &amp; Open to Relocation</span>
               </div>
             </div>
           </div>

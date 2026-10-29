@@ -49,15 +49,15 @@ export const FeaturedProjects: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-10 gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // REKAM JEJAK &amp; PORTOFOLIO TEKNIS
+              // VERIFIED ENGINEERING PORTFOLIO
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              PROYEK &amp; STUDI REKAYASA TEKNIS
+              FEATURED ENGINEERING PROJECTS
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Dokumentasi nyata gambar kerja Detailed Engineering Design (DED), Rencana Anggaran Biaya (RAB), pemodelan BIM Revit, pengawasan mutu lapangan, dan Kurva S.
+            Authentic field documentation across Detailed Engineering Design (DED), Bills of Quantities (BoQ), BIM Revit modeling, on-site quality control, and S-Curve scheduling.
           </p>
         </div>
 
@@ -111,63 +111,39 @@ export const FeaturedProjects: React.FC = () => {
                     <div className="absolute top-3 right-3">
                       <span className="bg-[#EF4444] text-[#FAFAFA] px-2 py-0.5 text-[10px] font-mono font-bold flex items-center gap-1 shadow-sm">
                         <ImageIcon className="w-3 h-3" />
-                        {project.mediaGallery.length} LAMPIRAN
+                        {project.mediaGallery.length} ATTACHMENTS
                       </span>
                     </div>
                   )}
 
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#E5E5E5]">
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FAFAFA]">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3.5 h-3.5 text-[#EF4444]" />
                       {project.period}
                     </span>
-                    <span className="flex items-center gap-1 truncate max-w-[55%]">
-                      <MapPin className="w-3.5 h-3.5 text-[#A3A3A3] flex-shrink-0" />
-                      <span className="truncate">{project.location}</span>
+                    <span className="flex items-center gap-1 text-[#A3A3A3] truncate max-w-[150px]">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {project.location}
                     </span>
                   </div>
                 </div>
 
-                {/* Content Body */}
+                {/* Content */}
                 <div className="p-5">
-                  {/* Title */}
-                  <h3 className="font-display text-lg text-[#0A0A0A] leading-tight mb-2 group-hover:text-[#EF4444] transition-colors line-clamp-2">
+                  <span className="text-[10px] font-mono tracking-wider text-[#525252] uppercase block mb-1">
+                    ROLE: {project.role}
+                  </span>
+                  
+                  <h3 className="font-display text-lg text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors leading-snug line-clamp-2 mb-2">
                     {project.title}
                   </h3>
 
-                  {/* Role & Client */}
-                  <div className="text-xs font-mono text-[#525252] mb-3 space-y-1">
-                    <div className="flex items-center gap-1.5 text-[#0A0A0A] font-bold">
-                      <Building className="w-3.5 h-3.5 text-[#EF4444] flex-shrink-0" />
-                      <span className="truncate">{project.role}</span>
-                    </div>
-                    <div className="text-[11px] text-[#737373] truncate">
-                      Instansi/Klien: {project.clientOrInstitution}
-                    </div>
-                  </div>
-
-                  {/* Summary */}
-                  <p className="text-sm text-[#525252] mb-4 font-body line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-[#525252] font-body line-clamp-3 mb-4 leading-relaxed">
                     {project.summary}
                   </p>
 
-                  {/* Key Metrics / Highlights */}
-                  <div className="bg-[#F5F5F5] border border-[#E5E5E5] p-3 mb-4 space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A0A0A] font-bold block border-b border-[#E5E5E5] pb-1">
-                      INDIKATOR KINERJA TEKNIS
-                    </span>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      {project.metrics.slice(0, 2).map((m, idx) => (
-                        <div key={idx}>
-                          <span className="text-[10px] text-[#737373] block font-mono leading-tight">{m.label}:</span>
-                          <span className="font-bold text-[#0A0A0A] font-mono block truncate">{m.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Tech Badges */}
-                  <div className="flex flex-wrap gap-1 mb-2">
+                  {/* Tech stack mini tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#E5E5E5]">
                     {project.techStack.slice(0, 3).map((tech, idx) => (
                       <span
                         key={idx}
@@ -191,7 +167,7 @@ export const FeaturedProjects: React.FC = () => {
                   type="button"
                   className="w-full border-t-2 border-[#0A0A0A] pt-3 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors"
                 >
-                  <span>LIHAT DETAIL &amp; DOKUMEN TEKNIS</span>
+                  <span>VIEW DETAILS &amp; TECHNICAL DOSSIER</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -207,7 +183,7 @@ export const FeaturedProjects: React.FC = () => {
               <button
                 onClick={() => setActiveModalProject(null)}
                 className="absolute top-4 right-4 p-2 bg-[#0A0A0A] text-[#FAFAFA] hover:bg-[#EF4444] transition-colors z-10"
-                aria-label="Tutup Detail Proyek"
+                aria-label="Close Project Details"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -215,19 +191,19 @@ export const FeaturedProjects: React.FC = () => {
               {/* Modal Header */}
               <div className="border-b-2 border-[#0A0A0A] pb-4 mb-6 pr-12">
                 <span className="text-overline text-[#EF4444] font-bold block">
-                  {activeModalProject.category} // DOSSIER TEKNIS PROYEK
+                  {activeModalProject.category} // TECHNICAL PROJECT DOSSIER
                 </span>
                 <h3 className="font-display text-xl sm:text-2xl text-[#0A0A0A] mt-1">
                   {activeModalProject.title}
                 </h3>
                 <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#525252] mt-2">
-                  <span>Peran: <strong className="text-[#0A0A0A]">{activeModalProject.role}</strong></span>
+                  <span>Role: <strong className="text-[#0A0A0A]">{activeModalProject.role}</strong></span>
                   <span>•</span>
-                  <span>Klien / Instansi: <strong className="text-[#0A0A0A]">{activeModalProject.clientOrInstitution}</strong></span>
+                  <span>Client / Institution: <strong className="text-[#0A0A0A]">{activeModalProject.clientOrInstitution}</strong></span>
                   <span>•</span>
-                  <span>Periode: <strong className="text-[#0A0A0A]">{activeModalProject.period}</strong></span>
+                  <span>Period: <strong className="text-[#0A0A0A]">{activeModalProject.period}</strong></span>
                   <span>•</span>
-                  <span>Lokasi: <strong className="text-[#0A0A0A]">{activeModalProject.location}</strong></span>
+                  <span>Location: <strong className="text-[#0A0A0A]">{activeModalProject.location}</strong></span>
                 </div>
               </div>
 
@@ -237,7 +213,7 @@ export const FeaturedProjects: React.FC = () => {
                   <div className="flex items-center justify-between border-b border-[#333333] pb-2 mb-3">
                     <span className="text-xs font-mono font-bold tracking-wider text-[#EF4444] flex items-center gap-1.5 uppercase">
                       <ImageIcon className="w-4 h-4" />
-                      LAMPIRAN GAMBAR KERJA, DED &amp; BUKTI LAPANGAN ({activeImageIndex + 1} / {activeModalProject.mediaGallery.length})
+                      ATTACHED BLUEPRINTS, DED &amp; FIELD EVIDENCE ({activeImageIndex + 1} / {activeModalProject.mediaGallery.length})
                     </span>
                     <a
                       href={activeModalProject.mediaGallery[activeImageIndex].url}
@@ -245,7 +221,7 @@ export const FeaturedProjects: React.FC = () => {
                       rel="noopener noreferrer"
                       className="text-[11px] font-mono text-[#A3A3A3] hover:text-[#FAFAFA] flex items-center gap-1 underline"
                     >
-                      Buka Gambar Asli <ExternalLink className="w-3 h-3" />
+                      View Full Image <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
 
@@ -263,14 +239,14 @@ export const FeaturedProjects: React.FC = () => {
                         <button
                           onClick={handlePrevImage}
                           className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-[#0A0A0A]/80 hover:bg-[#EF4444] text-[#FAFAFA] transition-colors"
-                          aria-label="Gambar Sebelumnya"
+                          aria-label="Previous Image"
                         >
                           <ChevronLeft className="w-5 h-5" />
                         </button>
                         <button
                           onClick={handleNextImage}
                           className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[#0A0A0A]/80 hover:bg-[#EF4444] text-[#FAFAFA] transition-colors"
-                          aria-label="Gambar Berikutnya"
+                          aria-label="Next Image"
                         >
                           <ChevronRight className="w-5 h-5" />
                         </button>
@@ -278,32 +254,30 @@ export const FeaturedProjects: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Caption */}
+                  {/* Caption & Title */}
                   <div className="mt-3">
-                    <h5 className="font-mono text-sm font-bold text-[#FAFAFA]">
+                    <h4 className="font-mono text-sm font-bold text-[#FAFAFA]">
                       {activeModalProject.mediaGallery[activeImageIndex].title}
-                    </h5>
-                    {activeModalProject.mediaGallery[activeImageIndex].caption && (
-                      <p className="text-xs text-[#A3A3A3] font-body mt-1 leading-relaxed">
-                        {activeModalProject.mediaGallery[activeImageIndex].caption}
-                      </p>
-                    )}
+                    </h4>
+                    <p className="text-xs text-[#A3A3A3] font-body mt-1">
+                      {activeModalProject.mediaGallery[activeImageIndex].caption}
+                    </p>
                   </div>
 
-                  {/* Thumbnail Strip */}
+                  {/* Thumbnails strip */}
                   {activeModalProject.mediaGallery.length > 1 && (
-                    <div className="flex gap-2 mt-4 overflow-x-auto pb-2 scrollbar-thin">
-                      {activeModalProject.mediaGallery.map((img, idx) => (
+                    <div className="flex gap-2 mt-4 overflow-x-auto pb-1">
+                      {activeModalProject.mediaGallery.map((media, idx) => (
                         <button
                           key={idx}
                           onClick={() => setActiveImageIndex(idx)}
-                          className={`relative flex-shrink-0 w-20 h-14 border-2 overflow-hidden transition-all ${
-                            activeImageIndex === idx ? 'border-[#EF4444] scale-105' : 'border-[#333333] opacity-60 hover:opacity-100'
+                          className={`relative w-16 h-12 flex-shrink-0 border-2 overflow-hidden ${
+                            activeImageIndex === idx ? 'border-[#EF4444]' : 'border-[#333333] opacity-60'
                           }`}
                         >
                           <img
-                            src={img.url}
-                            alt={img.title}
+                            src={media.url}
+                            alt={media.title}
                             className="w-full h-full object-cover"
                           />
                         </button>
@@ -318,7 +292,7 @@ export const FeaturedProjects: React.FC = () => {
                 <div className="mb-8 border-2 border-[#0A0A0A] bg-[#F5F5F5] p-4">
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-3 flex items-center gap-1.5">
                     <FileText className="w-4 h-4 text-[#EF4444]" />
-                    ARSIP DOKUMEN &amp; INSTRUMEN RESMI PROYEK (PDF)
+                    OFFICIAL PROJECT DOCUMENTS &amp; ARCHIVES (PDF)
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {activeModalProject.documents.map((doc, idx) => (
@@ -333,7 +307,7 @@ export const FeaturedProjects: React.FC = () => {
                           }
                         }}
                         className="p-3 bg-[#FAFAFA] border border-[#D4D4D4] hover:border-[#0A0A0A] hover:shadow transition-all flex items-center justify-between group text-left cursor-pointer"
-                        title="Buka Dokumen di Modal PDF"
+                        title="Open Document in PDF Modal"
                       >
                         <div className="flex items-center gap-2.5 min-w-0 pr-2">
                           <span className="p-1.5 bg-[#0A0A0A] text-[#FAFAFA] text-[10px] font-mono font-bold flex-shrink-0">
@@ -345,7 +319,7 @@ export const FeaturedProjects: React.FC = () => {
                             </span>
                             {doc.size && (
                               <span className="text-[10px] text-[#737373] font-mono block">
-                                Ukuran Berkas: {doc.size}
+                                File Size: {doc.size}
                               </span>
                             )}
                           </div>
@@ -361,7 +335,7 @@ export const FeaturedProjects: React.FC = () => {
               <div className="space-y-6">
                 <div>
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                    RINGKASAN EKSEKUTIF &amp; TUJUAN PROYEK
+                    EXECUTIVE SUMMARY &amp; PROJECT SCOPE
                   </h4>
                   <p className="text-sm font-body text-[#0A0A0A] leading-relaxed bg-[#F5F5F5] p-4 border border-[#E5E5E5]">
                     {activeModalProject.summary}
@@ -371,7 +345,7 @@ export const FeaturedProjects: React.FC = () => {
                 {/* Technical Solutions & Methodology */}
                 <div>
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                    METODOLOGI TEKNIS &amp; PENANGANAN DI LAPANGAN
+                    TECHNICAL METHODOLOGY &amp; SITE EXECUTION
                   </h4>
                   <ul className="space-y-2.5 text-sm text-[#0A0A0A]">
                     {activeModalProject.architectureAndSolution.map((sol, idx) => (
@@ -386,7 +360,7 @@ export const FeaturedProjects: React.FC = () => {
                 {/* Measured Metrics */}
                 <div>
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                    TOLOK UKUR KINERJA &amp; METRIK KUALITAS
+                    PERFORMANCE BENCHMARKS &amp; QUALITY METRICS
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {activeModalProject.metrics.map((m, idx) => (
@@ -402,7 +376,7 @@ export const FeaturedProjects: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                   <div>
                     <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                      PRODUK LUARAN &amp; DOKUMEN DISERAHKAN
+                      KEY DELIVERABLES &amp; SUBMITTALS
                     </h4>
                     <ul className="space-y-1.5 text-xs font-mono text-[#525252]">
                       {activeModalProject.deliverables.map((d, idx) => (
@@ -416,7 +390,7 @@ export const FeaturedProjects: React.FC = () => {
 
                   <div>
                     <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
-                      PERANGKAT LUNAK &amp; METODE REKAYASA
+                      ENGINEERING SOFTWARE &amp; METHODS APPLIED
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
                       {activeModalProject.techStack.map((tech, idx) => (
@@ -438,7 +412,7 @@ export const FeaturedProjects: React.FC = () => {
                   onClick={() => setActiveModalProject(null)}
                   className="btn-primary"
                 >
-                  TUTUP DOSSIER
+                  CLOSE DOSSIER
                 </button>
               </div>
             </div>

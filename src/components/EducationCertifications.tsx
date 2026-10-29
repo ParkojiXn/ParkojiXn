@@ -8,7 +8,7 @@ import { usePdfModal } from '../context/PdfModalContext';
 export const EducationCertifications: React.FC = () => {
   const { openPdf } = usePdfModal();
 
-  // Primary flagship license (SKK BNSP Jenjang 5)
+  // Primary flagship license (SKK BNSP Level 5)
   const flagshipCert = certifications[0];
   // Remaining professional and academic certifications
   const remainingCerts = certifications.slice(1);
@@ -18,17 +18,17 @@ export const EducationCertifications: React.FC = () => {
       case 0: // Revit
         return 'BIM & CAD';
       case 1: // SSW Japan
-        return 'INTERNASIONAL';
+        return 'INTERNATIONAL';
       case 2: // JFT/JLPT
-        return 'BAHASA JEPANG';
+        return 'JAPANESE';
       case 3: // TOEIC
-        return 'BAHASA INGGRIS';
+        return 'ENGLISH';
       case 4: // PKL
-        return 'INDUSTRI EPC';
-      case 5: // Transkrip
-        return 'AKADEMIK';
+        return 'INDUSTRIAL EPC';
+      case 5: // Transcript
+        return 'ACADEMIC';
       default:
-        return 'SERTIFIKASI';
+        return 'CERTIFICATION';
     }
   };
 
@@ -39,24 +39,24 @@ export const EducationCertifications: React.FC = () => {
         <div className="border-b-2 border-[#0A0A0A] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // KREDENSIAL AKADEMIK &amp; LISENSI RESMI
+              // ACADEMIC CREDENTIALS &amp; OFFICIAL LICENSING
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              PENDIDIKAN &amp; LISENSI SERTIFIKASI
+              EDUCATION &amp; PROFESSIONAL LICENSING
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-lg font-body leading-relaxed">
-            Fondasi keilmuan teknik sipil berpredikat Dengan Pujian (IPK 3,72) yang diperkuat lisensi negara BNSP Jenjang 5, kemahiran BIM Revit, serta sertifikasi standar konstruksi Jepang.
+            Foundational civil engineering education graduated with High Honors (GPA 3.72), reinforced by national BNSP Level 5 site supervisor licensing, BIM Revit mastery, and Japanese construction industry qualifications.
           </p>
         </div>
 
-        {/* 1. Riwayat Pendidikan Formal (Featured Academic Dossier) */}
+        {/* 1. Formal Higher Education (Featured Academic Dossier) */}
         <div>
           <div className="flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-3 mb-6">
             <GraduationCap className="w-5 h-5 text-[#EF4444]" />
             <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A]">
-              RIWAYAT PENDIDIKAN FORMAL
+              FORMAL HIGHER EDUCATION
             </h3>
           </div>
 
@@ -80,17 +80,26 @@ export const EducationCertifications: React.FC = () => {
                     </span>
                   </div>
 
-                  <span className="text-[11px] font-bold font-mono text-[#16A34A] flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    STATUS: LULUS DENGAN PUJIAN
-                  </span>
+                  {edu.isOngoing ? (
+                    <span className="text-[11px] font-bold font-mono text-[#EF4444] bg-[#FEF2F2] px-2.5 py-1 border border-[#EF4444] flex items-center gap-1.5">
+                      <span className="w-2 h-2 bg-[#EF4444] inline-block animate-pulse" />
+                      STATUS: CURRENTLY ACTIVE / ONGOING (IN PROGRESS)
+                    </span>
+                  ) : (
+                    <span className="text-[11px] font-bold font-mono text-[#16A34A] flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      {edu.status || 'STATUS: GRADUATED'}
+                    </span>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Left: Program & Honors */}
                   <div className="lg:col-span-7 space-y-3">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#EF4444] font-bold">
-                      // PENDIDIKAN TINGGI VOKASI TEKNIK SIPIL
+                      {edu.isOngoing
+                        ? '// ADVANCED VOCATIONAL DEGREE (IN PROGRESS)'
+                        : '// COMPLETED HIGHER EDUCATION IN CIVIL ENGINEERING'}
                     </span>
                     <h4 className="font-display text-xl sm:text-2xl text-[#0A0A0A] leading-tight">
                       {edu.degree} — {edu.field}
@@ -102,7 +111,7 @@ export const EducationCertifications: React.FC = () => {
                     {edu.gpa && (
                       <div className="pt-2 flex flex-wrap items-center gap-3">
                         <div className="bg-[#0A0A0A] text-[#FAFAFA] px-3.5 py-1.5 text-xs font-mono font-bold">
-                          IPK KELULUSAN: {edu.gpa} / 4.00
+                          GRADUATION GPA: {edu.gpa} (HIGH HONORS)
                         </div>
                         {edu.transcriptUrl && (
                           <button
@@ -110,14 +119,14 @@ export const EducationCertifications: React.FC = () => {
                             onClick={() =>
                               openPdf(
                                 edu.transcriptUrl!,
-                                `Transkrip Nilai Akademik - ${edu.institution} (${edu.degree} ${edu.field})`
+                                `Official Academic Transcript - ${edu.institution} (${edu.degree} ${edu.field})`
                               )
                             }
                             className="inline-flex items-center gap-1.5 bg-[#EF4444] text-[#FAFAFA] hover:bg-[#DC2626] px-3.5 py-1.5 text-xs font-mono font-bold transition-colors cursor-pointer"
-                            title="Buka Transkrip Nilai Resmi"
+                            title="View Official Academic Transcript"
                           >
                             <FileText className="w-3.5 h-3.5" />
-                            <span>LIHAT TRANSKRIP (PDF)</span>
+                            <span>VIEW OFFICIAL TRANSCRIPT (PDF)</span>
                           </button>
                         )}
                       </div>
@@ -127,7 +136,9 @@ export const EducationCertifications: React.FC = () => {
                   {/* Right: Key Academic Focus Areas */}
                   <div className="lg:col-span-5 bg-[#F5F5F5] border border-[#E5E5E5] p-4 sm:p-5">
                     <span className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#0A0A0A] block mb-2.5">
-                      FOKUS STUDI &amp; KOMPETENSI REKAYASA:
+                      {edu.isOngoing
+                        ? 'ADVANCED CONCENTRATION & RESEARCH FOCUS:'
+                        : 'CORE CURRICULUM & ENGINEERING COMPETENCIES:'}
                     </span>
                     {edu.details && (
                       <ul className="space-y-2 text-xs font-body text-[#525252]">
@@ -146,33 +157,33 @@ export const EducationCertifications: React.FC = () => {
           </div>
         </div>
 
-        {/* 2. Lisensi & Sertifikasi Profesional (7 Total) */}
+        {/* 2. Professional Licensing & Certifications (7 Total) */}
         <div>
           {/* Subheader */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-[#0A0A0A] pb-3 mb-6 gap-2">
             <div className="flex items-center gap-2">
               <Award className="w-5 h-5 text-[#EF4444]" />
               <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A]">
-                LISENSI SERTIFIKASI PROFESIONAL ({certifications.length})
+                PROFESSIONAL LICENSES &amp; CERTIFICATIONS ({certifications.length})
               </h3>
             </div>
             <span className="text-xs font-mono text-[#525252]">
-              DOKUMEN ASLI DAPAT DITAMPILKAN DALAM MODAL PDF
+              ORIGINAL CREDENTIALS VIEWABLE IN SECURE PDF MODAL
             </span>
           </div>
 
           <div className="space-y-6">
-            {/* Flagship Card: SKK BNSP Jenjang 5 (Full Width Highlight) */}
+            {/* Flagship Card: SKK BNSP Level 5 (Full Width Highlight) */}
             {flagshipCert && (
               <div className="card-editorial p-6 sm:p-7 border-2 border-[#0A0A0A] bg-[#FFFFFF] shadow-sm relative overflow-hidden group">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5E5E5] pb-3 mb-4">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="px-2.5 py-1 bg-[#EF4444] text-[#FAFAFA] text-[11px] font-mono font-bold tracking-wider uppercase flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5" />
-                      LISENSI UTAMA NEGARA
+                      PRIMARY STATE LICENSE
                     </span>
                     <span className="px-2.5 py-1 bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono font-bold tracking-wider uppercase">
-                      BNSP JENJANG 5 (MADYA)
+                      BNSP LEVEL 5 (SUPERVISOR)
                     </span>
                   </div>
 
@@ -188,7 +199,7 @@ export const EducationCertifications: React.FC = () => {
                       {flagshipCert.name}
                     </h4>
                     <p className="text-xs text-[#525252] font-body break-words">
-                      Penerbit Resmi:{' '}
+                      Official Issuer:{' '}
                       <strong className="text-[#0A0A0A]">{flagshipCert.issuer}</strong>
                     </p>
                     <p className="text-xs text-[#737373] font-body leading-relaxed pt-1 break-words">
@@ -206,11 +217,11 @@ export const EducationCertifications: React.FC = () => {
                         )
                       }
                       className="w-full py-3 px-4 border-2 border-[#0A0A0A] bg-[#0A0A0A] text-[#FAFAFA] hover:bg-[#EF4444] hover:border-[#EF4444] text-xs font-mono font-bold flex items-center justify-between transition-colors shadow cursor-pointer"
-                      title="Buka Dokumen PDF Resmi BNSP"
+                      title="View Official BNSP Certificate in PDF"
                     >
                       <span className="flex items-center gap-2 truncate">
                         <FileText className="w-4 h-4 text-[#FAFAFA]" />
-                        <span className="truncate">BUKA SERTIFIKAT BNSP (PDF)</span>
+                        <span className="truncate">VIEW BNSP CERTIFICATE (PDF)</span>
                       </span>
                       <ExternalLink className="w-4 h-4 flex-shrink-0" />
                     </button>
@@ -234,7 +245,7 @@ export const EducationCertifications: React.FC = () => {
                       </span>
                       <span className="text-[11px] font-mono font-bold text-[#16A34A] flex items-center gap-1 flex-shrink-0">
                         <CheckCircle2 className="w-3.5 h-3.5" />
-                        <span>TERVERIFIKASI</span>
+                        <span>VERIFIED</span>
                       </span>
                     </div>
 
@@ -245,14 +256,14 @@ export const EducationCertifications: React.FC = () => {
 
                     {/* Issuer */}
                     <p className="text-xs text-[#525252] font-body leading-relaxed break-words">
-                      Penerbit: <strong className="text-[#0A0A0A]">{cert.issuer}</strong>
+                      Issuer: <strong className="text-[#0A0A0A]">{cert.issuer}</strong>
                     </p>
 
                     {/* Score / Level Highlight Panel (With natural wrapping, never overflows) */}
                     {cert.levelOrScore && (
                       <div className="p-2.5 bg-[#F5F5F5] border-l-2 border-[#EF4444] text-xs font-mono text-[#0A0A0A] break-words">
                         <span className="text-[10px] text-[#737373] block uppercase tracking-wider mb-0.5">
-                          KUALIFIKASI / SKOR:
+                          QUALIFICATION / SCORE:
                         </span>
                         <span className="font-bold block break-words leading-tight">
                           {cert.levelOrScore}
@@ -280,11 +291,11 @@ export const EducationCertifications: React.FC = () => {
                           )
                         }
                         className="w-full py-2.5 px-3 border border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] text-xs font-mono font-bold flex items-center justify-between gap-2 transition-colors group-hover:border-[#EF4444] cursor-pointer"
-                        title="Buka Dokumen di Modal PDF"
+                        title="View Document in PDF Modal"
                       >
                         <span className="flex items-center gap-1.5 min-w-0 truncate">
                           <FileText className="w-3.5 h-3.5 text-[#EF4444] flex-shrink-0" />
-                          <span className="truncate">BUKA DOKUMEN (PDF)</span>
+                          <span className="truncate">VIEW DOCUMENT (PDF)</span>
                         </span>
                         <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
                       </button>
