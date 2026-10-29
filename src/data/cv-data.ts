@@ -144,7 +144,7 @@ export const featuredProjects: Project[] = [
       },
       {
         name: "Comprehensive Bill of Quantities (BoQ/RAB)",
-        url: "/portfolio/sdn-19-kuamang/RAB.pdf",
+        url: "/portfolio/sdn-19-kuamang/rab.pdf",
         format: "PDF",
         size: "426 KB"
       },
@@ -243,13 +243,13 @@ export const featuredProjects: Project[] = [
     documents: [
       {
         name: "Official Master Execution Schedule (PDF)",
-        url: "/portfolio/slbn-2-pariaman/TS.pdf",
+        url: "/portfolio/slbn-2-pariaman/ts.pdf",
         format: "PDF",
         size: "806 KB"
       },
       {
         name: "Revitalization Cost Budget Recapitulation (PDF)",
-        url: "/portfolio/slbn-2-pariaman/REKAP.pdf",
+        url: "/portfolio/slbn-2-pariaman/rekap.pdf",
         format: "PDF",
         size: "468 KB"
       }
@@ -685,7 +685,7 @@ export const featuredProjects: Project[] = [
       },
       {
         title: "Bending Moment & Shear Envelope Diagrams",
-        url: "/portfolio/pra-proyek-sap2000/momen,-geser.png",
+        url: "/portfolio/pra-proyek-sap2000/momen-geser.png",
         caption: "Distribution of peak bending moments and shear forces used to determine longitudinal and tie reinforcement ratios."
       },
       {
@@ -695,7 +695,7 @@ export const featuredProjects: Project[] = [
       },
       {
         title: "Preliminary Structural Sizing Calculations",
-        url: "/portfolio/pra-proyek-sap2000/primery-design.png",
+        url: "/portfolio/pra-proyek-sap2000/primary-design.png",
         caption: "Preliminary stiffness and cross-sectional sizing calculations for structural beams and columns before numerical simulation."
       },
       {
@@ -769,7 +769,7 @@ export const workExperiences: Experience[] = [
     ],
     documents: [
       { name: "SDN 19 Kuamang S-Curve (PDF)", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" },
-      { name: "Revitalization BoQ/RAB (PDF)", url: "/portfolio/sdn-19-kuamang/RAB.pdf" }
+      { name: "Revitalization BoQ/RAB (PDF)", url: "/portfolio/sdn-19-kuamang/rab.pdf" }
     ]
   },
   {
@@ -796,8 +796,8 @@ export const workExperiences: Experience[] = [
       { title: "CCO Addendum Document", url: "/portfolio/slbn-2-pariaman/cco.png" }
     ],
     documents: [
-      { name: "Official Master Schedule (PDF)", url: "/portfolio/slbn-2-pariaman/TS.pdf" },
-      { name: "Cost Budget Recapitulation (PDF)", url: "/portfolio/slbn-2-pariaman/REKAP.pdf" }
+      { name: "Official Master Schedule (PDF)", url: "/portfolio/slbn-2-pariaman/ts.pdf" },
+      { name: "Cost Budget Recapitulation (PDF)", url: "/portfolio/slbn-2-pariaman/rekap.pdf" }
     ]
   },
   {
@@ -920,9 +920,9 @@ export const educationHistory: Education[] = [
 
 export const certifications: Certification[] = [
   {
-    name: "Certificate of Work Competency (SKK) — Building Construction Site Supervisor",
-    issuer: "National Professional Certification Board (BNSP) & Ministry of Public Works Construction Center I",
-    levelOrScore: "KKNI Level 5 (Intermediate Building Construction Site Supervisor)",
+    name: "Certificate of Work Competency (SKK) — Implementing Intermediate Building Works",
+    issuer: "Badan Nasional Sertifikasi Profesi",
+    levelOrScore: "KKNI Level 5 (Implementing Intermediate Building Works)",
     year: "Nationally Accredited BNSP License",
     verificationFile: "/portfolio/certificates/skk-bnsp-jenjang5.pdf",
     description: "State-accredited competency credential authorizing technical oversight of multi-story building construction, structural quality assurance, site safety governance, and subcontractor coordination."
@@ -936,28 +936,28 @@ export const certifications: Certification[] = [
     description: "Parametric 3D Building Information Modeling (BIM) training in Autodesk Revit covering structural concrete frames, architectural components, automated material schedules, and construction drawing extraction."
   },
   {
-    name: "Specified Skilled Worker (SSW) Evaluation Exam for Construction Industry",
+    name: "Specified Skilled Worker (SSW) Evaluation Exam for Construction Industry: Civil Engineering",
     issuer: "Japan Association for Construction Human Resources (JAC) — Japan",
-    levelOrScore: "Japanese Construction Industry Standard Qualification",
+    levelOrScore: "Japanese Construction Industry Standard Qualification — Passed (合格)",
     year: "Internationally Certified",
     verificationFile: "/portfolio/certificates/ssw-japan.pdf",
-    description: "Certified qualification exam under the Japanese Tokutei Ginou framework validating technical proficiency, construction safety, and operational readiness for Japan's construction sector."
+    description: "Certified qualification exam under the Japanese Tokutei Ginou framework validating technical civil engineering proficiency, safety standards, and operational readiness for Japan's construction sector."
   },
   {
-    name: "Japan Foundation Test for Basic Japanese (JFT-Basic) & JLPT N4",
-    issuer: "The Japan Foundation",
-    levelOrScore: "JFT-Basic Score: 250 / 250 | JLPT N4 Score: 165 / 180",
-    year: "Certified Intermediate Japanese",
+    name: "Japan Foundation Test for Basic Japanese (JFT-Basic)",
+    issuer: "The Japan Foundation (国際交流基金)",
+    levelOrScore: "Official Score: 250 / 250 (CEFR A2 / JF Standard — Maximum Score)",
+    year: "Certified Japanese Proficiency",
     verificationFile: "/portfolio/certificates/jft-basic.pdf",
-    description: "Official certifications verifying spoken and written Japanese language capabilities for technical communication, daily operations, and collaborative jobsite environments."
+    description: "Official certification of assessment results verifying practical Japanese language communication competence for living and working in professional environments."
   },
   {
-    name: "Test of English for International Communication (TOEIC)",
-    issuer: "Educational Testing Service (ETS) / Politeknik Negeri Padang",
-    levelOrScore: "Official Score: 640",
-    year: "Working Professional English",
-    verificationFile: "/portfolio/certificates/toeic-640.pdf",
-    description: "Verified working-level English proficiency for international engineering documentation, commercial tender proposals, and cross-border project team collaboration."
+    name: "Japanese-Language Proficiency Test (JLPT) — Level N4",
+    issuer: "The Japan Foundation & Japan Educational Exchanges and Services (JEES)",
+    levelOrScore: "JLPT Level N4 Certified (Passed) — Score: 165 / 180",
+    year: "Certified JLPT Level N4",
+    verificationFile: "/portfolio/certificates/jlpt-n4.pdf",
+    description: "Official credential verifying intermediate Japanese reading comprehension, grammar, and listening proficiency for vocational and workplace collaboration."
   },
   {
     name: "Industrial Internship Certificate of Excellence (PKL)",
@@ -966,6 +966,14 @@ export const certifications: Certification[] = [
     year: "Certified Industrial Experience",
     verificationFile: "/portfolio/certificates/sertifikat-magang-sie.pdf",
     description: "Official credential recognizing full-time engineering performance as Site Quality Control Inspector & Quantity Surveyor on a major chemical plant EPC project."
+  },
+  {
+    name: "Test of English for International Communication (TOEIC®)",
+    issuer: "UPT Bahasa Politeknik Negeri Padang & ETS",
+    levelOrScore: "Official Score: 640 (Listening: 400 | Reading: 240)",
+    year: "Working Professional English",
+    verificationFile: "/portfolio/certificates/toeic-640.pdf",
+    description: "Verified working-level English proficiency for international engineering documentation, commercial tender proposals, and cross-border project team collaboration."
   },
   {
     name: "Official Academic Transcript — Diploma III Civil Engineering (GPA 3.72)",

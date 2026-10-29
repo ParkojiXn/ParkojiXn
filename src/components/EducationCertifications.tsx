@@ -10,26 +10,18 @@ export const EducationCertifications: React.FC = () => {
 
   // Primary flagship license (SKK BNSP Level 5)
   const flagshipCert = certifications[0];
-  // Remaining professional and academic certifications
+  // Remaining professional and academic certifications (7 items)
   const remainingCerts = certifications.slice(1);
 
-  const getCertCategoryBadge = (index: number) => {
-    switch (index) {
-      case 0: // Revit
-        return 'BIM & CAD';
-      case 1: // SSW Japan
-        return 'INTERNATIONAL';
-      case 2: // JFT/JLPT
-        return 'JAPANESE';
-      case 3: // TOEIC
-        return 'ENGLISH';
-      case 4: // PKL
-        return 'INDUSTRIAL EPC';
-      case 5: // Transcript
-        return 'ACADEMIC';
-      default:
-        return 'CERTIFICATION';
-    }
+  const getCertCategoryBadge = (name: string) => {
+    if (name.includes('Revit')) return 'BIM & CAD';
+    if (name.includes('SSW') || name.includes('Specified')) return 'INTERNATIONAL';
+    if (name.includes('JFT')) return 'JAPANESE (JFT)';
+    if (name.includes('JLPT')) return 'JAPANESE (JLPT)';
+    if (name.includes('PKL') || name.includes('Internship')) return 'INDUSTRIAL EPC';
+    if (name.includes('TOEIC')) return 'ENGLISH (TOEIC)';
+    if (name.includes('Transcript') || name.includes('Transkrip')) return 'ACADEMIC';
+    return 'CERTIFICATION';
   };
 
   return (
@@ -183,7 +175,7 @@ export const EducationCertifications: React.FC = () => {
                       PRIMARY STATE LICENSE
                     </span>
                     <span className="px-2.5 py-1 bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono font-bold tracking-wider uppercase">
-                      BNSP LEVEL 5 (SUPERVISOR)
+                      BNSP LEVEL 5
                     </span>
                   </div>
 
@@ -241,7 +233,7 @@ export const EducationCertifications: React.FC = () => {
                     {/* Top Row: Category Tag & Status */}
                     <div className="flex items-center justify-between gap-2 border-b border-[#E5E5E5] pb-2.5">
                       <span className="px-2 py-0.5 text-[10px] font-mono bg-[#0A0A0A] text-[#FAFAFA] font-bold tracking-wider">
-                        {getCertCategoryBadge(idx)}
+                        {getCertCategoryBadge(cert.name)}
                       </span>
                       <span className="text-[11px] font-mono font-bold text-[#16A34A] flex items-center gap-1 flex-shrink-0">
                         <CheckCircle2 className="w-3.5 h-3.5" />

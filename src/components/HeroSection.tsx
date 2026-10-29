@@ -5,7 +5,7 @@ import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, 
 import { profileData } from '../data/cv-data';
 
 export const HeroSection: React.FC = () => {
-  const officialPhoto = '/portfolio/profile/1. profile.jpg';
+  const officialPhoto = '/portfolio/profile/profile-official.jpg';
 
   return (
     <section id="hero" className="relative border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-16 lg:pb-20">
@@ -121,7 +121,7 @@ export const HeroSection: React.FC = () => {
                 <span className="text-[#525252]">STATE ACCREDITATION:</span>
                 <span className="font-bold text-[#0A0A0A] flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A]" />
-                  BNSP LEVEL 5 (SUPERVISOR)
+                  BNSP LEVEL 5
                 </span>
               </div>
             </div>
