@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import { featuredProjects } from '../data/cv-data';
 import { Project } from '../types';
 import { Layers, CheckSquare, Calendar, MapPin, Building, ArrowRight, X, FileText, Image as ImageIcon, Download, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { usePdfModal } from '../context/PdfModalContext';
 
 export const FeaturedProjects: React.FC = () => {
+  const { openPdf } = usePdfModal();
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
@@ -320,12 +322,18 @@ export const FeaturedProjects: React.FC = () => {
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {activeModalProject.documents.map((doc, idx) => (
-                      <a
+                      <button
                         key={idx}
-                        href={doc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-[#FAFAFA] border border-[#D4D4D4] hover:border-[#0A0A0A] hover:shadow transition-all flex items-center justify-between group"
+                        type="button"
+                        onClick={() => {
+                          if (doc.url.toLowerCase().endsWith('.pdf') || doc.format.toUpperCase() === 'PDF') {
+                            openPdf(doc.url, `${doc.name} - ${activeModalProject.title}`);
+                          } else {
+                            window.open(doc.url, '_blank');
+                          }
+                        }}
+                        className="p-3 bg-[#FAFAFA] border border-[#D4D4D4] hover:border-[#0A0A0A] hover:shadow transition-all flex items-center justify-between group text-left cursor-pointer"
+                        title="Buka Dokumen di Modal PDF"
                       >
                         <div className="flex items-center gap-2.5 min-w-0 pr-2">
                           <span className="p-1.5 bg-[#0A0A0A] text-[#FAFAFA] text-[10px] font-mono font-bold flex-shrink-0">
@@ -343,7 +351,7 @@ export const FeaturedProjects: React.FC = () => {
                           </div>
                         </div>
                         <ExternalLink className="w-4 h-4 text-[#737373] group-hover:text-[#0A0A0A] flex-shrink-0" />
-                      </a>
+                      </button>
                     ))}
                   </div>
                 </div>

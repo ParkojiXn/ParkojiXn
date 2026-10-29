@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import { workExperiences } from '../data/cv-data';
 import { Calendar, MapPin, CheckCircle, ChevronDown, ChevronUp, FileText, Image as ImageIcon, ExternalLink } from 'lucide-react';
+import { usePdfModal } from '../context/PdfModalContext';
 
 export const ExperienceTimeline: React.FC = () => {
+  const { openPdf } = usePdfModal();
   const [expandedId, setExpandedId] = useState<string | null>(workExperiences[0].id);
 
   const toggleExpand = (id: string) => {
@@ -144,17 +146,23 @@ export const ExperienceTimeline: React.FC = () => {
                               </a>
                             ))}
                             {exp.documents?.map((doc, dIdx) => (
-                              <a
+                              <button
                                 key={dIdx}
-                                href={doc.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FFFFFF] border border-[#EF4444] text-xs font-mono font-bold text-[#EF4444] hover:bg-[#EF4444] hover:text-[#FAFAFA] transition-colors shadow-sm"
+                                type="button"
+                                onClick={() => {
+                                  if (doc.url.toLowerCase().endsWith('.pdf')) {
+                                    openPdf(doc.url, `${doc.name} - ${exp.company}`);
+                                  } else {
+                                    window.open(doc.url, '_blank');
+                                  }
+                                }}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FFFFFF] border border-[#EF4444] text-xs font-mono font-bold text-[#EF4444] hover:bg-[#EF4444] hover:text-[#FAFAFA] transition-colors shadow-sm cursor-pointer"
+                                title="Buka Dokumen PDF"
                               >
                                 <FileText className="w-3 h-3" />
                                 <span>{doc.name}</span>
                                 <ExternalLink className="w-3 h-3 opacity-60" />
-                              </a>
+                              </button>
                             ))}
                           </div>
                         </div>

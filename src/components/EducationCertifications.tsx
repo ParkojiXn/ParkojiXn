@@ -1,24 +1,42 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { educationHistory, certifications } from '../data/cv-data';
-import { Certification } from '../types';
-import { GraduationCap, Award, CheckCircle2, Calendar, MapPin, FileText, ExternalLink, X } from 'lucide-react';
+import { GraduationCap, Award, CheckCircle2, Calendar, MapPin, FileText, ExternalLink, ShieldCheck, Sparkles } from 'lucide-react';
+import { usePdfModal } from '../context/PdfModalContext';
 
 export const EducationCertifications: React.FC = () => {
-  const [activePdfPreview, setActivePdfPreview] = useState<string | null>(null);
-  const [activePdfTitle, setActivePdfTitle] = useState<string>('');
+  const { openPdf } = usePdfModal();
 
-  const openPdfViewer = (url: string, title: string) => {
-    setActivePdfPreview(url);
-    setActivePdfTitle(title);
+  // Primary flagship license (SKK BNSP Jenjang 5)
+  const flagshipCert = certifications[0];
+  // Remaining professional and academic certifications
+  const remainingCerts = certifications.slice(1);
+
+  const getCertCategoryBadge = (index: number) => {
+    switch (index) {
+      case 0: // Revit
+        return 'BIM & CAD';
+      case 1: // SSW Japan
+        return 'INTERNASIONAL';
+      case 2: // JFT/JLPT
+        return 'BAHASA JEPANG';
+      case 3: // TOEIC
+        return 'BAHASA INGGRIS';
+      case 4: // PKL
+        return 'INDUSTRI EPC';
+      case 5: // Transkrip
+        return 'AKADEMIK';
+      default:
+        return 'SERTIFIKASI';
+    }
   };
 
   return (
-    <section id="education" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="education" className="py-16 sm:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
-        <div className="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="border-b-2 border-[#0A0A0A] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
               // KREDENSIAL AKADEMIK &amp; LISENSI RESMI
@@ -28,143 +46,248 @@ export const EducationCertifications: React.FC = () => {
             </h2>
           </div>
 
-          <p className="text-sm text-[#525252] max-w-md font-body">
-            Fondasi akademik teknik sipil berpredikat Dengan Pujian (IPK 3,72) yang diperkuat sertifikasi kompetensi negara BNSP Jenjang 5 serta sertifikasi berstandar Jepang.
+          <p className="text-sm text-[#525252] max-w-lg font-body leading-relaxed">
+            Fondasi keilmuan teknik sipil berpredikat Dengan Pujian (IPK 3,72) yang diperkuat lisensi negara BNSP Jenjang 5, kemahiran BIM Revit, serta sertifikasi standar konstruksi Jepang.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column: Education */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-3">
-              <GraduationCap className="w-5 h-5 text-[#EF4444]" />
-              <h3 className="font-display text-lg text-[#0A0A0A]">
-                RIWAYAT PENDIDIKAN FORMAL
-              </h3>
-            </div>
+        {/* 1. Riwayat Pendidikan Formal (Featured Academic Dossier) */}
+        <div>
+          <div className="flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-3 mb-6">
+            <GraduationCap className="w-5 h-5 text-[#EF4444]" />
+            <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A]">
+              RIWAYAT PENDIDIKAN FORMAL
+            </h3>
+          </div>
 
-            <div className="space-y-6">
-              {educationHistory.map((edu, idx) => (
-                <div key={idx} className="card-editorial relative">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#525252] mb-2 border-b border-[#E5E5E5] pb-2">
+          <div className="space-y-6">
+            {educationHistory.map((edu, idx) => (
+              <div
+                key={idx}
+                className="card-editorial p-6 sm:p-8 bg-[#FAFAFA] border-2 border-[#0A0A0A] shadow-sm relative overflow-hidden"
+              >
+                {/* Top Meta Header */}
+                <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono border-b border-[#E5E5E5] pb-3 mb-4">
+                  <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1 font-bold text-[#0A0A0A]">
                       <Calendar className="w-3.5 h-3.5 text-[#EF4444]" />
                       {edu.period}
                     </span>
-                    <span className="flex items-center gap-1">
+                    <span className="text-[#A3A3A3]">•</span>
+                    <span className="flex items-center gap-1 text-[#525252]">
                       <MapPin className="w-3.5 h-3.5" />
                       {edu.location}
                     </span>
                   </div>
 
-                  <h4 className="font-display text-lg text-[#0A0A0A]">
-                    {edu.degree} — {edu.field}
-                  </h4>
-                  <p className="text-sm font-semibold text-[#525252] font-body mt-0.5">
-                    {edu.institution}
-                  </p>
-
-                  {edu.gpa && (
-                    <div className="mt-3 flex flex-wrap items-center gap-2">
-                      <div className="bg-[#0A0A0A] text-[#FAFAFA] px-3 py-1 text-xs font-mono font-bold">
-                        IPK: {edu.gpa} (Dengan Pujian / High Honors)
-                      </div>
-                      {edu.transcriptUrl && (
-                        <a
-                          href={edu.transcriptUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 bg-[#EF4444] text-[#FAFAFA] hover:bg-[#DC2626] px-2.5 py-1 text-xs font-mono font-bold transition-colors"
-                        >
-                          <FileText className="w-3 h-3" />
-                          <span>LIHAT TRANSKRIP (PDF)</span>
-                        </a>
-                      )}
-                    </div>
-                  )}
-
-                  {edu.details && (
-                    <ul className="mt-4 pt-3 border-t border-[#E5E5E5] space-y-2 text-xs font-body text-[#525252]">
-                      {edu.details.map((detail, dIdx) => (
-                        <li key={dIdx} className="flex items-start gap-2">
-                          <span className="text-[#EF4444] font-bold">▪</span>
-                          <span className="leading-relaxed">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <span className="text-[11px] font-bold font-mono text-[#16A34A] flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    STATUS: LULUS DENGAN PUJIAN
+                  </span>
                 </div>
-              ))}
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  {/* Left: Program & Honors */}
+                  <div className="lg:col-span-7 space-y-3">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#EF4444] font-bold">
+                      // PENDIDIKAN TINGGI VOKASI TEKNIK SIPIL
+                    </span>
+                    <h4 className="font-display text-xl sm:text-2xl text-[#0A0A0A] leading-tight">
+                      {edu.degree} — {edu.field}
+                    </h4>
+                    <p className="text-base font-semibold text-[#525252] font-body">
+                      {edu.institution}
+                    </p>
+
+                    {edu.gpa && (
+                      <div className="pt-2 flex flex-wrap items-center gap-3">
+                        <div className="bg-[#0A0A0A] text-[#FAFAFA] px-3.5 py-1.5 text-xs font-mono font-bold">
+                          IPK KELULUSAN: {edu.gpa} / 4.00
+                        </div>
+                        {edu.transcriptUrl && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              openPdf(
+                                edu.transcriptUrl!,
+                                `Transkrip Nilai Akademik - ${edu.institution} (${edu.degree} ${edu.field})`
+                              )
+                            }
+                            className="inline-flex items-center gap-1.5 bg-[#EF4444] text-[#FAFAFA] hover:bg-[#DC2626] px-3.5 py-1.5 text-xs font-mono font-bold transition-colors cursor-pointer"
+                            title="Buka Transkrip Nilai Resmi"
+                          >
+                            <FileText className="w-3.5 h-3.5" />
+                            <span>LIHAT TRANSKRIP (PDF)</span>
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Right: Key Academic Focus Areas */}
+                  <div className="lg:col-span-5 bg-[#F5F5F5] border border-[#E5E5E5] p-4 sm:p-5">
+                    <span className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#0A0A0A] block mb-2.5">
+                      FOKUS STUDI &amp; KOMPETENSI REKAYASA:
+                    </span>
+                    {edu.details && (
+                      <ul className="space-y-2 text-xs font-body text-[#525252]">
+                        {edu.details.map((detail, dIdx) => (
+                          <li key={dIdx} className="flex items-start gap-2">
+                            <span className="text-[#EF4444] font-bold">▪</span>
+                            <span className="leading-relaxed text-[#0A0A0A]">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 2. Lisensi & Sertifikasi Profesional (7 Total) */}
+        <div>
+          {/* Subheader */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-[#0A0A0A] pb-3 mb-6 gap-2">
+            <div className="flex items-center gap-2">
+              <Award className="w-5 h-5 text-[#EF4444]" />
+              <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A]">
+                LISENSI SERTIFIKASI PROFESIONAL ({certifications.length})
+              </h3>
             </div>
+            <span className="text-xs font-mono text-[#525252]">
+              DOKUMEN ASLI DAPAT DITAMPILKAN DALAM MODAL PDF
+            </span>
           </div>
 
-          {/* Right Column: Certifications */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-[#0A0A0A] pb-3">
-              <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-[#EF4444]" />
-                <h3 className="font-display text-lg text-[#0A0A0A]">
-                  LISENSI SERTIFIKASI PROFESIONAL ({certifications.length})
-                </h3>
-              </div>
-              <span className="text-xs font-mono text-[#525252]">
-                DOKUMEN ASLI DAPAT DIUNDUH
-              </span>
-            </div>
+          <div className="space-y-6">
+            {/* Flagship Card: SKK BNSP Jenjang 5 (Full Width Highlight) */}
+            {flagshipCert && (
+              <div className="card-editorial p-6 sm:p-7 border-2 border-[#0A0A0A] bg-[#FFFFFF] shadow-sm relative overflow-hidden group">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5E5E5] pb-3 mb-4">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="px-2.5 py-1 bg-[#EF4444] text-[#FAFAFA] text-[11px] font-mono font-bold tracking-wider uppercase flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      LISENSI UTAMA NEGARA
+                    </span>
+                    <span className="px-2.5 py-1 bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono font-bold tracking-wider uppercase">
+                      BNSP JENJANG 5 (MADYA)
+                    </span>
+                  </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {certifications.map((cert, idx) => (
+                  <span className="text-[11px] font-mono font-bold text-[#16A34A] flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>{flagshipCert.year}</span>
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  <div className="lg:col-span-8 space-y-2">
+                    <h4 className="font-display text-lg sm:text-xl text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors break-words">
+                      {flagshipCert.name}
+                    </h4>
+                    <p className="text-xs text-[#525252] font-body break-words">
+                      Penerbit Resmi:{' '}
+                      <strong className="text-[#0A0A0A]">{flagshipCert.issuer}</strong>
+                    </p>
+                    <p className="text-xs text-[#737373] font-body leading-relaxed pt-1 break-words">
+                      {flagshipCert.description}
+                    </p>
+                  </div>
+
+                  <div className="lg:col-span-4 flex flex-col justify-center">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openPdf(
+                          flagshipCert.verificationFile!,
+                          `${flagshipCert.name} - ${flagshipCert.issuer}`
+                        )
+                      }
+                      className="w-full py-3 px-4 border-2 border-[#0A0A0A] bg-[#0A0A0A] text-[#FAFAFA] hover:bg-[#EF4444] hover:border-[#EF4444] text-xs font-mono font-bold flex items-center justify-between transition-colors shadow cursor-pointer"
+                      title="Buka Dokumen PDF Resmi BNSP"
+                    >
+                      <span className="flex items-center gap-2 truncate">
+                        <FileText className="w-4 h-4 text-[#FAFAFA]" />
+                        <span className="truncate">BUKA SERTIFIKAT BNSP (PDF)</span>
+                      </span>
+                      <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Remaining 6 Certifications (Clean 3-Column Grid on Desktop, 2 on Tablet, 1 on Mobile) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {remainingCerts.map((cert, idx) => (
                 <div
                   key={idx}
-                  className="card-editorial hover:border-[#0A0A0A] transition-all p-4 flex flex-col justify-between group"
+                  className="card-editorial p-5 sm:p-6 border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#FFFFFF] transition-all flex flex-col justify-between group overflow-hidden shadow-sm"
                 >
-                  <div>
-                    {/* Top Status */}
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-[11px] font-mono font-bold text-[#16A34A] flex items-center gap-1">
-                        <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="truncate">{cert.year}</span>
+                  <div className="space-y-3">
+                    {/* Top Row: Category Tag & Status */}
+                    <div className="flex items-center justify-between gap-2 border-b border-[#E5E5E5] pb-2.5">
+                      <span className="px-2 py-0.5 text-[10px] font-mono bg-[#0A0A0A] text-[#FAFAFA] font-bold tracking-wider">
+                        {getCertCategoryBadge(idx)}
                       </span>
-                      {cert.levelOrScore && (
-                        <span className="text-[10px] font-mono bg-[#0A0A0A] text-[#FAFAFA] px-2 py-0.5 whitespace-nowrap">
-                          {cert.levelOrScore}
-                        </span>
-                      )}
+                      <span className="text-[11px] font-mono font-bold text-[#16A34A] flex items-center gap-1 flex-shrink-0">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>TERVERIFIKASI</span>
+                      </span>
                     </div>
 
                     {/* Certificate Name */}
-                    <h4 className="font-display text-sm sm:text-base text-[#0A0A0A] leading-snug group-hover:text-[#EF4444] transition-colors">
+                    <h4 className="font-display text-base text-[#0A0A0A] leading-snug group-hover:text-[#EF4444] transition-colors break-words">
                       {cert.name}
                     </h4>
 
                     {/* Issuer */}
-                    <p className="text-xs text-[#525252] font-body mt-2 leading-relaxed">
+                    <p className="text-xs text-[#525252] font-body leading-relaxed break-words">
                       Penerbit: <strong className="text-[#0A0A0A]">{cert.issuer}</strong>
                     </p>
 
+                    {/* Score / Level Highlight Panel (With natural wrapping, never overflows) */}
+                    {cert.levelOrScore && (
+                      <div className="p-2.5 bg-[#F5F5F5] border-l-2 border-[#EF4444] text-xs font-mono text-[#0A0A0A] break-words">
+                        <span className="text-[10px] text-[#737373] block uppercase tracking-wider mb-0.5">
+                          KUALIFIKASI / SKOR:
+                        </span>
+                        <span className="font-bold block break-words leading-tight">
+                          {cert.levelOrScore}
+                        </span>
+                      </div>
+                    )}
+
                     {/* Description */}
                     {cert.description && (
-                      <p className="text-xs text-[#737373] font-body mt-2 border-t border-[#E5E5E5] pt-2 line-clamp-2">
+                      <p className="text-xs text-[#737373] font-body leading-relaxed line-clamp-3 break-words">
                         {cert.description}
                       </p>
                     )}
                   </div>
 
-                  {/* PDF Download / View Button */}
+                  {/* PDF Trigger Button */}
                   {cert.verificationFile && (
-                    <div className="mt-4 pt-3 border-t border-[#E5E5E5]">
-                      <a
-                        href={cert.verificationFile}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-2 px-3 border border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] text-xs font-mono font-bold flex items-center justify-between transition-colors group-hover:border-[#EF4444]"
+                    <div className="mt-5 pt-3 border-t border-[#E5E5E5]">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          openPdf(
+                            cert.verificationFile!,
+                            `${cert.name} - ${cert.issuer} (${cert.year})`
+                          )
+                        }
+                        className="w-full py-2.5 px-3 border border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] text-xs font-mono font-bold flex items-center justify-between gap-2 transition-colors group-hover:border-[#EF4444] cursor-pointer"
+                        title="Buka Dokumen di Modal PDF"
                       >
-                        <span className="flex items-center gap-1.5">
-                          <FileText className="w-3.5 h-3.5 text-[#EF4444]" />
-                          <span>BUKA SERTIFIKAT (PDF)</span>
+                        <span className="flex items-center gap-1.5 min-w-0 truncate">
+                          <FileText className="w-3.5 h-3.5 text-[#EF4444] flex-shrink-0" />
+                          <span className="truncate">BUKA DOKUMEN (PDF)</span>
                         </span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                        <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+                      </button>
                     </div>
                   )}
                 </div>
