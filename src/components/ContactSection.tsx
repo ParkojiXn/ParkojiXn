@@ -59,7 +59,7 @@ export const ContactSection: React.FC = () => {
             </h2>
           </div>
 
-          <p className="text-sm text-[#525252] max-w-md font-body">
+          <p className="text-sm text-[#404040] max-w-md font-body leading-relaxed">
             Available for full-time civil engineering positions, DED &amp; BoQ quantity surveying consultancies, Revit/AutoCAD BIM modeling, and on-site field supervision.
           </p>
         </div>
@@ -79,7 +79,7 @@ export const ContactSection: React.FC = () => {
                     <Mail className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">ELECTRONIC MAIL</span>
+                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">ELECTRONIC MAIL</span>
                     <a
                       href={`mailto:${profileData.email}`}
                       className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors break-all"
@@ -95,7 +95,7 @@ export const ContactSection: React.FC = () => {
                     <Phone className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">PHONE &amp; WHATSAPP</span>
+                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">PHONE &amp; WHATSAPP</span>
                     <div className="flex items-center gap-2">
                       <a
                         href="https://wa.me/6289644590915"
@@ -123,11 +123,11 @@ export const ContactSection: React.FC = () => {
                     <MapPin className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">LOCATION &amp; RELOCATION</span>
+                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">LOCATION &amp; RELOCATION</span>
                     <p className="font-display text-sm sm:text-base text-[#0A0A0A]">
                       {profileData.location}
                     </p>
-                    <span className="text-xs font-mono text-[#525252] mt-0.5 block">
+                    <span className="text-xs font-mono text-[#404040] mt-0.5 block font-medium">
                       Open to domestic &amp; international site deployment
                     </span>
                   </div>
@@ -139,7 +139,7 @@ export const ContactSection: React.FC = () => {
                     <Linkedin className="w-5 h-5 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#525252] uppercase block">PROFESSIONAL NETWORK</span>
+                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">PROFESSIONAL NETWORK</span>
                     <a
                       href={profileData.linkedin}
                       target="_blank"

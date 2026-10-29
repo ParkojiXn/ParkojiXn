@@ -27,7 +27,7 @@ export const ExperienceTimeline: React.FC = () => {
             </h2>
           </div>
 
-          <p className="text-sm text-[#525252] max-w-md font-body">
+          <p className="text-sm text-[#404040] max-w-md font-body leading-relaxed">
             Battle-tested civil engineering experience on actual jobsites: public school revitalizations, ministry technical facilitation, industrial chemical EPC quality control, and subcontractor quantity surveying.
           </p>
         </div>
@@ -54,7 +54,7 @@ export const ExperienceTimeline: React.FC = () => {
                       </span>
 
                       {/* Location */}
-                      <span className="text-xs font-mono text-[#525252] flex items-center gap-1">
+                      <span className="text-xs font-mono text-[#404040] flex items-center gap-1 font-medium">
                         <MapPin className="w-3.5 h-3.5 text-[#A3A3A3]" />
                         {exp.location}
                       </span>
@@ -64,7 +64,7 @@ export const ExperienceTimeline: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => toggleExpand(exp.id)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-bold uppercase border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors print:hidden"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-bold uppercase border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors print:hidden cursor-pointer"
                       aria-expanded={isExpanded}
                       aria-label={`${isExpanded ? 'Collapse' : 'Expand'} details for ${exp.role}`}
                     >
@@ -85,7 +85,7 @@ export const ExperienceTimeline: React.FC = () => {
                     <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors">
                       {exp.role}
                     </h3>
-                    <p className="text-sm font-semibold text-[#525252] font-body mt-1">
+                    <p className="text-sm font-semibold text-[#262626] font-body mt-1">
                       {exp.company} <span className="text-[#0A0A0A] font-mono font-normal">({exp.type})</span>
                     </p>
                   </div>
@@ -113,11 +113,11 @@ export const ExperienceTimeline: React.FC = () => {
                           <CheckCircle className="w-4 h-4 text-[#16A34A]" />
                           MEASURED IMPACT &amp; TANGIBLE VALUE
                         </h4>
-                        <ul className="space-y-1.5 text-xs sm:text-sm text-[#525252]">
+                        <ul className="space-y-1.5 text-xs sm:text-sm text-[#262626]">
                           {exp.keyImpacts.map((impact, idx) => (
                             <li key={idx} className="flex items-start gap-2">
                               <span className="text-[#0A0A0A] font-bold">✓</span>
-                              <span className="font-body">{impact}</span>
+                              <span className="font-body font-medium">{impact}</span>
                             </li>
                           ))}
                         </ul>
@@ -169,7 +169,7 @@ export const ExperienceTimeline: React.FC = () => {
 
                       {/* Tools Used */}
                       <div>
-                        <h4 className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#525252] mb-2">
+                        <h4 className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#404040] mb-2">
                           SOFTWARE &amp; ENGINEERING METHODOLOGIES APPLIED
                         </h4>
                         <div className="flex flex-wrap gap-1.5">

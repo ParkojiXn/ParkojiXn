@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
           <span className="truncate">CIVIL ENGINEER // QUANTITY SURVEYOR // BIM MODELER</span>
         </div>
         <div className="hidden md:flex items-center gap-4 text-[#A3A3A3]">
-          <span>BNSP LEVEL 5 </span>
+          <span>BNSP LEVEL 5 LICENSED</span>
           <span>•</span>
           <span>PADANG, WEST SUMATRA (UTC+7)</span>
         </div>
@@ -70,7 +70,7 @@ export const Navbar: React.FC = () => {
             <span className="font-display text-xl sm:text-2xl text-[#0A0A0A] tracking-tight group-hover:text-[#EF4444] transition-colors">
               {profileData.name}
             </span>
-            <span className="text-[10px] font-mono tracking-widest text-[#525252] uppercase">
+            <span className="text-[10px] font-mono tracking-widest text-[#404040] uppercase font-semibold">
               ENGINEERING PORTFOLIO // 2026 EDITION
             </span>
           </a>
@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`px-3 py-2 text-xs font-bold tracking-wider transition-colors relative uppercase font-body ${activeSection === link.id
                     ? 'text-[#0A0A0A]'
-                    : 'text-[#525252] hover:text-[#0A0A0A]'
+                    : 'text-[#404040] hover:text-[#0A0A0A]'
                   }`}
               >
                 {link.label}

@@ -21,6 +21,11 @@ export const FeaturedProjects: React.FC = () => {
     'Tender & Research'
   ];
 
+  const getCategoryCount = (cat: string) => {
+    if (cat === 'ALL') return featuredProjects.length;
+    return featuredProjects.filter(p => p.category === cat).length;
+  };
+
   const filteredProjects = selectedCategory === 'ALL'
     ? featuredProjects
     : featuredProjects.filter(p => p.category === selectedCategory);
@@ -46,36 +51,43 @@ export const FeaturedProjects: React.FC = () => {
     <section id="projects" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-6 mb-8 gap-6">
           <div>
-            <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // VERIFIED ENGINEERING PORTFOLIO
-            </span>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-overline text-[#EF4444] font-bold">
+                // VERIFIED ENGINEERING PORTFOLIO
+              </span>
+              <span className="text-[#A3A3A3]">•</span>
+              <span className="text-[10px] font-mono font-bold bg-[#0A0A0A] text-[#FAFAFA] px-2 py-0.5">
+                {featuredProjects.length} CASE STUDIES
+              </span>
+            </div>
             <h2 className="text-headline text-[#0A0A0A]">
               FEATURED ENGINEERING PROJECTS
             </h2>
           </div>
 
-          <p className="text-sm text-[#525252] max-w-md font-body">
+          <p className="text-sm text-[#525252] max-w-md font-body leading-relaxed">
             Authentic field documentation across Detailed Engineering Design (DED), Bills of Quantities (BoQ), BIM Revit modeling, on-site quality control, and S-Curve scheduling.
           </p>
         </div>
 
         {/* Filter Chips Bar (Hidden in Print) */}
-        <div className="flex flex-wrap gap-2 mb-10 print:hidden">
+        <div className="flex flex-wrap gap-2 mb-8 print:hidden">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`filter-chip ${selectedCategory === cat ? 'active' : ''}`}
             >
-              {cat}
+              <span>{cat}</span>
+              <span className="ml-1 opacity-70 text-[10px]">({getCategoryCount(cat)})</span>
             </button>
           ))}
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
@@ -117,12 +129,12 @@ export const FeaturedProjects: React.FC = () => {
                   )}
 
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FAFAFA]">
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 font-semibold">
                       <Calendar className="w-3.5 h-3.5 text-[#EF4444]" />
                       {project.period}
                     </span>
-                    <span className="flex items-center gap-1 text-[#A3A3A3] truncate max-w-[150px]">
-                      <MapPin className="w-3.5 h-3.5" />
+                    <span className="flex items-center gap-1 text-[#E5E5E5] truncate max-w-[150px]">
+                      <MapPin className="w-3.5 h-3.5 text-[#EF4444]" />
                       {project.location}
                     </span>
                   </div>
@@ -130,7 +142,7 @@ export const FeaturedProjects: React.FC = () => {
 
                 {/* Content */}
                 <div className="p-5">
-                  <span className="text-[10px] font-mono tracking-wider text-[#525252] uppercase block mb-1">
+                  <span className="text-[10px] font-mono tracking-wider text-[#525252] uppercase block mb-1 font-semibold">
                     ROLE: {project.role}
                   </span>
 
@@ -138,7 +150,7 @@ export const FeaturedProjects: React.FC = () => {
                     {project.title}
                   </h3>
 
-                  <p className="text-xs text-[#525252] font-body line-clamp-3 mb-4 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#404040] font-body line-clamp-3 mb-4 leading-relaxed">
                     {project.summary}
                   </p>
 
@@ -153,7 +165,7 @@ export const FeaturedProjects: React.FC = () => {
                       </span>
                     ))}
                     {project.techStack.length > 3 && (
-                      <span className="bg-[#E5E5E5] px-1.5 py-0.5 text-[10px] font-mono text-[#525252]">
+                      <span className="bg-[#E5E5E5] px-1.5 py-0.5 text-[10px] font-mono text-[#525252] font-semibold">
                         +{project.techStack.length - 3}
                       </span>
                     )}
@@ -167,8 +179,8 @@ export const FeaturedProjects: React.FC = () => {
                   type="button"
                   className="w-full border-t-2 border-[#0A0A0A] pt-3 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors"
                 >
-                  <span>VIEW DETAILS &amp; TECHNICAL DOSSIER</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  <span>VIEW TECHNICAL DOSSIER &amp; DRAWINGS</span>
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform text-[#EF4444]" />
                 </button>
               </div>
             </div>
@@ -196,7 +208,7 @@ export const FeaturedProjects: React.FC = () => {
                 <h3 className="font-display text-xl sm:text-2xl text-[#0A0A0A] mt-1">
                   {activeModalProject.title}
                 </h3>
-                <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#525252] mt-2">
+                <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#404040] mt-2">
                   <span>Role: <strong className="text-[#0A0A0A]">{activeModalProject.role}</strong></span>
                   <span>•</span>
                   <span>Client / Institution: <strong className="text-[#0A0A0A]">{activeModalProject.clientOrInstitution}</strong></span>
@@ -364,7 +376,7 @@ export const FeaturedProjects: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {activeModalProject.metrics.map((m, idx) => (
                       <div key={idx} className="border-2 border-[#0A0A0A] p-3 bg-[#FAFAFA]">
-                        <span className="text-[10px] text-[#525252] font-mono block uppercase">{m.label}</span>
+                        <span className="text-[10px] text-[#404040] font-mono block uppercase font-bold">{m.label}</span>
                         <span className="text-sm font-bold text-[#0A0A0A] font-mono mt-1 block">{m.value}</span>
                       </div>
                     ))}
@@ -377,7 +389,7 @@ export const FeaturedProjects: React.FC = () => {
                     <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2">
                       KEY DELIVERABLES &amp; SUBMITTALS
                     </h4>
-                    <ul className="space-y-1.5 text-xs font-mono text-[#525252]">
+                    <ul className="space-y-1.5 text-xs font-mono text-[#404040]">
                       {activeModalProject.deliverables.map((d, idx) => (
                         <li key={idx} className="flex items-center gap-1.5">
                           <span className="text-[#EF4444] font-bold">▪</span>

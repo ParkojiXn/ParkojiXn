@@ -65,18 +65,18 @@ export const SkillsMatrix: React.FC = () => {
         </div>
 
         {/* Active Category Display (Screen Only) */}
-        <div className="card-editorial border-2 border-[#0A0A0A] print:hidden">
+        <div className="card-editorial bg-[#FFFFFF] border-2 border-[#0A0A0A] print:hidden shadow-sm">
           {/* Header of Active Tab */}
-          <div className="border-b-2 border-[#E5E5E5] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="border-b-2 border-[#E5E5E5] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <h3 className="font-display text-xl text-[#0A0A0A]">
+              <h3 className="font-display text-xl sm:text-2xl text-[#0A0A0A] tracking-tight">
                 {skillCategories[activeTab].category}
               </h3>
-              <p className="text-xs text-[#525252] font-body mt-1">
+              <p className="text-sm text-[#404040] font-body mt-1 leading-relaxed">
                 {skillCategories[activeTab].description}
               </p>
             </div>
-            <span className="text-xs font-mono font-bold text-[#EF4444] bg-[#F5F5F5] px-3 py-1 border border-[#E5E5E5] self-start sm:self-auto">
+            <span className="text-xs font-mono font-bold text-[#EF4444] bg-[#F5F5F5] px-3.5 py-1.5 border border-[#E5E5E5] self-start sm:self-auto whitespace-nowrap">
               {skillCategories[activeTab].items.length} VERIFIED COMPETENCIES
             </span>
           </div>
@@ -86,11 +86,11 @@ export const SkillsMatrix: React.FC = () => {
             {skillCategories[activeTab].items.map((item, idx) => (
               <div
                 key={idx}
-                className="p-4 border-2 border-[#E5E5E5] hover:border-[#0A0A0A] bg-[#FAFAFA] flex flex-col justify-between transition-colors group"
+                className="p-5 border-2 border-[#E5E5E5] hover:border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#FFFFFF] flex flex-col justify-between transition-all group shadow-xs"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#525252] bg-[#F5F5F5] px-2 py-0.5 border border-[#E5E5E5]">
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#525252] bg-[#F5F5F5] px-2 py-0.5 border border-[#E5E5E5] font-bold">
                       {item.categoryTag}
                     </span>
                     {item.level && (
@@ -100,21 +100,21 @@ export const SkillsMatrix: React.FC = () => {
                     )}
                   </div>
 
-                  <h4 className="font-display text-sm sm:text-base text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors">
+                  <h4 className="font-display text-base text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors leading-snug">
                     {item.name}
                   </h4>
 
                   {item.details && (
-                    <p className="text-xs text-[#525252] mt-2 font-body leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#333333] mt-2 font-body leading-relaxed">
                       {item.details}
                     </p>
                   )}
                 </div>
 
-                <div className="mt-4 pt-2 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#525252]">
-                  <span>APPLICATION:</span>
+                <div className="mt-4 pt-2.5 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#525252]">
+                  <span className="font-semibold">VALIDATION:</span>
                   <span className="text-[#16A34A] font-bold flex items-center gap-1">
-                    <Check className="w-3 h-3" /> FIELD VALIDATED
+                    <Check className="w-3.5 h-3.5" /> FIELD VALIDATED
                   </span>
                 </div>
               </div>
