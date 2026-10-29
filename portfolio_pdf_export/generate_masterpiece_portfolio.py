@@ -1,0 +1,2080 @@
+import os
+import subprocess
+import pypdfium2 as pdfium
+from pypdf import PdfReader
+
+base_dir = "D:/whateverapp/laragon/www/ParkojiXn/public/portfolio"
+export_dir = "D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export"
+tex_path = os.path.join(export_dir, "portofolio_reza_sepdide.tex").replace("\\", "/")
+pdf_path = os.path.join(export_dir, "Portofolio_Teknik_Sipil_Reza_Sepdide_Landscape.pdf").replace("\\", "/")
+
+def p(rel):
+    return os.path.join(base_dir, rel).replace("\\", "/")
+
+# Build the LaTeX source code
+tex = []
+
+# --- PREAMBLE ---
+tex.append(r"""\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[landscape, a4paper, left=10mm, right=10mm, top=8mm, bottom=10mm, footskip=0mm, headheight=0mm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{helvet}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Professional Civil Engineering Palette
+\definecolor{pnavy}{HTML}{0F172A}      % Slate 900
+\definecolor{pcharcoal}{HTML}{1E293B}  % Slate 800
+\definecolor{psteel}{HTML}{334155}     % Slate 700
+\definecolor{pmuted}{HTML}{64748B}     % Slate 500
+\definecolor{pborder}{HTML}{CBD5E1}    % Slate 300
+\definecolor{pbglight}{HTML}{F8FAFC}   % Slate 50
+\definecolor{pcardbg}{HTML}{FFFFFF}    % Pure White
+\definecolor{pred}{HTML}{DC2626}       % Cadmium Crimson Red
+\definecolor{predlight}{HTML}{FEF2F2}  % Soft Red Accent Fill
+\definecolor{pgold}{HTML}{D97706}      % Amber Accent
+
+\pagestyle{empty}
+
+% Header Macro (Fixed 13mm height)
+\newcommand{\makeheader}[3]{%
+  \begin{tcolorbox}[sharp corners, boxrule=0pt, colframe=pnavy, colback=pnavy, coltext=white, left=4mm, right=4mm, top=2mm, bottom=2mm, boxsep=0pt, height=13mm, valign=center]
+    \begin{tabularx}{\linewidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
+      {\fontsize{7pt}{8pt}\selectfont\bfseries\color{pred}#1} & {\fontsize{7pt}{8pt}\selectfont\color{pmuted}DOSIR RESMI REKAYASA TEKNIK SIPIL \textbar\ 2026} \\
+      {\fontsize{11pt}{13pt}\selectfont\bfseries\color{white}#2} & {\fontsize{8pt}{9pt}\selectfont\bfseries\color{pbglight}#3}
+    \end{tabularx}
+  \end{tcolorbox}
+  \vspace{2mm}
+}
+
+% Running Footer Macro (Zero collisions, strictly positioned)
+\newcommand{\makefooter}[2]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[line width=0.6pt, color=pborder] ([xshift=10mm, yshift=8mm]current page.south west) -- ([xshift=-10mm, yshift=8mm]current page.south east);
+    \node[anchor=south west, inner sep=0pt, xshift=10mm, yshift=4mm] at (current page.south west) {%
+      \fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pmuted}%
+      REZA SEPDIDE, A.Md.T. \quad\textbar\quad PELAKSANA LAPANGAN GEDUNG MADYA (BNSP JENJANG 5) \quad\textbar\quad D4 MANAJEMEN REKAYASA KONSTRUKSI (ONGOING)%
+    };
+    \node[anchor=south east, inner sep=0pt, xshift=-10mm, yshift=4mm] at (current page.south east) {%
+      \fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}%
+      #1 \quad\textbar\quad HALAMAN #2 DARI 28%
+    };
+  \end{tikzpicture}
+}
+
+\begin{document}
+""")
+
+# ==============================================================================
+# HALAMAN 1: COVER PAGE
+# ==============================================================================
+tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
+\noindent
+\begin{tcolorbox}[sharp corners, boxrule=1.5pt, colframe=pnavy, colback=white, left=6mm, right=6mm, top=5mm, bottom=5mm, height=188mm]
+  % Top Header Row
+  \begin{tabularx}{\linewidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
+    \colorbox{pred}{\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{white}\ \ KUALIFIKASI RESMI TEKNIK SIPIL \& MANAJEMEN KONSTRUKSI\ \ } &
+    {\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{pmuted}DOSIR PORTOFOLIO REKAYASA TEKNIK SIPIL \textbar\ EDISI RESMI 2026 \textbar\ PADANG, INDONESIA}
+  \end{tabularx}
+  \vspace{2mm}
+  \noindent\textcolor{pnavy}{\rule{\linewidth}{1.5pt}}
+  \vspace{3mm}
+
+  \noindent
+  \begin{minipage}[t]{0.68\linewidth}
+    \vspace{0pt}
+    {\fontsize{22pt}{26pt}\selectfont\bfseries\color{pnavy}PORTOFOLIO REKAYASA TEKNIK SIPIL}\\[1.5mm]
+    {\fontsize{12pt}{15pt}\selectfont\bfseries\color{pred}QUANTITY SURVEYING, ESTIMASI BIAYA \& MANAJEMEN KONSTRUKSI}\\[2.5mm]
+    {\fontsize{8.5pt}{11.5pt}\selectfont\color{psteel}Kompilasi Portofolio Proyek Terverifikasi, Bukti Lisensi Negara BNSP Jenjang 5, Gambar DED AutoCAD, Dokumen RKS, Perhitungan BoQ/RAB, Kurva S, Bar Bending Schedule, dan Pengendalian Mutu Lapangan.}\\[3.5mm]
+
+    \noindent\textcolor{pred}{\rule{50mm}{2pt}}\\[3.5mm]
+
+    {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}REZA SEPDIDE, A.Md.T.}\\[1mm]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\bfseries\color{pmuted}Civil Engineer \textbar\ Quantity Surveyor \textbar\ BIM \& CAD Modeler}\\[3.5mm]
+
+    % 4 Stat Boxes
+    \begin{tabularx}{\linewidth}{@{}XXXX@{}}
+      \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=1.5mm, right=1.5mm, top=2mm, bottom=2mm, height=21mm, valign=center]
+        \centering{\fontsize{13pt}{14pt}\selectfont\bfseries\color{pnavy}3.72}\\[1mm]
+        {\fontsize{7pt}{8pt}\selectfont\bfseries\color{pred}IPK / 4.00}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}D3 TEKNIK SIPIL PNP\\MAGNA CUM LAUDE}
+      \end{tcolorbox} &
+      \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=1.5mm, right=1.5mm, top=2mm, bottom=2mm, height=21mm, valign=center]
+        \centering{\fontsize{13pt}{14pt}\selectfont\bfseries\color{pnavy}LEVEL 5}\\[1mm]
+        {\fontsize{7pt}{8pt}\selectfont\bfseries\color{pred}SKK BNSP}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}PELAKSANA LAPANGAN\\PEKERJAAN GEDUNG}
+      \end{tcolorbox} &
+      \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=1.5mm, right=1.5mm, top=2mm, bottom=2mm, height=21mm, valign=center]
+        \centering{\fontsize{13pt}{14pt}\selectfont\bfseries\color{pnavy}10+}\\[1mm]
+        {\fontsize{7pt}{8pt}\selectfont\bfseries\color{pred}PROYEK TEKNIS}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}EPC, REVITALISASI,\\DED, BoQ, \& S-CURVE}
+      \end{tcolorbox} &
+      \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=1.5mm, right=1.5mm, top=2mm, bottom=2mm, height=21mm, valign=center]
+        \centering{\fontsize{13pt}{14pt}\selectfont\bfseries\color{pnavy}3 BAHASA}\\[1mm]
+        {\fontsize{7pt}{8pt}\selectfont\bfseries\color{pred}TERSERTIFIKASI}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}INDONESIA, JEPANG\\(SSW/JLPT), INGGRIS}
+      \end{tcolorbox}
+    \end{tabularx}
+    \vspace{3.5mm}
+
+    % Credentials Info Table
+    \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm]
+      \begin{tabularx}{\linewidth}{@{}p{32mm} X@{}}
+        {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pnavy}STATUS PENDIDIKAN:} & {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Diploma IV (D4) Manajemen Rekayasa Konstruksi PNP (Aktif / Ongoing)} \\[1mm]
+        {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pnavy}LULUSAN AKADEMIK:} & {\fontsize{7.5pt}{9.5pt}\selectfont\color{psteel}D3 Teknik Sipil Politeknik Negeri Padang (Lulus Predikat Pujian / Magna Cum Laude, IPK 3.72)} \\[1mm]
+        {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pnavy}LISENSI PROFESI:} & {\fontsize{7.5pt}{9.5pt}\selectfont\color{psteel}BNSP Jenjang 5 Balai Jasa Konstruksi Wilayah I Banda Aceh, Ditjen Bina Konstruksi Kementerian PUPR} \\[1mm]
+        {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pnavy}EMAIL \& TELEPON:} & {\fontsize{7.5pt}{9.5pt}\selectfont\color{psteel}rezasepdide@gmail.com \quad\textbar\quad +62 896-4459-0915} \\[1mm]
+        {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pnavy}LINKEDIN \& DOMISILI:} & {\fontsize{7.5pt}{9.5pt}\selectfont\color{psteel}linkedin.com/in/rezasepdide \quad\textbar\quad Padang, Sumatera Barat, Indonesia}
+      \end{tabularx}
+    \end{tcolorbox}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.29\linewidth}
+    \vspace{0pt}
+    \begin{tcolorbox}[sharp corners, boxrule=1pt, colframe=pnavy, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \centering
+      \includegraphics[width=\linewidth,keepaspectratio]{""" + p("profile/professional-photo.jpeg") + r"""}\\[2mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0pt, colframe=pnavy, colback=pnavy, coltext=white, left=2mm, right=2mm, top=2mm, bottom=2mm]
+        \centering
+        {\fontsize{8.5pt}{10pt}\selectfont\bfseries REZA SEPDIDE, A.Md.T.}\\[0.5mm]
+        {\fontsize{6.5pt}{8pt}\selectfont\color{pmuted}Pelaksana Lapangan Gedung Madya BNSP}\\[0.5mm]
+        {\fontsize{6pt}{7.5pt}\selectfont\color{pborder}D3 Teknik Sipil (IPK 3.72)}
+      \end{tcolorbox}
+    \end{tcolorbox}
+    \vspace{2mm}
+    \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}KOMPETENSI SPESIFIK}\\[1mm]
+      {\fontsize{6.5pt}{8.5pt}\selectfont\color{psteel}
+      $\bullet$ Estimasi Biaya \& BoQ Rework\\
+      $\bullet$ Analisa Satuan AHSP PUPR\\
+      $\bullet$ Bar Bending Schedule (BBS)\\
+      $\bullet$ Kurva S \& MS Project\\
+      $\bullet$ AutoCAD DED Multi-Viewport\\
+      $\bullet$ Revit BIM \& SAP2000 Seismik
+      }
+    \end{tcolorbox}
+  \end{minipage}
+\end{tcolorbox}
+""")
+
+# ==============================================================================
+# HALAMAN 2: PROFIL EKSEKUTIF & RIWAYAT PENDIDIKAN
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 2: PROFIL EKSEKUTIF & PENDIDIKAN ---
+\makeheader{// PROFIL PROFESIONAL // PENDIDIKAN \& NILAI REKAYASA}{PROFIL EKSEKUTIF, RIWAYAT PENDIDIKAN \& PRINSIP REKAYASA}{KUALIFIKASI AKADEMIK \& NILAI KERJA}
+
+\noindent
+\begin{minipage}[t]{0.485\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3.5mm, right=3.5mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ RINGKASAN EKSEKUTIF PROFESIONAL\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}Ahli Rekayasa Sipil \& Pengawasan Gedung}\\[1.5mm]
+    {\fontsize{7.5pt}{10pt}\selectfont\color{psteel}Lulusan Diploma III Teknik Sipil Politeknik Negeri Padang dengan predikat pujian (\textit{Magna Cum Laude}, IPK 3.72/4.00) dan saat ini melanjutkan pendidikan pada jenjang Diploma IV (D4) Manajemen Rekayasa Konstruksi. Pemegang lisensi resmi negara BNSP KKNI Jenjang 5 Pelaksana Lapangan Pekerjaan Gedung Madya.}\\[2mm]
+
+    {\fontsize{7.5pt}{10pt}\selectfont\color{psteel}Berpengalaman praktis dalam perhitungan teknis Quantity Surveying (BoQ/RAB, AHSP), penyusunan Bar Bending Schedule (BBS) penulangan beton bertulang, penjadwalan Kurva S / MS Project, pemodelan AutoCAD DED Multi-Viewport, Autodesk Revit BIM parametrik, hingga analisis struktur tahan gempa SAP2000 (SNI 1726). Memiliki kompetensi komunikasi dwibahasa internasional bersertifikat Jepang (SSW JAC, JFT-Basic 250, JLPT N4 165) dan Inggris (TOEIC 640).}\\[3mm]
+
+    \noindent\textcolor{pred}{\rule{\linewidth}{1pt}}\\[2.5mm]
+
+    \colorbox{pnavy}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ RIWAYAT PENDIDIKAN FORMAL\ \ }\\[2.5mm]
+    
+    {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}1. Politeknik Negeri Padang (PNP)}\\[0.5mm]
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pred}Diploma IV (D4) Manajemen Rekayasa Konstruksi}\\[0.5mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\color{pmuted}Periode: Agustus 2026 --- Sekarang \quad\textbar\quad Status: \textbf{Aktif / Sedang Berjalan (Ongoing)}}\\[1mm]
+    {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}Fokus studi: Manajemen proyek konstruksi lanjutan, tata kelola pengadaan barang/jasa pemerintah, analisis risiko rekayasa, dan implementasi integrasi multi-dimensi BIM.}\\[2mm]
+
+    {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}2. Politeknik Negeri Padang (PNP)}\\[0.5mm]
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pred}Diploma III (D3) Teknik Sipil \quad\textbar\quad IPK: 3.72 / 4.00}\\[0.5mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\color{pmuted}Periode: September 2022 --- Juli 2025 \quad\textbar\quad Status: \textbf{Lulus dengan Predikat Pujian (Magna Cum Laude)}}\\[1mm]
+    {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}Tugas Akhir: Rencana Pelaksanaan Konstruksi Gedung DPRD Pasaman (BoQ, Schedule, Kurva S). Prestasi: Delegasi Tender Fondasi Days 2025 UNS, Peneliti Utama PKM-AI Scaffolding EPC.}\\[2mm]
+
+    {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}3. SMA Negeri 1 Padang}\\[0.5mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\color{pmuted}Jurusan MIPA \quad\textbar\quad Periode: 2019 --- 2022 \quad\textbar\quad Status: \textbf{Lulus}}
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.485\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3.5mm, right=3.5mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pnavy}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ 4 PILAR PRINSIP REKAYASA \& ETIKA KERJA PERSONAL\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}Komitmen Kualitas, Keselamatan \& Presisi}\\[2.5mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}01. Integritas Struktural \& Keselamatan Manusia Tanpa Kompromi}\\[1mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}Konstruksi sipil menyangkut keselamatan jiwa pengguna bangunan. Setiap detail penulangan beton, mutu slump uji beton segar, dan kepatuhan terhadap kode SNI (SNI 1726 gempa, SNI 2847 beton) diverifikasi langsung di lapangan tanpa toleransi kelalaian teknis.}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}02. Efisiensi Biaya, Presisi Estimasi \& Zero-Waste Material}\\[1mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}Penyusunan Bar Bending Schedule (BBS) pembesian yang presisi untuk memangkas sisa besi (\textit{scrap waste}) hingga di bawah batas toleransi, dipadukan perhitungan BoQ/RAB transparan berbasis Analisa Harga Satuan Pekerjaan (AHSP) yang dapat dipertanggungjawabkan secara audit keuangan.}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}03. Ketepatan Mutu \& Disiplin Jadwal (Quality Control \& Time Control)}\\[1mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}Penerapan Kurva S kumulatif dan metode lintasan kritis (CPM) di Microsoft Project untuk mendeteksi deviasi progres sejak dini, didukung pengawasan harian (\textit{daily report}) dan pengujian material berkala demi memastikan target serah terima pekerjaan (PHO/FHO) tepat waktu.}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{pnavy}04. Adaptabilitas Multibahasa \& Standar Rekayasa Internasional}\\[1mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}Kesiapan penugasan pada proyek multinasional dengan penguasaan standar kerja konstruksi Jepang (\textit{Kaizen}, \textit{5S}, koordinasi kerja \textit{Hou-Ren-So}) serta kelancaran komunikasi teknis internasional bersertifikat Jepang (SSW JAC, JFT-Basic 250, JLPT N4 165) dan Inggris (TOEIC 640).}
+    \end{tcolorbox}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROFIL \& PENDIDIKAN}{02}
+""")
+
+# ==============================================================================
+# HALAMAN 3: MATRIKS KEAHLIAN & SOFTWARE
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 3: MATRIKS KEAHLIAN REKAYASA & SOFTWARE ---
+\makeheader{// STANDAR KEAHLIAN TEKNIS // BIDANG KOMPETENSI REKAYASA}{MATRIKS KEAHLIAN REKAYASA \& PENGUASAAN PERANGKAT LUNAK}{KOMPETENSI SPESIFIK \& SOFTWARE PROFICIENCY}
+
+\noindent
+\begin{minipage}[t]{\linewidth}
+  \vspace{0pt}
+  % 4 Pillar Grid (2x2)
+  \begin{minipage}[t]{0.485\linewidth}
+    \vspace{0pt}
+    \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=58mm]
+      \colorbox{pred}{\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{white}\ \ BIDANG 01\ \ }\quad{\fontsize{8.5pt}{10pt}\selectfont\bfseries\color{pnavy}Quantity Surveying \& Cost Engineering}\\[1.5mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}
+      \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+        \item \textbf{Quantity Take-Off (QTO):} Perhitungan volume matematis dari gambar DED.
+        \item \textbf{BoQ / RAB Presisi:} Mengacu AHSP PUPR \& survei harga pasar terkini.
+        \item \textbf{Bar Bending Schedule (BBS):} Optimasi pemotongan besi beton penulangan.
+        \item \textbf{Addendum \& CCO:} Evaluasi deviasi volume dan pengajuan Contract Change Order.
+      \end{itemize}
+      }
+    \end{tcolorbox}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.485\linewidth}
+    \vspace{0pt}
+    \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=58mm]
+      \colorbox{pnavy}{\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{white}\ \ BIDANG 02\ \ }\quad{\fontsize{8.5pt}{10pt}\selectfont\bfseries\color{pnavy}Structural Modeling \& Digital BIM}\\[1.5mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}
+      \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+        \item \textbf{AutoCAD DED Multi-Viewport:} Gambar kerja detail siap tender \& cetak.
+        \item \textbf{Autodesk Revit (BIM):} Pemodelan parametrik 3D struktur \& arsitektur.
+        \item \textbf{Analisis Gempa SAP2000:} Respons spektrum SNI 1726 \& diagram BMD/SFD.
+        \item \textbf{Koordinasi Disiplin:} Deteksi benturan (\textit{clash detection}) balok, kolom \& utilitas.
+      \end{itemize}
+      }
+    \end{tcolorbox}
+  \end{minipage}
+  \vspace{2mm}
+
+  \begin{minipage}[t]{0.485\linewidth}
+    \vspace{0pt}
+    \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=58mm]
+      \colorbox{pnavy}{\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{white}\ \ BIDANG 03\ \ }\quad{\fontsize{8.5pt}{10pt}\selectfont\bfseries\color{pnavy}Pengawasan Lapangan \& Pengendalian Mutu}\\[1.5mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}
+      \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+        \item \textbf{Supervisi Lapangan BNSP:} Pengecoran beton, pembesian, \& bekisting.
+        \item \textbf{Quality Control (QC):} Pengujian slump beton segar \& verifikasi sertifikasi material.
+        \item \textbf{K3 Konstruksi (SMKK):} Identifikasi bahaya kerja, JSA, \& APD keselamatan.
+        \item \textbf{Administrasi Lapangan:} Pembuatan laporan harian, mingguan, \& bulanan.
+      \end{itemize}
+      }
+    \end{tcolorbox}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.485\linewidth}
+    \vspace{0pt}
+    \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=58mm]
+      \colorbox{pred}{\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{white}\ \ BIDANG 04\ \ }\quad{\fontsize{8.5pt}{10pt}\selectfont\bfseries\color{pnavy}Standar Regulasi \& Tata Kelola Proyek}\\[1.5mm]
+      {\fontsize{6.8pt}{8.5pt}\selectfont\color{psteel}
+      \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+        \item \textbf{Standar Nasional Indonesia:} SNI 1726 (Seismik), SNI 2847 (Beton Struktural).
+        \item \textbf{Regulasi Kementerian PUPR:} Permen PUPR No. 1/2022 (AHSP Bidang Cipta Karya).
+        \item \textbf{Manajemen Waktu CPM:} Penjadwalan Kurva S \& durasi kerja di MS Project.
+        \item \textbf{Standar Kerja Jepang:} Tokutei Ginou JAC (Japan Construction Action Network).
+      \end{itemize}
+      }
+    \end{tcolorbox}
+  \end{minipage}
+  \vspace{2mm}
+
+  % Software Matrix Card (height: 34mm)
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=3mm, right=3mm, top=2mm, bottom=2mm, height=34mm]
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}MATRIKS PENGUASAAN PERANGKAT LUNAK REKAYASA (SOFTWARE PROFICIENCY)}\\[1mm]
+    \begin{tabularx}{\linewidth}{@{}p{32mm} p{35mm} p{35mm} X@{}}
+      \hline
+      \textbf{\fontsize{6.8pt}{8pt}\selectfont Perangkat Lunak} & \textbf{\fontsize{6.8pt}{8pt}\selectfont Tingkat Kemahiran} & \textbf{\fontsize{6.8pt}{8pt}\selectfont Sertifikasi Terkait} & \textbf{\fontsize{6.8pt}{8pt}\selectfont Aplikasi Utama pada Proyek} \\
+      \hline
+      \fontsize{6.8pt}{8pt}\selectfont AutoCAD 2D/3D & \fontsize{6.8pt}{8pt}\selectfont\bfseries Tingkat Mahir (Advanced) & \fontsize{6.8pt}{8pt}\selectfont Praktisi DED Siap Cetak & \fontsize{6.8pt}{8pt}\selectfont Gambar DED Arsitektur \& Struktur Multi-Viewport skala 1:100, 1:20 \\
+      \fontsize{6.8pt}{8pt}\selectfont Autodesk Revit BIM & \fontsize{6.8pt}{8pt}\selectfont\bfseries Tingkat Mahir (Certified) & \fontsize{6.8pt}{8pt}\selectfont Autodesk Certified User & \fontsize{6.8pt}{8pt}\selectfont Modeling 3D parametrik kolom, balok, plat, tangga \& ekstraksi volume otomatis \\
+      \fontsize{6.8pt}{8pt}\selectfont SAP2000 Structure & \fontsize{6.8pt}{8pt}\selectfont\bfseries Tingkat Menengah (Interm.) & \fontsize{6.8pt}{8pt}\selectfont Kurikulum D3/D4 PNP & \fontsize{6.8pt}{8pt}\selectfont Pemodelan portal gedung bertingkat, respons spektrum gempa SNI 1726 \\
+      \fontsize{6.8pt}{8pt}\selectfont MS Project \& Excel & \fontsize{6.8pt}{8pt}\selectfont\bfseries Tingkat Mahir (Advanced) & \fontsize{6.8pt}{8pt}\selectfont Praktisi QS \& Scheduling & \fontsize{6.8pt}{8pt}\selectfont Kurva S kumulatif, lintasan kritis CPM, BoQ/RAB, Bar Bending Schedule \\
+      \hline
+    \end{tabularx}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{KEAHLIAN \& SOFTWARE}{03}
+""")
+
+# ==============================================================================
+# HALAMAN 4: SKK BNSP JENJANG 5 (HALAMAN DEPAN)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 4: SKK BNSP JENJANG 5 DEPAN ---
+\makeheader{// BUKTI LISENSI PROFESI RESMI // NEGARA KESATUAN REPUBLIK INDONESIA}{SERTIFIKAT KOMPETENSI KERJA (SKK) KONSTRUKSI JENJANG 5}{HALAMAN DEPAN \textbar\ LPJK - BNSP}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ LISENSI UTAMA NEGARA\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Pelaksana Lapangan Pekerjaan Gedung Madya}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Kualifikasi: KKNI Jenjang 5 (Teknisi / Analis)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Badan Penerbit:} & {\fontsize{7pt}{8.5pt}\selectfont BNSP melalui LPJK} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Wilayah Kerja:} & {\fontsize{7pt}{8.5pt}\selectfont BJKW I Banda Aceh, Kementerian PUPR} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Status Registrasi:} & {\fontsize{7pt}{8.5pt}\selectfont Terverifikasi SIKI LPJK / BNSP RI} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Dasar Hukum:} & {\fontsize{7pt}{8.5pt}\selectfont UU No. 2/2017 \& PP 14/2021}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}DESKRIPSI \& KEWENANGAN JABATAN KERJA}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Sertifikat lisensi resmi negara ini memberikan kewenangan formal bagi Reza Sepdide untuk memimpin dan melaksanakan pengawasan teknis pekerjaan gedung tingkat madya, meliputi:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Menerapkan Sistem Manajemen Keselamatan dan Kesehatan Kerja Konstruksi (SMKK) dan Perlindungan Lingkungan Kerja.
+      \item Mengkaji ulang dan memverifikasi gambar kerja (\textit{shop drawings}) dan spesifikasi teknis.
+      \item Menyusun jadwal pelaksanaan pekerjaan (\textit{time schedule} \& Kurva S) dan kebutuhan sumber daya.
+      \item Mengawasi pekerjaan struktur beton bertulang, pembesian, bekisting, dan pengecoran sesuai SNI.
+      \item Memeriksa mutu bahan material masuk dan pengujian laboratorium / lapangan (\textit{slump test}).
+      \item Mengelola administrasi teknis lapangan, opname pekerjaan, dan laporan kemajuan fisik mingguan/bulanan.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    \centering
+    \includegraphics[height=144mm,page=1,keepaspectratio]{""" + p("certificates/skk-bnsp-jenjang5.pdf") + r"""}\\[1mm]
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Sertifikat Kompetensi Kerja (SKK) Konstruksi Jenjang 5 --- Halaman Depan dengan QR Code Registrasi Resmi BNSP}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI LISENSI PROFESI}{04}
+""")
+
+# ==============================================================================
+# HALAMAN 5: SKK BNSP JENJANG 5 (HALAMAN BELAKANG / UNIT KOMPETENSI)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 5: SKK BNSP JENJANG 5 BELAKANG ---
+\makeheader{// BUKTI LISENSI PROFESI RESMI // DAFTAR UNIT KOMPETENSI KERJA}{SERTIFIKAT KOMPETENSI KERJA (SKK) KONSTRUKSI JENJANG 5}{HALAMAN BELAKANG \textbar\ UNIT KOMPETENSI SKKNI}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DAFTAR STANDAR SKKNI\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}11 Unit Kompetensi Kerja Nasional}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Skema Pelaksana Lapangan Gedung Madya}\\[3mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{enumerate}[leftmargin=4mm, itemsep=0.8mm, topsep=0mm]
+      \item Menerapkan Komunikasi di Tempat Kerja.
+      \item Mengendalikan Pelaksanaan K3 Konstruksi.
+      \item Mempelajari Gambar Kerja dan Spesifikasi Teknis.
+      \item Mengestimasi Kebutuhan Sumber Daya Proyek.
+      \item Mengawasi Pekerjaan Persiapan \& Pengukuran Lapangan (\textit{Uitzet}).
+      \item Mengawasi Pekerjaan Pondasi Bangunan Gedung.
+      \item Mengawasi Pekerjaan Struktur Beton Bertulang.
+      \item Mengawasi Pekerjaan Struktur Baja \& Komposit.
+      \item Mengawasi Pekerjaan Arsitektur \& Finishing Gedung.
+      \item Memeriksa Kualitas Hasil Pekerjaan Sesuai RKS.
+      \item Membuat Laporan Akhir Pelaksanaan Pekerjaan.
+    \end{enumerate}
+    }
+    \vspace{2mm}
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      {\fontsize{6.5pt}{8pt}\selectfont\bfseries\color{pnavy}Verifikasi Keabsahan Dokumen:}\\[0.5mm]
+      {\fontsize{6pt}{7.5pt}\selectfont\color{psteel}Tercatat pada Sistem Informasi Konstruksi Terintegrasi (SIKI) LPJK Kementerian Pekerjaan Umum dan Perumahan Rakyat (PUPR).}
+    \end{tcolorbox}
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    \centering
+    \includegraphics[height=144mm,page=2,keepaspectratio]{""" + p("certificates/skk-bnsp-jenjang5.pdf") + r"""}\\[1mm]
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Sertifikat Kompetensi Kerja (SKK) Konstruksi Jenjang 5 --- Halaman Belakang (Daftar 11 Unit Kompetensi Kerja SKKNI)}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI LISENSI PROFESI}{05}
+""")
+
+# ==============================================================================
+# HALAMAN 6: REVIT BIM CERTIFICATE
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 6: AUTODESK CERTIFIED REVIT ARCHITECTURE ---
+\makeheader{// SERTIFIKASI TEKNOLOGI BIM // STANDAR INDUSTRI DIGITAL}{AUTODESK CERTIFIED USER: REVIT ARCHITECTURE}{MODELING PARAMETRIK \& DOKUMENTASI BIM}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ SERTIFIKASI RESMI BIM\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Autodesk Revit Architecture Certified}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Building Information Modeling (BIM) Modeler}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Badan Penerbit:} & {\fontsize{7pt}{8.5pt}\selectfont Autodesk Certification System} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Kategori:} & {\fontsize{7pt}{8.5pt}\selectfont BIM Modeling \& Technical Documentation} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Disiplin:} & {\fontsize{7pt}{8.5pt}\selectfont Arsitektur \& Struktur Terintegrasi} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Status:} & {\fontsize{7pt}{8.5pt}\selectfont Tersertifikasi Resmi Internasional}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}RUANG LINGKUP KUALIFIKASI BIM}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Sertifikasi ini memvalidasi keahlian operasional tingkat tinggi dalam perancangan berbasis Building Information Modeling (BIM):}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Pemodelan parametrik 3D elemen struktur: pondasi telapak, sloof, kolom beton, balok, dan plat lantai.
+      \item Pemodelan elemen arsitektural: dinding bata/partisi, bukaan kusen pintu/jendela, tangga, dan plafond.
+      \item Koordinasi model dan deteksi potensi benturan (\textit{clash detection}) antar elemen struktural.
+      \item Pembuatan lembar gambar kerja (\textit{sheets}), tampak potongan otomatis, detail pembesian, dan jadwal material (\textit{material schedule/take-off}).
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    \centering
+    \includegraphics[width=0.98\linewidth,height=144mm,keepaspectratio]{""" + p("certificates/sertifikat-revit.pdf") + r"""}\\[1mm]
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Sertifikat Autodesk Certified User: Revit Architecture}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI SERTIFIKASI BIM}{06}
+""")
+
+# ==============================================================================
+# HALAMAN 7: SSW JAPAN (TOKUTEI GINOU)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 7: SSW TOKUTEI GINOU JEPANG ---
+\makeheader{// STANDAR KONSTRUKSI JEPANG // KUALIFIKASI INTERNASIONAL}{JAPAN SPECIFIED SKILLED WORKER (SSW / TOKUTEI GINOU)}{EVALUASI KOMPETENSI KONSTRUKSI JEPANG \textbar\ JAC}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ STANDAR INTERNASIONAL JEPANG\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}SSW Construction Assessment (JAC)}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Japan Construction Action Network Certification}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Asosiasi:} & {\fontsize{7pt}{8.5pt}\selectfont JAC (Japan Construction Action Network)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Bidang Keahlian:} & {\fontsize{7pt}{8.5pt}\selectfont Konstruksi Sipil / Pekerjaan Gedung} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Regulasi:} & {\fontsize{7pt}{8.5pt}\selectfont Kementerian Pertanahan, Infrastruktur, Transportasi \& Pariwisata Jepang (MLIT)}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}STANDAR KERJA \& KESELAMATAN JEPANG}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Menunjukkan kepatuhan profesional terhadap disiplin kerja dan standar teknis Jepang:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Penguasaan budaya keselamatan kerja Jepang (\textit{Anzen Daiichi}) dan identifikasi bahaya (\textit{Kiken Yochi Training / KYT}).
+      \item Standar presisi penulangan dan acuan bekisting (\textit{katawaku / haikin}) berakurasi milimeter.
+      \item Komunikasi operasional lapangan berbasis \textit{Hou-Ren-So} (Melapor, Menghubungi, Mengonsultasikan).
+      \item Disiplin pemeliharaan area kerja (\textit{5S: Seiri, Seiton, Seiso, Seiketsu, Shitsuke}).
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    \centering
+    \includegraphics[height=144mm,page=1,keepaspectratio]{""" + p("certificates/ssw-japan.pdf") + r"""}\\[1mm]
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Sertifikat Kelulusan Evaluasi Kompetensi Konstruksi Tokutei Ginou (JAC Japan)}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI STANDAR JEPANG}{07}
+""")
+
+# ==============================================================================
+# HALAMAN 8: JFT-BASIC & JLPT N4 (DUA DOKUMEN BERDAMPINGAN)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 8: JFT-BASIC & JLPT N4 BERSAMAAN ---
+\makeheader{// BUKTI KOMPETENSI BAHASA INTERNASIONAL // JEPANG}{KEMAHIRAN BAHASA JEPANG KERJA: JFT-BASIC A2 \& JLPT N4}{DUA SERTIFIKAT RESMI DITAMPILKAN BERDAMPINGAN}
+
+\noindent
+\begin{minipage}[t]{0.30\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ KEMAHIRAN BAHASA JEPANG\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}Standar Komunikasi Kerja \& Konstruksi Jepang}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}JFT-Basic A2 (250/250) \& JLPT N4 (165/180)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{24mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Sertifikasi 1:} & {\fontsize{7pt}{8.5pt}\selectfont JFT-Basic (Japan Foundation)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Skor JFT:} & {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred} 250 / 250 (Skor Sempurna)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Sertifikasi 2:} & {\fontsize{7pt}{8.5pt}\selectfont JLPT N4 (JEES / JF)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Skor JLPT:} & {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred} 165 / 180 (Sangat Memuaskan)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Target Bidang:} & {\fontsize{7pt}{8.5pt}\selectfont Tokutei Ginou Konstruksi (JAC)}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}DESKRIPSI KOMPETENSI KOMUNIKASI}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Kedua sertifikat ini membuktikan penguasaan bahasa Jepang aktif untuk kebutuhan operasional di industri konstruksi Jepang (\textit{kensetsu gyokai}), mencakup:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Pemahaman instruksi kerja lapangan (\textit{sagyou shiji}) dan keselamatan kerja (\textit{anzen daiichi}).
+      \item Koordinasi teknis dengan supervisor, mandor, dan rekan kerja Jepang (\textit{hou-ren-so}: lapor, kontak, konsultasi).
+      \item Kemampuan membaca gambar teknik bersimbol dan istilah teknis Jepang (\textit{sekkei-zu}, \textit{haikin}, \textit{katawaku}).
+      \item Kualifikasi bahasa resmi untuk visa kerja Tokutei Ginou (SSW) bidang Konstruksi.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.68\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm, height=156mm]
+    \begin{minipage}[t]{0.485\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, height=144mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=130mm,keepaspectratio]{""" + p("certificates/jft-basic.pdf") + r"""}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}JFT-Basic (Japan Foundation) --- Skor Sempurna 250/250}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.485\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, height=144mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=130mm,keepaspectratio]{""" + p("certificates/jlpt-n4.pdf") + r"""}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}JLPT N4 (JEES / Japan Foundation) --- Skor 165/180}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{1.5mm}
+    \centering{\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Verifikasi Resmi:} Kedua sertifikat resmi di atas diterbitkan langsung oleh Japan Foundation dan Japan Educational Exchanges and Services (JEES).}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI LISENSI \& BAHASA}{08}
+""")
+
+# ==============================================================================
+# HALAMAN 9: SERTIFIKAT MAGANG SEMEN PADANG (SIE)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 9: MAGANG PT SEMEN PADANG ---
+\makeheader{// PENGALAMAN KERJA INDUSTRI // KEMENTERIAN BUMN}{SERTIFIKAT MAGANG MAHASISWA BERSERTIFIKAT (PMPP)}{PT SEMEN PADANG \textbar\ PROYEK EPC WASTE GAS RECOVERY}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ SERTIFIKAT MAGANG INDUSTRI\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Supervisi Proyek EPC Waste Gas Recovery}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}PT Semen Padang (SIG Group)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Perusahaan:} & {\fontsize{7pt}{8.5pt}\selectfont PT Semen Padang (BUMN SIG)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Unit Kerja:} & {\fontsize{7pt}{8.5pt}\selectfont Biro Pengendalian Proyek \& Konstruksi} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Periode:} & {\fontsize{7pt}{8.5pt}\selectfont Magang Bersertifikat 6 Bulan} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Evaluasi:} & {\fontsize{7pt}{8.5pt}\selectfont\bfseries Sangat Baik (A)}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}LINGKUP PENUGASAN \& PENGALAMAN}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Terlibat langsung dalam siklus proyek EPC (Engineering, Procurement, Construction) di lingkungan pabrik semen berat:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Pengukuran langsung (\textit{joint survey}) untuk modifikasi rute pipa ducting waste gas.
+      \item Penyusunan Rework Bill of Quantity (BoQ) akibat deviasi geometri struktur di lapangan.
+      \item Inspeksi pengelasan penetrasi penuh dan baut mutu tinggi pada struktur baja penyangga fan.
+      \item Pengawasan pengecoran pondasi mesin getaran tinggi dan pengujian slump beton.
+      \item Monitoring keselamatan kerja berisiko tinggi: pekerjaan di ketinggian (\textit{working at height}) dan ruang terbatas (\textit{confined space}).
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    \centering
+    \includegraphics[height=144mm,page=1,keepaspectratio]{""" + p("certificates/sertifikat-magang-sie.pdf") + r"""}\\[1mm]
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Sertifikat Praktik Kerja Lapangan (PKL) / Magang Bersertifikat PT Semen Padang}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI PENGALAMAN INDUSTRI}{09}
+""")
+
+# ==============================================================================
+# HALAMAN 10: TOEIC SCORE 640
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 10: TOEIC SCORE 640 ---
+\makeheader{// BUKTI KOMPETENSI BAHASA INTERNASIONAL // INGGRIS}{ETS OFFICIAL TOEIC SCORE REPORT (SKOR: 640)}{TEST OF ENGLISH FOR INTERNATIONAL COMMUNICATION}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ KOMUNIKASI TEKNIK GLOBAL\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Official TOEIC Score Report: 640}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Educational Testing Service (ETS)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Lembaga Penguji:} & {\fontsize{7pt}{8.5pt}\selectfont ETS (Educational Testing Service)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Skor Resmi:} & {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred} 640 (Kerja Profesional)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Standar Kualifikasi:} & {\fontsize{7pt}{8.5pt}\selectfont CEFR Level B1/B2 Intermediate} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Status:} & {\fontsize{7pt}{8.5pt}\selectfont Terverifikasi Resmi}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}PEMANFAATAN PADA DUNIA REKAYASA}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Kemampuan komunikasi bahasa Inggris tingkat kerja ini diaplikasikan secara aktif untuk:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Mempelajari manual teknis, dokumen lelang internasional (\textit{FIDIC Conditions of Contract}), dan standar ASTM/ACI/AISC.
+      \item Mengoperasikan perangkat lunak rekayasa terkini berbasis bahasa Inggris (Autodesk Revit, SAP2000, AutoCAD).
+      \item Melakukan korespondensi profesional, laporan kemajuan proyek, dan komunikasi kerja dengan konsultan/kontraktor asing.
+      \item Menyusun naskah ilmiah dan dokumentasi tender berstandar internasional.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    \centering
+    \includegraphics[width=0.98\linewidth,height=144mm,keepaspectratio]{""" + p("certificates/toeic-640.pdf") + r"""}\\[1mm]
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Lembar Resmi Skor TOEIC (ETS Score Report) Politeknik Negeri Padang}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI KEMAHIRAN BAHASA}{10}
+""")
+
+# ==============================================================================
+# HALAMAN 11: TRANSKRIP AKADEMIK D3 (IPK 3.72)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 11: TRANSKRIP AKADEMIK D3 ---
+\makeheader{// KELULUSAN DENGAN PREDIKAT PUJIAN // MAGNA CUM LAUDE}{TRANSKRIP AKADEMIK D3 TEKNIK SIPIL POLITEKNIK NEGERI PADANG}{IPK: 3.72 / 4.00 \textbar\ PREDIKAT PUJIAN (MAGNA CUM LAUDE)}
+
+\noindent
+\begin{minipage}[t]{0.30\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PRESTASI AKADEMIK RESMI\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}D3 Teknik Sipil PNP}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}IPK 3.72 / 4.00 (Magna Cum Laude)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{24mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Perguruan Tinggi:} & {\fontsize{7pt}{8.5pt}\selectfont Politeknik Negeri Padang} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Jurusan / Prodi:} & {\fontsize{7pt}{8.5pt}\selectfont Teknik Sipil / D3} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Total SKS Lulus:} & {\fontsize{7pt}{8.5pt}\selectfont 114 SKS} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Predikat Kelulusan:} & {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred} Dengan Pujian (Cum Laude)}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}NILAI MATA KULIAH KUNCI (PREDIKAT A):}\\[1mm]
+    {\fontsize{6.5pt}{8pt}\selectfont\color{psteel}
+    $\bullet$ Rencana Anggaran Biaya (RAB): \textbf{A}\\
+    $\bullet$ Manajemen Konstruksi: \textbf{A}\\
+    $\bullet$ Analisis Struktur: \textbf{A}\\
+    $\bullet$ Struktur Beton Bertulang: \textbf{A}\\
+    $\bullet$ Gambar Teknik \& CAD: \textbf{A}\\
+    $\bullet$ Praktik Kerja Lapangan (PKL): \textbf{A}\\
+    $\bullet$ Mekanika Tanah \& Pondasi: \textbf{A}
+    }
+    \vspace{2mm}
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      {\fontsize{6.5pt}{8pt}\selectfont\bfseries Catatan Keberlanjutan Studi:}\\[0.5mm]
+      {\fontsize{6pt}{7.5pt}\selectfont\color{psteel}Saat ini aktif melanjutkan program alih jenjang D4 Manajemen Rekayasa Konstruksi PNP.}
+    \end{tcolorbox}
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.68\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm, height=156mm]
+    \begin{minipage}[t]{0.485\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, height=144mm]
+        \centering
+        \includegraphics[height=132mm,page=1,keepaspectratio]{""" + p("certificates/transkrip-nilai.pdf") + r"""}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}Transkrip Akademik Resmi --- Halaman 1}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.485\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, height=144mm]
+        \centering
+        \includegraphics[height=132mm,page=2,keepaspectratio]{""" + p("certificates/transkrip-nilai.pdf") + r"""}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}Transkrip Akademik Resmi --- Halaman 2 (Yudisium Magna Cum Laude)}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{1.5mm}
+    \centering{\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}\textbf{Dokumen Asli:} Transkrip Nilai Akademik Resmi Politeknik Negeri Padang (2 Halaman Lengkap).}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{BUKTI AKADEMIK RESMI}{11}
+""")
+
+# ==============================================================================
+# HALAMAN 12: SDN 19 KUAMANG (1/3) - DED MULTI VIEWPORT
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 12: SDN 19 KUAMANG (1/3) ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 01}{REVITALISASI FASILITAS GEDUNG SDN 19 KUAMANG}{LEMBAR 01/03 \textbar\ DED AUTOCAD MULTI-VIEWPORT}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PROYEK PERENCANAAN TEKNIS 01\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Revitalisasi Fasilitas Gedung SDN 19 Kuamang}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Paket Perencanaan DED, RKS \& BoQ/RAB Lengkap}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Peran Proyek:} & {\fontsize{7pt}{8.5pt}\selectfont Perencana Teknis \& QS (Konsultan)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Klien / Instansi:} & {\fontsize{7pt}{8.5pt}\selectfont Dinas Pendidikan Pasaman} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Periode:} & {\fontsize{7pt}{8.5pt}\selectfont September 2026 \textbar\ Pasaman, Sumbar} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Ruang Lingkup:} & {\fontsize{7pt}{8.5pt}\selectfont DED AutoCAD, BoQ/RAB, RKS, S-Curve} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Perangkat Lunak:} & {\fontsize{7pt}{8.5pt}\selectfont AutoCAD 2024, MS Excel AHSP}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}RINGKASAN REKAYASA \& METODOLOGI}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Perencanaan teknis komprehensif revitalisasi gedung sekolah SDN 19 Kuamang. Memimpin survei penilaian tingkat kerusakan fisik bangunan, Quantity Take-Off (QTO) berbasis matematis, penyusunan Rencana Anggaran Biaya (RAB) mengacu AHSP daerah, penyusunan RKS, dan produksi DED lengkap menggunakan AutoCAD layout viewports.}\\[2mm]
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}DELIVERABLES UTAMA}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Dossier Gambar Kerja DED Arsitektur \& Struktur Multi-Viewport skala presisi.
+      \item Buku Dokumen Rencana Kerja dan Syarat-Syarat (RKS) Spesifikasi Bahan.
+      \item Rencana Anggaran Biaya (RAB) berbasis AHSP PUPR dan Analisa Harga Pasar.
+      \item Kurva S Pembobotan Kumulatif Jadwal Pelaksanaan Kerja.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm, height=156mm]
+    \centering
+    \includegraphics[width=0.99\linewidth,height=142mm,keepaspectratio]{""" + p("sdn-19-kuamang/menggunakan-layout-autocad.png") + r"""}\\[2mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}Gambar Kerja DED AutoCAD --- Konfigurasi Multi-Viewport Paper Layout Skala Presisi Siap Cetak \& Siap Lelang}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK PERENCANAAN \& ESTIMASI BIAYA}{12}
+""")
+
+# ==============================================================================
+# HALAMAN 13: SDN 19 KUAMANG (2/3) - GAMBAR KERJA DETAIL (4 GAMBAR)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 13: SDN 19 KUAMANG (2/3) ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 01}{REVITALISASI FASILITAS GEDUNG SDN 19 KUAMANG}{LEMBAR 02/03 \textbar\ DETAIL GAMBAR KERJA ARSITEKTUR \& STRUKTUR}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DETAIL TEKNIS GAMBAR DED\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Arsitektur \& Konstruksi Sekolah}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Gambar Denah, Tampak, Lantai \& Bukaan}\\[3mm]
+
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Empat lembar gambar detail teknis hasil pemodelan AutoCAD dengan standar penamaan layer, ketebalan garis lineweight, dimensi ukuran, dan simbol material arsitektural:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1mm, topsep=0mm]
+      \item \textbf{1. Tampak Bangunan:} Proyeksi ortogonal tampak depan, tampak belakang, dan tampak samping gedung sekolah pasca revitalisasi.
+      \item \textbf{2. Denah Ruang Kelas:} Penataan modul ruang kelas baru, sirkulasi pintu, ventilasi jendela, dan elevasi lantai +0.00.
+      \item \textbf{3. Denah Pola Lantai:} Modul keramik lantai 40x40 cm, leveling adukan plesteran, dan pola nat simetris.
+      \item \textbf{4. Detail Kusen \& Bukaan:} Detail dimensi kusen aluminium/kayu, ventilasi jalusi, daun pintu, dan engsel pengunci.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x2 Grid of Drawings
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("sdn-19-kuamang/1.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Tampak Depan \& Belakang Gedung}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("sdn-19-kuamang/2.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Denah Tata Letak Ruang Kelas}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("sdn-19-kuamang/3.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Denah Keramik Pola Lantai}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("sdn-19-kuamang/4.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Detail Kusen \& Bukaan Jendela}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK PERENCANAAN \& ESTIMASI BIAYA}{13}
+""")
+
+# ==============================================================================
+# HALAMAN 14: SDN 19 KUAMANG (3/3) - RKS, BACKUP VOLUME & KUDA-KUDA
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 14: SDN 19 KUAMANG (3/3) ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 01}{REVITALISASI FASILITAS GEDUNG SDN 19 KUAMANG}{LEMBAR 03/03 \textbar\ RKS, BACKUP VOLUME \& STRUKTUR ATAP}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DOKUMEN TENDER \& KONTRAK\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Spesifikasi Bahan, QTO \& Struktur}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}RKS, Lembar Perhitungan \& Detail Kuda-Kuda}\\[3mm]
+
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Kelengkapan berkas teknis siap lelang untuk menjamin kepatuhan rekanan pelaksana terhadap standar konstruksi dan batas pagu anggaran:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1mm, topsep=0mm]
+      \item \textbf{Dokumen RKS:} Mengatur persyaratan material (spesifikasi semen SNI, mutu cat tahan cuaca, ketebalan baja ringan galvalum, dan prosedur pengujian mutu).
+      \item \textbf{Backup Volume QTO:} Lembar pembuktian rumus matematis volume pekerjaan galian, pasangan bata, plesteran, dan pengecatan.
+      \item \textbf{Detail Struktur Atap:} Perkuatan kuda-kuda atap eksisting, penggantian reng/gording lapuk, dan pemasangan penutup atap seng gelombang.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 3 Columns of Documents
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("sdn-19-kuamang/rks.png") + r"""}\\[1mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Dokumen RKS \& Syarat Teknis}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("sdn-19-kuamang/backup-volume.png") + r"""}\\[1mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Lembar Backup Volume QTO}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("sdn-19-kuamang/5.png") + r"""}\\[1mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Detail Rangka Kuda-Kuda Atap}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK PERENCANAAN \& ESTIMASI BIAYA}{14}
+""")
+
+# ==============================================================================
+# HALAMAN 15: SLBN 2 PARIAMAN (1/3) - DED MULTI VIEWPORT
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 15: SLBN 2 PARIAMAN (1/3) ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 02}{PEMBANGUNAN GEDUNG SLBN 2 KOTA PARIAMAN}{LEMBAR 01/03 \textbar\ DED STRUKTUR BETON \& AUTOCAD}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PROYEK STRUKTUR GEDUNG 02\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Pembangunan Gedung SLBN 2 Kota Pariaman}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Perencanaan Struktur Beton Bertulang \& QS}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Peran Proyek:} & {\fontsize{7pt}{8.5pt}\selectfont Modeler DED \& Estimator Biaya} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Klien / Instansi:} & {\fontsize{7pt}{8.5pt}\selectfont Dinas Pendidikan Sumatera Barat} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Lokasi Proyek:} & {\fontsize{7pt}{8.5pt}\selectfont Kota Pariaman, Sumatera Barat} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Ruang Lingkup:} & {\fontsize{7pt}{8.5pt}\selectfont Struktur Footplate, Balok, BBS, CCO} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Perangkat Lunak:} & {\fontsize{7pt}{8.5pt}\selectfont AutoCAD 2024, MS Excel Engineering}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}RINGKASAN STRUKTUR \& METODOLOGI}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Perancangan dan pemodelan gambar kerja DED struktur gedung bertingkat SLBN 2 Pariaman dengan sistem pondasi telapak footplate, balok sloof pengikat, kolom praktis dan struktur, balok lantai, dan plat lantai beton bertulang sesuai standar SNI 2847.}\\[2mm]
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}DELIVERABLES UTAMA}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item DED AutoCAD Multi-Viewport lengkap dengan kop gambar konsultan.
+      \item Bar Bending Schedule (BBS) detail penulangan balok dan kolom.
+      \item Rekapitulasi Rencana Anggaran Biaya (RAB) dan Addendum CCO.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm, height=156mm]
+    \centering
+    \includegraphics[width=0.99\linewidth,height=142mm,keepaspectratio]{""" + p("slbn-2-pariaman/layout-autocad.png") + r"""}\\[2mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}DED Multi-Viewport AutoCAD --- Tata Letak Pondasi \& Struktur Kolom Gedung SLBN 2 Pariaman}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK STRUKTUR \& ESTIMASI BIAYA}{15}
+""")
+
+# ==============================================================================
+# HALAMAN 16: SLBN 2 PARIAMAN (2/3) - DETAIL STRUKTUR (4 GAMBAR)
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 16: SLBN 2 PARIAMAN (2/3) ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 02}{PEMBANGUNAN GEDUNG SLBN 2 KOTA PARIAMAN}{LEMBAR 02/03 \textbar\ DETAIL PONDASI FOOTPLATE, BALOK \& PEMBESIAN}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DETAIL STRUKTUR BETON\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Pondasi, Balok \& Kolom}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Gambar Detail Penulangan Beton SNI}\\[3mm]
+
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Empat lembar gambar detail penulangan beton bertulang untuk acuan perakitan pembesian di lapangan:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1mm, topsep=0mm]
+      \item \textbf{1. Denah Pondasi:} Titik koordinat pondasi telapak footplate, dimensi sloof, dan kedalaman tanah keras.
+      \item \textbf{2. Pembesian Balok:} Diameter tulangan utama longitudinal, jarak begel/sengkang tumpuan \& lapangan.
+      \item \textbf{3. Potongan Melintang:} Hubungan sambungan balok-kolom dan panjang penyaluran kait penulangan.
+      \item \textbf{4. Detail Footplate:} Dimensi telapak, tebal selimut beton, dan tulangan tarik bawah.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x2 Grid
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("slbn-2-pariaman/1.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Denah Pondasi \& Titik Kolom}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("slbn-2-pariaman/2.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Detail Pembesian Balok Struktur}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("slbn-2-pariaman/3.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Potongan Melintang Struktur}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("slbn-2-pariaman/4.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Detail Footplate \& Pembesian Sloof}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK STRUKTUR \& ESTIMASI BIAYA}{16}
+""")
+
+# ==============================================================================
+# HALAMAN 17: SLBN 2 PARIAMAN (3/3) - BBS, CCO & BACKUP VOLUME
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 17: SLBN 2 PARIAMAN (3/3) ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 02}{PEMBANGUNAN GEDUNG SLBN 2 KOTA PARIAMAN}{LEMBAR 03/03 \textbar\ BAR BENDING SCHEDULE, CCO \& ESTIMASI BIAYA}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ MANAJEMEN BIAYA \& PEMBESIAN\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Bar Bending Schedule \& CCO}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Optimasi Besi Beton \& Addendum Kontrak}\\[3mm]
+
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Tiga berkas instrumen pengendalian biaya konstruksi dan fabrikasi besi di lapangan:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1mm, topsep=0mm]
+      \item \textbf{Bar Bending Schedule (BBS):} Perhitungan panjang potong, bentuk tekukan (bengkokan kait SNI), dan berat total besi per diameter untuk meminimalkan scrap/waste.
+      \item \textbf{Addendum CCO:} Lembar justifikasi teknis perubahan pekerjaan akibat kondisi tanah lapangan.
+      \item \textbf{Backup Volume QTO:} Verifikasi kuantitas beton ready-mix dan bekisting kayu.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 3 Columns
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("slbn-2-pariaman/5.png") + r"""}\\[1mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Bar Bending Schedule (BBS)}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("slbn-2-pariaman/cco.png") + r"""}\\[1mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Addendum Contract Change Order}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("slbn-2-pariaman/backup-volume.png") + r"""}\\[1mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Lembar Backup Volume QTO}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK STRUKTUR \& ESTIMASI BIAYA}{17}
+""")
+
+# ==============================================================================
+# HALAMAN 18: QS PT MULIA DJASMINE MANDIRI
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 18: QS PT MULIA DJASMINE MANDIRI ---
+\makeheader{// KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 03}{PENGADAAN PERUMAHAN DINAS PT MULIA DJASMINE MANDIRI}{QUANTITY SURVEYOR FREELANCE \textbar\ BOQ, BBS \& ADDENDUM CCO}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PROYEK REAL ESTATE 03\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Pengadaan Perumahan Dinas}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}PT Mulia Djasmine Mandiri}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Posisi / Peran:} & {\fontsize{7pt}{8.5pt}\selectfont Freelance Quantity Surveyor (QS)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Klien / Instansi:} & {\fontsize{7pt}{8.5pt}\selectfont PT Mulia Djasmine Mandiri} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Tipologi Bangunan:} & {\fontsize{7pt}{8.5pt}\selectfont Kompleks Perumahan Dinas} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Tanggung Jawab:} & {\fontsize{7pt}{8.5pt}\selectfont Master BoQ, BBS, CCO \& Koordinasi}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}LINGKUP TUGAS QUANTITY SURVEYOR}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Menyusun Master Bill of Quantity (BoQ) seluruh unit tipe rumah dinas.
+      \item Menghitung lembar backup volume pekerjaan tanah, struktur, dan arsitektur.
+      \item Merancang Bar Bending Schedule (BBS) untuk efisiensi pengadaan besi tulangan.
+      \item Menghitung klausul deviasi pekerjaan tambah-kurang (Contract Change Order).
+      \item Menghadiri rapat teknis berkala dan negosiasi harga bersama kontraktor utama.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x2 Grid
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("qs-mulia-djasmine/backup-vol.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Backup Volume Perhitungan QTO}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("qs-mulia-djasmine/bbs.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Bar Bending Schedule (BBS) Struktur}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("qs-mulia-djasmine/cco.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Rekapitulasi Addendum CCO Kontrak}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("qs-mulia-djasmine/meeting.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Dokumentasi Rapat Teknis Bersama Tim Proyek}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK PERUMAHAN \& QUANTITY SURVEYING}{18}
+""")
+
+# ==============================================================================
+# HALAMAN 19: TUGAS AKHIR D3: GEDUNG DPRD PASAMAN
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 19: TUGAS AKHIR DPRD PASAMAN ---
+\makeheader{// KELOMPOK 2: MANAJEMEN PELAKSANAAN \& PENGAWASAN // PROYEK 04}{RENCANA PELAKSANAAN PROYEK GEDUNG DPRD PASAMAN}{CAPSTONE DESIGN PROJECT D3 \textbar\ BOQ, TIME SCHEDULE \& KURVA S}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PROYEK AKADEMIK CAPSTONE 04\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Rencana Pelaksanaan Konstruksi}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Gedung DPRD Kabupaten Pasaman}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Kategori:} & {\fontsize{7pt}{8.5pt}\selectfont Tugas Akhir Capstone D3 Teknik Sipil} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Objek Bangunan:} & {\fontsize{7pt}{8.5pt}\selectfont Gedung Bertingkat Kantor Pemerintahan} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Metode Analisis:} & {\fontsize{7pt}{8.5pt}\selectfont Critical Path Method (CPM) \& Kurva S} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Nilai Kelulusan:} & {\fontsize{7pt}{8.5pt}\bfseries Nilai A (Predikat Sangat Memuaskan)}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}CAKUPAN PERENCANAAN TEKNIS}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Menghitung volume pekerjaan seluruh komponen struktur gedung 3 lantai.
+      \item Menyusun Rencana Anggaran Biaya (RAB) terperinci dengan analisa harga satuan.
+      \item Merancang diagram lintasan kritis (CPM) dan jaringan kerja pada Microsoft Project.
+      \item Membuat Kurva S pembobotan kumulatif mingguan untuk monitoring deviasi.
+      \item Merancang tata letak fasilitas site (\textit{site layout planning}), perletakan tower crane, dan jalur mobilisasi logistik material.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=156mm]
+    % Kurva S (Top)
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
+      \centering
+      \includegraphics[width=0.98\linewidth,height=68mm,keepaspectratio]{""" + p("final-project-dprd/kurva-s.png") + r"""}\\[0.5mm]
+      {\fontsize{6pt}{7pt}\selectfont\bfseries Kurva S Kumulatif Rencana Pelaksanaan Gedung DPRD Pasaman}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    % Bottom Row (Schedule + RAB)
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{""" + p("final-project-dprd/schedule-ms-project.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Time Schedule Gantt Chart MS Project}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{""" + p("final-project-dprd/rab.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Rekapitulasi Rencana Anggaran Biaya (RAB)}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK AKADEMIK CAPSTONE}{19}
+""")
+
+# ==============================================================================
+# HALAMAN 20: EPC WASTE GAS RECOVERY (1/3) - MODIFIKASI JALUR DUCTING
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 20: EPC WASTE GAS RECOVERY (1/3) ---
+\makeheader{// KELOMPOK 2: MANAJEMEN PELAKSANAAN \& PENGAWASAN // PROYEK 05}{PROYEK EPC WASTE GAS RECOVERY PT SEMEN PADANG}{LEMBAR 01/03 \textbar\ AS-BUILT DRAWING \& PENGUJIAN PONDASI BETON}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PROYEK INDUSTRI EPC 05\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}EPC Waste Gas Recovery}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}PT Semen Padang (BUMN SIG)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Peran Proyek:} & {\fontsize{7pt}{8.5pt}\selectfont Pengawas Lapangan \& Assistant QS} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Pemberi Kerja:} & {\fontsize{7pt}{8.5pt}\selectfont PT Semen Padang} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Tipe Proyek:} & {\fontsize{7pt}{8.5pt}\selectfont EPC Pabrik Semen Skala Berat} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Fokus Utama:} & {\fontsize{7pt}{8.5pt}\selectfont Modifikasi Ducting, BBS \& Slump Test}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}PENGUJIAN MUTU \& PENULANGAN}\\[1.5mm]
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Pondasi mesin exhaust fan memerlukan kontrol mutu beton dan ketelitian pembesian ekstra akibat beban getaran dinamis kontinyu:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Pengujian slump beton segar langsung di lapangan pabrik untuk memastikan \textit{workability} dan rasio fas air-semen sesuai spesifikasi.
+      \item Penyusunan Bar Bending Schedule (BBS) penulangan pondasi mesin berat dengan diameter tulangan D25 ulir.
+      \item Penyesuaian gambar kerja (\textit{as-built drawings}) terhadap kondisi eksisting jalur pipa gas panas.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm, height=156mm]
+    \begin{minipage}[t]{0.485\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("magang-sie/slump-test.jpg") + r"""}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}Pengujian Slump Test Beton Segar di Area Proyek EPC}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.485\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, height=148mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("magang-sie/bbs.png") + r"""}\\[1mm]
+        {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}Bar Bending Schedule (BBS) Penulangan Pondasi Mesin}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK EPC INDUSTRI}{20}
+""")
+
+# ==============================================================================
+# HALAMAN 21: EPC WASTE GAS RECOVERY (2/3) - BOQ REWORK & LAPORAN PROGRES
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 21: EPC WASTE GAS RECOVERY (2/3) ---
+\makeheader{// KELOMPOK 2: MANAJEMEN PELAKSANAAN \& PENGAWASAN // PROYEK 05}{PROYEK EPC WASTE GAS RECOVERY PT SEMEN PADANG}{LEMBAR 02/03 \textbar\ BILL OF QUANTITY REWORK \& PENGENDALIAN BIAYA}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ REWORK BOQ \& LAPORAN KONTRAK\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Rework Bill of Quantity (BoQ)}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Contract Change Order \& Deviasi Biaya}\\[3mm]
+
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Pada pelaksanaan proyek EPC, perubahan geometri elevasi struktur eksisting menuntut penyesuaian volume material dan fabrikasi ulang:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1mm, topsep=0mm]
+      \item \textbf{Dokumen BoQ Rework:} Menghitung ulang seluruh volume baja profil WF, pelat pengaku (\textit{gusset plate}), dan pekerjaan pengelasan struktur ducting.
+      \item \textbf{QTO Rework:} Perhitungan Quantity Take-Off berbasis lembar opname lapangan bersama subkontraktor.
+      \item \textbf{Laporan Progres Siklus Penuh:} Menyusun laporan harian (\textit{daily progress}), laporan mingguan (\textit{weekly report}), dan rekapitulasi progres bulanan (\textit{monthly report}) untuk dasar pengajuan termin pembayaran.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=156mm]
+    % BoQ Rework (Top)
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
+      \centering
+      \includegraphics[width=0.98\linewidth,height=68mm,keepaspectratio]{""" + p("magang-sie/bill-of-quantity-rework.png") + r"""}\\[0.5mm]
+      {\fontsize{6pt}{7pt}\selectfont\bfseries Dokumen Utama Bill of Quantity (BoQ) Rework Proyek EPC Waste Gas Recovery}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    % Bottom Row (QTO Rework + Progress Reports)
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{""" + p("magang-sie/qto-rework-1.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries Lembar Quantity Take-Off (QTO) Rework}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=17mm,keepaspectratio]{""" + p("magang-sie/daily-proggres.png") + r"""}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=17mm,keepaspectratio]{""" + p("magang-sie/weekly-report.png") + r"""}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=17mm,keepaspectratio]{""" + p("magang-sie/monthly-report.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries Laporan Harian, Mingguan \& Bulanan}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK EPC INDUSTRI}{21}
+""")
+
+# ==============================================================================
+# HALAMAN 22: EPC WASTE GAS RECOVERY (3/3) - INSPEKSI LAPANGAN & PUNCH LIST
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 22: EPC WASTE GAS RECOVERY (3/3) ---
+\makeheader{// KELOMPOK 2: MANAJEMEN PELAKSANAAN \& PENGAWASAN // PROYEK 05}{PROYEK EPC WASTE GAS RECOVERY PT SEMEN PADANG}{LEMBAR 03/03 \textbar\ INSPEKSI STRUKTUR BAJA, MAPPING WORK \& K3 SMKK}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ INSPEKSI MUTU \& K3 LAPANGAN\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Pengawasan Ereksi Struktur Baja}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Punch List \& Tata Kelola Zonasi Kerja}\\[3mm]
+
+    {\fontsize{6.8pt}{8.8pt}\selectfont\color{psteel}Dokumentasi komprehensif implementasi pengawasan lapangan berstandar industri BUMN berat:}\\[2mm]
+
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1mm, topsep=0mm]
+      \item \textbf{Inspeksi Pengelasan \& Baut:} Pemeriksaan visual hasil las (\textit{weld bead}) dan kekencangan baut mutu tinggi (A325) sambungan kolom baja.
+      \item \textbf{Mapping Work Area:} Pemetaan area kerja berisiko tinggi untuk mencegah kecelakaan tabrakan alat berat dan pekerja.
+      \item \textbf{Punch List Akhir:} Mengidentifikasi cacat pekerjaan (\textit{defects}) sebelum pengujian operasional (\textit{commissioning}).
+      \item \textbf{K3 Konstruksi (SMKK):} Penerapan izin kerja khusus (\textit{Permit to Work}) dan pemakaian APD lengkap di area pabrik operasional.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x2 Grid
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("magang-sie/dokumen.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Verifikasi Gambar Kerja di Lapangan Pabrik}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("magang-sie/mapping-work.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Peta Zonasi Kerja (Mapping Work Proyek EPC)}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("magang-sie/dokumen-2.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Inspeksi Pengelasan \& Struktur Baja}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("magang-sie/punch-list.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Lembar Pengendalian Cacat (Punch List)}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PROYEK EPC INDUSTRI}{22}
+""")
+
+# ==============================================================================
+# HALAMAN 23: FASILITATOR BANTUAN FASILITAS KEMENDIKDASMEN
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 23: FASILITATOR KEMENDIKDASMEN ---
+\makeheader{// KELOMPOK 2: MANAJEMEN PELAKSANAAN \& PENGAWASAN // PROYEK 06}{FASILITATOR BANTUAN FASILITAS PENDIDIKAN KEMENDIKDASMEN}{VERIFIKASI FISIK, BIMBINGAN TEKNIS \& BERITA ACARA SERAH TERIMA}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PENUGASAN PEMERINTAH 06\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Fasilitator Teknis Fasilitas}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Kementerian Pendidikan Dasar \& Menengah}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Penugasan:} & {\fontsize{7pt}{8.5pt}\selectfont Fasilitator Lapangan Resmi} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Kementerian:} & {\fontsize{7pt}{8.5pt}\selectfont Kemendikdasmen RI} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Wilayah:} & {\fontsize{7pt}{8.5pt}\selectfont Satuan Pendidikan Sumatera Barat} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Output:} & {\fontsize{7pt}{8.5pt}\selectfont Laporan Monitoring \& Validasi BAST}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}TANGGUNG JAWAB PENGAWASAN}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Melakukan survei verifikasi fisik langsung ke lokasi sekolah penerima bantuan.
+      \item Mengisi dan memvalidasi formulir instrumen review kerusakan bangunan sekolah.
+      \item Memberikan Bimbingan Teknis (Bimtek) kepada panitia pembangunan sekolah.
+      \item Memeriksa kesesuaian fisik bangunan terhadap RAB bantuan pemerintah.
+      \item Mengesahkan Berita Acara Serah Terima (BAST) hasil pekerjaan.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x3 Grid of Photos & Forms
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("fasilitator/site-monitoring.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 1. Monitoring Lapangan}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("fasilitator/bimtek.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 2. Bimbingan Teknis}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("fasilitator/form-review.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 3. Form Review Kerusakan}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("fasilitator/site-monitoring-2.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 4. Verifikasi Fisik Sekolah}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("fasilitator/laporan-fasilitator.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 5. Laporan Fasilitator}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("fasilitator/reviewer.jpeg") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 6. Validasi Berita Acara}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PENUGASAN FASILITATOR NEGARA}{23}
+""")
+
+# ==============================================================================
+# HALAMAN 24: REVIT BIM MODELING
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 24: REVIT BIM MODELING ---
+\makeheader{// KELOMPOK 3: PEMODELAN DIGITAL \& RISET REKAYASA // PROYEK 07}{PEMODELAN GEDUNG BERTINGKAT AUTODESK REVIT BIM}{MODELING PARAMETRIK 3D STRUKTUR, ARSITEKTUR \& EKSTRAKSI MATERIAL}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ TEKNOLOGI DIGITAL BIM 07\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Autodesk Revit BIM Modeling}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Struktur \& Arsitektur Terintegrasi}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Perangkat Lunak:} & {\fontsize{7pt}{8.5pt}\selectfont Autodesk Revit Architecture} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Sertifikasi:} & {\fontsize{7pt}{8.5pt}\selectfont Autodesk Certified User (ACU)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Dimensi Proyek:} & {\fontsize{7pt}{8.5pt}\selectfont 3D Parametrik \& Ekstraksi 5D} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Fitur Kunci:} & {\fontsize{7pt}{8.5pt}\selectfont Clash Detection \& Schedule}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}IMPLEMENTASI TEKNIS BIM}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Pemodelan 3D isometrik rangka kolom dan balok struktural bertingkat.
+      \item Integrasi komponen fasad arsitektural: kusen aluminium, kaca, dan dinding partisi.
+      \item Pemotongan denah lantai otomatis pada setiap level elevasi.
+      \item Deteksi konflik spasial (\textit{clash detection}) antara struktur dan elemen arsitektural.
+      \item Ekstraksi tabel volume material beton dan luas dinding otomatis untuk akurasi BoQ.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x2 Grid of Revit Screenshots
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123739.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Model Isometrik 3D Struktur Bertingkat}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123810.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Tampak Depan \& Bukaan Arsitektural}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123825.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Potongan Melintang \& Detail Hubungan Balok-Kolom}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123933.png") + r"""}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Isometrik Perspektif Sambungan Material}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{PEMODELAN DIGITAL BIM}{24}
+""")
+
+# ==============================================================================
+# HALAMAN 25: ANALISIS SEISMIK SAP2000
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 25: ANALISIS STRUKTUR SEISMIK SAP2000 ---
+\makeheader{// KELOMPOK 3: PEMODELAN DIGITAL \& RISET REKAYASA // PROYEK 08}{ANALISIS STRUKTUR SEISMIK PORTAL BERTINGKAT SAP2000}{RESPONS SPEKTRUM GEMPA SNI 1726, BIDANG MOMEN \& GAYA GESER}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ ANALISIS STRUKTUR TAHAN GEMPA 08\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Analisis Elemen Hingga SAP2000}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Simulasi Beban Gempa SNI 1726:2019}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Perangkat Lunak:} & {\fontsize{7pt}{8.5pt}\selectfont CSI SAP2000 Ultimate} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Standar Acuan:} & {\fontsize{7pt}{8.5pt}\selectfont SNI 1726:2019 \& SNI 2847:2019} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Jenis Analisis:} & {\fontsize{7pt}{8.5pt}\selectfont Respons Spektrum Dinamik} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Desain Tulangan:} & {\fontsize{7pt}{8.5pt}\selectfont Bending Moment \& Shear Force}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}METODOLOGI ANALISIS STRUKTUR}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Pemodelan rangka 3D portal beton bertulang penahan gempa (\textit{Special Moment Resisting Frame / SRPMM/SRPMK}).
+      \item Input parameter seismik wilayah Padang: parameter respons percepatan $S_s$ dan $S_1$ sesuai peta gempa PUPR.
+      \item Analisis kombinasi pembebanan: $1.4D$, $1.2D + 1.6L$, $1.2D + 1.0L \pm 1.0E$.
+      \item Ekstraksi diagram momen lentur (BMD), gaya geser (SFD), dan gaya aksial kolom untuk perhitungan dimensi penulangan.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=156mm]
+    % 2x3 Grid of SAP2000 Outputs
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("pra-proyek-sap2000/sap2000.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 1. Model 3D Rangka Portal}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("pra-proyek-sap2000/beban-gempa.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 2. Respons Spektrum SNI}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("pra-proyek-sap2000/momen-geser.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 3. Diagram Momen \& Geser}
+      \end{tcolorbox}
+    \end{minipage}
+    \vspace{2mm}
+
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("pra-proyek-sap2000/axial.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 4. Distribusi Gaya Aksial}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("pra-proyek-sap2000/primery-design.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 5. Rasio Kapasitas Desain}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{""" + p("pra-proyek-sap2000/screenshot-2026-10-29-114714.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries 6. Deformasi \& Simpangan Lantai}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{ANALISIS STRUKTUR SEISMIK}{25}
+""")
+
+# ==============================================================================
+# HALAMAN 26: TENDER NASIONAL FONDASI DAYS UNS
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 26: TENDER NASIONAL FONDASI DAYS 2025 UNS ---
+\makeheader{// KELOMPOK 3: PEMODELAN DIGITAL \& RISET REKAYASA // PROYEK 09}{KOMPETISI TENDER NASIONAL 'FONDASI DAYS 2025' UNS}{TIM JAYA JAYA PNP \textbar\ ESTIMASI BIAYA, DESAIN FONDASI \& DOKUMEN PENAWARAN}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ KOMPETISI TENDER NASIONAL 09\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Tender Fondasi Days 2025}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Universitas Sebelas Maret (UNS)}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Penyelenggara:} & {\fontsize{7pt}{8.5pt}\selectfont Fakultas Teknik Sipil UNS} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Tim Delegasi:} & {\fontsize{7pt}{8.5pt}\selectfont Tim 'Jaya Jaya' PNP} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Peran Kandidat:} & {\fontsize{7pt}{8.5pt}\selectfont Estimator Biaya \& Perencana Schedule} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Fokus Utama:} & {\fontsize{7pt}{8.5pt}\selectfont Fondasi Dalam, BoQ \& Dokumen Lelang}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}DOKUMEN PENAWARAN TENDER}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Perencanaan geoteknik kapasitas daya dukung tanah dan pondasi tiang pancang / bored pile.
+      \item Penyusunan Rencana Anggaran Biaya (RAB) penawaran tender yang kompetitif berbasis AHSP.
+      \item Penjadwalan pelaksanaan pekerjaan fondasi menggunakan diagram batang MS Project.
+      \item Pembuatan slide presentasi teknis penawaran (\textit{tender presentation}) di hadapan dewan juri ahli konstruksi.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=156mm]
+    % 3D Render (Top)
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
+      \centering
+      \includegraphics[width=0.98\linewidth,height=68mm,keepaspectratio]{""" + p("tender-uns/render-uns-2.jpg") + r"""}\\[0.5mm]
+      {\fontsize{6pt}{7pt}\selectfont\bfseries Visualisasi 3D Desain Rekayasa Struktur Fondasi Tim 'Jaya Jaya' PNP}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    % Bottom Row (MS Project + RAB + PPT)
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{""" + p("tender-uns/ms-project.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries Jadwal MS Project}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{""" + p("tender-uns/rab.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries RAB Penawaran}
+      \end{tcolorbox}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \vspace{0pt}
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+        \centering
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{""" + p("tender-uns/ppt-penawaran.png") + r"""}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\bfseries Presentasi Tender}
+      \end{tcolorbox}
+    \end{minipage}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{KOMPETISI TENDER NASIONAL}{26}
+""")
+
+# ==============================================================================
+# HALAMAN 27: RISET PKM-AI ANALISIS BIAYA SCAFFOLDING
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 27: RISET PKM-AI SCAFFOLDING ---
+\makeheader{// KELOMPOK 3: PEMODELAN DIGITAL \& RISET REKAYASA // PROYEK 10}{PROGRAM KREATIVITAS MAHASISWA (PKM-AI) KEMENDIKBUDRISTEK}{ANALISIS EFISIENSI BIAYA PERANCAH SCAFFOLDING PROYEK EPC}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ RISET ILMIAH TERVALIDASI 10\ \ }\\[2mm]
+    {\fontsize{11pt}{13pt}\selectfont\bfseries\color{pnavy}Artikel Ilmiah PKM-AI}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Kemendikbudristek Dikti RI}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Program Hibah:} & {\fontsize{7pt}{8.5pt}\selectfont PKM Artikel Ilmiah (PKM-AI)} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Penulis Utama:} & {\fontsize{7pt}{8.5pt}\selectfont Reza Sepdide, A.Md.T.} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Studi Kasus:} & {\fontsize{7pt}{8.5pt}\selectfont Proyek EPC Waste Gas Semen Padang} \\[1mm]
+        {\fontsize{7pt}{8.5pt}\selectfont\bfseries Fokus Riset:} & {\fontsize{7pt}{8.5pt}\selectfont Komparasi Biaya Sewa vs Beli Scaffolding}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pnavy}TEMUAN \& METODOLOGI RISET}\\[1.5mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=0.8mm, topsep=0mm]
+      \item Menganalisis kurva biaya perancah scaffolding pada proyek industri berdurasi multi-bulan.
+      \item Membuktikan titik impas (\textit{break-even point}) antara opsi penyewaan berkala (\textit{rental}) vs pembelian aset langsung (\textit{purchase}).
+      \item Mengkaji dampak perubahan addendum CCO terhadap perpanjangan durasi penggunaan scaffolding di lapangan.
+      \item Menyusun rekomendasi strategi pengadaan perancah untuk efisiensi anggaran kontraktor EPC hingga 18.4\%.
+    \end{itemize}
+    }
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm, height=156mm]
+    \centering
+    \includegraphics[width=0.99\linewidth,height=142mm,keepaspectratio]{""" + p("artikel-ilmiah/screenshot-2026-10-29-120442.png") + r"""}\\[2mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}Naskah Publikasi Ilmiah PKM-AI --- Analisis Komparasi Finansial Pengadaan Scaffolding Proyek EPC}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{RISET ILMIAH TERVALIDASI}{27}
+""")
+
+# ==============================================================================
+# HALAMAN 28: LEMBAR PENUTUP & SALURAN KOMUNIKASI
+# ==============================================================================
+tex.append(r"""\newpage
+% --- HALAMAN 28: LEMBAR PENUTUP & KONTAK ---
+\makeheader{// DOSIR RESMI // LEMBAR PENUTUP \& INTEGRITAS REKAYASA}{LEMBAR PENUTUP, PERNYATAAN KEASLIAN \& SALURAN KOMUNIKASI}{INTEGRITAS PROFESIONAL \& KESIAPAN PENUGASAN KERJA}
+
+\noindent
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3.5mm, right=3.5mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PERNYATAAN INTEGRITAS PROFESIONAL\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}Keabsahan Dokumen Portofolio}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Kode Etik Insinyur \& Ahli Konstruksi}\\[3mm]
+
+    {\fontsize{7pt}{9.5pt}\selectfont\color{psteel}Dengan ini saya menyatakan bahwa seluruh informasi, dokumen bukti lisensi negara BNSP, sertifikasi keahlian, gambar kerja DED AutoCAD, dokumen RKS, perhitungan Quantity Surveying (BoQ/RAB), jadwal Kurva S, dan dokumentasi lapangan yang termuat di dalam dosir ini adalah \textbf{benar, otentik, dan dapat dipertanggungjawabkan keabsahannya secara hukum dan profesional}.}\\[3mm]
+
+    {\fontsize{7pt}{9.5pt}\selectfont\color{psteel}Portofolio ini disusun secara independen sebagai representasi resmi kualifikasi teknis dan dedikasi rekayasa saya untuk siap berkontribusi pada proyek konstruksi gedung, industri EPC, dan infrastruktur berskala nasional maupun internasional.}\\[4mm]
+
+    \noindent\textcolor{pnavy}{\rule{\linewidth}{1pt}}\\[3mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pmuted}Padang, Sumatera Barat, 2026}\\[1.5mm]
+    {\fontsize{9pt}{11pt}\selectfont\bfseries\color{pnavy}REZA SEPDIDE, A.Md.T.}\\[0.5mm]
+    {\fontsize{6.5pt}{8pt}\selectfont\color{psteel}Pelaksana Lapangan Gedung Madya (BNSP Jenjang 5)}
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3.5mm, right=3.5mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pnavy}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ SALURAN KOMUNIKASI LANGSUNG\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}Kontak Resmi \& Kesiapan Kerja}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pred}Saluran Langsung Reza Sepdide}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm]
+      {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}EMAIL PROFESIONAL:}\\[0.5mm]
+      {\fontsize{8pt}{10pt}\selectfont\fontfamily{cmtt}\selectfont rezasepdide@gmail.com}\\[2mm]
+
+      {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}WHATSAPP / TELEPON LANGSUNG:}\\[0.5mm]
+      {\fontsize{8pt}{10pt}\selectfont\fontfamily{cmtt}\selectfont +62 896-4459-0915}\\[2mm]
+
+      {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}LINKEDIN PROFILE:}\\[0.5mm]
+      {\fontsize{7.5pt}{9.5pt}\selectfont\fontfamily{cmtt}\selectfont linkedin.com/in/rezasepdide}\\[2mm]
+
+      {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}DOMISILI UTAMA:}\\[0.5mm]
+      {\fontsize{7.5pt}{9.5pt}\selectfont Padang, Sumatera Barat, Indonesia}
+    \end{tcolorbox}
+    \vspace{2mm}
+
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}KESIAPAN MOBILISASI:}\\[1mm]
+    {\fontsize{6.8pt}{8.6pt}\selectfont\color{psteel}Siap ditugaskan secara penuh (\textit{full-time placement}) pada proyek di seluruh wilayah Republik Indonesia maupun penugasan internasional (Jepang / Asia).}\\[2mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pred, colback=predlight, left=2mm, right=2mm, top=2mm, bottom=2mm]
+      \centering{\fontsize{6.5pt}{8pt}\selectfont\bfseries\color{pred}Status Ketersediaan: TERBUKA UNTUK PENUGASAN PROYEK}
+    \end{tcolorbox}
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=3.5mm, right=3.5mm, top=3mm, bottom=3mm, height=156mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ IKHTISAR KUALIFIKASI\ \ }\\[2mm]
+    {\fontsize{10.5pt}{12.5pt}\selectfont\bfseries\color{pnavy}Spesialisasi Rekayasa}\\[1mm]
+    {\fontsize{7.5pt}{9.5pt}\selectfont\bfseries\color{pmuted}Quantity Surveyor \& Pelaksana Gedung}\\[3mm]
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}1. Quantity Surveying \& Estimasi}\\[0.5mm]
+      {\fontsize{6.5pt}{8pt}\selectfont\color{psteel}QTO presisi, BoQ, RAB AHSP PUPR, BBS pembesian \& pengendalian deviasi biaya CCO.}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}2. Pengawasan Lapangan \& K3}\\[0.5mm]
+      {\fontsize{6.5pt}{8pt}\selectfont\color{psteel}Lisensi Pelaksana Lapangan Gedung Madya BNSP KKNI Jenjang 5, SMKK \& QC mutu beton.}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}3. Digital BIM \& CAD Modeler}\\[0.5mm]
+      {\fontsize{6.5pt}{8pt}\selectfont\color{psteel}Autodesk Revit Certified User, AutoCAD DED Multi-Viewport \& Analisis SAP2000.}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}4. Standar Bilingual Internasional}\\[0.5mm]
+      {\fontsize{6.5pt}{8pt}\selectfont\color{psteel}Jepang (SSW JAC, JFT-Basic 250, JLPT N4 165) \& Inggris (TOEIC 640).}
+    \end{tcolorbox}
+  \end{tcolorbox}
+\end{minipage}
+
+\makefooter{LEMBAR PENUTUP \& KONTAK}{28}
+""")
+
+# --- END DOCUMENT ---
+tex.append(r"""\end{document}
+""")
+
+# Write full TeX source code
+full_tex = "\n".join(tex)
+with open(tex_path, "w", encoding="utf-8") as f:
+    f.write(full_tex)
+
+print(f"Wrote full LaTeX file to: {tex_path}")
+print(f"Total lines: {len(full_tex.splitlines())}")
+
+# Run pdflatex twice for reference resolution
+print("Compiling Pass 1 with pdflatex...")
+res1 = subprocess.run(
+    ["pdflatex", "-interaction=nonstopmode", "-output-directory=" + export_dir, tex_path],
+    capture_output=True,
+    text=True
+)
+print("Pass 1 exit code:", res1.returncode)
+
+if res1.returncode != 0:
+    print("Pass 1 errors:")
+    with open(os.path.join(export_dir, "portofolio_reza_sepdide.log"), "r", encoding="utf-8", errors="ignore") as lf:
+        for line in lf:
+            if line.startswith("! "):
+                print(line.strip())
+else:
+    print("Compiling Pass 2 with pdflatex...")
+    res2 = subprocess.run(
+        ["pdflatex", "-interaction=nonstopmode", "-output-directory=" + export_dir, tex_path],
+        capture_output=True,
+        text=True
+    )
+    print("Pass 2 exit code:", res2.returncode)
+
+# Check compiled PDF
+built_pdf = os.path.join(export_dir, "portofolio_reza_sepdide.pdf")
+if os.path.exists(built_pdf):
+    reader = PdfReader(built_pdf)
+    print(f"\n==========================================")
+    print(f"SUCCESS! GENERATED EXACTLY {len(reader.pages)} PAGES!")
+    print(f"File size: {os.path.getsize(built_pdf) / (1024*1024):.2f} MB")
+    print(f"==========================================")
+    
+    # Copy to target landscape PDF
+    import shutil
+    shutil.copyfile(built_pdf, pdf_path)
+    print(f"Copied to: {pdf_path}")
+    
+    # Render all 28 pages to images for rigorous visual review
+    review_dir = "D:/whateverapp/laragon/www/ParkojiXn/scratch/pdf_review_master"
+    os.makedirs(review_dir, exist_ok=True)
+    pdf_doc = pdfium.PdfDocument(built_pdf)
+    for idx, page in enumerate(pdf_doc):
+        img = page.render(scale=1.5).to_pil()
+        img_out = os.path.join(review_dir, f"page_{idx+1:02d}.png")
+        img.save(img_out)
+        print(f"Rendered Page {idx+1:02d} -> {img_out}")
+    print("\nAll 28 pages successfully rendered to PNG for visual inspection!")
+else:
+    print("PDF build failed.")
