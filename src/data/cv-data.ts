@@ -325,6 +325,11 @@ export const featuredProjects: Project[] = [
         caption: "Precise quantity and cost impact evaluation for structural components requiring field adjustment and rework."
       },
       {
+        title: "Bill of Quantities Rework Cost & Volume Model",
+        url: "/portfolio/magang-sie/bill-of-quantity-rework.png",
+        caption: "Comprehensive Bill of Quantities (BoQ) calculation dossier evaluating unit pricing, mathematical volume adjustments, and cost impacts for on-site rework."
+      },
+      {
         title: "Daily Construction Progress Log",
         url: "/portfolio/magang-sie/daily-proggres.png",
         caption: "Daily tracking of workforce allocation, equipment usage, physical milestones achieved, and jobsite weather conditions."
@@ -869,10 +874,11 @@ export const workExperiences: Experience[] = [
     toolsUsed: ["Bar Bending Schedule (BBS)", "Slump Testing", "AutoCAD", "Punch List Resolution", "Progress Billing Backup", "Site Mapping"],
     mediaPreview: [
       { title: "On-Site Slump Test", url: "/portfolio/magang-sie/slump-test.jpg" },
+      { title: "BoQ Rework Costing", url: "/portfolio/magang-sie/bill-of-quantity-rework.png" },
       { title: "Handover Punch List", url: "/portfolio/magang-sie/punch-list.png" }
     ],
     documents: [
-      { name: "PT Solusi Industri Energi Official Internship Certificate ", url: "/portfolio/certificates/sertifikat-magang-sie.pdf" }
+      { name: "PT Solusi Industri Energi Official Internship Certificate (PDF)", url: "/portfolio/certificates/sertifikat-magang-sie.pdf" }
     ]
   }
 ];
