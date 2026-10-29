@@ -1,17 +1,23 @@
 'use client';
 
-import React from 'react';
-import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download, Camera } from 'lucide-react';
 import { profileData } from '../data/cv-data';
 
 export const HeroSection: React.FC = () => {
+  const [photoIndex, setPhotoIndex] = useState<number>(0);
+  const photos = [
+    { src: '/portfolio/profile/1. profile.jpg', label: 'FOTO RESMI' },
+    { src: '/portfolio/profile/profile-2.jpg', label: 'PROFIL 2' }
+  ];
+
   return (
     <section id="hero" className="relative border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-16 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Meta Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#0A0A0A] pb-4 mb-10">
           <div className="flex items-center gap-3">
-            <span className="text-overline text-[#EF4444] font-bold">PROFESSIONAL DOSSIER</span>
+            <span className="text-overline text-[#EF4444] font-bold">DOSSIER PROFESIONAL</span>
             <span className="text-[#A3A3A3]">•</span>
             <span className="text-xs font-mono text-[#525252] flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
@@ -39,8 +45,8 @@ export const HeroSection: React.FC = () => {
                 // CIVIL ENGINEER &amp; CONSTRUCTION PLANNER
               </span>
               <h1 className="text-display text-[#0A0A0A]">
-                PRECISION ENGINEERING, <br className="hidden sm:inline" />
-                <span className="text-[#0A0A0A] underline decoration-[#EF4444] decoration-[6px]">REALISTIC BUDGETING</span>, &amp; SITE-TESTED RIGOR.
+                PRESISI REKAYASA, <br className="hidden sm:inline" />
+                <span className="text-[#0A0A0A] underline decoration-[#EF4444] decoration-[6px]">ESTIMASI BIAYA REALISTIS</span>, &amp; DISIPLIN LAPANGAN.
               </h1>
             </div>
 
@@ -62,7 +68,7 @@ export const HeroSection: React.FC = () => {
                 href="#projects"
                 className="btn-primary"
               >
-                <span>EXPLORE FEATURED PROJECTS</span>
+                <span>EKSPLORASI PORTOFOLIO &amp; DOKUMEN</span>
                 <ArrowDown className="w-4 h-4" />
               </a>
 
@@ -70,46 +76,67 @@ export const HeroSection: React.FC = () => {
                 href="#contact"
                 className="btn-secondary"
               >
-                <span>GET IN TOUCH</span>
+                <span>HUBUNGI REZA</span>
                 <Mail className="w-4 h-4" />
               </a>
 
-              <a
-                href="/CV_Reza_Sepdide_Profesional.docx"
-                download
-                className="btn-secondary !border-[#525252] !text-[#525252] hover:!border-[#0A0A0A] hover:!text-[#0A0A0A]"
-                title="Download Reza's Official Resume (.docx)"
-              >
-                <FileText className="w-4 h-4" />
-                <span>DOWNLOAD RESUME (.DOCX)</span>
-              </a>
+              <div className="flex items-center gap-2">
+                <a
+                  href="/CV_Reza_Sepdide_English.docx"
+                  download
+                  className="btn-secondary !border-[#0A0A0A] !text-[#0A0A0A] hover:!bg-[#0A0A0A] hover:!text-[#FAFAFA]"
+                  title="Unduh CV Terbaru (English)"
+                >
+                  <Download className="w-4 h-4 text-[#EF4444]" />
+                  <span>CV ENGLISH (.DOCX)</span>
+                </a>
+
+                <a
+                  href="/CV_Reza_Sepdide_Profesional.docx"
+                  download
+                  className="btn-secondary !border-[#525252] !text-[#525252] hover:!border-[#0A0A0A] hover:!text-[#0A0A0A]"
+                  title="Unduh CV Profesional (Bahasa Indonesia)"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>CV INDO (.DOCX)</span>
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Right Column: Profile Card & Direct Channels */}
           <div className="lg:col-span-4 flex flex-col space-y-5">
             {/* Portrait Frame */}
-            <div className="border-2 border-[#0A0A0A] bg-[#FAFAFA] p-3 relative group">
+            <div className="border-2 border-[#0A0A0A] bg-[#FAFAFA] p-3 relative group shadow-sm">
               <div className="overflow-hidden border border-[#D4D4D4] bg-[#F5F5F5] aspect-[4/5] relative">
                 <img
-                  src="/profile.jpg"
+                  src={photos[photoIndex].src}
                   alt="Reza Sepdide - Civil Engineer & Construction Planner"
-                  className="w-full h-full object-cover object-top grayscale contrast-125 group-hover:grayscale-0 transition-all duration-300"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
+                  className="w-full h-full object-cover object-top contrast-110 transition-all duration-300"
                 />
+                
+                {/* Switcher Button */}
+                <button
+                  type="button"
+                  onClick={() => setPhotoIndex((prev) => (prev + 1) % photos.length)}
+                  className="absolute top-2 right-2 px-2 py-1 bg-[#0A0A0A]/85 hover:bg-[#EF4444] text-[#FAFAFA] text-[10px] font-mono flex items-center gap-1 transition-colors"
+                  title="Ganti Foto Profil"
+                >
+                  <Camera className="w-3 h-3" />
+                  <span>{photos[photoIndex].label}</span>
+                </button>
+
                 <div className="absolute bottom-0 left-0 right-0 bg-[#0A0A0A] text-[#FAFAFA] p-2 text-center text-xs font-mono">
-                  REZA SEPDIDE // D3 CIVIL ENGINEERING
+                  REZA SEPDIDE // D3 TEKNIK SIPIL PNP
                 </div>
               </div>
 
               {/* Verified badge tag */}
               <div className="mt-3 pt-3 border-t-2 border-[#E5E5E5] flex items-center justify-between text-xs font-mono">
-                <span className="text-[#525252]">ACCREDITATION:</span>
+                <span className="text-[#525252]">AKREDITASI NEGARA:</span>
                 <span className="font-bold text-[#0A0A0A] flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A]" />
-                  BNSP LEVEL 5 (JENJANG 5)
+                  BNSP JENJANG 5 (MADYA)
                 </span>
               </div>
             </div>
@@ -146,8 +173,8 @@ export const HeroSection: React.FC = () => {
                 </a>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-[#525252]">LOCATION:</span>
-                <span className="text-[#0A0A0A] font-bold">Sumatra &amp; Open to Relocate</span>
+                <span className="text-[#525252]">LOKASI:</span>
+                <span className="text-[#0A0A0A] font-bold">Padang &amp; Siap Relokasi</span>
               </div>
             </div>
           </div>
@@ -177,7 +204,7 @@ export const HeroSection: React.FC = () => {
                     ID (Native)
                   </span>
                   <span className="bg-[#F5F5F5] border border-[#D4D4D4] text-[#0A0A0A] px-2 py-0.5 text-[10px] font-mono font-bold">
-                    JP (JLPT N4)
+                    JP (JLPT N4 / SSW)
                   </span>
                   <span className="bg-[#F5F5F5] border border-[#D4D4D4] text-[#0A0A0A] px-2 py-0.5 text-[10px] font-mono font-bold">
                     EN (TOEIC 640)

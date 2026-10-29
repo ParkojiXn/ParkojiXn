@@ -1,7 +1,21 @@
+export interface ProjectMediaItem {
+  title: string;
+  url: string;
+  caption?: string;
+  isDocument?: boolean;
+}
+
+export interface ProjectDocument {
+  name: string;
+  url: string;
+  format: string;
+  size?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
-  category: 'Planning & QS' | 'BIM & CAD' | 'Industrial & QC' | 'Tender & Research';
+  category: 'Planning & QS' | 'BIM & CAD' | 'Industrial & QC' | 'Tender & Research' | 'Government & Supervision';
   role: string;
   period: string;
   clientOrInstitution: string;
@@ -15,6 +29,9 @@ export interface Project {
   techStack: string[];
   deliverables: string[];
   featured?: boolean;
+  coverImage?: string;
+  mediaGallery?: ProjectMediaItem[];
+  documents?: ProjectDocument[];
 }
 
 export interface Experience {
@@ -27,6 +44,14 @@ export interface Experience {
   responsibilities: string[];
   keyImpacts: string[];
   toolsUsed: string[];
+  mediaPreview?: {
+    title: string;
+    url: string;
+  }[];
+  documents?: {
+    name: string;
+    url: string;
+  }[];
 }
 
 export interface Education {
@@ -37,6 +62,7 @@ export interface Education {
   location: string;
   gpa?: string;
   details?: string[];
+  transcriptUrl?: string;
 }
 
 export interface Certification {
@@ -44,6 +70,8 @@ export interface Certification {
   issuer: string;
   levelOrScore?: string;
   year?: string;
+  verificationFile?: string;
+  description?: string;
 }
 
 export interface SkillCategory {

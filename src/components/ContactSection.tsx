@@ -154,14 +154,22 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* Download Resume Banner */}
-              <div className="mt-8 pt-6 border-t-2 border-[#E5E5E5]">
+              <div className="mt-8 pt-6 border-t-2 border-[#E5E5E5] space-y-2">
+                <a
+                  href="/CV_Reza_Sepdide_English.docx"
+                  download
+                  className="btn-primary w-full text-center flex items-center justify-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>UNDUH RESUME LENGKAP (ENGLISH .DOCX)</span>
+                </a>
                 <a
                   href="/CV_Reza_Sepdide_Profesional.docx"
                   download
-                  className="btn-secondary w-full"
+                  className="btn-secondary w-full text-center flex items-center justify-center gap-2"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>DOWNLOAD FULL RESUME (.DOCX)</span>
+                  <span>UNDUH RESUME (BAHASA INDONESIA .DOCX)</span>
                 </a>
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { workExperiences } from '../data/cv-data';
-import { Calendar, MapPin, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle, ChevronDown, ChevronUp, FileText, Image as ImageIcon, ExternalLink } from 'lucide-react';
 
 export const ExperienceTimeline: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(workExperiences[0].id);
@@ -18,15 +18,15 @@ export const ExperienceTimeline: React.FC = () => {
         <div className="border-b-2 border-[#0A0A0A] pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // ON-SITE REPUTATION &amp; PROFESSIONAL MILESTONES
+              // PENGALAMAN KERJA LAPANGAN &amp; MANAJEMEN TEKNIS
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
-              PROFESSIONAL WORK EXPERIENCE
+              PENGALAMAN KERJA PROFESIONAL
             </h2>
           </div>
 
           <p className="text-sm text-[#525252] max-w-md font-body">
-            Demonstrated engineering competency across school revitalizations, ministerial auditing, industrial EPC quality control, and quantity surveying.
+            Kompetensi rekayasa sipil teruji di lapangan: perencanaan revitalisasi sekolah, fasilitasi teknis kementerian, pengawasan mutu EPC industri kimia, dan kuantitas subkontraktor.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export const ExperienceTimeline: React.FC = () => {
                   {/* Top Bar: Date Badge, Location, and Expand Button */}
                   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5E5E5] pb-3 mb-4">
                     <div className="flex flex-wrap items-center gap-2.5">
-                      {/* Period Badge - Always clearly visible & perfectly proportioned */}
+                      {/* Period Badge */}
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#0A0A0A] text-[#FAFAFA] text-xs font-mono font-bold tracking-wider">
                         <Calendar className="w-3.5 h-3.5 text-[#EF4444]" />
                         <span>{exp.period}</span>
@@ -64,9 +64,9 @@ export const ExperienceTimeline: React.FC = () => {
                       onClick={() => toggleExpand(exp.id)}
                       className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-bold uppercase border-2 border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors"
                       aria-expanded={isExpanded}
-                      aria-label={`${isExpanded ? 'Hide' : 'View'} details for ${exp.role}`}
+                      aria-label={`${isExpanded ? 'Tutup' : 'Buka'} rincian ${exp.role}`}
                     >
-                      <span>{isExpanded ? 'HIDE DETAILS' : 'VIEW DETAILS'}</span>
+                      <span>{isExpanded ? 'TUTUP RINCIAN' : 'LIHAT RINCIAN'}</span>
                       {isExpanded ? (
                         <ChevronUp className="w-3.5 h-3.5" />
                       ) : (
@@ -94,7 +94,7 @@ export const ExperienceTimeline: React.FC = () => {
                       {/* Responsibilities */}
                       <div>
                         <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-3">
-                          CORE RESPONSIBILITIES &amp; SCOPE OF WORK
+                          TUGAS UTAMA &amp; RUANG LINGKUP PEKERJAAN
                         </h4>
                         <ul className="space-y-2 text-sm text-[#0A0A0A]">
                           {exp.responsibilities.map((resp, idx) => (
@@ -110,7 +110,7 @@ export const ExperienceTimeline: React.FC = () => {
                       <div className="bg-[#F5F5F5] border-l-4 border-[#0A0A0A] p-4">
                         <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2 flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-[#16A34A]" />
-                          MEASURABLE IMPACT &amp; DELIVERED VALUE
+                          DAMPAK TERUKUR &amp; KONTRIBUSI NYATA
                         </h4>
                         <ul className="space-y-1.5 text-xs sm:text-sm text-[#525252]">
                           {exp.keyImpacts.map((impact, idx) => (
@@ -122,10 +122,48 @@ export const ExperienceTimeline: React.FC = () => {
                         </ul>
                       </div>
 
+                      {/* Evidence & Deliverables / Previews */}
+                      {((exp.mediaPreview && exp.mediaPreview.length > 0) || (exp.documents && exp.documents.length > 0)) && (
+                        <div className="border border-[#E5E5E5] bg-[#FAFAFA] p-3.5">
+                          <h4 className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-2.5 flex items-center gap-1.5">
+                            <FileText className="w-3.5 h-3.5 text-[#EF4444]" />
+                            BUKTI FISIK, GAMBAR KERJA &amp; DOKUMEN LAPANGAN
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {exp.mediaPreview?.map((media, mIdx) => (
+                              <a
+                                key={mIdx}
+                                href={media.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FFFFFF] border border-[#0A0A0A] text-xs font-mono font-bold text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors shadow-sm"
+                              >
+                                <ImageIcon className="w-3 h-3 text-[#EF4444]" />
+                                <span>{media.title}</span>
+                                <ExternalLink className="w-3 h-3 opacity-60" />
+                              </a>
+                            ))}
+                            {exp.documents?.map((doc, dIdx) => (
+                              <a
+                                key={dIdx}
+                                href={doc.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FFFFFF] border border-[#EF4444] text-xs font-mono font-bold text-[#EF4444] hover:bg-[#EF4444] hover:text-[#FAFAFA] transition-colors shadow-sm"
+                              >
+                                <FileText className="w-3 h-3" />
+                                <span>{doc.name}</span>
+                                <ExternalLink className="w-3 h-3 opacity-60" />
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       {/* Tools Used */}
                       <div>
                         <h4 className="text-[11px] font-bold uppercase font-mono tracking-wider text-[#525252] mb-2">
-                          SOFTWARE &amp; METHODOLOGIES DEPLOYED
+                          PERANGKAT LUNAK &amp; METODE YANG DIGUNAKAN
                         </h4>
                         <div className="flex flex-wrap gap-1.5">
                           {exp.toolsUsed.map((tool, idx) => (
