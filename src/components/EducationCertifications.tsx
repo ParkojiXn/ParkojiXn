@@ -16,8 +16,7 @@ export const EducationCertifications: React.FC = () => {
   const getCertCategoryBadge = (name: string) => {
     if (name.includes('Revit')) return 'BIM & CAD';
     if (name.includes('SSW') || name.includes('Specified')) return 'INTERNATIONAL';
-    if (name.includes('JFT')) return 'JAPANESE (JFT)';
-    if (name.includes('JLPT')) return 'JAPANESE (JLPT)';
+    if (name.includes('JFT') || name.includes('JLPT')) return 'JAPANESE BILINGUAL';
     if (name.includes('PKL') || name.includes('Internship')) return 'INDUSTRIAL EPC';
     if (name.includes('TOEIC')) return 'ENGLISH (TOEIC)';
     if (name.includes('Transcript') || name.includes('Transkrip')) return 'ACADEMIC';
@@ -271,8 +270,36 @@ export const EducationCertifications: React.FC = () => {
                     )}
                   </div>
 
-                  {/* PDF Trigger Button */}
-                  {cert.verificationFile && (
+                  {/* PDF Trigger Button(s) */}
+                  {cert.files && cert.files.length > 0 ? (
+                    <div className="mt-5 pt-3 border-t border-[#E5E5E5] space-y-2">
+                      <span className="text-[10px] font-mono uppercase text-[#737373] tracking-wider block font-bold">
+                        VERIFIED CREDENTIALS ({cert.files.length} DOCUMENTS):
+                      </span>
+                      <div className="flex flex-col gap-2">
+                        {cert.files.map((file, fIdx) => (
+                          <button
+                            key={fIdx}
+                            type="button"
+                            onClick={() =>
+                              openPdf(
+                                file.url,
+                                `${file.name} — ${cert.name} (${file.score || cert.issuer})`
+                              )
+                            }
+                            className="w-full py-2.5 px-3 border border-[#0A0A0A] bg-[#FAFAFA] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] text-xs font-mono font-bold flex items-center justify-between gap-2 transition-colors group/btn hover:border-[#EF4444] cursor-pointer"
+                            title={`View ${file.name} in PDF Modal`}
+                          >
+                            <span className="flex items-center gap-1.5 min-w-0 truncate">
+                              <FileText className="w-3.5 h-3.5 text-[#EF4444] flex-shrink-0" />
+                              <span className="truncate">{file.name}</span>
+                            </span>
+                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : cert.verificationFile ? (
                     <div className="mt-5 pt-3 border-t border-[#E5E5E5]">
                       <button
                         type="button"
@@ -292,7 +319,7 @@ export const EducationCertifications: React.FC = () => {
                         <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
                       </button>
                     </div>
-                  )}
+                  ) : null}
                 </div>
               ))}
             </div>

@@ -184,7 +184,7 @@ export const featuredProjects: Project[] = [
       "Official Contract Change Order (CCO) Dossier & Technical Justification",
       "Comprehensive Bill of Quantities (BoQ/RAB) Recapitulation",
       "Technical Work Requirements & Specifications (RKS)",
-      "Master Time Schedule & S-Curve Control Chart (PDF)"
+      "Master Time Schedule & S-Curve Control Chart "
     ],
     featured: true,
     coverImage: "/portfolio/slbn-2-pariaman/layout-autocad.png",
@@ -242,13 +242,13 @@ export const featuredProjects: Project[] = [
     ],
     documents: [
       {
-        name: "Official Master Execution Schedule (PDF)",
+        name: "Official Master Execution Schedule ",
         url: "/portfolio/slbn-2-pariaman/ts.pdf",
         format: "PDF",
         size: "806 KB"
       },
       {
-        name: "Revitalization Cost Budget Recapitulation (PDF)",
+        name: "Revitalization Cost Budget Recapitulation ",
         url: "/portfolio/slbn-2-pariaman/rekap.pdf",
         format: "PDF",
         size: "468 KB"
@@ -768,8 +768,8 @@ export const workExperiences: Experience[] = [
       { title: "Project S-Curve", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" }
     ],
     documents: [
-      { name: "SDN 19 Kuamang S-Curve (PDF)", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" },
-      { name: "Revitalization BoQ/RAB (PDF)", url: "/portfolio/sdn-19-kuamang/rab.pdf" }
+      { name: "SDN 19 Kuamang S-Curve ", url: "/portfolio/sdn-19-kuamang/kurva-s.pdf" },
+      { name: "Revitalization BoQ/RAB ", url: "/portfolio/sdn-19-kuamang/rab.pdf" }
     ]
   },
   {
@@ -796,8 +796,8 @@ export const workExperiences: Experience[] = [
       { title: "CCO Addendum Document", url: "/portfolio/slbn-2-pariaman/cco.png" }
     ],
     documents: [
-      { name: "Official Master Schedule (PDF)", url: "/portfolio/slbn-2-pariaman/ts.pdf" },
-      { name: "Cost Budget Recapitulation (PDF)", url: "/portfolio/slbn-2-pariaman/rekap.pdf" }
+      { name: "Official Master Schedule ", url: "/portfolio/slbn-2-pariaman/ts.pdf" },
+      { name: "Cost Budget Recapitulation ", url: "/portfolio/slbn-2-pariaman/rekap.pdf" }
     ]
   },
   {
@@ -872,7 +872,7 @@ export const workExperiences: Experience[] = [
       { title: "Handover Punch List", url: "/portfolio/magang-sie/punch-list.png" }
     ],
     documents: [
-      { name: "PT Solusi Industri Energi Official Internship Certificate (PDF)", url: "/portfolio/certificates/sertifikat-magang-sie.pdf" }
+      { name: "PT Solusi Industri Energi Official Internship Certificate ", url: "/portfolio/certificates/sertifikat-magang-sie.pdf" }
     ]
   }
 ];
@@ -944,20 +944,23 @@ export const certifications: Certification[] = [
     description: "Certified qualification exam under the Japanese Tokutei Ginou framework validating technical civil engineering proficiency, safety standards, and operational readiness for Japan's construction sector."
   },
   {
-    name: "Japan Foundation Test for Basic Japanese (JFT-Basic)",
-    issuer: "The Japan Foundation (国際交流基金)",
-    levelOrScore: "Official Score: 250 / 250 (CEFR A2 / JF Standard — Maximum Score)",
-    year: "Certified Japanese Proficiency",
-    verificationFile: "/portfolio/certificates/jft-basic.pdf",
-    description: "Official certification of assessment results verifying practical Japanese language communication competence for living and working in professional environments."
-  },
-  {
-    name: "Japanese-Language Proficiency Test (JLPT) — Level N4",
-    issuer: "The Japan Foundation & Japan Educational Exchanges and Services (JEES)",
-    levelOrScore: "JLPT Level N4 Certified (Passed) — Score: 165 / 180",
-    year: "Certified JLPT Level N4",
-    verificationFile: "/portfolio/certificates/jlpt-n4.pdf",
-    description: "Official credential verifying intermediate Japanese reading comprehension, grammar, and listening proficiency for vocational and workplace collaboration."
+    name: "Japan Foundation Test for Basic Japanese (JFT-Basic) & JLPT N4",
+    issuer: "The Japan Foundation (国際交流基金) & JEES",
+    levelOrScore: "JFT-Basic: 250 / 250 (Max Score) • JLPT N4: 165 / 180 (Passed)",
+    year: "Certified Bilingual Japanese",
+    description: "Official Japanese language proficiency credentials verifying bilingual communication competence for living, technical reporting, and workplace collaboration: JFT-Basic (perfect score 250/250) and JLPT Level N4 (165/180).",
+    files: [
+      {
+        name: "JFT-BASIC CERTIFICATE (PDF)",
+        url: "/portfolio/certificates/jft-basic.pdf",
+        score: "Score: 250 / 250 (Max)"
+      },
+      {
+        name: "JLPT N4 CERTIFICATE (PDF)",
+        url: "/portfolio/certificates/jlpt-n4.pdf",
+        score: "Score: 165 / 180 (Passed)"
+      }
+    ]
   },
   {
     name: "Industrial Internship Certificate of Excellence (PKL)",

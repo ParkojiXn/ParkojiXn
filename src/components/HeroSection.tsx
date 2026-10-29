@@ -5,7 +5,7 @@ import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, 
 import { profileData } from '../data/cv-data';
 
 export const HeroSection: React.FC = () => {
-  const officialPhoto = '/portfolio/profile/profile-official.jpg';
+  const officialPhoto = '/portfolio/profile/professional-photo.jpeg';
 
   return (
     <section id="hero" className="relative border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-16 lg:pb-20">
@@ -104,14 +104,14 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col space-y-5">
             {/* Portrait Frame */}
             <div className="border-2 border-[#0A0A0A] bg-[#FAFAFA] p-3 relative group shadow-sm">
-              <div className="overflow-hidden border border-[#D4D4D4] bg-[#F5F5F5] aspect-[4/5] relative">
+              <div className="overflow-hidden border border-[#D4D4D4] bg-[#F5F5F5] aspect-square relative">
                 <img
                   src={officialPhoto}
                   alt="Reza Sepdide - Civil Engineer & Construction Planner"
-                  className="w-full h-full object-cover object-top contrast-110"
+                  className="w-full h-full object-cover object-center contrast-105"
                 />
 
-                <div className="absolute bottom-0 left-0 right-0 bg-[#0A0A0A] text-[#FAFAFA] p-2 text-center text-xs font-mono">
+                <div className="absolute bottom-0 left-0 right-0 bg-[#0A0A0A]/90 text-[#FAFAFA] py-1.5 px-2 text-center text-xs font-mono">
                   REZA SEPDIDE // D3 CIVIL ENGINEERING PNP
                 </div>
               </div>

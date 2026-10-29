@@ -17,7 +17,7 @@ export const PdfModalProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [pdfUrl, setPdfUrl] = useState('');
   const [pdfTitle, setPdfTitle] = useState('');
 
-  const openPdf = useCallback((url: string, title: string = 'Dokumen Teknis (PDF)') => {
+  const openPdf = useCallback((url: string, title: string = 'Official Technical Document (PDF)') => {
     setPdfUrl(url);
     setPdfTitle(title);
     setIsOpen(true);

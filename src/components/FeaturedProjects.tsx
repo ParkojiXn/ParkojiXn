@@ -37,7 +37,7 @@ export const FeaturedProjects: React.FC = () => {
 
   const handlePrevImage = () => {
     if (!activeModalProject?.mediaGallery) return;
-    setActiveImageIndex((prev) => 
+    setActiveImageIndex((prev) =>
       prev === 0 ? activeModalProject.mediaGallery!.length - 1 : prev - 1
     );
   };
@@ -100,7 +100,7 @@ export const FeaturedProjects: React.FC = () => {
 
                   {/* Dark gradient overlay & Category Badge */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-transparent to-transparent" />
-                  
+
                   <div className="absolute top-3 left-3">
                     <span className="bg-[#0A0A0A] text-[#FAFAFA] border border-[#525252] px-2.5 py-1 text-[11px] font-mono font-bold uppercase tracking-wider">
                       {project.category}
@@ -133,7 +133,7 @@ export const FeaturedProjects: React.FC = () => {
                   <span className="text-[10px] font-mono tracking-wider text-[#525252] uppercase block mb-1">
                     ROLE: {project.role}
                   </span>
-                  
+
                   <h3 className="font-display text-lg text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors leading-snug line-clamp-2 mb-2">
                     {project.title}
                   </h3>
@@ -271,9 +271,8 @@ export const FeaturedProjects: React.FC = () => {
                         <button
                           key={idx}
                           onClick={() => setActiveImageIndex(idx)}
-                          className={`relative w-16 h-12 flex-shrink-0 border-2 overflow-hidden ${
-                            activeImageIndex === idx ? 'border-[#EF4444]' : 'border-[#333333] opacity-60'
-                          }`}
+                          className={`relative w-16 h-12 flex-shrink-0 border-2 overflow-hidden ${activeImageIndex === idx ? 'border-[#EF4444]' : 'border-[#333333] opacity-60'
+                            }`}
                         >
                           <img
                             src={media.url}
@@ -292,7 +291,7 @@ export const FeaturedProjects: React.FC = () => {
                 <div className="mb-8 border-2 border-[#0A0A0A] bg-[#F5F5F5] p-4">
                   <h4 className="text-xs font-bold uppercase font-mono tracking-wider text-[#0A0A0A] mb-3 flex items-center gap-1.5">
                     <FileText className="w-4 h-4 text-[#EF4444]" />
-                    OFFICIAL PROJECT DOCUMENTS &amp; ARCHIVES (PDF)
+                    OFFICIAL PROJECT DOCUMENTS &amp; ARCHIVES
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {activeModalProject.documents.map((doc, idx) => (
