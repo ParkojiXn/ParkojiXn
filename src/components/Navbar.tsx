@@ -42,7 +42,6 @@ export const Navbar: React.FC = () => {
     { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
     { label: 'SKILLS', href: '#skills', id: 'skills' },
     { label: 'EDUCATION', href: '#education', id: 'education' },
-    { label: 'CONTACT', href: '#contact', id: 'contact' },
   ];
 
   return (
@@ -170,9 +169,10 @@ export const Navbar: React.FC = () => {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="btn-primary text-center mt-2"
+              className="btn-primary text-center mt-1 flex items-center justify-center gap-1.5"
             >
-              CONTACT REZA SEPDIDE
+              <span>GET IN TOUCH</span>
+              <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
         </div>

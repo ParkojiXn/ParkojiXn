@@ -109,14 +109,6 @@ export const HeroSection: React.FC = () => {
                   <Printer className="w-4 h-4 text-[#FAFAFA]" />
                   <span>EXPORT PORTFOLIO (PDF)</span>
                 </button>
-
-                <a
-                  href="#contact"
-                  className="btn-secondary"
-                >
-                  <span>GET IN TOUCH</span>
-                  <Mail className="w-4 h-4" />
-                </a>
               </div>
 
               {/* Row 2: Curriculum Vitae Downloads */}

@@ -1,88 +1,54 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { profileData } from '../data/cv-data';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Linkedin, FileText, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, FileText, ArrowUpRight, MessageSquare, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    subject: '',
-    message: ''
-  });
-
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setFormStatus('error');
-      setErrorMessage('Please fill in your Name, Email, and Message before sending.');
-      return;
-    }
-
-    setFormStatus('submitting');
-
-    setTimeout(() => {
-      setFormStatus('success');
-      const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
-        formData.subject || 'Engineering Inquiry from Portfolio'
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
-      )}`;
-      window.location.href = mailtoUrl;
-    }, 800);
-  };
-
   return (
-    <section id="contact" className="py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-16 sm:py-20 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
-        <div className="border-b-2 border-[#0A0A0A] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="border-b-2 border-[#0A0A0A] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-overline text-[#EF4444] font-bold block mb-1">
-              // DIRECT INITIATIVE & CONSULTATION
+              // DIRECT INITIATIVE &amp; CONSULTATION
             </span>
             <h2 className="text-headline text-[#0A0A0A]">
               LET&apos;S BUILD TOGETHER
             </h2>
           </div>
 
-          <p className="text-sm text-[#404040] max-w-md font-body leading-relaxed">
+          <p className="text-sm text-[#404040] max-w-lg font-body leading-relaxed">
             Available for full-time civil engineering positions, DED &amp; BoQ quantity surveying consultancies, Revit/AutoCAD BIM modeling, and on-site field supervision.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left: Contact Info & Channels */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="card-editorial border-2 border-[#0A0A0A]">
+        {/* Symmetrical, Proportional 3-Column Layout (Zero Duplicate Form, High Legibility) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Column 1: Direct Communication Channels */}
+          <div className="card-editorial border-2 border-[#0A0A0A] bg-[#FFFFFF] p-6 sm:p-7 flex flex-col justify-between shadow-sm">
+            <div>
               <span className="text-overline text-[#EF4444] font-bold block mb-4">
-                DIRECT COMMUNICATION CHANNELS
+                // DIRECT COMMUNICATION
               </span>
+              <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A] mb-6">
+                OFFICIAL CHANNELS
+              </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {/* Email */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#0A0A0A] text-[#FAFAFA]">
-                    <Mail className="w-5 h-5 text-[#EF4444]" />
+                <div className="flex items-start gap-3.5">
+                  <div className="p-2.5 bg-[#0A0A0A] text-[#FAFAFA] flex-shrink-0">
+                    <Mail className="w-4 h-4 text-[#EF4444]" />
                   </div>
-                  <div>
-                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">ELECTRONIC MAIL</span>
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-mono text-[#525252] uppercase block font-bold">
+                      ELECTRONIC MAIL
+                    </span>
                     <a
                       href={`mailto:${profileData.email}`}
-                      className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors break-all"
+                      className="font-display text-sm text-[#0A0A0A] hover:text-[#EF4444] transition-colors break-all font-bold block mt-0.5"
                     >
                       {profileData.email}
                     </a>
@@ -90,18 +56,20 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 {/* WhatsApp / Phone */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#0A0A0A] text-[#FAFAFA]">
-                    <Phone className="w-5 h-5 text-[#EF4444]" />
+                <div className="flex items-start gap-3.5">
+                  <div className="p-2.5 bg-[#0A0A0A] text-[#FAFAFA] flex-shrink-0">
+                    <Phone className="w-4 h-4 text-[#EF4444]" />
                   </div>
-                  <div>
-                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">PHONE &amp; WHATSAPP</span>
-                    <div className="flex items-center gap-2">
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-mono text-[#525252] uppercase block font-bold">
+                      PHONE &amp; WHATSAPP
+                    </span>
+                    <div className="flex flex-wrap items-center gap-2 mt-0.5">
                       <a
                         href="https://wa.me/6289644590915"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors"
+                        className="font-display text-sm text-[#0A0A0A] hover:text-[#EF4444] transition-colors font-bold"
                       >
                         {profileData.phone}
                       </a>
@@ -109,8 +77,9 @@ export const ContactSection: React.FC = () => {
                         href="https://wa.me/6289644590915"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] font-mono bg-[#16A34A] text-white px-2 py-0.5 font-bold hover:bg-[#15803d] transition-colors"
+                        className="text-[10px] font-mono bg-[#16A34A] text-white px-2 py-0.5 font-bold hover:bg-[#15803d] transition-colors flex items-center gap-1"
                       >
+                        <MessageSquare className="w-3 h-3" />
                         CHAT ON WA
                       </a>
                     </div>
@@ -118,195 +87,157 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Location */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#0A0A0A] text-[#FAFAFA]">
-                    <MapPin className="w-5 h-5 text-[#EF4444]" />
+                <div className="flex items-start gap-3.5">
+                  <div className="p-2.5 bg-[#0A0A0A] text-[#FAFAFA] flex-shrink-0">
+                    <MapPin className="w-4 h-4 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">LOCATION &amp; RELOCATION</span>
-                    <p className="font-display text-sm sm:text-base text-[#0A0A0A]">
+                    <span className="text-[10px] font-mono text-[#525252] uppercase block font-bold">
+                      LOCATION &amp; RELOCATION
+                    </span>
+                    <p className="font-display text-sm text-[#0A0A0A] font-bold mt-0.5">
                       {profileData.location}
                     </p>
-                    <span className="text-xs font-mono text-[#404040] mt-0.5 block font-medium">
-                      Open to domestic &amp; international site deployment
+                    <span className="text-xs font-mono text-[#525252] mt-0.5 block">
+                      Open to domestic &amp; international site deployment (including Japan)
                     </span>
                   </div>
                 </div>
 
                 {/* LinkedIn */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#0A0A0A] text-[#FAFAFA]">
-                    <Linkedin className="w-5 h-5 text-[#EF4444]" />
+                <div className="flex items-start gap-3.5">
+                  <div className="p-2.5 bg-[#0A0A0A] text-[#FAFAFA] flex-shrink-0">
+                    <Linkedin className="w-4 h-4 text-[#EF4444]" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-[#404040] uppercase block font-bold">PROFESSIONAL NETWORK</span>
+                    <span className="text-[10px] font-mono text-[#525252] uppercase block font-bold">
+                      PROFESSIONAL NETWORK
+                    </span>
                     <a
                       href={profileData.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-display text-sm sm:text-base text-[#0A0A0A] hover:text-[#EF4444] transition-colors inline-flex items-center gap-1"
+                      className="font-display text-sm text-[#0A0A0A] hover:text-[#EF4444] transition-colors inline-flex items-center gap-1 font-bold mt-0.5"
                     >
                       linkedin.com/in/rezasepdide
-                      <ArrowUpRight className="w-4 h-4" />
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#EF4444]" />
                     </a>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Download Resume Banner */}
-              <div className="mt-8 pt-6 border-t-2 border-[#E5E5E5] space-y-2">
-                <a
-                  href="/CV_Reza_Sepdide_English.docx"
-                  download
-                  className="btn-primary w-full text-center flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>DOWNLOAD COMPLETE CV (ENGLISH .DOCX)</span>
-                </a>
-                <a
-                  href="/CV_Reza_Sepdide_Profesional.docx"
-                  download
-                  className="btn-secondary w-full text-center flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>DOWNLOAD PROFESSIONAL CV (INDONESIAN .DOCX)</span>
-                </a>
-              </div>
+            <div className="mt-6 pt-4 border-t border-[#E5E5E5] text-[11px] font-mono text-[#525252] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#16A34A] rounded-full inline-block animate-pulse" />
+              <span>Available for full-time roles &amp; technical consultancies</span>
             </div>
           </div>
 
-          {/* Right: Interactive Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="card-editorial border-2 border-[#0A0A0A] p-6 sm:p-8">
-              <span className="text-overline text-[#EF4444] font-bold block mb-2">
-                INTERACTIVE MESSAGE DISPATCH
+          {/* Column 2: Scope of Technical Engagement */}
+          <div className="card-editorial border-2 border-[#0A0A0A] bg-[#FFFFFF] p-6 sm:p-7 flex flex-col justify-between shadow-sm">
+            <div>
+              <span className="text-overline text-[#EF4444] font-bold block mb-4">
+                // TECHNICAL CAPABILITIES
               </span>
-              <h3 className="font-display text-xl text-[#0A0A0A] mb-6">
-                SEND A MESSAGE OR WORK PROPOSAL
+              <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A] mb-6">
+                SCOPE OF ENGAGEMENT
               </h3>
 
-              {formStatus === 'success' ? (
-                <div className="p-6 bg-[#F0FDF4] border-2 border-[#16A34A] text-[#16A34A] space-y-3">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-6 h-6" />
-                    <h4 className="font-display text-lg">Message Dispatched Successfully!</h4>
-                  </div>
-                  <p className="text-sm font-body text-[#15803d]">
-                    Thank you for reaching out to Reza Sepdide. Your inquiry has been forwarded and will be answered directly via email within 24 business hours.
+              <div className="space-y-4">
+                <div className="p-3 bg-[#FAFAFA] border border-[#E5E5E5]">
+                  <span className="text-[10px] font-mono font-bold text-[#EF4444] uppercase block">
+                    01 // SITE SUPERVISION &amp; QUALITY CONTROL
+                  </span>
+                  <p className="text-xs text-[#0A0A0A] font-body mt-1 leading-relaxed">
+                    BNSP Level 5 certified field leadership: concrete slump tests, rebar clearance checklists, structural inspection, and HSE compliance.
                   </p>
-                  <button
-                    onClick={() => {
-                      setFormStatus('idle');
-                      setFormData({ name: '', email: '', company: '', subject: '', message: '' });
-                    }}
-                    className="btn-primary !bg-[#16A34A] !border-[#16A34A] text-xs mt-3"
-                  >
-                    SEND ANOTHER INQUIRY
-                  </button>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {formStatus === 'error' && (
-                    <div className="p-3 bg-[#FEF2F2] border-2 border-[#EF4444] text-[#EF4444] text-xs font-mono font-bold">
-                      ⚠ {errorMessage}
-                    </div>
-                  )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        FULL NAME *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="e.g. John Anderson"
-                        required
-                        className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
-                      />
-                    </div>
+                <div className="p-3 bg-[#FAFAFA] border border-[#E5E5E5]">
+                  <span className="text-[10px] font-mono font-bold text-[#EF4444] uppercase block">
+                    02 // QUANTITY SURVEYING &amp; COST ESTIMATION
+                  </span>
+                  <p className="text-xs text-[#0A0A0A] font-body mt-1 leading-relaxed">
+                    Quantity Take-Off (QTO), Bill of Quantities (BoQ/RAB), regional AHSP unit rate modeling, and Contract Change Order (CCO) addenda.
+                  </p>
+                </div>
 
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        EMAIL ADDRESS *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@constructionfirm.com"
-                        required
-                        className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
-                      />
-                    </div>
-                  </div>
+                <div className="p-3 bg-[#FAFAFA] border border-[#E5E5E5]">
+                  <span className="text-[10px] font-mono font-bold text-[#EF4444] uppercase block">
+                    03 // DIGITAL BIM &amp; CAD MODELING
+                  </span>
+                  <p className="text-xs text-[#0A0A0A] font-body mt-1 leading-relaxed">
+                    Autodesk Revit parametric 3D structural &amp; architectural modeling, clash avoidance, and standardized AutoCAD DED layout viewports to PDF.
+                  </p>
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        COMPANY / ORGANIZATION
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        placeholder="e.g. Pacific Infrastructure Ltd."
-                        className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
-                      />
-                    </div>
+                <div className="p-3 bg-[#FAFAFA] border border-[#E5E5E5]">
+                  <span className="text-[10px] font-mono font-bold text-[#EF4444] uppercase block">
+                    04 // CPM SCHEDULING &amp; TIME CONTROL
+                  </span>
+                  <p className="text-xs text-[#0A0A0A] font-body mt-1 leading-relaxed">
+                    Critical Path Method (CPM) networks in Microsoft Project and weekly progress S-Curves for time and cash-flow deviation monitoring.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                        INQUIRY SUBJECT
-                      </label>
-                      <input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="e.g. Quantity Surveying & Scheduling Role"
-                        className="w-full h-11 bg-[#FAFAFA] border-2 border-[#D4D4D4] px-3.5 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors"
-                      />
-                    </div>
-                  </div>
+            <div className="mt-6 pt-4 border-t border-[#E5E5E5] text-[11px] font-mono text-[#525252] flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#16A34A]" />
+              <span>Full compliance with Indonesian SNI &amp; Japanese JAC standards</span>
+            </div>
+          </div>
 
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mb-1.5 font-body">
-                      MESSAGE OR PROJECT SCOPE *
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Share details regarding your project requirements, timeline, open engineering roles, or consulting scope..."
-                      required
-                      className="w-full bg-[#FAFAFA] border-2 border-[#D4D4D4] p-3 text-sm text-[#0A0A0A] focus:border-[#0A0A0A] transition-colors resize-y font-body"
-                    />
-                  </div>
+          {/* Column 3: Official Curriculum Vitae Downloads */}
+          <div className="card-editorial border-2 border-[#0A0A0A] bg-[#FFFFFF] p-6 sm:p-7 flex flex-col justify-between shadow-sm">
+            <div>
+              <span className="text-overline text-[#EF4444] font-bold block mb-4">
+                // OFFICIAL RESUME DOSSIER
+              </span>
+              <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A] mb-6">
+                CURRICULUM VITAE
+              </h3>
 
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={formStatus === 'submitting'}
-                      className="btn-primary w-full sm:w-auto"
-                    >
-                      {formStatus === 'submitting' ? (
-                        <span>DISPATCHING MESSAGE...</span>
-                      ) : (
-                        <>
-                          <span>SEND INQUIRY DIRECTLY</span>
-                          <Send className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </form>
-              )}
+              <p className="text-xs sm:text-sm text-[#404040] font-body leading-relaxed mb-6">
+                Official authenticated curriculum vitae files detailing comprehensive academic honors, state licensing numbers, project histories, and verified credentials.
+              </p>
+
+              <div className="space-y-3">
+                <a
+                  href="/CV_Reza_Sepdide_English.docx"
+                  download
+                  className="btn-primary w-full text-center flex items-center justify-center gap-2 py-3"
+                  title="Download Complete CV in English (.docx)"
+                >
+                  <FileText className="w-4 h-4 text-[#FAFAFA]" />
+                  <span>COMPLETE CV (ENGLISH .DOCX)</span>
+                </a>
+
+                <a
+                  href="/CV_Reza_Sepdide_Profesional.docx"
+                  download
+                  className="btn-secondary w-full text-center flex items-center justify-center gap-2 py-3"
+                  title="Download Professional CV in Indonesian (.docx)"
+                >
+                  <FileText className="w-4 h-4 text-[#0A0A0A]" />
+                  <span>PROFESSIONAL CV (INDONESIAN .DOCX)</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-[#E5E5E5] space-y-1.5 text-xs font-mono text-[#525252]">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0" />
+                <span>BNSP KKNI Level 5 Site Supervisor</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0" />
+                <span>D3 Civil Engineering PNP (GPA 3.72 Magna Cum Laude)</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#EF4444] flex-shrink-0" />
+                <span>D4 Construction Engineering Management (In Progress)</span>
+              </div>
             </div>
           </div>
         </div>

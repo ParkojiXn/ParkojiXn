@@ -23,8 +23,7 @@ export const profileData: ProfileData = {
     {
       value: "LEVEL 5",
       label: "BNSP CERTIFICATION",
-      description: "Implementing Intermediate Building Works
-",
+      description: "Implementing Intermediate Building Works Site Supervisor",
     },
     {
       value: "10+",

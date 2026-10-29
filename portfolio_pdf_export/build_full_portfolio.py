@@ -1,0 +1,1656 @@
+import os
+import subprocess
+import sys
+
+base_dir = "D:/whateverapp/laragon/www/ParkojiXn/public/portfolio"
+export_dir = "D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export"
+tex_path = os.path.join(export_dir, "portofolio_reza_sepdide.tex").replace("\\", "/")
+
+def p(rel):
+    return os.path.join(base_dir, rel).replace("\\", "/")
+
+tex = []
+
+# --- PREAMBLE ---
+tex.append(r"""\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[landscape, a4paper, left=12mm, right=12mm, top=11mm, bottom=12mm, footskip=7mm, headheight=0mm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{helvet}
+\usepackage{lastpage}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Colors
+\definecolor{pblack}{HTML}{0A0A0A}
+\definecolor{dgray}{HTML}{262626}
+\definecolor{mgray}{HTML}{525252}
+\definecolor{lgray}{HTML}{E5E5E5}
+\definecolor{bglight}{HTML}{F8F9FA}
+\definecolor{ared}{HTML}{EF4444}
+\definecolor{dred}{HTML}{B91C1C}
+\definecolor{tgreen}{HTML}{16A34A}
+\definecolor{softred}{HTML}{FEF2F2}
+
+% Running Footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyfoot[L]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south west, inner sep=0pt, xshift=12mm, yshift=4mm] at (current page.south west) {%
+      \footnotesize\sffamily\bfseries\color{mgray}%
+      REZA SEPDIDE, A.Md.T. \quad\textbar\quad LISENSI BNSP KKNI JENJANG 5 \quad\textbar\quad D4 MANAJEMEN REKAYASA KONSTRUKSI (ON GOING)%
+    };
+    \node[anchor=south east, inner sep=0pt, xshift=-12mm, yshift=4mm] at (current page.south east) {%
+      \footnotesize\sffamily\bfseries\color{pblack}%
+      DOSIR PORTOFOLIO TEKNIK SIPIL \quad\textbar\quad HALAMAN \thepage\ DARI \pageref{LastPage}%
+    };
+    \draw[line width=0.8pt, color=lgray] ([xshift=12mm, yshift=8.5mm]current page.south west) -- ([xshift=-12mm, yshift=8.5mm]current page.south east);
+  \end{tikzpicture}%
+}
+
+% Header Macro for Content Pages
+\newcommand{\pagehead}[2]{%
+  \noindent
+  \begin{minipage}{\textwidth}
+    \begin{tabularx}{\textwidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
+      {\footnotesize\bfseries\color{ared}// #1} & {\scriptsize\bfseries\color{mgray}KEMENTERIAN PUPR / BNSP / POLITEKNIK NEGERI PADANG \textbar\ 2026} \\
+      {\Large\bfseries\color{pblack}#2} & {\scriptsize\fontfamily{cmtt}\selectfont\bfseries\color{pblack}DOSIR RESMI REKAYASA TEKNIK SIPIL} \\
+    \end{tabularx}\vspace{1mm}
+    \begin{tikzpicture}
+      \draw[line width=1.5pt, color=pblack] (0,0) -- (\textwidth,0);
+      \draw[line width=2.5pt, color=ared] (0,0) -- (45mm,0);
+    \end{tikzpicture}
+  \end{minipage}\vspace{2.5mm}
+}
+
+\begin{document}
+""")
+
+# =========================================================================
+# HALAMAN 1: COVER PAGE
+# =========================================================================
+tex.append(r"""
+% --- HALAMAN 1: COVER PAGE ---
+\thispagestyle{empty}
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+  % Outer Border
+  \draw[line width=2pt, color=pblack] ([xshift=10mm, yshift=-10mm]current page.north west) rectangle ([xshift=-10mm, yshift=10mm]current page.south east);
+  % Inner Red Accent Line at top
+  \draw[line width=4pt, color=ared] ([xshift=10mm, yshift=-10mm]current page.north west) -- ([xshift=100mm, yshift=-10mm]current page.north west);
+\end{tikzpicture}
+
+\vspace*{-4mm}
+\noindent
+\begin{minipage}{\textwidth}
+  \begin{tabularx}{\textwidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
+    \colorbox{pblack}{\color{white}\bfseries\small\ \ KUALIFIKASI RESMI TEKNIK SIPIL \& MANAJEMEN KONSTRUKSI\ \ } &
+    {\small\fontfamily{cmtt}\selectfont\bfseries\color{mgray}EDISI RESMI 2026 \textbar\ PADANG, INDONESIA}
+  \end{tabularx}
+\end{minipage}
+
+\vspace{5mm}
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+  {\fontsize{28pt}{32pt}\selectfont\bfseries\color{pblack}PORTOFOLIO REKAYASA TEKNIK SIPIL}\\[2mm]
+  {\fontsize{15pt}{18pt}\selectfont\bfseries\color{ared}QUANTITY SURVEYING, ESTIMASI BIAYA \& MANAJEMEN KONSTRUKSI}\\[3mm]
+  {\small\color{mgray}\textbf{Kompilasi Portofolio Proyek, Bukti Lisensi Negara BNSP Jenjang 5, Gambar DED AutoCAD, Dokumen RKS, Perhitungan BoQ/RAB, Kurva S, Bar Bending Schedule, dan Pengendalian Mutu Lapangan}}\\[4mm]
+  
+  \begin{tikzpicture}
+    \draw[line width=1.5pt, color=pblack] (0,0) -- (0.95\linewidth,0);
+    \draw[line width=3pt, color=ared] (0,0) -- (40mm,0);
+  \end{tikzpicture}\\[4mm]
+
+  {\Large\bfseries\color{pblack}REZA SEPDIDE, A.Md.T.}\\[1mm]
+  {\small\bfseries\color{dgray}Civil Engineer \textbar\ Quantity Surveyor \textbar\ BIM \& CAD Modeler}\\[3mm]
+
+  % 4 Metric Boxes
+  \begin{tabularx}{0.96\linewidth}{@{}XXXX@{}}
+    \fboxsep=0pt\colorbox{bglight}{\framebox[0.22\linewidth]{\parbox{0.21\linewidth}{\vspace{2mm}\centering{\large\bfseries\color{pblack}3.72}\\[0.5mm]{\scriptsize\bfseries\color{ared}IPK / 4.00}\\[0.5mm]{\tiny\color{mgray}D3 Teknik Sipil PNP\\Magna Cum Laude}\vspace{2mm}}}} &
+    \fboxsep=0pt\colorbox{bglight}{\framebox[0.22\linewidth]{\parbox{0.21\linewidth}{\vspace{2mm}\centering{\large\bfseries\color{pblack}LEVEL 5}\\[0.5mm]{\scriptsize\bfseries\color{ared}SKK BNSP}\\[0.5mm]{\tiny\color{mgray}Pelaksana Lapangan\\Pekerjaan Gedung}\vspace{2mm}}}} &
+    \fboxsep=0pt\colorbox{bglight}{\framebox[0.22\linewidth]{\parbox{0.21\linewidth}{\vspace{2mm}\centering{\large\bfseries\color{pblack}10+}\\[0.5mm]{\scriptsize\bfseries\color{ared}PROYEK TEKNIS}\\[0.5mm]{\tiny\color{mgray}EPC, Revitalisasi,\\DED, BoQ, \& S-Curve}\vspace{2mm}}}} &
+    \fboxsep=0pt\colorbox{bglight}{\framebox[0.22\linewidth]{\parbox{0.21\linewidth}{\vspace{2mm}\centering{\large\bfseries\color{pblack}3 BAHASA}\\[0.5mm]{\scriptsize\bfseries\color{ared}TERSERTIFIKASI}\\[0.5mm]{\tiny\color{mgray}Indonesia, Jepang\\(SSW/JLPT), Inggris}\vspace{2mm}}}}
+  \end{tabularx}
+
+  \vspace{4mm}
+  \begin{tabularx}{0.96\linewidth}{@{}ll@{}}
+    \textbf{\footnotesize STATUS PENDIDIKAN:} & {\footnotesize\bfseries\color{ared}Diploma IV (D4) Manajemen Rekayasa Konstruksi PNP (Aktif / Ongoing)} \\
+    \textbf{\footnotesize LULUSAN AKADEMIK:} & {\footnotesize D3 Teknik Sipil Politeknik Negeri Padang (Lulus Predikat Pujian, IPK 3.72)} \\
+    \textbf{\footnotesize LISENSI PROFESI:} & {\footnotesize BNSP Jenjang 5 Balai Jasa Konstruksi Wilayah I Banda Aceh, Kementerian PUPR} \\
+    \textbf{\footnotesize EMAIL \& KONTAK:} & {\footnotesize\fontfamily{cmtt}\selectfont rezasepdide@gmail.com \quad\textbar\quad +62 896-4459-0915 \quad\textbar\quad linkedin.com/in/rezasepdide}
+  \end{tabularx}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.30\textwidth}
+  \begin{center}
+    \framebox[1.0\linewidth]{%
+      \includegraphics[width=0.96\linewidth,keepaspectratio]{""" + p("profile/professional-photo.jpeg") + r"""}%
+    }\\[2mm]
+    \colorbox{pblack}{\parbox{0.96\linewidth}{\centering\vspace{1.5mm}{\small\bfseries\color{white}REZA SEPDIDE, A.Md.T.}\\[0.5mm]{\scriptsize\color{lgray}Pelaksana Lapangan Gedung Madya BNSP}\vspace{1.5mm}}}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# =========================================================================
+# HALAMAN 2: PROFIL EKSEKUTIF, RIWAYAT PENDIDIKAN & ETIKA REKAYASA
+# =========================================================================
+tex.append(r"""
+% --- HALAMAN 2: PROFIL EKSEKUTIF & PENDIDIKAN ---
+\pagehead{PROFIL PROFESIONAL // PENDIDIKAN \& NILAI REKAYASA}{PROFIL EKSEKUTIF, RIWAYAT PENDIDIKAN \& ETIKA KERJA}
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}\textbf{\color{ared}// RINGKASAN EKSEKUTIF PROFESIONAL}\\[1.5mm]
+    {\small Lulusan Diploma III Teknik Sipil \textbf{Politeknik Negeri Padang (IPK 3.72/4.00, Predikat Pujian / Magna Cum Laude)}, pemegang lisensi resmi \textbf{BNSP KKNI Jenjang 5 Pelaksana Lapangan Pekerjaan Gedung Madya}. Memiliki rekam jejak teruji dalam perencanaan teknis, perhitungan \textbf{Quantity Surveying (BoQ/RAB)}, pengendalian mutu (\textbf{Quality Control}) pengecoran beton dan pembesian, penyusunan \textbf{Bar Bending Schedule (BBS)}, manajemen addendum kontrak \textbf{Contract Change Order (CCO)}, serta pemodelan jadwal kerja \textbf{Kurva S}.\\[2mm]
+    Menguasai perangkat lunak rekayasa industri: \textbf{Autodesk Revit (BIM Modeler Certified)}, \textbf{AutoCAD DED (Standar Multi-Viewport Layout ke PDF)}, \textbf{SAP2000 (Analisis Seismik Dinamik SNI 1726)}, dan \textbf{Microsoft Project (CPM)}. Memiliki kompetensi dwibahasa internasional bersertifikat dalam \textbf{Bahasa Jepang (SSW Tokutei Ginou JAC, JFT-Basic skor 250, JLPT N4 skor 165)} dan \textbf{Bahasa Inggris (TOEIC 640)}.}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}RIWAYAT PENDIDIKAN FORMAL}
+  \vspace{1mm}
+  \begin{itemize}\setlength{\itemsep}{1mm}\setlength{\parsep}{0pt}
+    \item \textbf{Politeknik Negeri Padang} --- \textbf{Diploma IV (D4) Manajemen Rekayasa Konstruksi}\\
+    {\footnotesize Periode: Agustus 2026 -- Sekarang \quad\textbar\quad Padang, Sumatera Barat}\\
+    {\footnotesize\bfseries\color{ared}Status: Aktif / Sedang Berjalan (Ongoing)}\\
+    {\scriptsize Konsentrasi pada manajemen proyek konstruksi lanjutan, tata kelola pengadaan barang/jasa pemerintah, analisis risiko rekayasa, dan implementasi integrasi multi-dimensi BIM.}
+    
+    \item \textbf{Politeknik Negeri Padang} --- \textbf{Diploma III (D3) Teknik Sipil}\\
+    {\footnotesize Periode: September 2022 -- Juli 2025 \quad\textbar\quad Padang, Sumatera Barat}\\
+    {\footnotesize\bfseries\color{tgreen}Status: Lulus dengan Predikat Pujian (Magna Cum Laude) \quad\textbar\quad IPK: 3.72 / 4.00}\\
+    {\scriptsize Capstone Tugas Akhir: Rencana Pelaksanaan Konstruksi Gedung DPRD Kabupaten Pasaman (BoQ, Time Schedule, \& Kurva S). Peserta Kompetisi Tender Nasional 'Fondasi Days 2025' UNS. Peneliti Utama PKM-AI Analisis Biaya Scaffolding Industri EPC.}
+
+    \item \textbf{SMA Negeri 1 Padang} --- \textbf{Jurusan Matematika dan Ilmu Pengetahuan Alam (MIPA)}\\
+    {\footnotesize Periode: 2019 -- 2022 \quad\textbar\quad Status: Lulus}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+  \textbf{\color{pblack}4 PILAR PRINSIP REKAYASA \& ETIKA KERJA PERSONAL}
+  \vspace{1mm}
+
+  \begin{tabularx}{\linewidth}{@{}p{22mm}X@{}}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ 01. KESELAMATAN\ } & \textbf{\small Integritas Struktural \& Keselamatan Manusia Tanpa Kompromi}\\[0.5mm]
+    & {\scriptsize Konstruksi sipil menyangkut keselamatan jiwa. Setiap detail penulangan beton, mutu slump uji beton segar, dan kepatuhan terhadap kode SNI diverifikasi langsung di lapangan tanpa toleransi kelalaian.}\\[1.5mm]
+
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ 02. EFISIENSI BIAYA\ } & \textbf{\small Estimasi Presisi \& Pengendalian Limbah Material (Zero-Waste)}\\[0.5mm]
+    & {\scriptsize Dari penyusunan Bar Bending Schedule (BBS) untuk memangkas sisa besi (scrap) hingga penyusunan BoQ/RAB yang transparan berdasarkan analisa harga satuan pekerjaan (AHSP) yang dapat dipertanggungjawabkan.}\\[1.5mm]
+
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ 03. TERTIB DOKUMEN\ } & \textbf{\small Dokumen Teknis Audit-Ready \& Akuntabilitas Kontrak}\\[0.5mm]
+    & {\scriptsize Setiap pembayaran progress billing dibuktikan dengan lembar perhitungan Backup Volume matematis yang valid, berita acara opname bersama, dan Contract Change Order (CCO) dengan justifikasi teknis yang sah.}\\[1.5mm]
+
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ 04. STANDAR GLOBAL\ } & \textbf{\small Pembelajaran Berkelanjutan \& Kualifikasi Internasional}\\[0.5mm]
+    & {\scriptsize Melanjutkan studi D4 Manajemen Rekayasa Konstruksi, mendalami digitalisasi BIM Revit parametrik, serta memenuhi standar keselamatan dan keahlian kerja industri konstruksi Jepang (JAC Tokutei Ginou SSW).}
+  \end{tabularx}
+
+  \vspace{3mm}
+  \colorbox{softred}{\parbox{\linewidth}{%
+    \vspace{2mm}\textbf{\color{ared}KOMITMEN PROFESIONAL}\\[1mm]
+    {\scriptsize "Bagi saya, rekayasa teknik sipil tidak berakhir pada gambar kerja di atas meja atau formula di spreadsheet, melainkan ditentukan oleh seberapa aman, akurat, tepat waktu, dan efisien desain tersebut direalisasikan di lapangan."}\vspace{2mm}
+  }}
+\end{minipage}
+
+\newpage
+""")
+
+# =========================================================================
+# HALAMAN 3: MATRIKS KOMPETENSI REKAYASA & DIGITAL TOOLS
+# =========================================================================
+tex.append(r"""
+% --- HALAMAN 3: MATRIKS KOMPETENSI REKAYASA ---
+\pagehead{KOMPETENSI TEKNIS // BIDANG KEAHLIAN \& DIGITAL TOOLS}{MATRIKS KOMPETENSI REKAYASA, SOFTWARE \& KEMAMPUAN BAHASA}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}XXXX@{}}
+  % Kolom 1
+  \fboxsep=0pt\colorbox{bglight}{\framebox[\linewidth]{\parbox{0.94\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ BIDANG 01: REKAYASA SIPIL \& QS\ \ }\\[2mm]
+    \textbf{\small Quantity Surveying \& Site Management}\\[1mm]
+    {\scriptsize Penguasaan mendalam dalam perhitungan volume, estimasi biaya, administrasi kontrak, dan inspeksi mutu.}\\[2mm]
+    \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+      \item \textbf{Quantity Take-Off (QTO)}: \textit{Tingkat Mahir}\\
+      Perhitungan volume matematis detail substruktur, superstruktur, arsitektur, dan MEP.
+      \item \textbf{Rencana Anggaran Biaya (RAB)}: \textit{Tingkat Mahir}\\
+      Analisa Harga Satuan Pekerjaan (AHSP SNI/Permen PUPR) dan rekapitulasi biaya.
+      \item \textbf{Spesifikasi Teknis (RKS)}: \textit{Tingkat Mahir}\\
+      Penyusunan Rencana Kerja dan Syarat mutu bahan, metode kerja, dan toleransi.
+      \item \textbf{Jadwal \& Kurva S}: \textit{Tingkat Mahir}\\
+      Penjadwalan bobot mingguan kumulatif dan monitoring deviasi progres fisik.
+      \item \textbf{Bar Bending Schedule (BBS)}: \textit{Tingkat Mahir}\\
+      Optimalisasi pemotongan dan pembengkokan rebar meminimalisir scrap besi.
+      \item \textbf{Detailed Engineering Design (DED)}: \textit{Mahir}\\
+      Penggambaran gambar kerja arsitektur \& struktur siap laksana.
+      \item \textbf{Contract Change Order (CCO)}: \textit{Kompeten}\\
+      Addendum tambah-kurang volume dan justifikasi teknis rekayasa lapangan.
+      \item \textbf{Quality Control Lapangan}: \textit{Kompeten}\\
+      Uji slump beton segar, inspeksi penulangan rebar, formwork, dan punch list.
+    \end{itemize}
+    \vspace{2mm}
+  }}} &
+
+  % Kolom 2
+  \fboxsep=0pt\colorbox{bglight}{\framebox[\linewidth]{\parbox{0.94\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ BIDANG 02: SOFTWARE CAD/BIM\ \ }\\[2mm]
+    \textbf{\small Digital Modeling \& Analisis}\\[1mm]
+    {\scriptsize Suite perangkat lunak standar industri konstruksi untuk pemodelan 3D, kalkulasi elemen hingga, dan penjadwalan.}\\[2mm]
+    \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+      \item \textbf{Autodesk Revit (BIM)}: \textit{Certified}\\
+      Pemodelan parametrik 3D balok, kolom, pelat, dinding, pintu, dan ekstraksi otomatis schedule volume material.
+      \item \textbf{AutoCAD}: \textit{Tingkat Mahir}\\
+      Penggambaran DED 2D, detail penulangan, dan sistem multi-viewport layout space to PDF beresolusi tinggi.
+      \item \textbf{SAP2000}: \textit{Tingkat Kompeten}\\
+      Pemodelan portal struktur 3D, analisis dinamik respon spektrum gempa SNI 1726, amplop momen/geser.
+      \item \textbf{Microsoft Project}: \textit{Tingkat Mahir}\\
+      Penjadwalan Critical Path Method (CPM), alokasi sumber daya, dan derivasi Kurva S.
+      \item \textbf{SketchUp 3D}: \textit{Tingkat Mahir}\\
+      Visualisasi 3D pentahapan metode konstruksi (staging) dan site logistics tender.
+      \item \textbf{Microsoft Excel}: \textit{Tingkat Ahli}\\
+      Pemodelan formula QTO otomatis, backup volume register, analisa harga satuan, dan cash-flow.
+    \end{itemize}
+    \vspace{2mm}
+  }}} &
+
+  % Kolom 3
+  \fboxsep=0pt\colorbox{bglight}{\framebox[\linewidth]{\parbox{0.94\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ BIDANG 03: BAHASA INTERNASIONAL\ \ }\\[2mm]
+    \textbf{\small Komunikasi Global Bersertifikat}\\[1mm]
+    {\scriptsize Kemampuan bahasa resmi tersertifikasi untuk kepemimpinan lapangan lokal maupun kolaborasi proyek internasional.}\\[2mm]
+    \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+      \item \textbf{Bahasa Indonesia}: \textit{Penutur Asli (Native)}\\
+      Kemahiran penuh dalam penyusunan laporan teknis rekayasa, administrasi pemerintahan, dan koordinasi mandor/pekerja lapangan.
+      \item \textbf{Bahasa Jepang (日本語)}: \textit{Bilingual Lulus Ujian}\\
+      - \textbf{JFT-Basic}: Skor Sempurna \textbf{250 / 250}\\
+      - \textbf{JLPT N4}: Skor \textbf{165 / 180 (Lulus)}\\
+      - \textbf{SSW Kensetsu JAC}: Lulus Ujian Evaluasi Keterampilan Konstruksi Teknik Sipil Jepang (\textit{Tokutei Ginou}). Siap ditempatkan pada proyek konstruksi berstandar Jepang.
+      \item \textbf{Bahasa Inggris}: \textit{Kemahiran Kerja Profesional}\\
+      - \textbf{TOEIC Official}: Skor \textbf{640} (Listening 400 \textbar\ Reading 240).\\
+      Kemampuan membaca gambar teknik internasional, dokumen kontrak EPC, dan korespondensi profesional.
+    \end{itemize}
+    \vspace{2mm}
+  }}} &
+
+  % Kolom 4
+  \fboxsep=0pt\colorbox{bglight}{\framebox[\linewidth]{\parbox{0.94\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ BIDANG 04: ETIKA \& LEADERSHIP\ \ }\\[2mm]
+    \textbf{\small Disiplin \& Kinerja Lapangan}\\[1mm]
+    {\scriptsize Sikap kerja profesional dan integritas tinggi yang teruji pada proyek lapangan berisiko tinggi.}\\[2mm]
+    \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+      \item \textbf{Adaptabilitas Lapangan \& Problem Solving}\\
+      Cepat mengidentifikasi dan memecahkan ketidaksesuaian antara gambar rencana dengan kondisi tanah aktual di lokasi pekerjaan.
+      \item \textbf{Presisi Sub-Milimeter (Zero Defect)}\\
+      Disiplin ketat terhadap perhitungan volume dan ukuran pembesian hingga milimeter untuk mencegah pemborosan biaya.
+      \item \textbf{Integritas Teknis \& Akuntabilitas}\\
+      Kepatuhan penuh pada checklist K3 konstruksi, kode standar rekayasa SNI, dan verifikasi opname fisik yang sah.
+      \item \textbf{Kolaborasi Lintas Disiplin}\\
+      Komunikasi efektif yang menjembatani kepentingan pekerja/mandor, konsultan pengawas, kontraktor utama, dan pemilik proyek.
+    \end{itemize}
+    \vspace{2mm}
+  }}}
+\end{tabularx}
+
+\newpage
+""")
+
+# =========================================================================
+# HALAMAN 4-11: BUKTI LISENSI & SERTIFIKASI PROFESI
+# =========================================================================
+
+# HALAMAN 4: SKK BNSP JENJANG 5 (HALAMAN 1 - SERTIFIKAT UTAMA)
+tex.append(r"""
+% --- HALAMAN 4: SKK BNSP JENJANG 5 (HALAMAN 1) ---
+\pagehead{LISENSI NEGARA UTAMA // BNSP - KEMENTERIAN PUPR}{SERTIFIKAT KOMPETENSI KERJA (SKK) KONSTRUKSI JENJANG 5}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{ared}{\color{white}\bfseries\scriptsize\ \ LISENSI UTAMA NEGARA\ \ }\\[2mm]
+    \textbf{\large Pelaksana Lapangan Pekerjaan Gedung Madya}\\[1mm]
+    {\small\textbf{Kualifikasi: KKNI Jenjang 5 (Teknisi / Analis)}}\\[2mm]
+    
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Badan Penerbit:} & {\scriptsize Badan Nasional Sertifikasi Profesi (BNSP) melalui LPJK} \\
+      \textbf{\scriptsize Wilayah Kerja:} & {\scriptsize Balai Jasa Konstruksi Wilayah (BJKW) I Banda Aceh, Ditjen Bina Konstruksi, Kementerian PUPR} \\
+      \textbf{\scriptsize Nomor Registrasi:} & {\scriptsize Tercatat pada Database Resmi SIKI LPJK / BNSP RI} \\
+      \textbf{\scriptsize Dasar Hukum:} & {\scriptsize UU Jasa Konstruksi No. 2/2017 \& PP 14/2021} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}DESKRIPSI \& KEWENANGAN JABATAN KERJA}
+  \vspace{1mm}
+  {\scriptsize Sertifikat lisensi negara ini memberikan kewenangan legal formal bagi Reza Sepdide untuk melaksanakan fungsi kepemimpinan teknis pada pelaksanaan pekerjaan gedung bertingkat, meliputi:}\\[1.5mm]
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Menerapkan Sistem Manajemen Keselamatan dan Kesehatan Kerja Konstruksi (SMKK/K3) serta lingkungan.}
+    \item {\scriptsize Mengkaji ulang dan memverifikasi gambar kerja (shop drawings) dan spesifikasi teknis.}
+    \item {\scriptsize Mengawasi dan mengendalikan pelaksanaan pekerjaan struktur beton bertulang, pondasi, dan arsitektur.}
+    \item {\scriptsize Mengendalikan mutu material konstruksi dan pengujian fisik di laboratorium dan lapangan.}
+    \item {\scriptsize Mengkoordinasikan subkontraktor dan mandor untuk pencapaian target jadwal (Kurva S).}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=1,keepaspectratio]{""" + p("certificates/skk-bnsp-jenjang5.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen Asli:} Sertifikat Kompetensi Kerja (SKK) Konstruksi Jenjang 5 --- Halaman Depan dengan QR Code Registrasi Resmi BNSP}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 5: SKK BNSP JENJANG 5 (HALAMAN 2 - DAFTAR UNIT KOMPETENSI)
+tex.append(r"""
+% --- HALAMAN 5: SKK BNSP JENJANG 5 (HALAMAN 2 - UNIT KOMPETENSI) ---
+\pagehead{LISENSI NEGARA UTAMA // LAMPIRAN UNIT KOMPETENSI RESMI}{SKK JENJANG 5: DAFTAR UNIT KOMPETENSI KERJA STANDAR SKKNI}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ STANDAR KOMPETENSI KERJA NASIONAL INDONESIA (SKKNI)\ \ }\\[2mm]
+    \textbf{\large Validasi 11 Unit Kompetensi Kerja}\\[1mm]
+    {\scriptsize Lampiran resmi halaman belakang sertifikat SKK BNSP yang mengesahkan penguasaan standar kompetensi kerja nasional.}\\[2mm]
+
+    \textbf{\scriptsize REKAPITULASI UNIT KOMPETENSI:}\\[1mm]
+    \begin{enumerate}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+      \item {\tiny Penerapan Ketentuan UUJK dan K3 Konstruksi}
+      \item {\tiny Komunikasi dan Kerjasama di Tempat Kerja}
+      \item {\tiny Pengkajian Gambar Kerja dan Spesifikasi Teknis}
+      \item {\tiny Pelaksanaan Pekerjaan Persiapan Lapangan}
+      \item {\tiny Pengendalian Pekerjaan Pondasi Dalam \& Dangkal}
+      \item {\tiny Pelaksanaan Pekerjaan Struktur Beton Bertulang}
+      \item {\tiny Pelaksanaan Pekerjaan Rangka Atap dan Penutup}
+      \item {\tiny Pengawasan Pekerjaan Arsitektur \& Finishing}
+      \item {\tiny Pengujian Mutu dan Bahan Bangunan di Lapangan}
+      \item {\tiny Pemeriksaan Hasil Pekerjaan dan Pembuatan Laporan}
+      \item {\tiny Penyerahan Hasil Pekerjaan (Handover \& As-Built)}
+    \end{enumerate}
+    \vspace{2mm}
+  }}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=2,keepaspectratio]{""" + p("certificates/skk-bnsp-jenjang5.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen Asli:} Lampiran Resmi SKK BNSP Jenjang 5 Halaman Belakang --- Daftar Unit Kompetensi Terverifikasi Asesor}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 6: REVIT BIM (ARSISTEN ACADEMY)
+tex.append(r"""
+% --- HALAMAN 6: REVIT BIM ---
+\pagehead{DIGITAL BIM CERTIFICATION // AUTODESK REVIT MASTERCLASS}{SERTIFIKAT KELULUSAN: REVIT MASTERCLASS FOR BEGINNERS (BIM)}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{ared}{\color{white}\bfseries\scriptsize\ \ BUILDING INFORMATION MODELING (BIM)\ \ }\\[2mm]
+    \textbf{\large Certified BIM Modeler: Autodesk Revit}\\[1mm]
+    {\small\textbf{Penerbit: Arsisten Academy}}\\[2mm]
+    
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Bidang Keahlian:} & {\scriptsize Pemodelan Parametrik Struktur \& Arsitektur 3D} \\
+      \textbf{\scriptsize Software:} & {\scriptsize Autodesk Revit Architecture \& Structure} \\
+      \textbf{\scriptsize Status Kredensial:} & {\scriptsize Tersertifikasi Lulus Pelatihan \& Proyek Mandiri} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}LINGKUP KOMPETENSI REVIT BIM YANG DIUJI}
+  \vspace{1mm}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Pembuatan kisi-kisi grid struktural dan penetapan datum elevasi lantai bertingkat.}
+    \item {\scriptsize Pemodelan elemen struktur beton bertulang parametrik: pondasi, balok sloof, kolom, balok lantai, dan pelat lantai.}
+    \item {\scriptsize Penanganan detail pertemuan node geometri balok-kolom bebas benturan (\textit{clash-free}).}
+    \item {\scriptsize Integrasi elemen arsitektural: dinding bata berlapis, partisi interior, kusen pintu/jendela parametrik, dan plafon.}
+    \item {\scriptsize Ekstraksi jadwal kuantitas bahan otomatis (\textit{Revit Schedule Material Take-Off}) untuk kebutuhan BoQ.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=148mm,keepaspectratio]{""" + p("certificates/sertifikat-revit.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen Asli:} Sertifikat Resmi Pelatihan Autodesk Revit Masterclass for Beginners --- Arsisten Academy}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 7: SSW KENSETSU JAPAN (JAC)
+tex.append(r"""
+% --- HALAMAN 7: SSW JAPAN ---
+\pagehead{STANDAR INTERNASIONAL // JAPAN ASSOCIATION FOR CONSTRUCTION (JAC)}{SSW EVALUATION EXAM FOR CONSTRUCTION INDUSTRY: CIVIL ENGINEERING}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ STANDAR INDUSTRI KONSTRUKSI JEPANG (合格)\ \ }\\[2mm]
+    \textbf{\large Kualifikasi Konstruksi Jepang: SSW Civil Engineering}\\[1mm]
+    {\small\textbf{Penerbit: JAC (Japan Association for Construction Human Resources)}}\\[2mm]
+    
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Negara Standar:} & {\scriptsize Jepang (Ministry of Land, Infrastructure, Transport and Tourism - MLIT)} \\
+      \textbf{\scriptsize Bidang Ujian:} & {\scriptsize Doboku / Civil Engineering (土木)} \\
+      \textbf{\scriptsize Hasil Ujian:} & {\scriptsize\textbf{\color{tgreen}LULUS / PASSED (合格)}} \\
+      \textbf{\scriptsize Kerangka Visa:} & {\scriptsize Specified Skilled Worker (SSW Tokutei Ginou 1)} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}KOMPETENSI STANDAR INDUSTRI JEPANG}
+  \vspace{1mm}
+  {\scriptsize Mengesahkan penguasaan standar teknis dan keselamatan kerja konstruksi Jepang, meliputi:}\\[1.5mm]
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Keselamatan kerja konstruksi standar Jepang (\textit{Anzen Eisei} / K3 Konstruksi).}
+    \item {\scriptsize Pemahaman istilah teknis rekayasa sipil dalam Bahasa Jepang (\textit{Kensetsu Yougo}).}
+    \item {\scriptsize Prosedur pengecoran beton, pekerjaan tanah (\textit{Dokouji}), dan pemasangan perancah (\textit{Ashiba}).}
+    \item {\scriptsize Disiplin kerja 5S (\textit{Seiri, Seiton, Seisou, Seiketsu, Shitsuke}) di jobsite.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=1,keepaspectratio]{""" + p("certificates/ssw-japan.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen Asli:} Sertifikat Hasil Ujian Evaluasi Keterampilan Bidang Konstruksi Teknik Sipil (JAC Japan) --- Lulus (合格)}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 8: KEMAMPUAN BILINGUAL JEPANG (JFT-BASIC & JLPT N4 - 2 DOKUMEN BERDAMPINGAN)
+tex.append(r"""
+% --- HALAMAN 8: BAHASA JEPANG (2 DOKUMEN: JFT & JLPT) ---
+\pagehead{SERTIFIKASI DWYBAHASA // THE JAPAN FOUNDATION \& JEES}{KEMAMPUAN BAHASA JEPANG: JFT-BASIC (SKOR MAKSIMAL 250) \& JLPT N4}
+
+\noindent
+\begin{minipage}[t]{0.30\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ KUALIFIKASI BILINGUAL RESMI (2 DOKUMEN)\ \ }\\[2mm]
+    \textbf{\large Bahasa Jepang Tersertifikasi}\\[1.5mm]
+    
+    \textbf{\small 1. JFT-Basic (A2)}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\tiny Penerbit:} & {\tiny The Japan Foundation (国際交流基金)} \\
+      \textbf{\tiny Skor:} & {\tiny\textbf{\color{tgreen}250 / 250 (SKOR MAKSIMAL)}} \\
+      \textbf{\tiny Kualifikasi:} & {\tiny Memenuhi standar komunikasi kerja Jepang} \\
+    \end{tabularx}\\[2mm]
+
+    \textbf{\small 2. JLPT Level N4}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\tiny Penerbit:} & {\tiny Japan Educational Exchanges (JEES)} \\
+      \textbf{\tiny Skor:} & {\tiny\textbf{\color{tgreen}165 / 180 (LULUS)}} \\
+      \textbf{\tiny Nilai Bagian:} & {\tiny Pengetahuan Bahasa 112/120 \textbar\ Menyimak 53/60} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  {\scriptsize Kedua sertifikat ini menjadi bukti otentik kemampuan komunikasi bahasa Jepang baik secara lisan (\textit{Kaiwa}) maupun tulisan (\textit{Dokkai} \& \textit{Bunpou}) untuk lingkungan profesional teknik sipil dan operasional lapangan di Jepang.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=1,keepaspectratio]{""" + p("certificates/jft-basic.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen 1:} Sertifikat JFT-Basic --- Skor Sempurna 250/250}
+  \end{center}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=1,keepaspectratio]{""" + p("certificates/jlpt-n4.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen 2:} Sertifikat Kelulusan JLPT Level N4 --- Skor 165/180}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 9: SERTIFIKAT MAGANG INDUSTRI EPC (PT SOLUSI INDUSTRI ENERGI)
+tex.append(r"""
+% --- HALAMAN 9: MAGANG PT SIE ---
+\pagehead{PENGALAMAN LAPANGAN INDUSTRI EPC // PT SOLUSI INDUSTRI ENERGI}{SERTIFIKAT MAGANG KERJA: PROYEK EPC WASTE GAS RECOVERY PLANT}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{ared}{\color{white}\bfseries\scriptsize\ \ KINERJA INDUSTRI EPC RESMI\ \ }\\[2mm]
+    \textbf{\large Quality Control \& Quantity Surveyor Intern}\\[1mm]
+    {\small\textbf{Perusahaan: PT Solusi Industri Energi}}\\[2mm]
+    
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Proyek Lokasi:} & {\scriptsize Proyek Waste Gas Recovery Plant (PT Indo-Bharat Rayon, Purwakarta, Jawa Barat)} \\
+      \textbf{\scriptsize Periode:} & {\scriptsize Agustus 2024 -- Desember 2024} \\
+      \textbf{\scriptsize Kualifikasi:} & {\scriptsize Sangat Memuaskan (Excellent Work Performance)} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}VALIDASI PERFORMA KERJA DARI PERUSAHAAN}
+  \vspace{1mm}
+  {\scriptsize Sertifikat resmi ini membuktikan kontribusi aktif Reza Sepdide pada proyek EPC industri kimia berskala besar, yang mencakup:}\\[1.5mm]
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Pembuatan Bar Bending Schedule (BBS) pondasi berat.}
+    \item {\scriptsize Perhitungan volume terpasang (Backup Volume) untuk penagihan bulanan (\textit{Progress Billing}) tanpa dispute.}
+    \item {\scriptsize Pelaksanaan inspeksi kontrol kualitas harian: uji slump beton segar, verifikasi penulangan, dan perataan bekisting.}
+    \item {\scriptsize Pemetaan zonasi kerja (\textit{Site Mapping}) dan penyusunan daftar cacat pekerjaan (\textit{Punch List}) sebelum serah terima zona.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=1,keepaspectratio]{""" + p("certificates/sertifikat-magang-sie.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen Asli:} Sertifikat Praktik Kerja Lapangan (PKL) / Magang Resmi PT Solusi Industri Energi}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 10: TOEIC SCORE 640
+tex.append(r"""
+% --- HALAMAN 10: TOEIC 640 ---
+\pagehead{BAHASA INTERNASIONAL // ETS \& POLITEKNIK NEGERI PADANG}{KEMAHIRAN BAHASA INGGRIS KERJA: TOEIC OFFICIAL SCORE 640}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ STANDAR PROFESIONAL INTERNASIONAL\ \ }\\[2mm]
+    \textbf{\large Test of English for International Communication}\\[1mm]
+    {\small\textbf{Penerbit: ETS (Educational Testing Service) \& UPT Bahasa PNP}}\\[2mm]
+    
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Skor Total Resmi:} & {\scriptsize\textbf{\color{tgreen}640 (Working Proficiency)}} \\
+      \textbf{\scriptsize Listening Section:} & {\scriptsize 400 / 495 (Kemahiran Menyimak Sangat Baik)} \\
+      \textbf{\scriptsize Reading Section:} & {\scriptsize 240 / 495 (Pemahaman Dokumen \& Teks)} \\
+      \textbf{\scriptsize Masa Berlaku:} & {\scriptsize Dokumen Resmi Terverifikasi} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}APLIKASI DALAM REKAYASA TEKNIK SIPIL}
+  \vspace{1mm}
+  {\scriptsize Skor 640 membuktikan kemahiran kerja (\textit{Working Professional Proficiency}) yang memadai untuk:}\\[1.5mm]
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Membaca dan memahami dokumen tender internasional, klausul kontrak FIDIC, dan gambar teknik berbahasa Inggris.}
+    \item {\scriptsize Menyusun laporan kemajuan rekayasa mingguan dan bulanan (\textit{Weekly \& Monthly Progress Reports}) standar multinasional.}
+    \item {\scriptsize Berkomunikasi aktif dengan tim insinyur ekspatriat, konsultan asing, dan vendor material global.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=148mm,keepaspectratio]{""" + p("certificates/toeic-640.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Dokumen Asli:} Sertifikat Resmi Skor TOEIC 640 --- UPT Bahasa Politeknik Negeri Padang \& ETS}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 11: TRANSKRIP NILAI D3 TEKNIK SIPIL PNP (IPK 3.72 MAGNA CUM LAUDE)
+tex.append(r"""
+% --- HALAMAN 11: TRANSKRIP AKADEMIK D3 ---
+\pagehead{REKAM JEJAK AKADEMIK // POLITEKNIK NEGERI PADANG}{TRANSKRIP AKADEMIK RESMI DIPLOMA III TEKNIK SIPIL (IPK 3.72)}
+
+\noindent
+\begin{minipage}[t]{0.30\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \colorbox{pblack}{\color{white}\bfseries\scriptsize\ \ KELULUSAN PREDIKAT PUJIAN (HIGH HONORS)\ \ }\\[2mm]
+    \textbf{\large D3 Teknik Sipil PNP}\\[1mm]
+    {\small\textbf{Politeknik Negeri Padang}}\\[2mm]
+    
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize IPK Kumulatif:} & {\scriptsize\textbf{\color{tgreen}3.72 / 4.00 (Magna Cum Laude)}} \\
+      \textbf{\scriptsize Total SKS Lulus:} & {\scriptsize 114 SKS Mata Kuliah Teori \& Praktik} \\
+      \textbf{\scriptsize Gelar Akademik:} & {\scriptsize Ahli Madya Teknik (A.Md.T.)} \\
+      \textbf{\scriptsize Status:} & {\scriptsize Lulus Resmi Terakreditasi BAN-PT} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\scriptsize NILAI MATA KULIAH UNGGULAN:}\\[1mm]
+  {\tiny
+  - Mekanika Rekayasa I--IV: Nilai A\\
+  - Estimasi Biaya Konstruksi: Nilai A\\
+  - Analisis Struktur Gedung: Nilai A\\
+  - Manajemen Proyek Konstruksi: Nilai A\\
+  - Teknologi Bahan Konstruksi: Nilai A\\
+  - Aplikasi Komputer Rekayasa: Nilai A\\
+  - Praktik Pengukuran Tanah: Nilai A\\
+  - Tugas Akhir Perencanaan Konstruksi: Nilai A}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=1,keepaspectratio]{""" + p("certificates/transkrip-nilai.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Lembar 1:} Transkrip Nilai Semester 1 s.d. 4}
+  \end{center}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[height=148mm,page=2,keepaspectratio]{""" + p("certificates/transkrip-nilai.pdf") + r"""}%
+    }\\[1mm]
+    {\tiny\color{mgray}\textbf{Lembar 2:} Transkrip Nilai Semester 5 s.d. 6 \& Yudisium IPK 3.72}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# =========================================================================
+# HALAMAN 12-27: PORTOFOLIO PROYEK REKAYASA & ESTIMASI BIAYA
+# =========================================================================
+
+# --- PROYEK 1: SDN 19 KUAMANG (HALAMAN 12-14) ---
+
+# HALAMAN 12: SDN 19 KUAMANG (IKHTISAR PROYEK & LAYOUT AUTOCAD)
+tex.append(r"""
+% --- HALAMAN 12: SDN 19 KUAMANG (IKHTISAR) ---
+\pagehead{KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 01}{PERENCANAAN TEKNIS REVITALISASI FASILITAS GEDUNG SDN 19 KUAMANG}
+
+\noindent
+\begin{minipage}[t]{0.38\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Perencana Teknis \& Quantity Surveyor (Konsultan)}} \\
+      \textbf{\scriptsize Klien / Instansi:} & {\scriptsize Konsultan Perencana / Dinas Pendidikan Pasaman} \\
+      \textbf{\scriptsize Periode Proyek:} & {\scriptsize September 2026 \quad\textbar\quad Pasaman, Sumatera Barat} \\
+      \textbf{\scriptsize Ruang Lingkup:} & {\scriptsize DED AutoCAD, BoQ/RAB, RKS, Jadwal \& Kurva S} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}RINGKASAN REKAYASA \& METODOLOGI PELAKSANAAN}
+  \vspace{1mm}
+  {\scriptsize Perencanaan teknis komprehensif revitalisasi fasilitas sekolah dasar SDN 19 Kuamang. Memimpin survey penilaian tingkat kerusakan fisik bangunan, Quantity Take-Off (QTO) berbasis perhitungan matematis, penyusunan Rencana Anggaran Biaya (RAB) mengacu AHSP daerah, penyusunan Rencana Kerja dan Syarat (RKS), pembuatan Time Schedule \& Kurva S, serta produksi gambar Detailed Engineering Design (DED) lengkap menggunakan AutoCAD layout viewports.}\\[2mm]
+
+  \textbf{\color{pblack}METRIK BENCHMARK KUNCI:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize\textbf{Dossier Dokumen:} DED Lengkap, BoQ/RAB, RKS, dan Kurva S.}
+    \item {\scriptsize\textbf{Sistem Drafting:} AutoCAD Paper Layout Viewports standar konsultan.}
+    \item {\scriptsize\textbf{Kontrol Waktu:} Kurva S pembobotan kumulatif terpadu.}
+  \end{itemize}
+
+  \textbf{\color{pblack}DELIVERABLES RESMI:}
+  {\scriptsize Blueprints DED Arsitektur \& Struktur, Rekapitulasi BoQ/RAB, RKS Spesifikasi Bahan, dan Kurva S.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.60\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("sdn-19-kuamang/menggunakan-layout-autocad.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.98\linewidth}{%
+      \scriptsize\textbf{Sistem Multi-Viewport Paper Layout AutoCAD ke PDF:}\\
+      Konfigurasi lembar kop gambar dan viewport skala presisi di AutoCAD untuk penerbitan paket dokumen DED berstandar konsultan siap lelang dan siap cetak.
+    }}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 13: SDN 19 KUAMANG (DOKUMENTASI GAMBAR KERJA DED 1-4)
+tex.append(r"""
+% --- HALAMAN 13: SDN 19 KUAMANG (DED 1-4) ---
+\pagehead{PROYEK 01: SDN 19 KUAMANG // LEMBAR DOKUMENTASI DED 01}{DETAILED ENGINEERING DESIGN (DED): DENAH, TAMPAK, RANGKA ATAP \& SANITASI}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  % Gambar 1
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("sdn-19-kuamang/1.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{1. Denah Tata Ruang \& Arsitektur Revitalisasi SDN 19 Kuamang:}\\
+    Tata letak ruang kelas belajar, ruang guru administrasi, sirkulasi koridor, dan toilet.}
+  \end{center} &
+
+  % Gambar 2
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("sdn-19-kuamang/2.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{2. Tampak Depan, Belakang \& Samping Fasad Gedung:}\\
+    Elevasi arsitektural menampilkan ventilasi silang alami, kanopi pelindung hujan, dan proporsi jendela.}
+  \end{center} \\[-2mm]
+
+  % Gambar 3
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("sdn-19-kuamang/3.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{3. Rencana Struktur Rangka Atap \& Kuda-kuda:}\\
+    Detail penempatan kuda-kuda, gording kayu/baja, ikatan angin, dan perkuatan ring balk.}
+  \end{center} &
+
+  % Gambar 4
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("sdn-19-kuamang/4.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{4. Detail Potongan Sanitasi \& Konstruksi Plafon:}\\
+    Potongan melintang plafon gypsum akustik, skematik pipa air bersih, dan saluran pembuangan limbah.}
+  \end{center}
+\end{tabularx}
+
+\newpage
+""")
+
+# HALAMAN 14: SDN 19 KUAMANG (DOKUMENTASI KUSEN, BACKUP VOLUME & RKS)
+tex.append(r"""
+% --- HALAMAN 14: SDN 19 KUAMANG (KUSEN, BACKUP VOLUME & RKS) ---
+\pagehead{PROYEK 01: SDN 19 KUAMANG // LEMBAR DOKUMENTASI DED 02}{DETAIL KUSEN PINTU/JENDELA, BACKUP VOLUME MATEMATIS \& SPESIFIKASI RKS}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X X@{}}
+  % Kolom 1
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=125mm,keepaspectratio]{""" + p("sdn-19-kuamang/5.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.96\linewidth}{%
+      \scriptsize\textbf{Detail Kusen, Pintu \& Jendela (DED):}\\
+      Spesifikasi dimensi kayu/aluminium, ketebalan kaca, engsel penahan benturan, dan grendel pengaman sesuai standar sarana sekolah dasar.
+    }}
+  \end{center} &
+
+  % Kolom 2
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=125mm,keepaspectratio]{""" + p("sdn-19-kuamang/backup-volume.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.96\linewidth}{%
+      \scriptsize\textbf{Perhitungan Backup Volume Matematis:}\\
+      Lembar kalkulasi volume per divisi pekerjaan membuktikan dasar hitungan kuantitas BoQ/RAB tanpa pembengkakan biaya.
+    }}
+  \end{center} &
+
+  % Kolom 3
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=125mm,keepaspectratio]{""" + p("sdn-19-kuamang/rks.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.96\linewidth}{%
+      \scriptsize\textbf{Dokumen Syarat Teknis \& RKS:}\\
+      Pedoman mutu material standar SNI/ASTM, metode kerja, dan toleransi uji laboratorium bagi kontraktor pelaksana.
+    }}
+  \end{center}
+\end{tabularx}
+
+\newpage
+""")
+
+# --- PROYEK 2: SLBN 2 PARIAMAN (HALAMAN 15-17) ---
+
+# HALAMAN 15: SLBN 2 PARIAMAN (IKHTISAR PROYEK & LAYOUT AUTOCAD)
+tex.append(r"""
+% --- HALAMAN 15: SLBN 2 PARIAMAN (IKHTISAR) ---
+\pagehead{KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 02}{PERENCANAAN REVITALISASI GEDUNG KHUSUS INKLUSIF SLBN 2 PARIAMAN}
+
+\noindent
+\begin{minipage}[t]{0.38\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Perencana Teknis \& Quantity Surveyor (Konsultan)}} \\
+      \textbf{\scriptsize Klien / Instansi:} & {\scriptsize SLBN 2 Pariaman (Sekolah Luar Biasa Negeri)} \\
+      \textbf{\scriptsize Periode Proyek:} & {\scriptsize Juli 2026 \quad\textbar\quad Pariaman, Sumatera Barat} \\
+      \textbf{\scriptsize Ruang Lingkup:} & {\scriptsize DED Inklusif, BoQ/RAB, RKS, CCO Addendum, S-Curve} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}STANDAR AKSESIBILITAS DIFABEL \& TATA KELOLA KONTRAK}
+  \vspace{1mm}
+  {\scriptsize Perencanaan revitalisasi gedung sekolah luar biasa yang menuntut kepatuhan ketat terhadap standar universal aksesibilitas: ramp landai gradien maksimal 1:12, toilet khusus difabel dengan grab-bar pengaman, pintu lebar bebas halangan, dan lantai non-slip.\\[1.5mm]
+  Menghasilkan dokumen DED lengkap, BoQ/RAB, dokumen RKS material ramah sensori, serta menyusun berkas \textbf{Contract Change Order (CCO)} untuk penyesuaian volume akibat kondisi lapangan aktual.}\\[2mm]
+
+  \textbf{\color{pblack}METRIK UTAMA:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize\textbf{Standar Desain:} Aksesibilitas Universal \& Permen PUPR No. 14/2017.}
+    \item {\scriptsize\textbf{Administrasi Kontrak:} Berkas Addendum CCO dengan justifikasi teknis.}
+    \item {\scriptsize\textbf{Kontrol Pelaksanaan:} Master Time Schedule \& Kurva S terinci.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.60\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("slbn-2-pariaman/layout-autocad.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.98\linewidth}{%
+      \scriptsize\textbf{Sistem Multi-Sheet Layout AutoCAD ke PDF:}\\
+      Konfigurasi title block standar instansi pemerintah dan multi-viewport AutoCAD untuk publikasi paket cetak DED inklusif.
+    }}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 16: SLBN 2 PARIAMAN (DOKUMENTASI GAMBAR KERJA DED 1-4)
+tex.append(r"""
+% --- HALAMAN 16: SLBN 2 PARIAMAN (DED 1-4) ---
+\pagehead{PROYEK 02: SLBN 2 PARIAMAN // LEMBAR DOKUMENTASI DED 01}{DED INKLUSIF: DENAH KELAS TERAPI, TAMPAK, POTONGAN MELINTANG \& PONDASI}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  % Gambar 1
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("slbn-2-pariaman/1.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{1. Denah Ruang Kelas Khusus Inklusif \& Terapi Wicara:}\\
+    Tata ruang bebas hambatan, ruang terapi khusus, dan jalur sirkulasi lebar untuk kursi roda.}
+  \end{center} &
+
+  % Gambar 2
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("slbn-2-pariaman/2.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{2. Tampak Bangunan \& Pencahayaan Alami Optimal:}\\
+    Fasad arsitektural mengoptimalkan sirkulasi udara alami dan pencahayaan lembut ramah sensori.}
+  \end{center} \\[-2mm]
+
+  % Gambar 3
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("slbn-2-pariaman/3.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{3. Potongan Transversal Melintang Struktur Gedung:}\\
+    Ketinggian lantai, balok sloof beton bertulang, kolom pengaku, dan struktur kuda-kuda atap.}
+  \end{center} &
+
+  % Gambar 4
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("slbn-2-pariaman/4.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{4. Rencana Pondasi \& Struktur Bawah Substruktur:}\\
+    Pondasi batu kali menerus, sloof beton pengikat anti-gempa, dan kolom praktis perkuatan dinding.}
+  \end{center}
+\end{tabularx}
+
+\newpage
+""")
+
+# HALAMAN 17: SLBN 2 PARIAMAN (DETAIL RAMP, ELEKTRIKAL, CCO & BACKUP)
+tex.append(r"""
+% --- HALAMAN 17: SLBN 2 PARIAMAN (DETAIL RAMP, CCO & BACKUP) ---
+\pagehead{PROYEK 02: SLBN 2 PARIAMAN // LEMBAR DOKUMENTASI DED 02}{DETAIL RAMP DIFABEL, INSTALASI ELEKTRIKAL, ADDENDUM CCO \& BACKUP VOLUME}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X X@{}}
+  % Kolom 1
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=125mm,keepaspectratio]{""" + p("slbn-2-pariaman/5.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.96\linewidth}{%
+      \scriptsize\textbf{Detail Ramp 1:12 \& Toilet Difabel:}\\
+      Kemiringan ramp maksimal 1:12, tinggi handrail ganda, dan sanitasi difabel berstandar keselamatan universal.
+    }}
+  \end{center} &
+
+  % Kolom 2
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=125mm,keepaspectratio]{""" + p("slbn-2-pariaman/cco.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.96\linewidth}{%
+      \scriptsize\textbf{Berkas Addendum Contract Change Order:}\\
+      Dokumentasi resmi perubahan volume tambah/kurang akibat variasi lapangan lengkap dengan analisa harga satuan.
+    }}
+  \end{center} &
+
+  % Kolom 3
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=125mm,keepaspectratio]{""" + p("slbn-2-pariaman/backup-volume.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.96\linewidth}{%
+      \scriptsize\textbf{Spreadsheet Backup Volume Matematis:}\\
+      Perhitungan volume transparan per mata pembayaran mengamankan akuntabilitas klaim termin kontraktor.
+    }}
+  \end{center}
+\end{tabularx}
+
+\newpage
+""")
+
+# --- PROYEK 3: QS PT MULIA DJASMINE SENTOSA (HALAMAN 18) ---
+tex.append(r"""
+% --- HALAMAN 18: QS FREELANCE PT MULIA DJASMINE ---
+\pagehead{KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 03}{QUANTITY SURVEYING \& RE-MEASUREMENT MC-100: PT PERFETTI VAN MELLE}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Quantity Surveyor (Freelance)}} \\
+      \textbf{\scriptsize Klien:} & {\scriptsize PT Mulia Djasmine Sentosa (Subkontraktor)} \\
+      \textbf{\scriptsize Proyek Induk:} & {\scriptsize Perluasan Pabrik PT Perfetti Van Melle Indonesia} \\
+      \textbf{\scriptsize Lokasi / Waktu:} & {\scriptsize Cikarang, Jawa Barat \quad\textbar\quad September 2025} \\
+      \textbf{\scriptsize Fokus Teknis:} & {\scriptsize MC-100 Re-Measurement, BBS, CCO, Backup Volume} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}OPNAME LAPANGAN MUTUAL CHECK 100 (MC-100)}
+  \vspace{1mm}
+  {\scriptsize Mengelola opname pengukuran akhir bersama kontraktor utama (\textit{Joint Measurement MC-100}) untuk klaim penagihan subkontraktor. Menyusun lembar Backup Volume matematis beton bertulang, Bar Bending Schedule (BBS) fabrikasi pembesian, dan register Contract Change Order (CCO) dengan analisa harga satuan.}\\[2mm]
+
+  \textbf{\color{pblack}CAPAIAN KUNCI:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize 100\% klaim termin disetujui kontraktor utama tanpa sengketa karena didukung bukti Backup Volume kuat.}
+    \item {\scriptsize Efisiensi fabrikasi besi dengan BBS presisi sub-milimeter.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{tabularx}{\linewidth}{@{}X X@{}}
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=60mm,keepaspectratio]{""" + p("qs-mulia-djasmine/backup-vol.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Lembar Backup Volume MC-100:}\\
+      Perhitungan volume terpasang aktual sebagai dasar tagihan pembayaran.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=60mm,keepaspectratio]{""" + p("qs-mulia-djasmine/bbs.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Bar Bending Schedule (BBS):}\\
+      Daftar potong dan tekuk besi tulangan struktur.}
+    \end{center} \\[-2mm]
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=60mm,keepaspectratio]{""" + p("qs-mulia-djasmine/cco.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Register Dokumen CCO:}\\
+      Variasi kuantitas pekerjaan tambah/kurang.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=60mm,keepaspectratio]{""" + p("qs-mulia-djasmine/meeting.jpeg") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Rapat Klarifikasi Teknis Opname:}\\
+      Koordinasi rekonsiliasi data ukur bersama kontraktor utama.}
+    \end{center}
+  \end{tabularx}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 4: TUGAS AKHIR CAPSTONE GEDUNG DPRD PASAMAN (HALAMAN 19) ---
+tex.append(r"""
+% --- HALAMAN 19: TUGAS AKHIR CAPSTONE DPRD PASAMAN ---
+\pagehead{KELOMPOK 1: PERENCANAAN TEKNIS \& QS // PROYEK 04}{TUGAS AKHIR CAPSTONE: RENCANA PELAKSANAAN KONSTRUKSI GEDUNG DPRD PASAMAN}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Perencana Teknis \& Estimator Biaya Utama}} \\
+      \textbf{\scriptsize Institusi:} & {\scriptsize Politeknik Negeri Padang (Teknik Sipil)} \\
+      \textbf{\scriptsize Objek Studi:} & {\scriptsize Gedung DPRD Kabupaten Pasaman (Bertingkat)} \\
+      \textbf{\scriptsize Hasil Sidang:} & {\scriptsize\textbf{\color{tgreen}Yudisium Kelulusan Predikat Pujian (IPK 3.72)}} \\
+      \textbf{\scriptsize Software:} & {\scriptsize MS Project (CPM), AutoCAD, MS Excel} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}PERENCANAAN WAKTU \& BIAYA TERPADU}
+  \vspace{1mm}
+  {\scriptsize Proyek Tugas Akhir Sarjana Terapan Teknik Sipil yang merekayasa Rencana Pelaksanaan Konstruksi secara utuh: Quantity Take-Off (QTO) struktur bawah, struktur atas, arsitektur, dan MEP; penyusunan RAB berbasis AHSP standar; penjadwalan Critical Path Method (CPM) di MS Project; serta perumusan Kurva S bobot pekerjaan mingguan.}\\[2mm]
+
+  \textbf{\color{pblack}DELIVERABLES UTAMA:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Buku Laporan Skripsi Tugas Akhir Lengkap.}
+    \item {\scriptsize Rekapitulasi Rencana Anggaran Biaya (RAB/BoQ).}
+    \item {\scriptsize Master Schedule MS Project CPM \& Lembar Kurva S.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=75mm,keepaspectratio]{""" + p("final-project-dprd/kurva-s.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{Kurva S Rencana Pelaksanaan Konstruksi:}\\
+    Distribusi bobot persentase kumulatif mingguan sebagai instrumen pengendalian waktu dan arus kas (\textit{cash-flow}).}\\[2mm]
+
+    \begin{tabularx}{\linewidth}{@{}X X@{}}
+      \begin{center}
+        \framebox[\linewidth]{%
+          \includegraphics[width=0.96\linewidth,height=48mm,keepaspectratio]{""" + p("final-project-dprd/schedule-ms-project.png") + r"""}%
+        }\\[0.5mm]
+        {\tiny\textbf{Gantt Chart CPM MS Project:} Jalur kritis \& float pekerjaan.}
+      \end{center} &
+      \begin{center}
+        \framebox[\linewidth]{%
+          \includegraphics[width=0.96\linewidth,height=48mm,keepaspectratio]{""" + p("final-project-dprd/rab.png") + r"""}%
+        }\\[0.5mm]
+        {\tiny\textbf{Rekapitulasi RAB BoQ:} Rincian biaya per divisi pekerjaan.}
+      \end{center}
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 5: WASTE GAS RECOVERY EPC PT SIE (HALAMAN 20-22) ---
+
+# HALAMAN 20: WASTE GAS RECOVERY (IKHTISAR PROYEK, SLUMP TEST & BBS)
+tex.append(r"""
+% --- HALAMAN 20: WASTE GAS RECOVERY EPC (IKHTISAR, SLUMP & BBS) ---
+\pagehead{KELOMPOK 2: PROYEK EPC INDUSTRI \& QC LAPANGAN // PROYEK 05}{WASTE GAS RECOVERY EPC PLANT: PT INDO-BHARAT RAYON (PT SIE)}
+
+\noindent
+\begin{minipage}[t]{0.38\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Quality Control \& Quantity Surveyor Intern}} \\
+      \textbf{\scriptsize Perusahaan:} & {\scriptsize PT Solusi Industri Energi (Kontraktor EPC Utama)} \\
+      \textbf{\scriptsize Klien Pemilik:} & {\scriptsize PT Indo-Bharat Rayon (Pabrik Kimia Aktif)} \\
+      \textbf{\scriptsize Lokasi / Periode:} & {\scriptsize Purwakarta, Jawa Barat \quad\textbar\quad Agt 2024 -- Des 2024} \\
+      \textbf{\scriptsize Ruang Lingkup:} & {\scriptsize Site QC, Slump Test, BBS, Backup Volume, Punch List} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}PENGENDALIAN MUTU STRUKTUR \& PEMBESIAN REBAR}
+  \vspace{1mm}
+  {\scriptsize Bekerja langsung di kawasan pabrik kimia berisiko tinggi. Bertanggung jawab terhadap pengujian mutu beton segar (\textit{Slump Cone Test}) sebelum pengecoran pondasi berat, inspeksi pemasangan besi tulangan (\textit{Rebar Clearance}), pembuatan Bar Bending Schedule (BBS) untuk efisiensi besi, serta pemetaan progres area kerja.}\\[2mm]
+
+  \textbf{\color{pblack}HASIL \& KONTRIBUSI:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize 100\% batch beton segar diuji slump cone memenuhi workability dan faktor air semen rencana.}
+    \item {\scriptsize BBS presisi berhasil memangkas limbah potongan besi hingga margin minimal.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.60\textwidth}
+  \begin{tabularx}{\linewidth}{@{}X X@{}}
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[height=125mm,keepaspectratio]{""" + p("magang-sie/slump-test.jpg") + r"""}%
+      }\\[1.5mm]
+      \colorbox{bglight}{\parbox{0.96\linewidth}{%
+        \scriptsize\textbf{Pengujian Slump Beton Segar di Lapangan:}\\
+        Uji konsistensi kerucut slump pada ready-mix concrete sebelum izin pengecoran diberikan (\textit{pre-pour sign-off}).
+      }}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[height=125mm,keepaspectratio]{""" + p("magang-sie/bbs.png") + r"""}%
+      }\\[1.5mm]
+      \colorbox{bglight}{\parbox{0.96\linewidth}{%
+        \scriptsize\textbf{Bar Bending Schedule (BBS) Fabrikasi:}\\
+        Daftar pola pemotongan dan pembengkokan besi tulangan pondasi struktur berat untuk menekan scrap besi.
+      }}
+    \end{center}
+  \end{tabularx}
+\end{minipage}
+
+\newpage
+""")
+
+# HALAMAN 21: WASTE GAS RECOVERY (BACKUP VOLUME, MAPPING WORK & PUNCH LIST)
+tex.append(r"""
+% --- HALAMAN 21: WASTE GAS RECOVERY (BACKUP, MAPPING & PUNCH LIST) ---
+\pagehead{PROYEK 05: WASTE GAS RECOVERY EPC // LEMBAR DOKUMENTASI 01}{OPNAME PROGRESS BILLING, MAPPING AREA KERJA \& PUNCH LIST HANDOVER}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  % Kolom Kiri
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("magang-sie/dokumen.jpeg") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{Dossier Fisik Perhitungan Backup Volume Lapangan:}\\
+    Binder arsip perhitungan volume opname fisik terpasang lengkap dengan paraf insinyur lapangan untuk legalitas penagihan.}
+  \end{center} &
+
+  % Kolom Kanan
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("magang-sie/mapping-work.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{Pemetaan Progres Spasial Area Kerja (Site Mapping):}\\
+    Visualisasi berkode warna perkembangan fisik pekerjaan per sektor di plant Waste Gas Recovery.}
+  \end{center} \\[-2mm]
+
+  % Kolom Kiri Bawah
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("magang-sie/dokumen-2.jpeg") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{Rincian Matematis Tagihan Bulanan (Progress Billing):}\\
+    Spreadsheet perhitungan meter kubik beton, luas bekisting, dan tonase besi terpasang sebagai pendukung invoice.}
+  \end{center} &
+
+  % Kolom Kanan Bawah
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.96\linewidth,height=64mm,keepaspectratio]{""" + p("magang-sie/punch-list.png") + r"""}%
+    }\\[1mm]
+    {\scriptsize\textbf{Daftar Cacat Pekerjaan \& Perbaikan (Punch List):}\\
+    Log rekapitulasi temuan cacat sebelum dan sesudah perbaikan menjelang serah terima zona ke pemilik fasilitas.}
+  \end{center}
+\end{tabularx}
+
+\newpage
+""")
+
+# HALAMAN 22: WASTE GAS RECOVERY (BOQ REWORK, LAPORAN HARIAN/MINGGUAN/BULANAN)
+tex.append(r"""
+% --- HALAMAN 22: WASTE GAS RECOVERY (REWORK & PELAPORAN) ---
+\pagehead{PROYEK 05: WASTE GAS RECOVERY EPC // LEMBAR DOKUMENTASI 02}{ANALISA BIAYA REWORK \& SISTEM PELAPORAN PROGRES MANAJEMEN}
+
+\noindent
+\begin{minipage}[t]{0.52\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=70mm,keepaspectratio]{""" + p("magang-sie/bill-of-quantity-rework.png") + r"""}%
+    }\\[1mm]
+    \colorbox{bglight}{\parbox{0.98\linewidth}{%
+      \scriptsize\textbf{Model Biaya \& Volume Bill of Quantities (BoQ) Rework:}\\
+      Kalkulasi menyeluruh dampak biaya dan perubahan volume struktur akibat penyesuaian rekayasa di lapangan.
+    }}\\[2mm]
+
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=55mm,keepaspectratio]{""" + p("magang-sie/qto-rework-1.png") + r"""}%
+    }\\[1mm]
+    {\tiny\textbf{Perhitungan QTO Rework Lapangan:} Kuantifikasi meter kubik dan pembesian pekerjaan tambah.}
+  \end{center}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=38mm,keepaspectratio]{""" + p("magang-sie/daily-proggres.png") + r"""}%
+    }\\[0.5mm]
+    {\tiny\textbf{1. Laporan Harian Konstruksi (Daily Report):} Tenaga kerja, alat, cuaca, dan capaian harian.}\\[2mm]
+
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=38mm,keepaspectratio]{""" + p("magang-sie/weekly-report.png") + r"""}%
+    }\\[0.5mm]
+    {\tiny\textbf{2. Laporan Mingguan Proyek (Weekly Report):} Deviasi Kurva S rencana vs aktual.}\\[2mm]
+
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=38mm,keepaspectratio]{""" + p("magang-sie/monthly-report.png") + r"""}%
+    }\\[0.5mm]
+    {\tiny\textbf{3. Dossier Manajemen Bulanan (Monthly Report):} HSE safety record, logistik, dan rekapitulasi progres.}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 6: FASILITATOR TEKNIS KEMENDIKDASMEN (HALAMAN 23) ---
+tex.append(r"""
+% --- HALAMAN 23: FASILITATOR KEMENDIKDASMEN ---
+\pagehead{KELOMPOK 3: PENGAWASAN \& FASILITASI PEMERINTAH // PROYEK 06}{FASILITATOR TEKNIS REVITALISASI SEKOLAH DASAR: KEMENDIKDASMEN}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Fasilitator Teknis Revitalisasi Sekolah}} \\
+      \textbf{\scriptsize Instansi:} & {\scriptsize Kementerian Pendidikan Dasar dan Menengah RI} \\
+      \textbf{\scriptsize Lokasi / Waktu:} & {\scriptsize Sumatera Barat \quad\textbar\quad Jun 2025 -- Des 2025} \\
+      \textbf{\scriptsize Tanggung Jawab:} & {\scriptsize Audit DED/RAB, Monitoring Mutu, Verifikasi Termin} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}PENGAWASAN MUTU \& AKUNTABILITAS DANA NEGARA}
+  \vspace{1mm}
+  {\scriptsize Mengaudit kelayakan gambar DED, kesesuaian harga RAB terhadap AHSP pemerintah, dan spesifikasi teknis RKS sekolah penerima bantuan. Melakukan inspeksi lapangan periodik, membimbing komite sekolah dalam Bimbingan Teknis (BIMTEK), dan menerbitkan rekomendasi pencairan termin dana negara.}\\[2mm]
+
+  \textbf{\color{pblack}CAPAIAN UTAMA:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize 100\% pencairan dana bantuan negara terverifikasi sesuai capaian fisik riil di lapangan.}
+    \item {\scriptsize Mencegah penyimpangan spesifikasi material dan mutu struktur pada seluruh sekolah binaan.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{tabularx}{\linewidth}{@{}X X X@{}}
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("fasilitator/site-monitoring.jpeg") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Monitoring Mutu Fisik:}\\Inspeksi pengecoran & pasangan bata.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("fasilitator/bimtek.jpeg") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{BIMTEK Komite Sekolah:}\\Pelatihan tata kelola mutu \& biaya.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("fasilitator/form-review.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Form Review Teknis:}\\Checklist audit DED/RAB/RKS.}
+    \end{center} \\[-2mm]
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("fasilitator/site-monitoring-2.jpeg") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Audit Material Lapangan:}\\Verifikasi sertifikat uji material.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("fasilitator/laporan-fasilitator.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Laporan Berkala Progres:}\\Instrumen penyerapan anggaran.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("fasilitator/reviewer.jpeg") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Rapat Pleno Tim Reviewer:}\\Sidang pleno verifikasi kelayakan.}
+    \end{center}
+  \end{tabularx}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 7: REVIT BIM 3D MODELING (HALAMAN 24) ---
+tex.append(r"""
+% --- HALAMAN 24: REVIT BIM MODELING ---
+\pagehead{KELOMPOK 4: BIM, ANALISIS STRUKTUR \& RISET // PROYEK 07}{PEMODELAN PARAMETRIK 3D BIM STRUKTUR \& ARSITEKTUR: AUTODESK REVIT}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{BIM Modeler \& Digital Drafter}} \\
+      \textbf{\scriptsize Lembaga Pelatihan:} & {\scriptsize Arsisten Academy (Revit Masterclass)} \\
+      \textbf{\scriptsize Software Utama:} & {\scriptsize Autodesk Revit (BIM)} \\
+      \textbf{\scriptsize Metodologi:} & {\scriptsize Parametric 3D Modeling \& Clash Detection} \\
+      \textbf{\scriptsize Output Model:} & {\scriptsize Digital Twin \& Material Schedule BoQ} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}INTEGRASI STRUKTUR \& ARSITEKTUR DIGITAL}
+  \vspace{1mm}
+  {\scriptsize Mengimplementasikan standar Building Information Modeling (BIM) berbasis objek parametrik pada Autodesk Revit: penetapan koordinat datum dan grid, pemodelan rangka portal beton bertulang (kolom, balok, pelat), pembersihan benturan node balok-kolom (\textit{clash-free intersection}), penempatan dinding bata, kusen pintu/jendela, serta ekstraksi otomatis kuantitas bahan ke tabel BoQ.}\\[2mm]
+
+  \textbf{\color{pblack}DELIVERABLES MODEL:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Model Terintegrasi Revit (.rvt) bebas benturan.}
+    \item {\scriptsize Potongan melintang 2D \& denah lantai terotomatisasi.}
+    \item {\scriptsize Schedule perhitungan volume material beton \& bekisting.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{tabularx}{\linewidth}{@{}X X@{}}
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123810.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Portal Rangka Struktur 3D Balok \& Kolom:}\\
+      Struktur beton bertulang parametrik dengan grid dan datum presisi.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123739.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Detail Geometri Pertemuan Node Balok-Kolom:}\\
+      Konfigurasi joint bersih bebas duplikasi volume bahan.}
+    \end{center} \\[-2mm]
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123825.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Integrasi Dinding \& Kusen Arsitektural:}\\
+      Penempatan partisi ruangan, pintu, dan jendela parametrik.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=62mm,keepaspectratio]{""" + p("revit-bim/screenshot-2026-10-29-123933.png") + r"""}%
+      }\\[1mm]
+      {\scriptsize\textbf{Perspektif Isometrik 3D Keseluruhan:}\\
+      Visualisasi digital twin bangunan utuh struktur dan finishing.}
+    \end{center}
+  \end{tabularx}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 8: ANALISIS SEISMIK 3D SAP2000 (HALAMAN 25) ---
+tex.append(r"""
+% --- HALAMAN 25: SAP2000 SEISMIC ANALYSIS ---
+\pagehead{KELOMPOK 4: BIM, ANALISIS STRUKTUR \& RISET // PROYEK 08}{PEMODELAN ELEMEN HINGGA \& ANALISIS RESPON SPEKTRUM GEMPA: SAP2000}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Modeler Struktur \& Analisis Dinamik Seismik}} \\
+      \textbf{\scriptsize Institusi:} & {\scriptsize Studio Perancangan Gedung (Politeknik Negeri Padang)} \\
+      \textbf{\scriptsize Software:} & {\scriptsize SAP2000 Finite Element Method, AutoCAD} \\
+      \textbf{\scriptsize Standar Gempa:} & {\scriptsize SNI 1726 (Tata Cara Perencanaan Ketahanan Gempa)} \\
+      \textbf{\scriptsize Standar Beton:} & {\scriptsize SNI 2847 (Persyaratan Beton Struktural Gedung)} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}ANALISIS GAYA DALAM \& SIMPANGAN ANTAR-LANTAI}
+  \vspace{1mm}
+  {\scriptsize Pemodelan 3D portal ruang beton bertulang untuk evaluasi beban gravitasi (beban mati, beban hidup) dan beban gempa dinamik respon spektrum berdasarkan koordinat wilayah Padang dan kelas situs tanah. Mengekstraksi amplop gaya aksial, momen lentur, dan gaya geser, serta mengevaluasi batas simpangan antar-lantai (\textit{inter-story drift}) guna menjamin ketahanan gempa.}\\[2mm]
+
+  \textbf{\color{pblack}OUTPUT ANALISIS:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Model Portal Ruang 3D SAP2000.}
+    \item {\scriptsize Diagram Amplop Momen, Geser, dan Aksial Tekan Kolom.}
+    \item {\scriptsize Verifikasi Kelaikan Simpangan Drift Izin Kode SNI 1726.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{tabularx}{\linewidth}{@{}X X X@{}}
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("pra-proyek-sap2000/sap2000.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Portal 3D SAP2000:}\\Model ruang balok, kolom, \& pelat.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("pra-proyek-sap2000/beban-gempa.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Spektrum Respon Gempa:}\\Kurva percepatan gempa SNI 1726.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("pra-proyek-sap2000/momen-geser.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Amplop Momen \& Geser:}\\Dasar luas tulangan lentur & sengkang.}
+    \end{center} \\[-2mm]
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("pra-proyek-sap2000/axial.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Gaya Aksial Kolom:}\\Distribusi beban tekan gravitasi \& lateral.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("pra-proyek-sap2000/primary-design.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Preliminary Design:}\\Hitungan awal kekakuan dimensi penampang.}
+    \end{center} &
+    \begin{center}
+      \framebox[\linewidth]{%
+        \includegraphics[width=0.96\linewidth,height=58mm,keepaspectratio]{""" + p("pra-proyek-sap2000/screenshot-2026-10-29-114714.png") + r"""}%
+      }\\[1mm]
+      {\tiny\textbf{Evaluasi Simpangan Drift:}\\Pengecekan drift terhadap batas izin SNI.}
+    \end{center}
+  \end{tabularx}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 9: TENDER FONDASI DAYS UNS (HALAMAN 26) ---
+tex.append(r"""
+% --- HALAMAN 26: TENDER FONDASI DAYS UNS ---
+\pagehead{KELOMPOK 4: BIM, ANALISIS STRUKTUR \& RISET // PROYEK 09}{KOMPETISI TENDER NASIONAL 'FONDASI DAYS 2025' --- UNIVERSITAS SEBELAS MARET}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Peran Proyek:} & {\scriptsize\textbf{Cost Estimator, 3D Modeler \& Presenter (Tim Jaya Jaya)}} \\
+      \textbf{\scriptsize Penyelenggara:} & {\scriptsize Universitas Sebelas Maret (UNS) Surakarta} \\
+      \textbf{\scriptsize Tingkat Kompetisi:} & {\scriptsize Tingkat Nasional (Perguruan Tinggi se-Indonesia)} \\
+      \textbf{\scriptsize Ruang Lingkup:} & {\scriptsize Dokumen Penawaran, Bidding BoQ, 3D Staging, Pitching} \\
+      \textbf{\scriptsize Tools:} & {\scriptsize SketchUp 3D, MS Project, MS Excel, PowerPoint} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{2mm}
+  \textbf{\color{pblack}METODE KONSTRUKSI 3D \& PENAWARAN HARGA KOMPETITIF}
+  \vspace{1mm}
+  {\scriptsize Mengarahkan penyusunan proposal tender komersial dan teknis: visualisasi 3D pentahapan pekerjaan (\textit{staging}), penempatan tower crane dan laydown area di SketchUp, penjadwalan CPM di MS Project, estimasi harga penawaran bersaing (BoQ), desain poster teknis, serta presentasi pitching di hadapan dewan juri praktisi konstruksi nasional.}\\[2mm]
+
+  \textbf{\color{pblack}DELIVERABLES TENDER:}
+  \begin{itemize}\setlength{\itemsep}{0.5mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Dokumen Penawaran Teknis \& Biaya Tender.}
+    \item {\scriptsize Render 3D Metode Pelaksanaan \& Site Logistics.}
+    \item {\scriptsize Poster Infografis Teknis \& Slide Pitching Presentasi.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=70mm,keepaspectratio]{""" + p("tender-uns/render-uns-2.jpg") + r"""}%
+    }\\[1mm]
+    \colorbox{bglight}{\parbox{0.98\linewidth}{%
+      \scriptsize\textbf{Render 3D Metode Pelaksanaan \& Logistik Tapak (SketchUp):}\\
+      Visualisasi pentahapan erection, radius jangkauan tower crane, alur manuver armada beton, dan batas perimeter K3.
+    }}\\[2mm]
+
+    \begin{tabularx}{\linewidth}{@{}X X X@{}}
+      \begin{center}
+        \framebox[\linewidth]{%
+          \includegraphics[width=0.96\linewidth,height=48mm,keepaspectratio]{""" + p("tender-uns/ms-project.png") + r"""}%
+        }\\[0.5mm]
+        {\tiny\textbf{Jadwal CPM MS Project:} Durasi lelang.}
+      \end{center} &
+      \begin{center}
+        \framebox[\linewidth]{%
+          \includegraphics[width=0.96\linewidth,height=48mm,keepaspectratio]{""" + p("tender-uns/rab.png") + r"""}%
+        }\\[0.5mm]
+        {\tiny\textbf{Bidding BoQ:} Penawaran kompetitif.}
+      \end{center} &
+      \begin{center}
+        \framebox[\linewidth]{%
+          \includegraphics[width=0.96\linewidth,height=48mm,keepaspectratio]{""" + p("tender-uns/ppt-penawaran.png") + r"""}%
+        }\\[0.5mm]
+        {\tiny\textbf{Slide Pitching:} Presentasi dewan juri.}
+      \end{center}
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# --- PROYEK 10: RISET ILMIAH PKM-AI SCAFFOLDING (HALAMAN 27) ---
+tex.append(r"""
+% --- HALAMAN 27: RISET ILMIAH PKM-AI ---
+\pagehead{KELOMPOK 4: BIM, ANALISIS STRUKTUR \& RISET // PROYEK 10}{RISET ILMIAH PKM-AI: ANALISIS BIAYA SIKLUS HIDUP SCAFFOLDING PROYEK EPC}
+
+\noindent
+\begin{minipage}[t]{0.40\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{2mm}
+    \begin{tabularx}{\linewidth}{@{}lX@{}}
+      \textbf{\scriptsize Judul Karya:} & {\scriptsize\textbf{Analisis Biaya Modular Scaffolding Proyek EPC}} \\
+      \textbf{\scriptsize Program:} & {\scriptsize Program Kreativitas Mahasiswa Artikel Ilmiah (PKM-AI)} \\
+      \textbf{\scriptsize Pendanaan:} & {\scriptsize Kemendikbudristek / Belmawa RI (Tingkat Nasional)} \\
+      \textbf{\scriptsize Peran:} & {\scriptsize Penulis Utama \& Peneliti Rekayasa Biaya} \\
+      \textbf{\scriptsize Lokasi Studi:} & {\scriptsize Proyek Waste Gas Recovery PT Indo-Bharat Rayon Purwakarta} \\
+    \end{tabularx}\vspace{2mm}
+  }}
+
+  \vspace{3mm}
+  \textbf{\color{pblack}METODOLOGI KAJIAN CAPEX (BELI) VS OPEX (SEWA)}
+  \vspace{1mm}
+  {\scriptsize Meneliti efisiensi biaya konstruksi alat bantu kerja sementara (scaffolding) pada proyek EPC industri kimia aktif. Menganalisis parameter biaya sewa harian/bulanan, biaya transportasi logistik, mobilisasi/demobilisasi, versus biaya pengadaan modal (\textit{capital expenditure}).}\\[2mm]
+
+  \textbf{\color{pblack}KESIMPULAN STRATEGIS REKAYASA BIAYA:}
+  \begin{itemize}\setlength{\itemsep}{1mm}\setlength{\parsep}{0pt}
+    \item {\scriptsize Efisiensi biaya scaffolding berbanding lurus dengan durasi pemakaian: proyek jangka panjang mencapai titik impas (\textit{break-even point}) lebih ekonomis melalui skema pembelian modal (CapEx).}
+    \item {\scriptsize Proyek jangka pendek dan fluktuatif lebih hemat biaya melalui skema sewa berkala (OpEx) guna memangkas biaya penyimpanan dan depresiasi alat.}
+    \item {\scriptsize Menghasilkan matriks pengambilan keputusan finansial bagi kontraktor EPC nasional.}
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.58\textwidth}
+  \begin{center}
+    \framebox[\linewidth]{%
+      \includegraphics[width=0.98\linewidth,height=138mm,keepaspectratio]{""" + p("artikel-ilmiah/screenshot-2026-10-29-120442.png") + r"""}%
+    }\\[1.5mm]
+    \colorbox{bglight}{\parbox{0.98\linewidth}{%
+      \scriptsize\textbf{Naskah Artikel Ilmiah PKM-AI Resmi Kementerian:}\\
+      Dokumen publikasi ilmiah terverifikasi Belmawa RI menganalisis tekno-ekonomi modular scaffolding pada lingkungan industri kimia berat.
+    }}
+  \end{center}
+\end{minipage}
+
+\newpage
+""")
+
+# =========================================================================
+# HALAMAN 28: PENUTUP, REFERENSI \& KONTAK RESMI
+# =========================================================================
+tex.append(r"""
+% --- HALAMAN 28: PENUTUP \& KONTAK ---
+\thispagestyle{empty}
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+  % Outer Border
+  \draw[line width=2pt, color=pblack] ([xshift=10mm, yshift=-10mm]current page.north west) rectangle ([xshift=-10mm, yshift=10mm]current page.south east);
+  % Inner Red Accent Line at bottom
+  \draw[line width=4pt, color=ared] ([xshift=10mm, yshift=10mm]current page.south west) -- ([xshift=100mm, yshift=10mm]current page.south west);
+\end{tikzpicture}
+
+\vspace*{-4mm}
+\noindent
+\begin{minipage}{\textwidth}
+  \begin{tabularx}{\textwidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
+    \colorbox{ared}{\color{white}\bfseries\small\ \ PENUTUP \& SALURAN KOMUNIKASI RESMI\ \ } &
+    {\small\fontfamily{cmtt}\selectfont\bfseries\color{mgray}TERVERIFIKASI \textbar\ SIAP DITUGASKAN}
+  \end{tabularx}
+\end{minipage}
+
+\vspace{5mm}
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  {\fontsize{20pt}{24pt}\selectfont\bfseries\color{pblack}KOLABORASI REKAYASA \& INISIATIF KERJA}\\[2mm]
+  {\small\textbf{\color{mgray}Siap berkontribusi secara penuh waktu untuk penempatan proyek konstruksi nasional maupun internasional (khususnya penempatan industri konstruksi Jepang).}}\\[3mm]
+
+  \begin{tikzpicture}
+    \draw[line width=1.5pt, color=pblack] (0,0) -- (0.95\linewidth,0);
+    \draw[line width=3pt, color=ared] (0,0) -- (35mm,0);
+  \end{tikzpicture}\\[3mm]
+
+  \textbf{\color{pblack}POSISI \& RUANG LINGKUP PENUGASAN YANG SIAP DIEMBAN:}
+  \begin{itemize}\setlength{\itemsep}{1mm}\setlength{\parsep}{0pt}
+    \item \textbf{Civil Engineer / Site Supervisor}\\
+    Pengawasan mutu, kepatuhan K3/SNI, dan koordinasi pekerjaan lapangan berlisensi BNSP Jenjang 5.
+    \item \textbf{Quantity Surveyor (QS) / Cost Estimator}\\
+    Perhitungan QTO detail, penyusunan RAB/BoQ, administrasi CCO, dan evaluasi tagihan progres fisik.
+    \item \textbf{BIM Modeler \& Drafter AutoCAD}\\
+    Pemodelan parametrik 3D Autodesk Revit, DED AutoCAD multi-viewport, dan koordinasi bebas benturan.
+    \item \textbf{Construction Scheduler / Planner}\\
+    Penyusunan jadwal Critical Path Method (CPM) MS Project dan grafik Kurva S monitoring deviasi.
+    \item \textbf{Bilingual Japanese Civil Engineer (SSW Tokutei Ginou)}\\
+    Insinyur lapangan dwibahasa Jepang-Indonesia bersertifikasi JAC untuk proyek konstruksi di Jepang atau joint venture PMA Jepang.
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \colorbox{bglight}{\parbox{\linewidth}{%
+    \vspace{3mm}
+    \textbf{\large\color{pblack}SALURAN KOMUNIKASI LANGSUNG}\\[2mm]
+    \begin{tabularx}{\linewidth}{@{}p{32mm}X@{}}
+      \textbf{\small NAMA RESMI:} & {\small\textbf{Reza Sepdide, A.Md.T.}} \\[1.5mm]
+      \textbf{\small EMAIL:} & {\small\fontfamily{cmtt}\selectfont\textbf{rezasepdide@gmail.com}} \\[1.5mm]
+      \textbf{\small TELEPON / WHATSAPP:} & {\small\textbf{+62 896-4459-0915}} \\[1.5mm]
+      \textbf{\small LINKEDIN:} & {\small\fontfamily{cmtt}\selectfont linkedin.com/in/rezasepdide} \\[1.5mm]
+      \textbf{\small DOMISILI:} & {\small Padang, Sumatera Barat, Indonesia} \\[1.5mm]
+      \textbf{\small MOBILITAS KERJA:} & {\small Terbuka untuk relokasi proyek domestik \& internasional} \\[1.5mm]
+    \end{tabularx}\vspace{3mm}
+  }}
+
+  \vspace{4mm}
+  \colorbox{softred}{\parbox{\linewidth}{%
+    \vspace{2.5mm}
+    \textbf{\color{ared}PERNYATAAN KEOTENTIKAN DATA (AUTHENTICITY DECLARATION)}\\[1mm]
+    {\scriptsize Dengan ini saya menyatakan bahwa seluruh informasi kualifikasi, riwayat pendidikan, bukti sertifikat lisensi negara BNSP, sertifikasi dwibahasa, serta dokumentasi gambar dan laporan teknis proyek yang tersaji dalam dokumen dosir ini adalah otentik, sah, dan dapat dipertanggungjawabkan kebenarannya sesuai bukti fisik yang ada.}\\[2mm]
+    {\scriptsize Padang, 2026}\\[1mm]
+    {\small\bfseries\color{pblack}Reza Sepdide, A.Md.T.}
+    \vspace{2.5mm}
+  }}
+\end{minipage}
+
+\label{LastPage}
+\end{document}
+""")
+
+# Write .tex file
+with open(tex_path, "w", encoding="utf-8") as f:
+    f.write("".join(tex))
+
+print(f"LaTeX document successfully generated at: {tex_path}")
+print(f"Total lines written: {len(''.join(tex).splitlines())}")
+
+# Compile twice with pdflatex for cross-references & LastPage
+print("Compiling with pdflatex (Pass 1)...")
+res1 = subprocess.run(
+    ["pdflatex", "-interaction=nonstopmode", "-output-directory=" + export_dir, tex_path],
+    capture_output=True,
+    text=True
+)
+print("Pass 1 return code:", res1.returncode)
+
+print("Compiling with pdflatex (Pass 2)...")
+res2 = subprocess.run(
+    ["pdflatex", "-interaction=nonstopmode", "-output-directory=" + export_dir, tex_path],
+    capture_output=True,
+    text=True
+)
+print("Pass 2 return code:", res2.returncode)
+
+pdf_output = os.path.join(export_dir, "portofolio_reza_sepdide.pdf")
+if os.path.exists(pdf_output):
+    size_mb = os.path.getsize(pdf_output) / (1024 * 1024)
+    print(f"SUCCESS: Generated PDF at {pdf_output} ({size_mb:.2f} MB)")
+else:
+    print("FAILED: Output PDF not found.")
+    print("Log excerpt:\n", res2.stdout[-1500:] if res2.stdout else "No output")
