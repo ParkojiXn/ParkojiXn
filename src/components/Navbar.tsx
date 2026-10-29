@@ -45,9 +45,8 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-[#FAFAFA] transition-all duration-200 border-b-2 ${
-        isScrolled ? 'border-[#0A0A0A]' : 'border-[#E5E5E5]'
-      }`}
+      className={`sticky top-0 z-50 bg-[#FAFAFA] transition-all duration-200 border-b-2 ${isScrolled ? 'border-[#0A0A0A]' : 'border-[#E5E5E5]'
+        }`}
     >
       {/* Top micro-bar for editorial feel */}
       <div className="bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-mono py-1.5 px-4 flex justify-between items-center tracking-wider">
@@ -56,7 +55,7 @@ export const Navbar: React.FC = () => {
           <span className="truncate">CIVIL ENGINEER // QUANTITY SURVEYOR // BIM MODELER</span>
         </div>
         <div className="hidden md:flex items-center gap-4 text-[#A3A3A3]">
-          <span>BNSP LEVEL 5 SUPERVISOR</span>
+          <span>BNSP LEVEL 5 </span>
           <span>•</span>
           <span>PADANG, WEST SUMATRA (UTC+7)</span>
         </div>
@@ -80,11 +79,10 @@ export const Navbar: React.FC = () => {
               <a
                 key={link.id}
                 href={link.href}
-                className={`px-3 py-2 text-xs font-bold tracking-wider transition-colors relative uppercase font-body ${
-                  activeSection === link.id
+                className={`px-3 py-2 text-xs font-bold tracking-wider transition-colors relative uppercase font-body ${activeSection === link.id
                     ? 'text-[#0A0A0A]'
                     : 'text-[#525252] hover:text-[#0A0A0A]'
-                }`}
+                  }`}
               >
                 {link.label}
                 {activeSection === link.id && (
@@ -131,11 +129,10 @@ export const Navbar: React.FC = () => {
               key={link.id}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className={`block px-3 py-2 text-sm font-bold tracking-wider border-b border-[#E5E5E5] uppercase font-body ${
-                activeSection === link.id
+              className={`block px-3 py-2 text-sm font-bold tracking-wider border-b border-[#E5E5E5] uppercase font-body ${activeSection === link.id
                   ? 'text-[#EF4444] bg-[#F5F5F5] font-extrabold'
                   : 'text-[#0A0A0A] hover:bg-[#F5F5F5]'
-              }`}
+                }`}
             >
               {link.label}
             </a>

@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
           <div>
             <span className="text-[#FAFAFA] font-bold block mb-2">// LICENSING &amp; ETHICS</span>
             <p className="leading-relaxed">
-              Government-certified Level 5 BNSP Building Construction Supervisor administered by the Ministry of Public Works (BJKW I Banda Aceh) and accredited under JAC Japan construction standards.
+              Government-certified Level 5 BNSP Building Construction  administered by the Ministry of Public Works (BJKW I Banda Aceh) and accredited under JAC Japan construction standards.
             </p>
           </div>
 

@@ -11,7 +11,7 @@ export const profileData: ProfileData = {
   linkedin: "https://linkedin.com/in/rezasepdide",
   status: "OPEN FOR ROLES & CONSULTANCIES",
   bioSummary:
-    "Diploma III Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72/4.00, High Honors), certified as BNSP Level 5 Intermediate Building Construction Supervisor with a proven track record in technical planning, Quantity Surveying (QS), on-site Quality Control, and S-Curve construction scheduling. Highly proficient in Autodesk Revit BIM modeling, AutoCAD DED (standardized paper layout viewports to PDF), SAP2000 seismic analysis, MS Project CPM scheduling, as well as certified proficiency in Japanese (JLPT N4 & JFT-Basic) and English (TOEIC 640).",
+    "Diploma III Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72/4.00, High Honors), certified as BNSP Level 5 Intermediate Building Construction  with a proven track record in technical planning, Quantity Surveying (QS), on-site Quality Control, and S-Curve construction scheduling. Highly proficient in Autodesk Revit BIM modeling, AutoCAD DED (standardized paper layout viewports to PDF), SAP2000 seismic analysis, MS Project CPM scheduling, as well as certified proficiency in Japanese (JLPT N4 & JFT-Basic) and English (TOEIC 640).",
   personalStatement:
     "To me, sound civil engineering does not end with theoretical calculations or blueprint drawings—it is defined by how safely, accurately, timely, and cost-efficiently those designs are executed on site. From optimizing Bar Bending Schedules (BBS) to minimize rebar scrap on high-stakes chemical industrial plants to auditing government school revitalization projects, I consistently uphold mathematical precision, rigorous field verification, and uncompromised technical accountability.",
   keyStats: [
@@ -23,7 +23,7 @@ export const profileData: ProfileData = {
     {
       value: "LEVEL 5",
       label: "BNSP CERTIFICATION",
-      description: "National SKK Certified Building Construction Site Supervisor (Ministry of Public Works Construction Center I)",
+      description: "National SKK Certified Building Construction Site  (Ministry of Public Works Construction Center I)",
     },
     {
       value: "10+",

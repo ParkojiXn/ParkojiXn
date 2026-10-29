@@ -37,7 +37,7 @@ All career milestones, academic credentials, and project metrics are authenticat
   - D4 Construction Engineering & Project Management — Politeknik Negeri Padang (Aug 2026 – Present).
   - SMA Negeri 1 Padang (Natural Sciences: Mathematics & Physics, 2019 – 2022).
 - **Official Accreditations & Licenses**:
-  - National Certificate of Competency (SKK) **Intermediate Building Construction Supervisor (Level 5 KKNI) — BNSP** & Ministry of Public Works (BJKW I Banda Aceh).
+  - National Certificate of Competency (SKK) **Intermediate Building Construction  (Level 5 KKNI) — BNSP** & Ministry of Public Works (BJKW I Banda Aceh).
   - Certificate of Completion: **Revit Masterclass for Beginners (BIM)** — Arsisten Academy.
   - **Specified Skilled Worker (SSW)** Evaluation Exam for Construction Industry — JAC Japan.
   - Japanese Language Proficiency: **JFT-Basic Score 250 & JLPT N4 Score 165**.

@@ -38,7 +38,7 @@ export const EducationCertifications: React.FC = () => {
           </div>
 
           <p className="text-sm text-[#525252] max-w-lg font-body leading-relaxed">
-            Foundational civil engineering education graduated with High Honors (GPA 3.72), reinforced by national BNSP Level 5 site supervisor licensing, BIM Revit mastery, and Japanese construction industry qualifications.
+            Foundational civil engineering education graduated with High Honors (GPA 3.72), reinforced by national BNSP Level 5 site  licensing, BIM Revit mastery, and Japanese construction industry qualifications.
           </p>
         </div>
 
