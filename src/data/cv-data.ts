@@ -23,7 +23,8 @@ export const profileData: ProfileData = {
     {
       value: "LEVEL 5",
       label: "BNSP CERTIFICATION",
-      description: "National SKK Certified Building Construction Site  (Ministry of Public Works Construction Center I)",
+      description: "Implementing Intermediate Building Works
+",
     },
     {
       value: "10+",
@@ -908,7 +909,7 @@ export const educationHistory: Education[] = [
     details: [
       "Senior Capstone Thesis: Engineered comprehensive Cost Budgeting (BoQ) and CPM project scheduling (Time Schedule & S-Curve) on the 'Construction Execution Planning of Pasaman Regency DPRD Building'.",
       "National Tender Competition 'Fondasi Days 2025' at Universitas Sebelas Maret (UNS): Commercial tender dossier, 3D SketchUp method statements, and competitive cost modeling.",
-      "National Student Scientific Creativity Program (PKM-AI) Grantee: Lead author of 'Life-Cycle Cost Analysis of Modular Scaffolding in Industrial EPC Projects'.",
+      "National Student Scientific Creativity Program (PKM-AI) Grantee: Lead author of 'Analisa Biaya Scaffolding pada Proyek Waste Gas Recovery IBR Purwakarta'.",
       "Building Design Studio: Finite element 3D frame modeling and dynamic seismic response spectrum analysis using SAP2000 under SNI codes."
     ],
     transcriptUrl: "/portfolio/certificates/transkrip-nilai.pdf"
