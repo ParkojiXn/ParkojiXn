@@ -1,15 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download, Camera } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, FileText, Mail, MapPin, CheckCircle2, Clock, MessageSquare, Download } from 'lucide-react';
 import { profileData } from '../data/cv-data';
 
 export const HeroSection: React.FC = () => {
-  const [photoIndex, setPhotoIndex] = useState<number>(0);
-  const photos = [
-    { src: '/portfolio/profile/1. profile.jpg', label: 'FOTO RESMI' },
-    { src: '/portfolio/profile/profile-2.jpg', label: 'PROFIL 2' }
-  ];
+  const officialPhoto = '/portfolio/profile/1. profile.jpg';
 
   return (
     <section id="hero" className="relative border-b-2 border-[#0A0A0A] bg-[#FAFAFA] pt-12 pb-16 lg:pt-16 lg:pb-20">
@@ -110,21 +106,10 @@ export const HeroSection: React.FC = () => {
             <div className="border-2 border-[#0A0A0A] bg-[#FAFAFA] p-3 relative group shadow-sm">
               <div className="overflow-hidden border border-[#D4D4D4] bg-[#F5F5F5] aspect-[4/5] relative">
                 <img
-                  src={photos[photoIndex].src}
+                  src={officialPhoto}
                   alt="Reza Sepdide - Civil Engineer & Construction Planner"
-                  className="w-full h-full object-cover object-top contrast-110 transition-all duration-300"
+                  className="w-full h-full object-cover object-top contrast-110"
                 />
-                
-                {/* Switcher Button */}
-                <button
-                  type="button"
-                  onClick={() => setPhotoIndex((prev) => (prev + 1) % photos.length)}
-                  className="absolute top-2 right-2 px-2 py-1 bg-[#0A0A0A]/85 hover:bg-[#EF4444] text-[#FAFAFA] text-[10px] font-mono flex items-center gap-1 transition-colors"
-                  title="Ganti Foto Profil"
-                >
-                  <Camera className="w-3 h-3" />
-                  <span>{photos[photoIndex].label}</span>
-                </button>
 
                 <div className="absolute bottom-0 left-0 right-0 bg-[#0A0A0A] text-[#FAFAFA] p-2 text-center text-xs font-mono">
                   REZA SEPDIDE // D3 TEKNIK SIPIL PNP
