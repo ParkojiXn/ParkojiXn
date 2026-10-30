@@ -3,6 +3,8 @@ import subprocess
 import shutil
 import pypdfium2 as pdfium
 from pypdf import PdfReader
+from PIL import Image
+import numpy as np
 
 # Sourcing knowledge directly from Knowledge_Portofolio
 base_dir = "D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio"
@@ -13,6 +15,80 @@ pdf_path = os.path.join(export_dir, "Portofolio_Teknik_Sipil_Reza_Sepdide_Landsc
 def p(rel):
     full = os.path.join(base_dir, rel).replace("\\", "/")
     return full
+
+def export_p(rel):
+    full = os.path.join(export_dir, rel).replace("\\", "/")
+    return full
+
+def crop_im(im, thresh=240, pad=10):
+    im_rgb = im.convert("RGB")
+    arr = np.array(im_rgb)
+    mask = np.any(arr < thresh, axis=2)
+    if not np.any(mask):
+        return im
+    rmin, rmax = np.where(np.any(mask, axis=1))[0][[0, -1]]
+    cmin, cmax = np.where(np.any(mask, axis=0))[0][[0, -1]]
+    w, h = im.size
+    rmin = max(0, rmin - pad)
+    rmax = min(h, rmax + pad)
+    cmin = max(0, cmin - pad)
+    cmax = min(w, cmax + pad)
+    return im.crop((cmin, rmin, cmax, rmax))
+
+def prepare_clean_assets():
+    # 1. Kuamang Kurva S
+    pdf_ks = os.path.join(base_dir, "SDN 19 Kuamang revitalisasi proyek/5. Kurva S SDN 19 KUAMANG.pdf")
+    doc = pdfium.PdfDocument(pdf_ks)
+    im_ks = doc[0].render(scale=3).to_pil()
+    im_ks_c = crop_im(im_ks, pad=15)
+    im_ks_c.save(os.path.join(export_dir, "kuamang_kurva_s_cropped.png"))
+
+    # 2. Kuamang RKS & Backup Volume
+    im_rks = Image.open(os.path.join(base_dir, "SDN 19 Kuamang revitalisasi proyek/RKS.png"))
+    im_rks_c = crop_im(im_rks, pad=10)
+    im_rks_c.save(os.path.join(export_dir, "kuamang_rks_cropped.png"))
+
+    im_bv = Image.open(os.path.join(base_dir, "SDN 19 Kuamang revitalisasi proyek/BACKUP VOLUME.png"))
+    im_bv_c = crop_im(im_bv, pad=10)
+    im_bv_c.save(os.path.join(export_dir, "kuamang_bv_cropped.png"))
+
+    # 3. Pariaman CCO, 5, BV
+    cco_path = os.path.join(base_dir, "SLBN 2 PARIAMAN Revitalisasi Proyek", "CCO'.png")
+    im_cco = Image.open(cco_path)
+    im_cco_c = crop_im(im_cco, pad=10)
+    im_cco_c.save(os.path.join(export_dir, "slbn_cco_cropped.png"))
+
+    im_slbn_5 = Image.open(os.path.join(base_dir, "SLBN 2 PARIAMAN Revitalisasi Proyek/5.png"))
+    im_slbn_5_c = crop_im(im_slbn_5, pad=10)
+    im_slbn_5_c.save(os.path.join(export_dir, "slbn_5_cropped.png"))
+
+    im_slbn_bv = Image.open(os.path.join(base_dir, "SLBN 2 PARIAMAN Revitalisasi Proyek/BACKUP VOLUME.png"))
+    im_slbn_bv_c = crop_im(im_slbn_bv, pad=10)
+    im_slbn_bv_c.save(os.path.join(export_dir, "slbn_bv_cropped.png"))
+
+    # 4. Final Project
+    im_msp = Image.open(os.path.join(base_dir, "Final Project/SChedule ms project.png"))
+    im_msp_c = crop_im(im_msp, pad=5)
+    im_msp_c.save(os.path.join(export_dir, "final_project_msp_cropped.png"))
+
+    im_fp_ks = Image.open(os.path.join(base_dir, "Final Project/Kurva s.png"))
+    im_fp_ks_c = crop_im(im_fp_ks, pad=5)
+    im_fp_ks_c.save(os.path.join(export_dir, "final_project_kurvas_cropped.png"))
+
+    im_fp_rab = Image.open(os.path.join(base_dir, "Final Project/RAB.png"))
+    im_fp_rab_c = crop_im(im_fp_rab, pad=5)
+    im_fp_rab_c.save(os.path.join(export_dir, "final_project_rab_cropped.png"))
+
+    # 5. Magang
+    im_m_dp = Image.open(os.path.join(base_dir, "Magang/DAILY PROGGRES.png"))
+    im_m_dp_c = crop_im(im_m_dp, pad=5)
+    im_m_dp_c.save(os.path.join(export_dir, "magang_daily_progress_cropped.png"))
+
+    im_m_wr = Image.open(os.path.join(base_dir, "Magang/WEEKLY REPORT.png"))
+    im_m_wr_c = crop_im(im_m_wr, pad=5)
+    im_m_wr_c.save(os.path.join(export_dir, "magang_weekly_report_cropped.png"))
+
+prepare_clean_assets()
 
 tex = []
 
@@ -42,12 +118,12 @@ tex.append(r"""\documentclass[10pt,a4paper,landscape]{article}
 
 \pagestyle{empty}
 
-% Header Macro (Fixed 13mm height)
+% Header Macro (Fixed 13mm height, High-Clarity Executive Banner)
 \newcommand{\makeheader}[3]{%
-  \begin{tcolorbox}[sharp corners, boxrule=0pt, colframe=pnavy, colback=pnavy, coltext=white, left=4mm, right=4mm, top=2mm, bottom=2mm, boxsep=0pt, height=13mm, valign=center]
-    \begin{tabularx}{\linewidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
-      {\fontsize{7pt}{8pt}\selectfont\bfseries\color{pred}#1} & {\fontsize{7pt}{8pt}\selectfont\color{pmuted}DOSIR RESMI REKAYASA TEKNIK SIPIL \textbar\ 2026} \\
-      {\fontsize{11pt}{13pt}\selectfont\bfseries\color{white}#2} & {\fontsize{8pt}{9pt}\selectfont\bfseries\color{pbglight}#3}
+  \begin{tcolorbox}[sharp corners, boxrule=0pt, colframe=pnavy, colback=pnavy, coltext=white, left=4mm, right=4mm, top=2mm, bottom=2mm, boxsep=0pt, height=13mm, valign=center, borderline west={3.5pt}{0pt}{pred}]
+    \begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}p{100mm}@{}}
+      {\fontsize{11pt}{13.5pt}\selectfont\bfseries\color{white}#2} &
+      {\fontsize{8pt}{10pt}\selectfont\bfseries\color{pbglight}#3}
     \end{tabularx}
   \end{tcolorbox}
   \vspace{2mm}
@@ -80,7 +156,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
   % Top Header Row
   \begin{tabularx}{\linewidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
     \colorbox{pred}{\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{white}\ \ KUALIFIKASI RESMI TEKNIK SIPIL \& MANAJEMEN KONSTRUKSI\ \ } &
-    {\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{pmuted}DOSIR PORTOFOLIO REKAYASA TEKNIK SIPIL \textbar\ EDISI RESMI 2026 \textbar\ PADANG, INDONESIA}
+    {\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{pmuted}PORTOFOLIO REKAYASA TEKNIK SIPIL \textbar\ EDISI RESMI 2026 \textbar\ PADANG, INDONESIA}
   \end{tabularx}
   \vspace{2mm}
   \noindent\textcolor{pnavy}{\rule{\linewidth}{1.5pt}}
@@ -136,7 +212,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
 
     % Bottom Verification Box (Eliminating bottom blank space)
     \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=3mm, right=3mm, top=2mm, bottom=2mm]
-      {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pnavy}INTEGRITAS DOSIR \& BUKTI VERIFIKASI DIGITAL:}\\[0.5mm]
+      {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pnavy}INTEGRITAS DOKUMEN \& BUKTI VERIFIKASI DIGITAL:}\\[0.5mm]
       {\fontsize{6.2pt}{7.5pt}\selectfont\color{psteel}Seluruh portofolio ini menyajikan dokumentasi rekayasa otentik mencakup gambar DED AutoCAD resmi, perhitungan backup volume \& BoQ/RAB berdasarkan AHSP PUPR, simulasi Kurva S \& MS Project, Bar Bending Schedule (BBS), serta lembar sertifikasi negara dan bahasa internasional.}
     \end{tcolorbox}
   \end{minipage}%
@@ -930,27 +1006,36 @@ tex.append(r"""\newpage
 \noindent
 \begin{minipage}[t]{0.30\linewidth}
   \vspace{0pt}
-  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
-    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DOKUMEN TEKNIS PENDUKUNG\ \ }\\[1.5mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=98mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DOKUMEN TEKNIS PENDUKUNG 01\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}RKS, Volume \& Kurva S}\\[0.5mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Pengendalian Biaya \& Mutu}\\[2mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}SDN 19 Kuamang, Pasaman}\\[2mm]
 
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Program:} & {\fontsize{6.8pt}{8pt}\selectfont Revitalisasi SD 2026} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Total Anggaran:} & {\fontsize{6.8pt}{8pt}\selectfont Rp 967.660.000,00} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Biaya Fisik:} & {\fontsize{6.8pt}{8pt}\selectfont Rp 867.282.138,81} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Waktu Rencana:} & {\fontsize{6.8pt}{8pt}\selectfont 90 Hari (13 Minggu)}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}INSTRUMEN PENGENDALIAN MUTU}\\[0.8mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    Dokumen kelengkapan teknis untuk tertib mutu, biaya, dan waktu:
-    \begin{itemize}[leftmargin=3mm, itemsep=0.6mm, topsep=0mm]
-      \item \textbf{1. Dokumen RKS Teknis:} Syarat mutu material, tata cara pemasangan, dan standar pengujian lapangan.
-      \item \textbf{2. Backup Volume Excel:} Kalkulasi matematis kuantitas pekerjaan dasar BoQ/RAB presisi.
-      \item \textbf{3. Kurva S Schedule:} Pemetaan bobot fisik mingguan untuk monitoring progres lapangan.
-    \end{itemize}
+    $\bullet$ \textbf{RKS Teknis:} Menetapkan spesifikasi material SNI, adukan spesi/mortar, pembesian praktis, kayu rangka atap kelas II, dan pengujian lapangan.\\
+    $\bullet$ \textbf{Backup Volume:} Kalkulasi matematis per item ruang kelas, toilet, dan paving block sebagai dasar kuantitas BoQ.\\
+    $\bullet$ \textbf{Kurva S:} Pemetaan bobot mingguan kumulatif untuk deteksi dini deviasi fisik di lapangan.
     }
   \end{tcolorbox}
   \vspace{2mm}
 
-  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}PENGENDALIAN MUTU \& BIAYA:}\\[1.5mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=54mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}INTEGRITAS ANGGARAN \& JADWAL:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    $\bullet$ Integrasi spesifikasi RKS dengan kalkulasi kuantitas backup volume dan distribusi Kurva S.\\
-    $\bullet$ Menjamin ketepatan mutu pelaksanaan tanpa pembengkakan anggaran biaya proyek.
+    $\bullet$ \textbf{Validasi Silang DED \& BoQ:} Sinkronisasi kuantitas backup volume dengan gambar kerja DED guna mengeliminasi selisih volume.\\
+    $\bullet$ \textbf{Distribusi Bobot Realistis:} Penataan dependensi aktivitas pekerjaan struktur dan arsitektur demi kepatuhan target 90 hari kalender.\\
+    $\bullet$ \textbf{Legalitas Dokumen:} Disahkan oleh Ketua Panitia P2SP, Kepala Sekolah, dan Reza Sepdide (Perencana Teknis).
     }
   \end{tcolorbox}
 \end{minipage}%
@@ -958,30 +1043,30 @@ tex.append(r"""\newpage
 \begin{minipage}[t]{0.68\linewidth}
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=154mm]
-    % Top Landscape: Kurva S Full Width
-    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=68mm]
+    % Top Landscape: Kurva S Full Width (Authentic S-Curve)
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=73mm]
       \centering
-      \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{{{""" + p("SDN 19 Kuamang revitalisasi proyek/5.png") + r"""}}}\\[0.5mm]
-      {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Jadwal Kurva S \& Distribusi Bobot Pelaksanaan Mingguan (SDN 19 Kuamang)}
+      \includegraphics[width=0.99\linewidth,height=64mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/kuamang_kurva_s_cropped.png}}\\[0.5mm]
+      {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Jadwal Kurva S \& Distribusi Bobot Pelaksanaan Mingguan (Total: Rp 867.282.138,81 --- Durasi 13 Minggu)}
     \end{tcolorbox}
     \vspace{2mm}
 
-    % Bottom 2 Columns: RKS and Backup Volume
+    % Bottom 2 Columns: RKS and Backup Volume (Enlarged)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=74mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{{""" + p("SDN 19 Kuamang revitalisasi proyek/RKS.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Rencana Kerja \& Syarat Teknis (RKS)}
+        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/kuamang_rks_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Rencana Kerja \& Syarat Teknis (RKS) Spesifikasi Material}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=74mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{{""" + p("SDN 19 Kuamang revitalisasi proyek/BACKUP VOLUME.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Perhitungan Backup Volume Kuantitas}
+        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/kuamang_bv_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Perhitungan Backup Volume Kuantitas Pekerjaan BoQ}
       \end{tcolorbox}
     \end{minipage}
   \end{tcolorbox}
@@ -1134,27 +1219,36 @@ tex.append(r"""\newpage
 \noindent
 \begin{minipage}[t]{0.30\linewidth}
   \vspace{0pt}
-  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
-    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DOKUMEN STRUKTUR \& CCO\ \ }\\[1.5mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=98mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ DOKUMEN STRUKTUR \& CCO 02\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}CCO \& Backup Volume}\\[0.5mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Penyesuaian Lapangan}\\[2mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}SLBN 2 Pariaman, Sumbar}\\[2mm]
 
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
+      \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Program:} & {\fontsize{6.8pt}{8pt}\selectfont Bantuan Revitalisasi 2026} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Dokumen:} & {\fontsize{6.8pt}{8pt}\selectfont Addendum CCO \& BoQ} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Penyesuaian:} & {\fontsize{6.8pt}{8pt}\selectfont Elevasi Tapak Eksisting} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Total BoQ:} & {\fontsize{6.8pt}{8pt}\selectfont Rp 1.046.960.116,8}
+      \end{tabularx}
+    \end{tcolorbox}
+    \vspace{1.5mm}
+
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}JUSTIFIKASI PERUBAHAN LAPANGAN}\\[0.8mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    Dokumen teknis pengendalian struktur dan penyesuaian rancangan awal:
-    \begin{itemize}[leftmargin=3mm, itemsep=0.6mm, topsep=0mm]
-      \item \textbf{1. Dokumen Addendum CCO:} Perubahan rancangan awal (\textit{Contract Change Order}) terhadap elevasi eksisting tapak.
-      \item \textbf{2. Detail Pembesian:} Kolom praktis, balok latai, sloof, dan pondasi batu kali.
-      \item \textbf{3. Backup Volume:} Kalkulasi rincian volume tambah kurang sebagai dasar justifikasi biaya.
-    \end{itemize}
+    $\bullet$ \textbf{Addendum CCO:} Rekapitulasi deviasi tambah-kurang akibat perbedaan kontur eksisting tanpa melampaui pagu bantuan.\\
+    $\bullet$ \textbf{Gambar Revisi:} Modifikasi elevasi dinding, penyesuaian kolom praktis, dan bukaan aksesibel difabel.\\
+    $\bullet$ \textbf{Backup Volume:} Kalkulasi matematis ulang volume plesteran, pembesian, keramik, dan pengecatan.
     }
   \end{tcolorbox}
   \vspace{2mm}
 
-  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=54mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}AKUNTABILITAS PERUBAHAN CCO:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    $\bullet$ Penyesuaian gambar dan volume akibat elevasi tapak eksisting didokumentasikan dalam berkas CCO resmi.\\
-    $\bullet$ Dilengkapi justifikasi teknis dan Berita Acara Mutual Check terverifikasi.
+    $\bullet$ \textbf{Kesesuaian Regulasi:} Format Addendum mengacu kaidah penyesuaian kontrak konstruksi resmi dan Berita Acara Mutual Check.\\
+    $\bullet$ \textbf{Keseimbangan Biaya:} Rekapitulasi deviasi tambah-kurang diimbangi efisiensi item finishing agar total anggaran terkendali.\\
+    $\bullet$ \textbf{Verifikasi Formal:} Disahkan oleh Kepala Sekolah SLBN 2 Pariaman, Tim P2S, dan Perencana Teknis.
     }
   \end{tcolorbox}
 \end{minipage}%
@@ -1162,30 +1256,30 @@ tex.append(r"""\newpage
 \begin{minipage}[t]{0.68\linewidth}
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=154mm]
-    % Top Landscape: CCO Spreadsheet Full Width
-    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=66mm]
+    % Top Landscape: CCO Spreadsheet Full Width (Enlarged)
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=70mm]
       \centering
-      \includegraphics[width=0.98\linewidth,height=56mm,keepaspectratio]{{{""" + p("SLBN 2 PARIAMAN Revitalisasi Proyek/CCO'.png") + r"""}}}\\[0.5mm]
+      \includegraphics[width=0.99\linewidth,height=61mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/slbn_cco_cropped.png}}\\[0.5mm]
       {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Berkas Addendum Contract Change Order (CCO) \& Rekapitulasi Perubahan Nilai Kontrak}
     \end{tcolorbox}
     \vspace{2mm}
 
-    % Bottom 2 Columns: Structural Detail and Backup Volume
+    % Bottom 2 Columns: Structural Detail and Backup Volume (Enlarged)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=76mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=78mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{{""" + p("SLBN 2 PARIAMAN Revitalisasi Proyek/5.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Detail Struktur Beton Bertulang \& Pembesian}
+        \includegraphics[width=0.98\linewidth,height=69mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/slbn_5_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Gambar Kerja Revisi Elevasi Bangunan (Tampak Depan \& Belakang)}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=76mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=78mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{{""" + p("SLBN 2 PARIAMAN Revitalisasi Proyek/BACKUP VOLUME.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Perhitungan Backup Volume Tambah Kurang CCO}
+        \includegraphics[width=0.98\linewidth,height=69mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/slbn_bv_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Perhitungan Backup Volume Tambah-Kurang CCO}
       \end{tcolorbox}
     \end{minipage}
   \end{tcolorbox}
@@ -1290,7 +1384,7 @@ tex.append(r"""\newpage
 \noindent
 \begin{minipage}[t]{0.30\linewidth}
   \vspace{0pt}
-  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=98mm]
     \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ TUGAS AKHIR D3 TEKNIK SIPIL 04\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}Pembangunan Gedung DPRD}\\[0.5mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Kabupaten Pasaman, Sumbar}\\[2mm]
@@ -1299,7 +1393,8 @@ tex.append(r"""\newpage
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Institusi:} & {\fontsize{6.8pt}{8pt}\selectfont Politeknik Negeri Padang} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Objek Studi:} & {\fontsize{6.8pt}{8pt}\selectfont Gedung DPRD Pasaman} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Fokus Kajian:} & {\fontsize{6.8pt}{8pt}\selectfont Estimasi RAB \& Schedule} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Total Anggaran:} & {\fontsize{6.8pt}{8pt}\selectfont Rp 16.042.000.000,00} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Durasi Rencana:} & {\fontsize{6.8pt}{8pt}\selectfont 240 Hari Kalender} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Alat Bantu:} & {\fontsize{6.8pt}{8pt}\selectfont MS Project \& MS Excel}
       \end{tabularx}
     \end{tcolorbox}
@@ -1307,16 +1402,19 @@ tex.append(r"""\newpage
 
     {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}RUANG LINGKUP PERANCANGAN}\\[0.8mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    Kuantifikasi volume struktur beton bertulang, dinding, atap, RAB berbasis AHSP PUPR, WBS \& lintasan kritis CPM MS Project, dan simulasi Kurva S.
+    $\bullet$ \textbf{Work Breakdown Structure (WBS):} Penguraian item pekerjaan struktur pondasi sumuran, kolom, balok latai, pelat, baja atap, hingga arsitektur.\\
+    $\bullet$ \textbf{Estimasi Biaya (RAB):} Analisa Harga Satuan Pekerjaan (AHSP) PUPR berbasis survei pasar upah dan bahan.\\
+    $\bullet$ \textbf{Simulasi Kurva S:} Pemodelan akumulasi bobot biaya per minggu.
     }
   \end{tcolorbox}
   \vspace{2mm}
 
-  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}INTEGRASI JADWAL \& BIAYA:}\\[1.5mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=54mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}INTEGRASI JADWAL \& KENDALI BIAYA:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    $\bullet$ Simulasi penjadwalan membuktikan keahlian memetakan dependensi aktivitas WBS.\\
-    $\bullet$ Mengendalikan bobot biaya guna mencegah deviasi fisik pekerjaan struktur gedung bertingkat.
+    $\bullet$ \textbf{Analisis Lintasan Kritis (CPM):} Penataan dependensi aktivitas logika hubungan kerja (\textit{Finish-to-Start}) untuk mencegah deviasi negatif jadwal.\\
+    $\bullet$ \textbf{Pengendalian Bobot Biaya:} Kurva S sebagai instrumen monitoring progres fisik berkala terhadap deviasi aktual.\\
+    $\bullet$ \textbf{Ketepatan Nilai Kontrak:} Anggaran Rp 16,04 Miliar dikunci melalui rekapitulasi BoQ terperinci per divisi pekerjaan.
     }
   \end{tcolorbox}
 \end{minipage}%
@@ -1324,30 +1422,30 @@ tex.append(r"""\newpage
 \begin{minipage}[t]{0.68\linewidth}
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=154mm]
-    % Top Landscape: MS Project Schedule Full Width
-    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=68mm]
+    % Top Landscape: MS Project Schedule Full Width (Enlarged)
+    \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
       \centering
-      \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{{{""" + p("Final Project/SChedule ms project.png") + r"""}}}\\[0.5mm]
-      {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Work Breakdown Structure (WBS) \& Jadwal Pelaksanaan Gantt Chart Microsoft Project}
+      \includegraphics[width=0.99\linewidth,height=66mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/final_project_msp_cropped.png}}\\[0.5mm]
+      {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Work Breakdown Structure (WBS) \& Jadwal Pelaksanaan Gantt Chart Microsoft Project (Durasi 240 Hari)}
     \end{tcolorbox}
     \vspace{2mm}
 
-    % Bottom 2 Columns: Kurva S and RAB
+    % Bottom 2 Columns: Kurva S and RAB (Enlarged)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=74mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=73mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{{""" + p("Final Project/Kurva s.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Kurva S Distribusi Bobot Kumulatif Fisik}
+        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/final_project_kurvas_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Kurva S Distribusi Bobot Kumulatif Fisik Mingguan}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=74mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=73mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{{""" + p("Final Project/RAB.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Rekapitulasi Rencana Anggaran Biaya (RAB)}
+        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/final_project_rab_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Rekapitulasi Rencana Anggaran Biaya (RAB Total: Rp 16,04 M)}
       \end{tcolorbox}
     \end{minipage}
   \end{tcolorbox}
@@ -1366,7 +1464,7 @@ tex.append(r"""\newpage
 \noindent
 \begin{minipage}[t]{0.30\linewidth}
   \vspace{0pt}
-  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=98mm]
     \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PENGALAMAN MAGANG INDUSTRI 05\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}Proyek Waste Gas Recovery}\\[0.5mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}PT Indo-Bharat Rayon Purwakarta}\\[2mm]
@@ -1374,25 +1472,28 @@ tex.append(r"""\newpage
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Kontraktor:} & {\fontsize{6.8pt}{8pt}\selectfont PT Solusi Industri Energi} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Klien:} & {\fontsize{6.8pt}{8pt}\selectfont PT Indo-Bharat Rayon} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Klien Utama:} & {\fontsize{6.8pt}{8pt}\selectfont PT Indo-Bharat Rayon} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Lokasi Proyek:} & {\fontsize{6.8pt}{8pt}\selectfont Purwakarta, Jawa Barat} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Fokus Lembar:} & {\fontsize{6.8pt}{8pt}\selectfont Bar Bending Schedule}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Fokus Aktivitas:} & {\fontsize{6.8pt}{8pt}\selectfont Bar Bending \& Logistik}
       \end{tabularx}
     \end{tcolorbox}
     \vspace{1.5mm}
 
-    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}PENYUSUNAN BBS PEMBESIAN}\\[0.8mm]
+    {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}PENYUSUNAN BBS \& SUPERVISI}\\[0.8mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    BBS pondasi mesin reaktor, optimasi pemotongan tulangan scrap waste $< 3\%$, pengarsipan gambar teknis, dan monitoring log harian fabrikasi pembesian.
+    $\bullet$ \textbf{Bar Bending Schedule (BBS):} Perhitungan daftar pemotongan dan pembengkokan baja tulangan pondasi mesin berat WGR.\\
+    $\bullet$ \textbf{Efisiensi Scrap Waste:} Optimasi pemotongan tulangan hingga batas limbah baja terkendali $< 3\%$.\\
+    $\bullet$ \textbf{Daily Progress Log:} Pencatatan log harian fabrikasi, perakitan tulangan, dan verifikasi progres lapangan.
     }
   \end{tcolorbox}
   \vspace{2mm}
 
-  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=54mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}STANDAR PEMBESIAN INDUSTRI:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    $\bullet$ Perakitan tulangan pondasi mesin berat menuntut presisi sudut kait gempa $135^\circ$ dan panjang penyaluran SNI 2847.\\
-    $\bullet$ Memastikan pengikatan kawat bendrat kokoh terhadap getaran mesin.
+    $\bullet$ \textbf{Presisi Pembengkokan:} Perakitan pondasi mesin getar menuntut sudut kait gempa $135^\circ$ dan panjang penyaluran SNI 2847.\\
+    $\bullet$ \textbf{Kekokohan Tulangan:} Pengikatan kawat bendrat ganda memastikan kerangka tidak bergeser saat pengecoran beton cair.\\
+    $\bullet$ \textbf{K3 Lapangan:} Pelaksanaan supervisi harian mematuhi regulasi ketat HSE pabrik kimia aktif.
     }
   \end{tcolorbox}
 \end{minipage}%
@@ -1400,42 +1501,43 @@ tex.append(r"""\newpage
 \begin{minipage}[t]{0.68\linewidth}
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=154mm]
-    % Row 1: BBS and Dokumen Foto Proyek
+    % Row 1: The Two Wide Tables Side-by-Side (Height 54mm - tight fit, zero dead space!)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=54mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/BBS.png") + r"""}}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=45mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/BBS.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Bar Bending Schedule (BBS) Tulangan Beton}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=54mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/DOKUMEN.jpeg") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Dokumentasi Tim Proyek \& Pengelolaan Berkas}
+        \includegraphics[width=0.98\linewidth,height=45mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/magang_daily_progress_cropped.png}}\\[0.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Monitoring Progres Harian Fabrikasi Pembesian}
       \end{tcolorbox}
     \end{minipage}
     \vspace{2mm}
 
-    % Row 2: Daily Log and Daily Progress
+    % Row 2: Tall Form + Photo Side-by-Side (Height 94mm - Form is ENLARGED to 84mm!)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=94mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/DAILY.png") + r"""}}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=84mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/DAILY.png}}\\[0.8mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Form Log Harian Pekerjaan Pembesian Lapangan}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=94mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/DAILY PROGGRES.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Monitoring Progres Harian Fabrikasi Pembesian}
+        \includegraphics[width=0.98\linewidth,height=68mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/DOKUMEN.jpeg}}\\[1.5mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Dokumentasi Tim Proyek \& Pengelolaan Berkas Lapangan}\\[0.5mm]
+        {\fontsize{5.5pt}{6.5pt}\selectfont\color{pmuted}Koordinasi teknis tim rekayasa PT Solusi Industri Energi pada area pabrik WGR Purwakarta}
       \end{tcolorbox}
     \end{minipage}
   \end{tcolorbox}
@@ -1454,8 +1556,8 @@ tex.append(r"""\newpage
 \noindent
 \begin{minipage}[t]{0.30\linewidth}
   \vspace{0pt}
-  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
-    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PERHITUNGAN BIAYA \& PROGRES\ \ }\\[1.5mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=98mm]
+    \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ PERHITUNGAN BIAYA \& PROGRES 05\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}QTO Rework \& Pelaporan}\\[0.5mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Pengendalian Lapangan}\\[2mm]
 
@@ -1463,24 +1565,27 @@ tex.append(r"""\newpage
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Aktivitas 1:} & {\fontsize{6.8pt}{8pt}\selectfont Kalkulasi Volume \& Rework} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Aktivitas 2:} & {\fontsize{6.8pt}{8pt}\selectfont Backup Progress Billing} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Laporan:} & {\fontsize{6.8pt}{8pt}\selectfont Harian, Mingguan, Bulanan} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Dampak:} & {\fontsize{6.8pt}{8pt}\selectfont Rekonsiliasi Biaya Akurat}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Pelaporan:} & {\fontsize{6.8pt}{8pt}\selectfont Harian, Mingguan, Bulanan} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Dampak Teknis:} & {\fontsize{6.8pt}{8pt}\selectfont Rekonsiliasi Biaya Akurat}
       \end{tabularx}
     \end{tcolorbox}
     \vspace{1.5mm}
 
     {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{pnavy}TANGGUNG JAWAB PENGENDALIAN}\\[0.8mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    Kalkulasi volume rework, backup volume penagihan termin (progress billing), laporan kemajuan pekerjaan, dan opname bersama konsultan/klien.
+    $\bullet$ \textbf{Kalkulasi Volume Rework:} Perhitungan ulang kuantitas pekerjaan perbaikan/modifikasi pondasi mesin di lapangan.\\
+    $\bullet$ \textbf{Backup Volume Penagihan:} Penyusunan bukti perhitungan volume pendukung sertifikat pembayaran bulanan (progress billing).\\
+    $\bullet$ \textbf{Opname Bersama:} Verifikasi berkala fisik lapangan bersama manajemen konstruksi konsultan dan owner.
     }
   \end{tcolorbox}
   \vspace{2mm}
 
-  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
+  \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=54mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}AKUNTABILITAS PELAPORAN:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    $\bullet$ Laporan harian dikompilasi berjenjang menjadi mingguan dan bulanan sebagai dokumen legal verifikasi prestasi fisik.\\
-    $\bullet$ Rekonsiliasi tepat mencegah terjadinya sengketa nilai tambah-kurang.
+    $\bullet$ \textbf{Kompilasi Berjenjang:} Laporan harian dikompilasi secara runut menjadi mingguan dan bulanan sebagai dokumen legal fisik.\\
+    $\bullet$ \textbf{Rekonsiliasi Nilai Tambah-Kurang:} Data backup yang tertib mencegah sengketa nilai klaim antara subkontraktor dan maincon.\\
+    $\bullet$ \textbf{Transparansi Manpower:} Rekapitulasi jumlah pekerja harian (Peak 254 tenaga kerja) guna kendali produktivitas dan K3.
     }
   \end{tcolorbox}
 \end{minipage}%
@@ -1488,42 +1593,50 @@ tex.append(r"""\newpage
 \begin{minipage}[t]{0.68\linewidth}
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=2mm, bottom=2mm, height=154mm]
-    % Row 1: BoQ Rework and QTO Rework
+    % Row 1: The Two Very Wide Tables (Height 48mm - tight fit across columns!)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=48mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/Bill of quantity rework.png") + r"""}}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=39mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/Bill of quantity rework.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Perhitungan Kuantitas \& BoQ Rework}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=48mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/QTO REWORK (1).png") + r"""}}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=39mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/QTO REWORK (1).png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Lembar Kalkulasi QTO Backup Volume Rework}
       \end{tcolorbox}
     \end{minipage}
     \vspace{2mm}
 
-    % Row 2: Weekly Report and Monthly Report
+    % Row 2: Weekly Report (ENLARGED PORTRAIT) + Monthly Report with Summary Box (Height 100mm)
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=100mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/WEEKLY REPORT.png") + r"""}}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=90mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/magang_weekly_report_cropped.png}}\\[0.8mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Dokumen Laporan Progres Mingguan Lapangan}
       \end{tcolorbox}
     \end{minipage}%
     \hfill
     \begin{minipage}[t]{0.49\linewidth}
       \vspace{0pt}
-      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=71mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=100mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=60mm,keepaspectratio]{{{""" + p("Magang/MONTHLY REPORT.png") + r"""}}}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Dokumen Laporan Bulanan (Monthly Progress Report)}
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/MONTHLY REPORT.png}}\\[0.8mm]
+        {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Dokumen Laporan Bulanan (Monthly Progress Report)}\\[1.2mm]
+        \begin{tcolorbox}[sharp corners, boxrule=0.4pt, colframe=pborder, colback=pbglight, left=1.5mm, right=1.5mm, top=1mm, bottom=1mm]
+          {\fontsize{5.8pt}{7.2pt}\selectfont\color{pnavy}
+          \textbf{Rekapitulasi Manpower \& Progres Bulanan:}\\
+          $\bullet$ Peak manpower: 254 pekerja terkoordinasi rapi.\\
+          $\bullet$ Verifikasi prestasi bulanan untuk sertifikasi progress billing.\\
+          $\bullet$ Evaluasi keselamatan kerja lapangan dengan predikat Zero LTI.
+          }
+        \end{tcolorbox}
       \end{tcolorbox}
     \end{minipage}
   \end{tcolorbox}
@@ -2106,15 +2219,14 @@ tex.append(r"""\newpage
   \vspace{2mm}
 
   \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}KESIAPAN MOBILISASI:}\\[1mm]
-    {\fontsize{6.3pt}{7.8pt}\selectfont\color{psteel}
-    Siap penempatan kerja penuh (\textit{full-time placement}) di seluruh wilayah Indonesia maupun penugasan internasional (Jepang / Asia).\\[1.5mm]
-    \textbf{Berkas Siap Kirim:} CV, Portofolio DED PDF, Ijazah D3, SKK BNSP, SSW Jepang, JLPT, TOEIC.
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}KESIAPAN MOBILISASI:}\\[1.5mm]
+    {\fontsize{6.3pt}{8.2pt}\selectfont\color{psteel}
+    \begin{itemize}[leftmargin=3.5mm, itemsep=1.2mm, topsep=0mm, parsep=0mm]
+      \item \textbf{Penempatan Kerja:} Siap bekerja penuh (\textit{full-time}) di seluruh wilayah Indonesia maupun penugasan proyek luar negeri (Jepang / Asia).
+      \item \textbf{Fleksibilitas Lapangan:} Siap ditempatkan langsung di lokasi fisik proyek (\textit{site}) maupun kantor operasional perencanaan.
+      \item \textbf{Berkas Siap Kirim:} Berkas legalitas lengkap, SKK BNSP Jenjang 5, Portofolio DED CAD, Ijazah D3, dan sertifikasi bahasa siap diverifikasi.
+    \end{itemize}
     }
-    \vspace{1mm}
-    \begin{tcolorbox}[sharp corners, boxrule=0.4pt, colframe=pred, colback=predlight, left=1mm, right=1mm, top=1mm, bottom=1mm]
-      \centering{\fontsize{6pt}{7pt}\selectfont\bfseries\color{pred}Status: TERBUKA UNTUK PENUGASAN PROYEK}
-    \end{tcolorbox}
   \end{tcolorbox}
 \end{minipage}%
 \hfill
@@ -2206,6 +2318,10 @@ if os.path.exists(built_pdf):
     public_target = "D:/whateverapp/laragon/www/ParkojiXn/public/Portofolio_Teknik_Sipil_Reza_Sepdide_Landscape.pdf"
     shutil.copyfile(built_pdf, public_target)
     print(f"Copied to: {public_target}")
+
+    root_target = "D:/whateverapp/laragon/www/ParkojiXn/Portofolio_Teknik_Sipil_Reza_Sepdide_Landscape.pdf"
+    shutil.copyfile(built_pdf, root_target)
+    print(f"Copied to: {root_target}")
 
     # Render all 28 pages to images for visual review
     review_dir = "D:/whateverapp/laragon/www/ParkojiXn/scratch/pdf_review_master"
