@@ -55,40 +55,71 @@ All career milestones, academic credentials, and project metrics are authenticat
 
 ---
 
-## 3. Repository & Code Architecture
+## 3. Clean Architecture Codebase Structure
+
+The website is engineered following **Clean Architecture (Domain-Driven & Layered Architecture)** principles, enforcing strict separation of concerns, inward dependency flow, and high testability:
 
 ```text
-├── package.json               # Next.js 14, React 18, Tailwind CSS, Lucide icons, Framer Motion
-├── tsconfig.json              # TypeScript compiler configuration
-├── tailwind.config.ts         # VoiceBox color tokens, font stacks & typography scales
-├── postcss.config.js          # PostCSS configuration
-├── voicebox-DESIGN.md         # VoiceBox Design System specifications
-├── CV_Reza_Sepdide_Profesional.docx # Original authenticated CV source file
-├── index.html                 # Standalone interactive preview (accessible directly in browser/Laragon)
-├── preview-server.js          # Built-in local HTTP preview server
-├── public/
-│   ├── profile.jpg            # Authentic portrait of Reza Sepdide
-│   └── CV_Reza_Sepdide_Profesional.docx # Downloadable CV asset
-├── out/                       # Pre-rendered production static export from Next.js
-└── src/
-    ├── app/
-    │   ├── globals.css        # VoiceBox design tokens, reset rules, button & card styles
-    │   ├── layout.tsx         # Root layout with SEO meta tags & Google Fonts
-    │   └── page.tsx           # Main homepage orchestrating modular sections
-    ├── components/
-    │   ├── Navbar.tsx         # Sticky editorial header, live ticker, mobile navigation drawer
-    │   ├── HeroSection.tsx    # Massive Archivo Black headline, personal statement, CTAs, metrics ribbon
-    │   ├── CorePrinciples.tsx # 4-pillar engineering mindset, work ethic & "Behind the Blueprints"
-    │   ├── FeaturedProjects.tsx # Elevated project cards, category filters, in-depth modal dossier
-    │   ├── ExperienceTimeline.tsx # Vertical milestone timeline with expandable responsibilities & impact
-    │   ├── SkillsMatrix.tsx   # Categorized competency matrix (Engineering, BIM/CAD, Languages, Ethic)
-    │   ├── EducationCertifications.tsx # Formal degrees, GPA 3.72, BNSP Level 5 & SSW accreditations
-    │   ├── ContactSection.tsx # Interactive dispatch form, direct email/phone/WhatsApp, LinkedIn
-    │   └── Footer.tsx         # Editorial magazine colophon, back-to-top trigger, copyright
-    ├── data/
-    │   └── cv-data.ts         # Strongly-typed source data strictly adhering to CV facts
-    └── types/
-        └── index.ts           # TypeScript interfaces (Project, Experience, Profile, CoreValue, etc.)
+src/
+├── core/                               # [DOMAIN LAYER] Enterprise Business Rules (Zero Framework Dependencies)
+│   ├── entities/                       # Core domain entities & models
+│   │   ├── Profile.ts                  # ProfileData, CoreValue, KeyStat, ContactChannel
+│   │   ├── Project.ts                  # Project, ProjectMediaItem, ProjectDocument, ProjectCategory
+│   │   ├── Experience.ts               # Experience, MediaPreviewItem, DocumentItem
+│   │   ├── Education.ts                # Education, DegreeDetails
+│   │   ├── Certification.ts            # Certification, CertificationFile
+│   │   ├── Skill.ts                    # SkillCategory, SkillItem
+│   │   └── index.ts                    # Barrel export
+│   └── repositories/                   # Domain repository interfaces (Ports)
+│       └── ICvRepository.ts            # Contract for CV data retrieval & queries
+│
+├── application/                        # [APPLICATION LAYER] Use Cases & Business Workflows
+│   ├── use-cases/                      # High-level business interactors
+│   │   ├── GetProfileUseCase.ts        # Retrieve profile information and core stats
+│   │   ├── GetProjectsUseCase.ts       # Retrieve projects & category counts
+│   │   ├── GetExperiencesUseCase.ts    # Retrieve timeline experiences
+│   │   ├── GetEducationUseCase.ts      # Retrieve education & degree records
+│   │   ├── GetCertificationsUseCase.ts# Retrieve official accreditations & certificates
+│   │   ├── GetSkillsUseCase.ts         # Retrieve categorised technical competencies
+│   │   └── index.ts                    # Barrel export
+│   └── index.ts
+│
+├── infrastructure/                     # [INFRASTRUCTURE LAYER] Data Sources & Concrete Adapters
+│   ├── data/                           # Authenticated static domain data
+│   │   └── cv-data.ts                  # Authentic CV records adhering to verified docs
+│   ├── repositories/                   # Concrete repository implementations (Adapters)
+│   │   └── StaticCvRepository.ts       # Implementation of ICvRepository
+│   ├── services/                       # External / infrastructure adapters
+│   │   └── PdfExportService.ts         # PDF printing & download service adapter
+│   └── di/                             # Dependency Injection / Service Container
+│       └── container.ts                # Provides singleton instances of repositories & use cases
+│
+├── presentation/                       # [PRESENTATION LAYER] UI, Controllers & State
+│   ├── components/                     # Modular component hierarchy
+│   │   ├── layout/                     # Application layout scaffolding
+│   │   │   ├── Navbar.tsx              # Sticky header navigation, status ticker, export dropdown
+│   │   │   └── Footer.tsx              # Architectural magazine colophon
+│   │   ├── features/                   # Feature-driven UI modules
+│   │   │   ├── hero/HeroSection.tsx    # Hero headline, executive summary, verified badges
+│   │   │   ├── principles/CorePrinciples.tsx # 4-pillar engineering methodology & work ethic
+│   │   │   ├── projects/FeaturedProjects.tsx # Project showcase, category tabs, modal dossier
+│   │   │   ├── experience/ExperienceTimeline.tsx # Career timeline, responsibilities & impact
+│   │   │   ├── skills/SkillsMatrix.tsx # Technical skills matrix & tools
+│   │   │   ├── education/EducationCertifications.tsx # Formal degrees & BNSP/SSW certifications
+│   │   │   ├── contact/ContactSection.tsx # Direct channels & consultation
+│   │   │   └── pdf/                    # PDF document previewer & print export modals
+│   │   └── shared/                     # Reusable presentation atoms & components
+│   │       └── SectionHeader.tsx       # Reusable editorial section header
+│   ├── context/                        # Presentation state management
+│   │   └── PdfModalContext.tsx         # Modal state provider & consumer hook
+│   └── hooks/                          # Custom presentation hooks / View-models
+│       ├── useActiveSection.ts         # Navigation scroll spy hook
+│       └── useCvPortfolio.ts           # Hook connecting presentation to application use cases
+│
+└── app/                                # [FRAMEWORK / DELIVERY LAYER] Next.js App Router
+    ├── globals.css                     # VoiceBox design tokens & reset
+    ├── layout.tsx                      # Root layout & font injection
+    └── page.tsx                        # Home route composing presentation features
 ```
 
 ---

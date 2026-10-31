@@ -1,15 +1,18 @@
 import React from 'react';
-import { Navbar } from '../components/Navbar';
-import { HeroSection } from '../components/HeroSection';
-import { CorePrinciples } from '../components/CorePrinciples';
-import { FeaturedProjects } from '../components/FeaturedProjects';
-import { ExperienceTimeline } from '../components/ExperienceTimeline';
-import { SkillsMatrix } from '../components/SkillsMatrix';
-import { EducationCertifications } from '../components/EducationCertifications';
-import { ContactSection } from '../components/ContactSection';
-import { Footer } from '../components/Footer';
-import { PdfModalProvider } from '../context/PdfModalContext';
-import { PdfViewerModal } from '../components/PdfViewerModal';
+import {
+  Navbar,
+  Footer,
+  HeroSection,
+  CorePrinciples,
+  FeaturedProjects,
+  ExperienceTimeline,
+  SkillsMatrix,
+  EducationCertifications,
+  ContactSection,
+  PdfViewerModal,
+  PdfExportModal,
+  PdfModalProvider,
+} from '../presentation';
 
 export default function HomePage() {
   return (
@@ -25,6 +28,7 @@ export default function HomePage() {
         <ContactSection />
         <Footer />
         <PdfViewerModal />
+        <PdfExportModal />
       </main>
     </PdfModalProvider>
   );
