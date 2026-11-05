@@ -11,8 +11,8 @@ import {
   ContactSection,
   PdfViewerModal,
   PdfExportModal,
-  PdfModalProvider,
-} from '../presentation';
+} from '../components';
+import { PdfModalProvider } from '../context/PdfModalContext';
 
 export default function HomePage() {
   return (

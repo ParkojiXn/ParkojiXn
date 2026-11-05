@@ -6,7 +6,7 @@
 
 :root {
   --color-primary: #0A0A0A;
-  --color-secondary: #EF4444;
+  --color-secondary: #DC2626;
   --color-tertiary: #FAFAFA;
   --color-surface: #FAFAFA;
   --color-surface-muted: #F5F5F5;
@@ -21,14 +21,6 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-radius: 0px !important; /* VoiceBox Rule: Sharp, square edges mandatory */
-}
-
-/* Allow full round for author avatar thumbnail only as defined in design.md */
-.avatar-rounded {
-  border-radius: 9999px !important;
 }
 
 body {
@@ -41,12 +33,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Hierarchy based on voicebox-DESIGN.md */
+/* Typography Hierarchy */
 h1, h2, h3, .font-display {
   font-family: 'Archivo Black', Impact, 'Arial Black', sans-serif;
   font-weight: 400;
   color: var(--color-primary);
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .font-body {
@@ -57,33 +49,30 @@ h1, h2, h3, .font-display {
   font-family: 'Space Mono', 'Courier New', Consolas, monospace;
 }
 
-/* Display 56px / 1.05 / -0.03em */
+/* Display & Headline Type Scale */
 .text-display {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  line-height: 1.05;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
-/* Headline 38px / 1.1 / -0.02em */
 .text-headline {
-  font-size: clamp(1.8rem, 3.5vw, 2.375rem);
-  line-height: 1.1;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
-/* Subhead 24px / 1.2 / -0.01em */
 .text-subhead {
-  font-size: 1.5rem;
-  line-height: 1.2;
+  font-size: 1.35rem;
+  line-height: 1.25;
   letter-spacing: -0.01em;
 }
 
-/* Overline 11px / 1.4 / 0.12em */
 .text-overline {
   font-size: 11px;
   line-height: 1.4;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -93,14 +82,14 @@ h1, h2, h3, .font-display {
   box-shadow: 0 0 0 2px #FAFAFA, 0 0 0 4px #0A0A0A;
 }
 
-/* VoiceBox Component Styles */
+/* Button & Card Styles */
 .btn-primary {
   background-color: #0A0A0A;
   color: #FAFAFA;
   border: 2px solid #0A0A0A;
-  padding: 10px 24px;
+  padding: 10px 22px;
   font-family: 'Work Sans', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -109,27 +98,30 @@ h1, h2, h3, .font-display {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  border-radius: 2px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary:hover {
-  background-color: #EF4444;
-  border-color: #EF4444;
+  background-color: #DC2626;
+  border-color: #DC2626;
   color: #FAFAFA;
+  transform: translateY(-1px);
 }
 
 .btn-primary:active {
-  background-color: #DC2626;
-  border-color: #DC2626;
+  background-color: #B91C1C;
+  border-color: #B91C1C;
+  transform: translateY(0);
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: #FFFFFF;
   color: #0A0A0A;
   border: 2px solid #0A0A0A;
-  padding: 10px 24px;
+  padding: 10px 22px;
   font-family: 'Work Sans', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -138,64 +130,64 @@ h1, h2, h3, .font-display {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  border-radius: 2px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-secondary:hover {
   background-color: #0A0A0A;
   color: #FAFAFA;
+  transform: translateY(-1px);
 }
 
 .btn-secondary:active {
   background-color: #262626;
+  transform: translateY(0);
 }
 
 .card-editorial {
-  background-color: #FAFAFA;
-  border: 2px solid #E5E5E5;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
   padding: 24px;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .card-editorial:hover {
   border-color: #0A0A0A;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .card-editorial-elevated {
-  background-color: #FAFAFA;
-  border: 2px solid #E5E5E5;
-  border-top: 4px solid #EF4444;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-top: 3px solid #DC2626;
+  border-radius: 4px;
   padding: 24px;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .card-editorial-elevated:hover {
-  border-left-color: #0A0A0A;
-  border-right-color: #0A0A0A;
-  border-bottom-color: #0A0A0A;
+  border-color: #0A0A0A;
+  border-top-color: #DC2626;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* Pull quote */
 .pull-quote {
-  border-left: 4px solid #EF4444;
-  padding-left: 20px;
-  font-size: 20px;
-  font-style: italic;
-  line-height: 1.65;
-  color: #0A0A0A;
-  background-color: #F5F5F5;
+  border-left: 4px solid #DC2626;
   padding: 16px 20px;
-}
-
-/* Accent red bottom underline */
-.accent-underline {
-  border-bottom: 3px solid #EF4444;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #171717;
+  background-color: #F8F9FA;
+  border-radius: 0 4px 4px 0;
 }
 
 /* Filter Chip */
 .filter-chip {
-  background-color: transparent;
-  border: 2px solid #D4D4D4;
+  background-color: #FFFFFF;
+  border: 1px solid #D4D4D4;
   padding: 6px 14px;
   font-family: 'Work Sans', sans-serif;
   font-size: 12px;
@@ -204,6 +196,7 @@ h1, h2, h3, .font-display {
   letter-spacing: 0.04em;
   color: #525252;
   cursor: pointer;
+  border-radius: 3px;
   transition: all 0.15s ease;
 }
 
@@ -222,7 +215,7 @@ h1, h2, h3, .font-display {
 .status-chip-success {
   background-color: #F0FDF4;
   color: #16A34A;
-  border: 2px solid #16A34A;
+  border: 1px solid #BBF7D0;
   padding: 4px 12px;
   font-size: 11px;
   font-weight: 700;
@@ -231,9 +224,10 @@ h1, h2, h3, .font-display {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  border-radius: 9999px;
 }
 
-/* Custom scrollbar matching magazine style */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -246,16 +240,15 @@ h1, h2, h3, .font-display {
 
 ::-webkit-scrollbar-thumb {
   background: #0A0A0A;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #EF4444;
+  background: #DC2626;
 }
 
 /* ==========================================================================
    PRINT / PDF EXPORT ENGINE STYLESHEET
-   Ensures the entire portfolio exports to A4 vector PDF with pristine
-   VoiceBox editorial typography, zero clipping, and clean page breaks.
    ========================================================================== */
 @media print {
   @page {
@@ -266,7 +259,7 @@ h1, h2, h3, .font-display {
   html, body {
     background-color: #FFFFFF !important;
     color: #0A0A0A !important;
-    font-size: 10.5pt !important;
+    font-size: 10pt !important;
     line-height: 1.45 !important;
     width: 100% !important;
     margin: 0 !important;
@@ -312,14 +305,12 @@ h1, h2, h3, .font-display {
     break-after: avoid !important;
   }
 
-  /* Section padding scaled for paper boundaries */
   section {
     padding-top: 1.5rem !important;
     padding-bottom: 1.5rem !important;
-    border-bottom: 2px solid #0A0A0A !important;
+    border-bottom: 1px solid #0A0A0A !important;
   }
 
-  /* Do not append URL destinations to links when printed */
   a {
     text-decoration: none !important;
     color: inherit !important;

@@ -1,1 +1,11 @@
-export * from '../presentation/components';
+export { Navbar } from './Navbar';
+export { Footer } from './Footer';
+export { HeroSection } from './HeroSection';
+export { CorePrinciples } from './CorePrinciples';
+export { FeaturedProjects } from './FeaturedProjects';
+export { ExperienceTimeline } from './ExperienceTimeline';
+export { SkillsMatrix } from './SkillsMatrix';
+export { EducationCertifications } from './EducationCertifications';
+export { ContactSection } from './ContactSection';
+export { PdfViewerModal } from './PdfViewerModal';
+export { PdfExportModal } from './PdfExportModal';
