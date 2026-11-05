@@ -21,101 +21,102 @@ export const SkillsMatrix: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-16 sm:py-20 border-b border-slate-200/80 bg-white">
+    <section id="skills" className="py-20 lg:py-24 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="border-b border-slate-200 pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="border-b-2 border-[#E5E5E5] pb-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider block mb-1">
-              Core Capabilities
+            <span className="text-[11px] font-mono font-bold text-[#EF4444] uppercase tracking-widest block mb-2">
+              Capabilities &amp; Qualifications
             </span>
-            <h2 className="text-headline text-slate-900">
-              TECHNICAL COMPETENCY MATRIX
+            <h2 className="font-display text-3xl sm:text-4xl text-[#0A0A0A] uppercase tracking-tight">
+              TECHNICAL COMPETENCIES
             </h2>
+            <div className="h-1 w-16 bg-[#EF4444] mt-3" />
           </div>
 
-          <p className="text-sm text-slate-600 max-w-md leading-relaxed">
-            Quantitative civil calculations, contemporary BIM/CAD modeling, and certified multilingual communication.
+          <p className="text-sm font-sans text-[#525252] max-w-lg leading-relaxed">
+            Quantitative engineering, structural volume calculations, contemporary BIM/CAD modeling, and certified multilingual professional communication.
           </p>
         </div>
 
-        {/* Tab Buttons */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8 print:hidden">
+        {/* Tab Buttons (VoiceBox Sharp Border Architecture) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 print:hidden">
           {skillCategories.map((cat, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
-              className={`p-4 text-left border rounded-xl transition-all duration-150 flex flex-col justify-between h-24 ${
+              className={`p-5 text-left border-2 transition-colors flex flex-col justify-between h-28 cursor-pointer ${
                 activeTab === idx
-                  ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                  : 'bg-slate-50 hover:bg-white text-slate-800 border-slate-200 hover:border-slate-300'
+                  ? 'bg-[#0A0A0A] text-[#FAFAFA] border-[#0A0A0A]'
+                  : 'bg-[#FAFAFA] text-[#0A0A0A] border-[#D4D4D4] hover:border-[#0A0A0A]'
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className={`text-xs font-mono font-bold ${activeTab === idx ? 'text-blue-400' : 'text-slate-400'}`}>
+                <span className={`text-xs font-mono font-bold ${activeTab === idx ? 'text-[#EF4444]' : 'text-[#525252]'}`}>
                   0{idx + 1}
                 </span>
-                <span className={activeTab === idx ? 'text-blue-400' : 'text-slate-400'}>
+                <span className={activeTab === idx ? 'text-[#EF4444]' : 'text-[#0A0A0A]'}>
                   {getCategoryIcon(idx)}
                 </span>
               </div>
-              <span className="text-xs sm:text-sm font-bold tracking-tight leading-snug">
+              <span className="font-display text-xs sm:text-sm uppercase tracking-tight leading-snug">
                 {cat.category}
               </span>
             </button>
           ))}
         </div>
 
-        {/* Active Category Display */}
-        <div className="card-pro bg-slate-50/50 border border-slate-200 rounded-2xl p-6 sm:p-8">
+        {/* Active Category Display Container */}
+        <div className="bg-[#FAFAFA] border-2 border-[#0A0A0A] p-6 sm:p-8">
           {/* Header of Active Tab */}
-          <div className="border-b border-slate-200 pb-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="border-b-2 border-[#E5E5E5] pb-5 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900">
+              <h3 className="font-display text-xl sm:text-2xl text-[#0A0A0A] uppercase tracking-tight">
                 {skillCategories[activeTab]?.category}
               </h3>
-              <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+              <p className="text-sm font-sans text-[#525252] mt-1.5 leading-relaxed">
                 {skillCategories[activeTab]?.description}
               </p>
             </div>
-            <span className="text-xs font-mono font-semibold text-blue-700 bg-blue-50 px-3.5 py-1.5 border border-blue-200 self-start sm:self-auto rounded-full whitespace-nowrap">
+            <span className="text-xs font-mono font-bold text-[#0A0A0A] bg-[#F5F5F5] px-3.5 py-1.5 border-2 border-[#0A0A0A] self-start sm:self-auto uppercase tracking-wider">
               {skillCategories[activeTab]?.items.length} Verified Competencies
             </span>
           </div>
 
           {/* Grid of Skills in Current Category */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skillCategories[activeTab]?.items.map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 border border-slate-200/90 hover:border-blue-500 bg-white rounded-xl flex flex-col justify-between transition-all group shadow-2xs hover:shadow-xs"
+                className="p-5 border-2 border-[#E5E5E5] hover:border-[#0A0A0A] bg-[#FAFAFA] flex flex-col justify-between transition-colors group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md font-semibold">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A0A0A] bg-[#F5F5F5] px-2 py-0.5 border border-[#D4D4D4] font-bold">
                       {item.categoryTag}
                     </span>
                     {item.level && (
-                      <span className="text-xs font-mono font-bold text-blue-600">
+                      <span className="text-xs font-mono font-bold text-[#EF4444]">
                         {item.level}
                       </span>
                     )}
                   </div>
 
-                  <h4 className="font-display text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  <h4 className="font-display text-base text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors leading-snug uppercase tracking-tight">
                     {item.name}
                   </h4>
 
                   {item.details && (
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed font-normal">
+                    <p className="text-xs font-sans text-[#525252] mt-2.5 leading-relaxed">
                       {item.details}
                     </p>
                   )}
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>STATE / INDUSTRY VERIFIED</span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <div className="mt-5 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#525252]">
+                  <span className="uppercase font-semibold">VERIFIED SPECIFICATION</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
                 </div>
               </div>
             ))}

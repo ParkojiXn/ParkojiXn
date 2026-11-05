@@ -10,29 +10,57 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          primary: "#0F172A",     // Deep Slate 900
-          secondary: "#2563EB",   // Engineering Blue
-          accent: "#DC2626",      // Precision Crimson
-          surface: "#F8FAFC",     // Clean Slate 50
+          primary: "#0A0A0A",     // Pure Black
+          secondary: "#EF4444",   // Red Accent
+          tertiary: "#FAFAFA",    // Clean White
+        },
+        surface: {
+          DEFAULT: "#FAFAFA",
+          muted: "#F5F5F5",
+          raised: "#E5E5E5",
+        },
+        content: {
+          primary: "#0A0A0A",
+          secondary: "#525252",
+          tertiary: "#A3A3A3",
+        },
+        editorial: {
+          subtle: "#E5E5E5",
+          medium: "#D4D4D4",
+          strong: "#0A0A0A",
+        },
+        semantic: {
+          success: "#16A34A",
+          warning: "#CA8A04",
+          error: "#EF4444",
         },
       },
       fontFamily: {
-        sans: ["'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        display: ["'Archivo Black'", "Impact", "'Arial Black'", "sans-serif"],
+        body: ["'Work Sans'", "-apple-system", "'Segoe UI'", "Helvetica", "sans-serif"],
         mono: ["'Space Mono'", "'Courier New'", "Consolas", "monospace"],
+      },
+      borderRadius: {
+        none: "0px",
+        sm: "0px",
+        DEFAULT: "0px",
+        md: "0px",
+        lg: "0px",
+        xl: "0px",
+        "2xl": "0px",
+        full: "9999px", // Only avatar / radio
+      },
+      boxShadow: {
+        none: "none",
+        focus: "0 0 0 2px #FAFAFA, 0 0 0 4px #0A0A0A",
       },
       letterSpacing: {
         tightest: "-0.03em",
         tighter: "-0.02em",
         tight: "-0.01em",
-      },
-      boxShadow: {
-        '2xs': '0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-        'xs': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
-        'sm': '0 2px 4px 0 rgba(0, 0, 0, 0.05)',
-        'md': '0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04)',
-        'lg': '0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05)',
-        'xl': '0 20px 30px -10px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.06)',
+        button: "0.06em",
+        chip: "0.04em",
+        overline: "0.12em",
       },
     },
   },

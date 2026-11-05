@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { X, Printer, FileText, CheckCircle2, ShieldCheck, Download, ExternalLink } from 'lucide-react';
+import { X, Printer, FileText, ShieldCheck, Download } from 'lucide-react';
 import { usePdfModal } from '../context/PdfModalContext';
 import { profileData } from '../data/cv-data';
 
@@ -31,35 +31,35 @@ export const PdfExportModal: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[110] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 print:hidden"
+      className="fixed inset-0 z-[110] bg-[#0A0A0A]/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 print:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Export Portfolio to PDF"
       onClick={closeExportModal}
     >
       <div
-        className="bg-white border border-slate-200 w-full max-w-2xl flex flex-col shadow-2xl relative overflow-hidden max-h-[92vh] rounded-2xl"
+        className="bg-[#FAFAFA] border-4 border-[#0A0A0A] w-full max-w-2xl flex flex-col shadow-none relative overflow-hidden max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header Bar */}
-        <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between gap-4">
+        <div className="bg-[#0A0A0A] text-[#FAFAFA] px-6 py-4 flex items-center justify-between gap-4 border-b-2 border-[#0A0A0A]">
           <div className="flex items-center gap-3">
-            <span className="p-1.5 bg-blue-600 text-white text-xs font-mono font-bold rounded-md">
+            <span className="px-2 py-0.5 bg-[#EF4444] text-[#FAFAFA] text-xs font-mono font-bold">
               PDF
             </span>
             <div>
-              <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase block font-semibold">
-                Download &amp; Export
+              <span className="text-[10px] font-mono text-[#EF4444] tracking-widest uppercase block font-bold">
+                Dossier Downloads &amp; Export
               </span>
-              <h3 className="font-display text-base sm:text-lg font-bold text-white">
-                REZA SEPDIDE — PORTFOLIO DOSSIERS
+              <h3 className="font-display text-sm sm:text-base text-[#FAFAFA] uppercase tracking-tight">
+                REZA SEPDIDE — ENGINEERING PORTFOLIO PACKAGES
               </h3>
             </div>
           </div>
 
           <button
             onClick={closeExportModal}
-            className="p-1.5 bg-slate-800 hover:bg-slate-700 text-white transition-colors rounded-full"
+            className="p-1.5 text-[#FAFAFA] hover:text-[#EF4444] transition-colors cursor-pointer"
             aria-label="Close Export Modal"
           >
             <X className="w-5 h-5" />
@@ -69,15 +69,15 @@ export const PdfExportModal: React.FC = () => {
         {/* Content Body */}
         <div className="p-6 sm:p-7 space-y-6 overflow-y-auto">
           {/* Summary Box */}
-          <div className="bg-slate-50 border border-slate-200/80 p-4 sm:p-5 rounded-xl">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+          <div className="bg-[#F5F5F5] border-2 border-[#E5E5E5] p-5">
+            <div className="flex items-start gap-3.5">
+              <ShieldCheck className="w-5 h-5 text-[#EF4444] flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-display text-sm sm:text-base font-bold text-slate-900">
+                <h4 className="font-display text-sm sm:text-base text-[#0A0A0A] uppercase tracking-tight">
                   OFFICIAL ENGINEERING PORTFOLIO PACKAGES
                 </h4>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  High-resolution comprehensive dossiers formatted for contractor pre-qualification, consultant tenders, and formal job applications.
+                <p className="text-xs font-sans text-[#525252] mt-1 leading-relaxed">
+                  High-resolution comprehensive dossiers formatted for contractor pre-qualification, consultant tenders, and formal technical job applications.
                 </p>
               </div>
             </div>
@@ -85,23 +85,23 @@ export const PdfExportModal: React.FC = () => {
 
           {/* Download Options */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A]">
               Complete 28-Page Landscape Dossiers
             </h4>
 
             {/* Option 1: English Edition */}
-            <div className="p-4 bg-white border border-slate-200 hover:border-blue-500 rounded-xl transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+            <div className="p-4 bg-[#FAFAFA] border-2 border-[#E5E5E5] hover:border-[#0A0A0A] transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-slate-900">
+                  <span className="font-display text-xs sm:text-sm text-[#0A0A0A] uppercase tracking-tight">
                     Portfolio (English Edition)
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 bg-blue-50 text-blue-700 rounded-md font-semibold">
-                    28 Pages • 38 MB
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#0A0A0A] text-[#FAFAFA]">
+                    28 PAGES • 38 MB
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
-                  Full landscape engineering dossier with DED blueprints, BoQ calculations, and project photos in English.
+                <p className="text-xs font-sans text-[#525252] mt-1">
+                  Full landscape engineering dossier with DED blueprints, BoQ calculations, and project field photos in English.
                 </p>
               </div>
 
@@ -115,14 +115,14 @@ export const PdfExportModal: React.FC = () => {
                       'Reza Sepdide - English Portfolio (28 Pages)'
                     );
                   }}
-                  className="px-3 py-1.5 border border-slate-300 hover:bg-slate-50 text-xs font-semibold rounded-lg transition-colors"
+                  className="px-3 py-1.5 border-2 border-[#0A0A0A] bg-transparent text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Preview
                 </button>
                 <a
                   href="/Portofolio_Civil_Engineering_Reza_Sepdide_Landscape.pdf"
                   download
-                  className="px-3 py-1.5 bg-slate-900 hover:bg-blue-600 text-white text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors shadow-2xs"
+                  className="px-3.5 py-1.5 bg-[#0A0A0A] hover:bg-[#EF4444] border-2 border-[#0A0A0A] hover:border-[#EF4444] text-[#FAFAFA] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download</span>
@@ -131,18 +131,18 @@ export const PdfExportModal: React.FC = () => {
             </div>
 
             {/* Option 2: Indonesian Edition */}
-            <div className="p-4 bg-white border border-slate-200 hover:border-emerald-500 rounded-xl transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+            <div className="p-4 bg-[#FAFAFA] border-2 border-[#E5E5E5] hover:border-[#0A0A0A] transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-slate-900">
+                  <span className="font-display text-xs sm:text-sm text-[#0A0A0A] uppercase tracking-tight">
                     Portofolio (Edisi Indonesia)
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-md font-semibold">
-                    28 Halaman • 38 MB
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#0A0A0A] text-[#FAFAFA]">
+                    28 HALAMAN • 38 MB
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
-                  Dossier lengkap berbahasa Indonesia memuat gambar kerja DED, RAB/Kurva S, dan dokumentasi lapangan.
+                <p className="text-xs font-sans text-[#525252] mt-1">
+                  Dossier lengkap berbahasa Indonesia memuat gambar kerja DED, RAB/Kurva S, dan dokumentasi teknis lapangan.
                 </p>
               </div>
 
@@ -156,14 +156,14 @@ export const PdfExportModal: React.FC = () => {
                       'Reza Sepdide - Portofolio Indonesia (28 Halaman)'
                     );
                   }}
-                  className="px-3 py-1.5 border border-slate-300 hover:bg-slate-50 text-xs font-semibold rounded-lg transition-colors"
+                  className="px-3 py-1.5 border-2 border-[#0A0A0A] bg-transparent text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Lihat
                 </button>
                 <a
                   href="/Portofolio_Teknik_Sipil_Reza_Sepdide_Landscape.pdf"
                   download
-                  className="px-3 py-1.5 bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors shadow-2xs"
+                  className="px-3.5 py-1.5 bg-[#0A0A0A] hover:bg-[#EF4444] border-2 border-[#0A0A0A] hover:border-[#EF4444] text-[#FAFAFA] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Unduh</span>
@@ -173,8 +173,8 @@ export const PdfExportModal: React.FC = () => {
           </div>
 
           {/* CV Word Downloads & Browser Print */}
-          <div className="pt-2 border-t border-slate-100 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900">
+          <div className="pt-2 border-t-2 border-[#E5E5E5] space-y-3">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A]">
               Curriculum Vitae &amp; Web Summary
             </h4>
 
@@ -182,47 +182,47 @@ export const PdfExportModal: React.FC = () => {
               <a
                 href="/CV_Reza_Sepdide_English.docx"
                 download
-                className="p-3 bg-white border border-slate-200 hover:border-slate-300 rounded-xl flex items-center justify-between text-xs text-slate-800 transition-colors group shadow-2xs"
+                className="p-3 bg-[#FAFAFA] border-2 border-[#E5E5E5] hover:border-[#0A0A0A] flex items-center justify-between text-xs text-[#0A0A0A] transition-colors group"
               >
                 <div className="flex items-center gap-2.5">
-                  <FileText className="w-4 h-4 text-blue-600" />
-                  <span className="font-semibold group-hover:text-blue-600 transition-colors">CV English (.docx)</span>
+                  <FileText className="w-4 h-4 text-[#EF4444]" />
+                  <span className="font-mono font-bold uppercase tracking-wider group-hover:text-[#EF4444] transition-colors">CV English (.docx)</span>
                 </div>
-                <Download className="w-3.5 h-3.5 text-slate-400" />
+                <Download className="w-3.5 h-3.5 text-[#525252]" />
               </a>
 
               <a
                 href="/CV_Reza_Sepdide_Profesional.docx"
                 download
-                className="p-3 bg-white border border-slate-200 hover:border-slate-300 rounded-xl flex items-center justify-between text-xs text-slate-800 transition-colors group shadow-2xs"
+                className="p-3 bg-[#FAFAFA] border-2 border-[#E5E5E5] hover:border-[#0A0A0A] flex items-center justify-between text-xs text-[#0A0A0A] transition-colors group"
               >
                 <div className="flex items-center gap-2.5">
-                  <FileText className="w-4 h-4 text-emerald-600" />
-                  <span className="font-semibold group-hover:text-emerald-600 transition-colors">CV Indonesia (.docx)</span>
+                  <FileText className="w-4 h-4 text-[#EF4444]" />
+                  <span className="font-mono font-bold uppercase tracking-wider group-hover:text-[#EF4444] transition-colors">CV Indonesia (.docx)</span>
                 </div>
-                <Download className="w-3.5 h-3.5 text-slate-400" />
+                <Download className="w-3.5 h-3.5 text-[#525252]" />
               </a>
             </div>
 
             <button
               type="button"
               onClick={triggerExportPdf}
-              className="w-full mt-2 p-3 bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors text-xs font-semibold flex items-center justify-center gap-2 rounded-xl cursor-pointer"
+              className="w-full mt-2 p-3 bg-[#F5F5F5] border-2 border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition-colors text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Printer className="w-4 h-4 text-slate-600" />
+              <Printer className="w-4 h-4" />
               <span>Print or Save Web Summary as A4 PDF</span>
             </button>
           </div>
         </div>
 
         {/* Modal Footer */}
-        <div className="bg-slate-50 border-t border-slate-100 px-6 py-3.5 flex items-center justify-between">
-          <span className="text-xs font-mono text-slate-500">
+        <div className="bg-[#F5F5F5] border-t-2 border-[#E5E5E5] px-6 py-3 flex items-center justify-between">
+          <span className="text-xs font-mono text-[#525252]">
             Reza Sepdide • {profileData.email}
           </span>
           <button
             onClick={closeExportModal}
-            className="text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
+            className="text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:text-[#EF4444] transition-colors cursor-pointer"
           >
             Close
           </button>
