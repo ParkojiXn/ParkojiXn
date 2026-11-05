@@ -30,27 +30,27 @@ export const PdfViewerModal: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-[#0A0A0A]/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6"
+      className="fixed inset-0 z-[100] bg-slate-900/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6"
       role="dialog"
       aria-modal="true"
       aria-label={pdfTitle || 'PDF Document Viewer'}
       onClick={closePdf}
     >
       <div
-        className="bg-[#FAFAFA] border border-[#0A0A0A] w-full max-w-6xl h-[92vh] flex flex-col shadow-2xl relative rounded-xs overflow-hidden"
+        className="bg-white border border-slate-200 w-full max-w-6xl h-[92vh] flex flex-col shadow-2xl relative rounded-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Header */}
-        <div className="bg-[#0A0A0A] text-[#FAFAFA] px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0 pr-2">
-            <span className="p-1.5 bg-[#DC2626] text-[#FAFAFA] text-xs font-mono font-bold flex-shrink-0 rounded-xs">
+            <span className="p-1.5 bg-blue-600 text-white text-xs font-mono font-bold flex-shrink-0 rounded-md">
               PDF
             </span>
             <div className="min-w-0">
-              <span className="text-[10px] font-mono text-[#DC2626] tracking-wider uppercase block font-semibold">
+              <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase block font-semibold">
                 Official Engineering Document
               </span>
-              <h3 className="font-display text-sm sm:text-base text-[#FAFAFA] truncate">
+              <h3 className="font-display text-sm sm:text-base font-bold text-white truncate">
                 {pdfTitle || 'Technical PDF Document'}
               </h3>
             </div>
@@ -63,10 +63,10 @@ export const PdfViewerModal: React.FC = () => {
               href={pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-[#262626] hover:bg-[#333333] text-[#FAFAFA] border border-[#525252] text-xs font-mono font-bold flex items-center gap-1.5 transition-colors rounded-xs"
+              className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium flex items-center gap-1.5 transition-colors rounded-lg"
               title="Open Document in New Tab"
             >
-              <ExternalLink className="w-3.5 h-3.5 text-[#DC2626]" />
+              <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
               <span className="hidden sm:inline">Open in Tab</span>
             </a>
 
@@ -74,7 +74,7 @@ export const PdfViewerModal: React.FC = () => {
             <a
               href={pdfUrl}
               download
-              className="px-3 py-1.5 bg-[#DC2626] hover:bg-[#B91C1C] text-[#FAFAFA] text-xs font-mono font-bold flex items-center gap-1.5 transition-colors rounded-xs"
+              className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium flex items-center gap-1.5 transition-colors rounded-lg shadow-xs"
               title="Download Original File"
             >
               <Download className="w-3.5 h-3.5" />
@@ -84,7 +84,7 @@ export const PdfViewerModal: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={closePdf}
-              className="p-1.5 bg-[#FAFAFA] text-[#0A0A0A] hover:bg-[#DC2626] hover:text-[#FAFAFA] transition-colors ml-1 rounded-xs"
+              className="p-1.5 bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors ml-1 rounded-full cursor-pointer"
               aria-label="Close Document Viewer"
               title="Close (Esc)"
             >
@@ -94,7 +94,7 @@ export const PdfViewerModal: React.FC = () => {
         </div>
 
         {/* Embedded PDF Viewer Iframe */}
-        <div className="flex-1 w-full bg-[#262626] relative overflow-hidden flex flex-col">
+        <div className="flex-1 w-full bg-slate-950 relative overflow-hidden flex flex-col">
           <iframe
             src={`${pdfUrl}#toolbar=1&navpanes=0&scrollbar=1`}
             title={pdfTitle || 'PDF Document Viewer'}
