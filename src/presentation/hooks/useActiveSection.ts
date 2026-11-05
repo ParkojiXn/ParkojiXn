@@ -2,8 +2,18 @@
 
 import { useState, useEffect } from 'react';
 
+const DEFAULT_SECTION_IDS = [
+  'hero',
+  'principles',
+  'projects',
+  'experience',
+  'skills',
+  'education',
+  'contact',
+];
+
 export function useActiveSection(
-  sectionIds: string[] = ['hero', 'principles', 'projects', 'experience', 'skills', 'education', 'contact'],
+  sectionIds: string[] = DEFAULT_SECTION_IDS,
   offset: number = 200
 ) {
   const [activeSection, setActiveSection] = useState<string>(sectionIds[0] || 'hero');
