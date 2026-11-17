@@ -156,64 +156,58 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
   % Top Header Row
   \begin{tabularx}{\linewidth}{@{}l >{\raggedleft\arraybackslash}X@{}}
     \colorbox{pred}{\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{white}\ \ OFFICIAL CIVIL ENGINEERING \& CONSTRUCTION MANAGEMENT CREDENTIALS\ \ } &
-    {\fontsize{7.5pt}{8.5pt}\selectfont\bfseries\color{pmuted}CIVIL ENGINEERING PORTFOLIO \textbar\ OFFICIAL 2026 EDITION \textbar\ PADANG, INDONESIA}
-  \end{tabularx}
-  \vspace{2mm}
-  \noindent\textcolor{pnavy}{\rule{\linewidth}{1.5pt}}
+    {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pmuted}CIVIL ENGINEERING PORTFOLIO \textbar\ OFFICIAL 2026 EDITION \textbar\ PADANG, INDONESIA}
+  \end{tabularx}\par
+  \vspace{1.5mm}\noindent
+  \textcolor{pnavy}{\rule{\linewidth}{1.2pt}}\par
   \vspace{2.5mm}
 
   \noindent
   \begin{minipage}[t]{0.68\linewidth}
-    \vspace{0pt}
+    \vspace{0pt}%
     {\fontsize{21pt}{25pt}\selectfont\bfseries\color{pnavy}CIVIL ENGINEERING PORTFOLIO}\\[1.5mm]
     {\fontsize{11.5pt}{14.5pt}\selectfont\bfseries\color{pred}QUANTITY SURVEYING, COST ESTIMATION \& CONSTRUCTION MANAGEMENT}\\[2mm]
-    {\fontsize{8.2pt}{11pt}\selectfont\color{psteel}Comprehensive Compilation of Verified Engineering Deliverables, BNSP Level 5 State License, AutoCAD Multi-Viewport DED Drawings, Technical Specifications (RKS), BoQ/RAB Cost Estimations, S-Curve Scheduling, Bar Bending Schedules (BBS), and On-Site Quality Control.}\\[3mm]
-
-    \noindent\textcolor{pred}{\rule{50mm}{2pt}}\\[3mm]
-
+    {\fontsize{8.2pt}{11pt}\selectfont\color{psteel}Comprehensive Compilation of Verified Engineering Deliverables, BNSP Level 5 State License, AutoCAD Multi-Viewport DED Drawings, Technical Specifications (RKS), BoQ/RAB Cost Estimations, S-Curve Scheduling, Bar Bending Schedules (BBS), and On-Site Quality Control.}\\[2.5mm]
+    \textcolor{pred}{\rule{45mm}{1.8pt}}\\[2.5mm]
     {\fontsize{12.5pt}{14.5pt}\selectfont\bfseries\color{pnavy}REZA SEPDIDE, A.Md.T.}\\[1mm]
     {\fontsize{8.5pt}{10.5pt}\selectfont\bfseries\color{pmuted}Civil Engineer \textbar\ Quantity Surveyor \textbar\ Construction Planner}\\[3mm]
-
     % 4 Stat Boxes
     \begin{tabularx}{\linewidth}{@{}XXXX@{}}
-      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.2mm, right=2.2mm, top=2mm, bottom=2mm]
         {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}3.72}\\[0.5mm]
         {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pred}GPA / 4.00}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\color{pmuted}D3 CIVIL ENG. PNP\\WITH HONORS}
       \end{tcolorbox} &
-      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.2mm, right=2.2mm, top=2mm, bottom=2mm]
         {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}LEVEL 5}\\[0.5mm]
         {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pred}SKK BNSP}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\color{pmuted}IMPLEMENTING INTERMEDIATE\\BUILDING WORKS}
       \end{tcolorbox} &
-      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.2mm, right=2.2mm, top=2mm, bottom=2mm]
         {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}10+}\\[0.5mm]
         {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pred}PROJECTS}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\color{pmuted}REVITALIZATION, EPC\\QS, DED \& S-CURVE}
       \end{tcolorbox} &
-      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
+      \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.2mm, right=2.2mm, top=2mm, bottom=2mm]
         {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}3 LANG.}\\[0.5mm]
         {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pred}CERTIFIED}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\color{pmuted}INDONESIAN, JAPANESE\\(SSW/JLPT), ENGLISH}
       \end{tcolorbox}
-    \end{tabularx}
-    \vspace{2.5mm}
-
+    \end{tabularx}%
+    \vspace{2.5mm}%
     % Metadata Summary Box
-    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm]
-      \begin{tabularx}{\linewidth}{@{}p{32mm} X@{}}
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}CURRENT EDUCATION:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma IV (D4) Construction Engineering Management, PNP (Active / Ongoing)} \\[1mm]
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}ACADEMIC DEGREE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma III (D3) Civil Engineering, Padang State Polytechnic (Graduated: Cum Laude, GPA 3.72, 115 Credits)} \\[1mm]
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}STATE LICENSE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}BNSP Level 5 (Reg. F7472118, Tenaga Konstruksi Nasional PCA -- LPJK)} \\[1mm]
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}EMAIL \& CONTACT:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}\fontfamily{cmtt}\selectfont rezasepdide@gmail.com \textbar\ +62 896-4459-0915 \textbar\ linkedin.com/in/rezasepdide}
+    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.2mm, bottom=2.2mm]
+      \begin{tabularx}{\linewidth}{@{}p{31mm} X@{}}
+        {\fontsize{7.2pt}{9pt}\selectfont\bfseries\color{pnavy}CURRENT EDUCATION:} & {\fontsize{7.2pt}{9pt}\selectfont\color{psteel}Diploma IV (D4) Construction Engineering Management, PNP (Active / Ongoing)} \\[0.8mm]
+        {\fontsize{7.2pt}{9pt}\selectfont\bfseries\color{pnavy}ACADEMIC DEGREE:} & {\fontsize{7.2pt}{9pt}\selectfont\color{psteel}Diploma III (D3) Civil Engineering, Padang State Polytechnic (Graduated: Cum Laude, GPA 3.72, 115 Credits)} \\[0.8mm]
+        {\fontsize{7.2pt}{9pt}\selectfont\bfseries\color{pnavy}STATE LICENSE:} & {\fontsize{7.2pt}{9pt}\selectfont\color{psteel}BNSP Level 5 (Reg. F7472118, Tenaga Konstruksi Nasional PCA -- LPJK)} \\[0.8mm]
+        {\fontsize{7.2pt}{9pt}\selectfont\bfseries\color{pnavy}EMAIL \& CONTACT:} & {\fontsize{7.2pt}{9pt}\selectfont\color{psteel}\fontfamily{cmtt}\selectfont rezasepdide@gmail.com \textbar\ +62 896-4459-0915 \textbar\ linkedin.com/in/rezasepdide}
       \end{tabularx}
-    \end{tcolorbox}
-    \vspace{2mm}
-
-    % Bottom Verification Box (Eliminating bottom blank space)
+    \end{tcolorbox}%
+    \vspace{2.5mm}%
     % Bottom Box: CORE ENGINEERING COMPETENCIES (Moved from right column)
     \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=3mm, right=3mm, top=2mm, bottom=2mm]
-      {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pnavy}CORE ENGINEERING COMPETENCIES:}\\[0.8mm]
+      {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pnavy}CORE ENGINEERING COMPETENCIES:}\\[0.7mm]
       \begin{tabularx}{\linewidth}{@{}>{\fontsize{6.5pt}{8pt}\selectfont\color{psteel}}X >{\fontsize{6.5pt}{8pt}\selectfont\color{psteel}}X@{}}
         $\bullet$\ \ Cost Estimation \& BoQ/RAB PUPR AHSP Standards & $\bullet$\ \ S-Curve \& Project Scheduling (CPM) \\[0.5mm]
         $\bullet$\ \ Bar Bending Schedule (BBS) Detailing & $\bullet$\ \ AutoCAD Multi-Viewport DED Drawings to PDF \\[0.5mm]
@@ -224,16 +218,16 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
   \hfill
   \begin{minipage}[t]{0.30\linewidth}
     \vspace{0pt}
-    \begin{tcolorbox}[sharp corners, boxrule=1pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2.5mm, bottom=2.5mm]
+    \begin{tcolorbox}[sharp corners, boxrule=1pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2.2mm, bottom=2.2mm]
       \centering
-      \includegraphics[width=\linewidth,height=94mm,keepaspectratio]{{{""" + export_p("professional_photo_shifted.jpeg") + r"""}}}\\[2mm]
+      \includegraphics[width=\linewidth,height=96mm,keepaspectratio]{{{""" + export_p("professional_photo_shifted.jpeg") + r"""}}}\\[2mm]
       {\fontsize{9.5pt}{11pt}\selectfont\bfseries\color{pnavy}REZA SEPDIDE, A.Md.T.}\\[0.5mm]
       {\fontsize{7pt}{8.5pt}\selectfont\color{pred}\textbf{Implementing Intermediate Building Works}}\\[0.5mm]
       {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}Reg. BNSP: F7472118 \textbar\ KKNI Level 5}
     \end{tcolorbox}
-    \vspace{2mm}
+    \vspace{2.5mm}
 
-    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2.5mm]
+    \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2.2mm, bottom=2.2mm]
       \centering
       {\fontsize{6.5pt}{8pt}\selectfont\bfseries\color{pnavy}LIVE PORTFOLIO // SCAN QR CODE:}\\[1.2mm]
       \includegraphics[width=23mm,height=23mm,keepaspectratio]{{{""" + export_p("qr_portfolio_vercel.pdf") + r"""}}}\\[1.2mm]
