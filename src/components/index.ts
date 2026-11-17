@@ -9,3 +9,4 @@ export { EducationCertifications } from './EducationCertifications';
 export { ContactSection } from './ContactSection';
 export { PdfViewerModal } from './PdfViewerModal';
 export { PdfExportModal } from './PdfExportModal';
+export { BackToTop } from './BackToTop';

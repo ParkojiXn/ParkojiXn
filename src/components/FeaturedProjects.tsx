@@ -213,7 +213,7 @@ export const FeaturedProjects: React.FC = () => {
                       href={activeModalProject.mediaGallery[activeImageIndex].url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] font-mono text-[#A3A3A3] hover:text-[#FAFAFA] flex items-center gap-1 underline"
+                      className="text-[11px] font-mono text-[#D4D4D4] hover:text-[#FAFAFA] flex items-center gap-1 underline"
                     >
                       View Full Size <ExternalLink className="w-3 h-3" />
                     </a>
@@ -253,7 +253,7 @@ export const FeaturedProjects: React.FC = () => {
                     <h4 className="font-mono text-sm font-bold text-[#FAFAFA]">
                       {activeModalProject.mediaGallery[activeImageIndex].title}
                     </h4>
-                    <p className="text-xs text-[#A3A3A3] font-body mt-1">
+                    <p className="text-xs text-[#E5E5E5] font-body mt-1 leading-relaxed">
                       {activeModalProject.mediaGallery[activeImageIndex].caption}
                     </p>
                   </div>

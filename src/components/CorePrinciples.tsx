@@ -101,7 +101,7 @@ export const CorePrinciples: React.FC = () => {
               </div>
 
               {/* Pillar Footer */}
-              <div className="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#737373]">
+              <div className="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#404040]">
                 <span className="font-semibold">ENGINEERING BENCHMARK</span>
                 <span className="text-[#0A0A0A] font-bold">{getBenchmarkBadge(idx)}</span>
               </div>

@@ -11,6 +11,7 @@ import {
   ContactSection,
   PdfViewerModal,
   PdfExportModal,
+  BackToTop,
 } from '../components';
 import { PdfModalProvider } from '../context/PdfModalContext';
 
@@ -29,6 +30,7 @@ export default function HomePage() {
         <Footer />
         <PdfViewerModal />
         <PdfExportModal />
+        <BackToTop />
       </main>
     </PdfModalProvider>
   );

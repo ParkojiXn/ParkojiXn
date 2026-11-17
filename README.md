@@ -7,11 +7,11 @@ A modern, high-performance portfolio website for **Reza Sepdide** (*Civil Engine
 ## 1. Professional Overview & Authenticated Data
 
 - **Academic Qualifications**:
-  - **Diploma III (D3) Civil Engineering** — Politeknik Negeri Padang (**GPA: 3.72 / 4.00 — Graduated with High Honors / Magna Cum Laude**).
+  - **Diploma III (D3) Civil Engineering** — Politeknik Negeri Padang (Predikat: Pujian / Cum Laude, IPK: 3.72 / 4.00, 115 SKS).
   - **Diploma IV (D4) Construction Engineering Management** — Politeknik Negeri Padang (Aug 2026 – Present).
   - **SMA Negeri 1 Padang** (Natural Sciences & Mathematics, 2019 – 2022).
 - **Professional Accreditations & Licenses**:
-  - **National Certificate of Competency (SKK) Level 5** — Implementing Intermediate Building Construction Supervisor (BNSP & Kementerian PUPR Balai Jasa Konstruksi Wilayah I Banda Aceh).
+  - **National Certificate of Competency (SKK) Level 5** — Implementing Intermediate Building Works (BNSP & LPJK, LSP Tenaga Konstruksi Nasional, Reg. F7472118).
   - **Specified Skilled Worker (SSW) Evaluation Exam for Construction Industry** — Japan Association for Construction Human Resources (JAC).
   - **Autodesk Revit Masterclass (BIM)** — Arsisten Academy.
   - **Bilingual Japanese**: JFT-Basic (Score: 250/250) & JLPT Level N4 (Score: 165/180).

@@ -204,7 +204,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
       \begin{tabularx}{\linewidth}{@{}p{32mm} X@{}}
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}CURRENT EDUCATION:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma IV (D4) Construction Engineering Management, PNP (Active / Ongoing)} \\[1mm]
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}ACADEMIC DEGREE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma III (D3) Civil Engineering, Padang State Polytechnic (Graduated: Cum Laude, GPA 3.72, 115 Credits)} \\[1mm]
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}STATE LICENSE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}BNSP Level 5 Construction Services Center Region I Banda Aceh, Ministry of Public Works} \\[1mm]
+        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}STATE LICENSE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}BNSP Level 5 (Reg. F7472118, Tenaga Konstruksi Nasional PCA -- LPJK)} \\[1mm]
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}EMAIL \& CONTACT:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}\fontfamily{cmtt}\selectfont rezasepdide@gmail.com \textbar\ +62 896-4459-0915 \textbar\ linkedin.com/in/rezasepdide}
       \end{tabularx}
     \end{tcolorbox}
@@ -428,7 +428,7 @@ tex.append(r"""\newpage
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Issuing Body:} & {\fontsize{6.8pt}{8pt}\selectfont BNSP RI} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Implementing Agency:} & {\fontsize{6.8pt}{8pt}\selectfont BJKW I Banda Aceh (PUPR)} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Development Board:} & {\fontsize{6.8pt}{8pt}\selectfont Construction Services Development Board (LPJK)} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries LSP Agency:} & {\fontsize{6.8pt}{8pt}\selectfont LSP Tenaga Konstruksi Nasional} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Reg. Number:} & {\fontsize{6.8pt}{8pt}\selectfont\fontfamily{cmtt}\selectfont F7472118} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Validity Period:} & {\fontsize{6.8pt}{8pt}\selectfont Valid Thru July 2030 (5 Yrs)}
@@ -484,7 +484,7 @@ tex.append(r"""\newpage
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Assessment Scheme:} & {\fontsize{6.8pt}{8pt}\selectfont Implementing Intermediate Building Works} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries KKNI Level:} & {\fontsize{6.8pt}{8pt}\selectfont Level 5 (Technician / Analyst)} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Assessment Status:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pred} All Competency Units Qualified (Certified)} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Testing Center (TUK):} & {\fontsize{6.8pt}{8pt}\selectfont BJKW I Banda Aceh}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Subclassification:} & {\fontsize{6.8pt}{8pt}\selectfont Building (Civil Classification)}
       \end{tabularx}
     \end{tcolorbox}
     \vspace{1.5mm}

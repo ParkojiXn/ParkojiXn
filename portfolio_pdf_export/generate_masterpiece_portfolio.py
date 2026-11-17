@@ -204,7 +204,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
       \begin{tabularx}{\linewidth}{@{}p{32mm} X@{}}
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}STATUS PENDIDIKAN:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma IV (D4) Manajemen Rekayasa Konstruksi PNP (Aktif / Ongoing)} \\[1mm]
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}LULUSAN AKADEMIK:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}D3 Teknik Sipil Politeknik Negeri Padang (Predikat: Pujian / Cum Laude, IPK 3.72, 115 SKS)} \\[1mm]
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}LISENSI PROFESI:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}BNSP Jenjang 5 Balai Jasa Konstruksi Wilayah I Banda Aceh, Kementerian PUPR} \\[1mm]
+        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}LISENSI PROFESI:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}BNSP Jenjang 5 (Reg. F7472118, LSP Tenaga Konstruksi Nasional -- LPJK)} \\[1mm]
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}EMAIL \& KONTAK:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}\fontfamily{cmtt}\selectfont rezasepdide@gmail.com \textbar\ +62 896-4459-0915 \textbar\ linkedin.com/in/rezasepdide}
       \end{tabularx}
     \end{tcolorbox}
@@ -427,7 +427,7 @@ tex.append(r"""\newpage
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Badan Penerbit:} & {\fontsize{6.8pt}{8pt}\selectfont BNSP RI} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Penyelenggara:} & {\fontsize{6.8pt}{8pt}\selectfont BJKW I Banda Aceh (PUPR)} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Lembaga Pengembang:} & {\fontsize{6.8pt}{8pt}\selectfont Lembaga Pengembangan Jasa Konstruksi (LPJK)} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries LSP:} & {\fontsize{6.8pt}{8pt}\selectfont LSP Tenaga Konstruksi Nasional} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries No. Registrasi:} & {\fontsize{6.8pt}{8pt}\selectfont\fontfamily{cmtt}\selectfont F7472118} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Masa Berlaku:} & {\fontsize{6.8pt}{8pt}\selectfont 5 Tahun (s.d. 04 Juli 2030)}
@@ -483,7 +483,7 @@ tex.append(r"""\newpage
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Skema Uji:} & {\fontsize{6.8pt}{8pt}\selectfont Pelaksana Lapangan Pekerjaan Gedung Madya} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Jenjang KKNI:} & {\fontsize{6.8pt}{8pt}\selectfont Jenjang 5 (Teknisi/Analis)} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Status Uji:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pred} Seluruh Unit Kompeten (K)} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries TUK:} & {\fontsize{6.8pt}{8pt}\selectfont BJKW I Banda Aceh}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Subklasifikasi:} & {\fontsize{6.8pt}{8pt}\selectfont Gedung (Klasifikasi Sipil)}
       \end{tabularx}
     \end{tcolorbox}
     \vspace{1.5mm}

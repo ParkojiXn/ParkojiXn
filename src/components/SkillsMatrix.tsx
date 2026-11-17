@@ -48,7 +48,7 @@ export const SkillsMatrix: React.FC = () => {
               onClick={() => setActiveTab(idx)}
               className={`p-5 text-left border-2 transition-colors flex flex-col justify-between h-28 cursor-pointer ${
                 activeTab === idx
-                  ? 'bg-[#0A0A0A] text-[#FAFAFA] border-[#0A0A0A]'
+                  ? 'bg-[#0A0A0A] text-[#FAFAFA] border-[#0A0A0A] border-t-4 border-t-[#EF4444]'
                   : 'bg-[#FAFAFA] text-[#0A0A0A] border-[#D4D4D4] hover:border-[#0A0A0A]'
               }`}
             >
@@ -60,7 +60,9 @@ export const SkillsMatrix: React.FC = () => {
                   {getCategoryIcon(idx)}
                 </span>
               </div>
-              <span className="font-display text-xs sm:text-sm uppercase tracking-tight leading-snug">
+              <span className={`font-display text-xs sm:text-sm uppercase tracking-tight leading-snug ${
+                activeTab === idx ? 'text-[#FAFAFA]' : 'text-[#0A0A0A]'
+              }`}>
                 {cat.category}
               </span>
             </button>
