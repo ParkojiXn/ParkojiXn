@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
               Licensing &amp; Qualifications
             </span>
             <p>
-              BNSP Certified Level 5 Intermediate Building Construction Supervisor (Kementerian PUPR BJKW I Banda Aceh), JAC Specified Skilled Worker (SSW) Japan Certified, and JLPT N4 / JFT-Basic bilingual Japanese.
+              BNSP Level 5 Certified: Pelaksana Lapangan Pekerjaan Gedung Madya / Implementing Intermediate Building Works (Reg. F7472118), JAC Specified Skilled Worker (SSW Civil Engineering i), JLPT N4 / JFT-Basic 250, and TOEIC® Prediction 640.
             </p>
           </div>
 

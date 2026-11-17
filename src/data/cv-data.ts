@@ -11,19 +11,19 @@ export const profileData: ProfileData = {
   linkedin: "https://linkedin.com/in/rezasepdide",
   status: "OPEN FOR ROLES & CONSULTANCIES",
   bioSummary:
-    "Diploma III Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72/4.00, High Honors), certified as BNSP Level 5 Intermediate Building Construction Supervisor with a proven track record in technical planning, Quantity Surveying (QS), on-site Quality Control, and S-Curve construction scheduling. Highly proficient in Autodesk Revit BIM modeling, AutoCAD DED (standardized paper layout viewports to PDF), SAP2000 seismic analysis, MS Project CPM scheduling, as well as certified proficiency in Japanese (JLPT N4 & JFT-Basic) and English (TOEIC 640).",
+    "Diploma III Civil Engineering graduate from Politeknik Negeri Padang (GPA 3.72/4.00, Cum Laude), certified under BNSP KKNI Level 5: Implementing Intermediate Building Works (Pelaksana Lapangan Pekerjaan Gedung Madya, Reg. F7472118) with a proven track record in technical planning, Quantity Surveying (QS), on-site Quality Control, and S-Curve construction scheduling. Proficient in Autodesk Revit, AutoCAD DED (paper layout viewports to PDF), SAP2000 seismic analysis, MS Project CPM scheduling, as well as certified proficiency in Japanese (JLPT N4 & JFT-Basic 250) and English (TOEIC® Prediction 640).",
   personalStatement:
     "Sound civil engineering does not end with calculations or drawings—it is proven by how safely, accurately, and cost-efficiently designs are executed on site. From optimizing Bar Bending Schedules (BBS) to minimize rebar waste on industrial EPC plants to auditing government school revitalizations, I prioritize engineering accuracy, field verification, and transparent cost accountability.",
   keyStats: [
     {
       value: "3.72",
       label: "GRADUATION GPA / 4.00",
-      description: "Politeknik Negeri Padang — D3 Teknik Sipil (Lulus dengan Predikat Pujian / With Honors, IPK 3.72/4.00)",
+      description: "Politeknik Negeri Padang — D3 Teknik Sipil (Predikat: Pujian / Cum Laude, IPK 3.72/4.00, 115 SKS)",
     },
     {
       value: "LEVEL 5",
       label: "BNSP CERTIFICATION",
-      description: "Implementing Intermediate Building Works Site Supervisor (Jenjang 5)",
+      description: "Pelaksana Lapangan Pekerjaan Gedung Madya / Implementing Intermediate Building Works (Reg. F7472118)",
     },
     {
       value: "10+",
@@ -33,7 +33,7 @@ export const profileData: ProfileData = {
     {
       value: "3",
       label: "VERIFIED LANGUAGES",
-      description: "Indonesian (Native) • Japanese (JLPT N4 / SSW JAC / JFT) • English (TOEIC 640)",
+      description: "Indonesian (Native) • Japanese (JLPT N4 / SSW JAC / JFT 250) • English (TOEIC® Prediction 640)",
     },
   ],
   coreValues: [
@@ -550,7 +550,7 @@ export const featuredProjects: Project[] = [
       "Formulated weighted weekly progress S-Curve as an executive instrument for schedule monitoring and project cash-flow forecasting."
     ],
     metrics: [
-      { label: "Graduation GPA", value: "3.72 / 4.00 (High Honors)" },
+      { label: "Graduation GPA", value: "3.72 / 4.00 (Cum Laude)" },
       { label: "Scheduling Software", value: "Microsoft Project CPM & S-Curve" },
       { label: "Case Study", value: "Multi-Story Government Building" }
     ],
@@ -902,7 +902,7 @@ export const educationHistory: Education[] = [
     field: "Civil Engineering",
     period: "Sep 2022 – Jul 2025",
     location: "Padang, Indonesia",
-    status: "GRADUATED WITH HIGH HONORS (MAGNA CUM LAUDE)",
+    status: "GRADUATED (PREDIKAT: PUJIAN / CUM LAUDE)",
     isOngoing: false,
     gpa: "3.72 / 4.00",
     details: [
@@ -926,35 +926,35 @@ export const educationHistory: Education[] = [
 
 export const certifications: Certification[] = [
   {
-    name: "Certificate of Work Competency (SKK) — Implementing Intermediate Building Works",
-    issuer: "Badan Nasional Sertifikasi Profesi",
-    levelOrScore: "KKNI Level 5 (Implementing Intermediate Building Works)",
-    year: "Nationally Accredited BNSP License",
+    name: "Sertifikat Kompetensi Kerja (SKK) — Pelaksana Lapangan Pekerjaan Gedung Madya / Implementing Intermediate Building Works",
+    issuer: "Badan Nasional Sertifikasi Profesi (BNSP) — LSP Tenaga Konstruksi Nasional & LPJK",
+    levelOrScore: "KKNI Jenjang 5 (Teknisi / Analis) • Reg. F7472118",
+    year: "Berlaku s.d. 04 Juli 2030 (Masa Berlaku 5 Tahun)",
     verificationFile: "/portfolio/certificates/skk-bnsp-jenjang5.pdf",
-    description: "State-accredited competency credential authorizing technical oversight of multi-story building construction, structural quality assurance, site safety governance, and subcontractor coordination."
+    description: "Sertifikat resmi kompetensi kerja yang diterbitkan atas nama Badan Nasional Sertifikasi Profesi (BNSP) oleh LSP Tenaga Konstruksi Nasional dan tercatat pada Lembaga Pengembangan Jasa Konstruksi (LPJK), mengesahkan kompetensi legal formal pengawasan dan pelaksanaan lapangan pekerjaan konstruksi gedung bertingkat."
   },
   {
-    name: "Certificate of Completion: Revit Masterclass for Beginners (BIM)",
+    name: "Certificate of Completion: Revit Masterclass for Beginners",
     issuer: "Arsisten Academy",
-    levelOrScore: "Building Information Modeling (BIM)",
-    year: "Course Completion Credential",
+    levelOrScore: "Total Durasi: 32 Jam 16 Menit (32hrs 16min 0sec)",
+    year: "Tanggal Selesai: 23 Juli 2026",
     verificationFile: "/portfolio/certificates/sertifikat-revit.pdf",
-    description: "Pelatihan Building Information Modeling (BIM) Autodesk Revit tingkat pemula di Arsisten Academy yang mencakup pengenalan konsep dasar BIM serta pemodelan 3D komponen struktur dan elemen arsitektur gedung."
+    description: "Sertifikat kelulusan resmi kursus Revit Masterclass for Beginners yang diselenggarakan oleh Arsisten Academy (durasi 32 jam 16 menit), memverifikasi kemampuan pemodelan 3D komponen struktur dan arsitektur gedung."
   },
   {
-    name: "Specified Skilled Worker (SSW) Evaluation Exam for Construction Industry: Civil Engineering",
-    issuer: "Japan Association for Construction Human Resources (JAC) — Japan",
-    levelOrScore: "Japanese Construction Industry Standard Qualification — Passed (合格)",
-    year: "Internationally Certified",
+    name: "Specified skills evaluation exam for Construction Industry: Civil engineering (i)",
+    issuer: "Japan Association for Construction Human Resources (JAC)",
+    levelOrScore: "Pass (合格) • Reg Number: 40563425",
+    year: "Tanggal Ujian: 11 Juli 2026",
     verificationFile: "/portfolio/certificates/ssw-japan.pdf",
-    description: "Certified qualification exam under the Japanese Tokutei Ginou framework validating technical civil engineering proficiency, safety standards, and operational readiness for Japan's construction sector."
+    description: "Surat pemberitahuan hasil ujian (建設分野特定技能評価試験結果通知書) kelulusan evaluasi keahlian pekerja berketerampilan spesifik bidang konstruksi rekayasa sipil dari JAC Jepang."
   },
   {
     name: "Japan Foundation Test for Basic Japanese (JFT-Basic) & JLPT N4",
     issuer: "The Japan Foundation (国際交流基金) & JEES",
-    levelOrScore: "JFT-Basic: 250 / 250 (Max Score) • JLPT N4: 165 / 180 (Passed)",
-    year: "Certified Bilingual Japanese",
-    description: "Official Japanese language proficiency credentials verifying bilingual communication competence for living, technical reporting, and workplace collaboration: JFT-Basic (perfect score 250/250) and JLPT Level N4 (165/180).",
+    levelOrScore: "JFT-Basic: 250 / 250 (Skor Sempurna) • JLPT N4: 165 / 180 (Passed / 合格)",
+    year: "Hasil Resmi: Juli & Agustus 2026",
+    description: "Hasil resmi kemahiran bahasa Jepang: JFT-Basic skor total 250 poin (Reg. 40558178, ujian 14 Juli 2026) dan sertifikat resmi JLPT Level N4 skor 165/180 dengan listening 60/60 sempurna dan persentil 99.2% (No. Sertifikat: N4A499511A, Reg. 26A2010601-40410).",
     files: [
       {
         name: "JFT-BASIC CERTIFICATE (PDF)",
@@ -969,28 +969,28 @@ export const certifications: Certification[] = [
     ]
   },
   {
-    name: "Industrial Internship Certificate of Excellence (PKL)",
-    issuer: "PT Solusi Industri Energi",
-    levelOrScore: "Waste Gas Recovery EPC Project (PT Indo-Bharat Rayon)",
-    year: "Certified Industrial Experience",
+    name: "Sertifikat Praktik Kerja Lapangan (PKL)",
+    issuer: "PT Solusi Industri Energi (SOLINER)",
+    levelOrScore: "Proyek Pembangunan Waste Gas Recovery Project IBR Purwakarta",
+    year: "7 Agustus 2024 – 21 Desember 2024",
     verificationFile: "/portfolio/certificates/sertifikat-magang-sie.pdf",
-    description: "Official credential recognizing full-time engineering performance as Site Quality Control Inspector & Quantity Surveyor on a major chemical plant EPC project."
+    description: "Sertifikat resmi penyelesaian Praktik Kerja Lapangan (PKL) pada proyek industri Waste Gas Recovery IBR Purwakarta yang ditandatangani oleh Project Manager Iman Sukiman. Terverifikasi dengan perolehan Nilai A (14 SKS, Sangat Cemerlang) pada Transkrip Akademik PNP (Mata Kuliah SIP3232)."
   },
   {
-    name: "Test of English for International Communication (TOEIC®) Prediction Test",
+    name: "Notification Letter Prediction Test Score for TOEIC® Test",
     issuer: "UPT Bahasa Politeknik Negeri Padang",
     levelOrScore: "Score: 640 (Listening: 400 | Reading: 240)",
-    year: "Working Professional English",
+    year: "Tanggal Ujian: 19 Maret 2023",
     verificationFile: "/portfolio/certificates/toeic-640.pdf",
-    description: "Notification Letter Prediction Test Score for TOEIC Test yang diselenggarakan oleh UPT Bahasa Politeknik Negeri Padang dengan perolehan skor total 640 (Listening: 400, Reading: 240)."
+    description: "Surat keterangan resmi hasil uji prediksi (Prediction Test) TOEIC® No. 002/PL9.13/KM/2023 dari UPT Bahasa Politeknik Negeri Padang dengan skor Listening 400, Reading 240, dan Total Skor 640."
   },
   {
-    name: "Official Academic Transcript — Diploma III Civil Engineering (GPA 3.72)",
+    name: "Transkrip Akademik Resmi — Diploma III Teknik Sipil",
     issuer: "Politeknik Negeri Padang",
-    levelOrScore: "Cumulative GPA: 3.72 / 4.00 (Predikat Kelulusan: Dengan Pujian / With Honors)",
-    year: "Official State Transcript",
+    levelOrScore: "IPK 3.72 / 4.00 (Predikat: Pujian / Cum Laude)",
+    year: "Lulus 11 September 2025 • 115 SKS",
     verificationFile: "/portfolio/certificates/transkrip-nilai.pdf",
-    description: "Official certified academic graduation transcript reflecting honors coursework in structural analysis, cost engineering, surveying, and construction management."
+    description: "Transkrip akademik kelulusan resmi Program Studi D-3 Teknik Sipil Politeknik Negeri Padang (NIM 2201022034) dengan IPK 3.72, Predikat Pujian (Cum Laude), dan total 115 SKS."
   }
 ];
 

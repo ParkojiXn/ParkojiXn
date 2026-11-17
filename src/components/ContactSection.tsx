@@ -202,7 +202,7 @@ export const ContactSection: React.FC = () => {
                   <ShieldCheck className="w-5 h-5 text-[#16A34A] flex-shrink-0 mt-0.5" />
                   <div className="text-xs">
                     <span className="font-mono font-bold text-[#16A34A] uppercase block">
-                      BNSP Level 5 Site Supervisor
+                      BNSP Level 5: Implementing Intermediate Building Works (Reg. F7472118)
                     </span>
                     <p className="font-sans text-[#0A0A0A] mt-1 leading-relaxed">
                       Nationally certified for multi-story building supervision and quality assurance under Kementerian PUPR standards.
@@ -226,7 +226,7 @@ export const ContactSection: React.FC = () => {
                   <CheckCircle2 className="w-5 h-5 text-[#0A0A0A] flex-shrink-0 mt-0.5" />
                   <div className="text-xs">
                     <span className="font-mono font-bold text-[#0A0A0A] uppercase block">
-                      High Honors Academic Record
+                      Cum Laude Academic Record (115 SKS)
                     </span>
                     <p className="font-sans text-[#525252] mt-1 leading-relaxed">
                       Graduated with 3.72/4.00 GPA from Politeknik Negeri Padang; advancing in D4 Construction Engineering Management.

@@ -7,8 +7,8 @@ from PIL import Image
 import numpy as np
 
 # Sourcing knowledge directly from Knowledge_Portofolio
-base_dir = "D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio"
-export_dir = "D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export"
+base_dir = "X:/Knowledge_Portofolio"
+export_dir = "X:/portfolio_pdf_export"
 tex_path = os.path.join(export_dir, "portofolio_reza_sepdide_en.tex").replace("\\", "/")
 pdf_path = os.path.join(export_dir, "Portofolio_Civil_Engineering_Reza_Sepdide_Landscape.pdf").replace("\\", "/")
 
@@ -135,7 +135,7 @@ tex.append(r"""\documentclass[10pt,a4paper,landscape]{article}
     \draw[line width=0.6pt, color=pborder] ([xshift=10mm, yshift=8mm]current page.south west) -- ([xshift=-10mm, yshift=8mm]current page.south east);
     \node[anchor=south west, inner sep=0pt, xshift=10mm, yshift=4mm] at (current page.south west) {%
       \fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pmuted}%
-      REZA SEPDIDE, A.Md.T. \quad\textbar\quad INTERMEDIATE BUILDING CONSTRUCTION SUPERVISOR (BNSP 5) \quad\textbar\quad D4 CEM PNP%
+      REZA SEPDIDE, A.Md.T. \quad\textbar\quad IMPLEMENTING INTERMEDIATE BUILDING WORKS (BNSP 5) \quad\textbar\quad D4 CEM PNP%
     };
     \node[anchor=south east, inner sep=0pt, xshift=-10mm, yshift=4mm] at (current page.south east) {%
       \fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pnavy}%
@@ -184,7 +184,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
       \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
         {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}LEVEL 5}\\[0.5mm]
         {\fontsize{6.5pt}{7.5pt}\selectfont\bfseries\color{pred}SKK BNSP}\\[0.5mm]
-        {\fontsize{6pt}{7pt}\selectfont\color{pmuted}INTERMEDIATE BUILDING\\FIELD SUPERVISOR}
+        {\fontsize{6pt}{7pt}\selectfont\color{pmuted}IMPLEMENTING INTERMEDIATE\\BUILDING WORKS}
       \end{tcolorbox} &
       \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm]
         {\fontsize{13pt}{15pt}\selectfont\bfseries\color{pnavy}10+}\\[0.5mm]
@@ -203,7 +203,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
     \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm]
       \begin{tabularx}{\linewidth}{@{}p{32mm} X@{}}
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}CURRENT EDUCATION:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma IV (D4) Construction Engineering Management, PNP (Active / Ongoing)} \\[1mm]
-        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}ACADEMIC DEGREE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma III (D3) Civil Engineering, Padang State Polytechnic (Graduated With Honors, GPA 3.72)} \\[1mm]
+        {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}ACADEMIC DEGREE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}Diploma III (D3) Civil Engineering, Padang State Polytechnic (Graduated: Cum Laude, GPA 3.72, 115 Credits)} \\[1mm]
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}STATE LICENSE:} & {\fontsize{7.2pt}{9.2pt}\selectfont\color{psteel}BNSP Level 5 Construction Services Center Region I Banda Aceh, Ministry of Public Works} \\[1mm]
         {\fontsize{7.2pt}{9.2pt}\selectfont\bfseries\color{pnavy}EMAIL \& CONTACT:} & {\fontsize{7.2pt}{9.2pt}\selectfont\fontfamily{cmtt}\selectfont rezasepdide@gmail.com \textbar\ +62 896-4459-0915 \textbar\ linkedin.com/in/rezasepdide}
       \end{tabularx}
@@ -223,7 +223,7 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
       \centering
       \includegraphics[width=\linewidth,height=94mm,keepaspectratio]{{{""" + p("FOTO DIRI/Professional-photo.jpeg") + r"""}}}\\[2mm]
       {\fontsize{9.5pt}{11pt}\selectfont\bfseries\color{pnavy}REZA SEPDIDE, A.Md.T.}\\[0.5mm]
-      {\fontsize{7pt}{8.5pt}\selectfont\color{pred}\textbf{Intermediate Building Field Supervisor}}\\[0.5mm]
+      {\fontsize{7pt}{8.5pt}\selectfont\color{pred}\textbf{Implementing Intermediate Building Works}}\\[0.5mm]
       {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}Reg. BNSP: F7472118 \textbar\ KKNI Level 5}
     \end{tcolorbox}
     \vspace{2mm}
@@ -255,8 +255,8 @@ tex.append(r"""\newpage
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm, height=100mm]
     \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ EXECUTIVE PROFESSIONAL SUMMARY\ \ }\\[1.5mm]
-    {\fontsize{7.2pt}{9.6pt}\selectfont\color{psteel}Civil Engineering graduate from Padang State Polytechnic with honors (\textit{With Honors}, GPA 3.72/4.00), currently pursuing a Bachelor of Applied Science (D4) in Construction Engineering Management. Certified with the Indonesian National Professional Certification Board (BNSP) Level 5 license as an Intermediate Building Construction Field Supervisor.}\\[1.5mm]
-    {\fontsize{7.2pt}{9.6pt}\selectfont\color{psteel}Demonstrates rigorous practical competence across Quantity Surveying (BoQ/RAB, AHSP), Bar Bending Schedule (BBS) detailing, S-Curve / MS Project schedule control, AutoCAD Multi-Viewport DED layouts to PDF, Autodesk Revit BIM 3D modeling, and SAP2000 structural analysis. Internationally certified bilingual in Japanese (SSW JAC, JFT-Basic 250, JLPT N4 165) and Professional English (TOEIC 640).}\\[2mm]
+    {\fontsize{7.2pt}{9.6pt}\selectfont\color{psteel}Civil Engineering graduate from Padang State Polytechnic with honors (\textit{With Honors}, GPA 3.72/4.00), currently pursuing a Bachelor of Applied Science (D4) in Construction Engineering Management. Certified with the Indonesian National Professional Certification Board (BNSP) Level 5 license as an Implementing Intermediate Building Works.}\\[1.5mm]
+    {\fontsize{7.2pt}{9.6pt}\selectfont\color{psteel}Demonstrates rigorous practical competence across Quantity Surveying (BoQ/RAB, AHSP), Bar Bending Schedule (BBS) detailing, S-Curve / MS Project schedule control, AutoCAD Multi-Viewport DED layouts to PDF, Autodesk Revit BIM 3D modeling, and SAP2000 structural analysis. Internationally certified bilingual in Japanese (SSW JAC, JFT-Basic 250, JLPT N4 165) and Professional English (TOEIC® Prediction 640).}\\[2mm]
 
     \noindent\textcolor{pborder}{\rule{\linewidth}{0.5pt}}\\[1.5mm]
 
@@ -389,7 +389,7 @@ tex.append(r"""\newpage
     $\bullet$ \textbf{Japanese:}\\
     -- \textbf{SSW Construction (JAC):} Passed official Japanese evaluation exam.\\
     -- \textbf{JFT-Basic:} Score 250 (Full Score, The Japan Foundation).\\
-    -- \textbf{JLPT N4:} Score 165 (High Honors, The Japan Foundation).\\
+    -- \textbf{JLPT N4:} Score 165/180 (Passed, The Japan Foundation & JEES).\\
     $\bullet$ \textbf{English:}\\
     -- \textbf{TOEIC Score: 640 / 990:} Score 640 (Listening: 400, Reading: 240) Language Center, Padang State Polytechnic.\\
     -- Fluent comprehension of international engineering standards (ASTM, ACI, BS).
@@ -421,14 +421,14 @@ tex.append(r"""\newpage
   \vspace{0pt}
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
     \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ BNSP LEVEL 5 STATE LICENSE\ \ }\\[1.5mm]
-    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}Intermediate Building Field Supervisor}\\[0.5mm]
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}Implementing Intermediate Building Works}\\[0.5mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Qualification: Technician / Analyst (Level 5)}\\[2mm]
 
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Issuing Body:} & {\fontsize{6.8pt}{8pt}\selectfont BNSP RI} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Implementing Agency:} & {\fontsize{6.8pt}{8pt}\selectfont BJKW I Banda Aceh (PUPR)} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries LSP Agency:} & {\fontsize{6.8pt}{8pt}\selectfont LSP Tenaga Konstruksi} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries LSP Agency:} & {\fontsize{6.8pt}{8pt}\selectfont LSP Tenaga Konstruksi Nasional} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Reg. Number:} & {\fontsize{6.8pt}{8pt}\selectfont\fontfamily{cmtt}\selectfont F7472118} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Validity Period:} & {\fontsize{6.8pt}{8pt}\selectfont Valid Thru July 2030 (5 Yrs)}
       \end{tabularx}
@@ -476,11 +476,11 @@ tex.append(r"""\newpage
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=white, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=100mm]
     \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ SKKNI COMPETENCY UNIT STANDARDS\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}Assessed Competency Units}\\[0.5mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Intermediate Building Field Supervisor}\\[2mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pred}Implementing Intermediate Building Works}\\[2mm]
 
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=pbglight, left=2mm, right=2mm, top=1.5mm, bottom=1.5mm]
       \begin{tabularx}{\linewidth}{@{}p{22mm} X@{}}
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Assessment Scheme:} & {\fontsize{6.8pt}{8pt}\selectfont Intermediate Building Field Supervisor} \\[0.8mm]
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Assessment Scheme:} & {\fontsize{6.8pt}{8pt}\selectfont Implementing Intermediate Building Works} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries KKNI Level:} & {\fontsize{6.8pt}{8pt}\selectfont Level 5 (Technician / Analyst)} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Assessment Status:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pred} All Competency Units Qualified (Certified)} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Testing Center (TUK):} & {\fontsize{6.8pt}{8pt}\selectfont BJKW I Banda Aceh}
@@ -549,7 +549,7 @@ tex.append(r"""\newpage
   \vspace{2mm}
 
   \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}BIM LEVEL 2 FOUNDATION:}\\[1.5mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}REVIT MODELING PROFICIENCY:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
     $\bullet$ Proficient in coordinated 3D parametric BIM modeling workflows.\\
     $\bullet$ Capable of extracting automated material quantity schedules to eliminate volume discrepancies during bidding and execution.
@@ -709,7 +709,7 @@ tex.append(r"""\newpage
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Contractor:} & {\fontsize{6.8pt}{8pt}\selectfont PT Solusi Industri Energi} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Client:} & {\fontsize{6.8pt}{8pt}\selectfont PT Indo-Bharat Rayon} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Location:} & {\fontsize{6.8pt}{8pt}\selectfont Purwakarta, West Java} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Penilaian:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pred} Sangat Baik (A)}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Academic Grade:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pred} Grade A (14 Credits, PNP)}
       \end{tabularx}
     \end{tcolorbox}
     \vspace{1.5mm}
@@ -777,7 +777,7 @@ tex.append(r"""\newpage
   \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=2.5mm, right=2.5mm, top=2mm, bottom=2mm, height=52mm]
     {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}TECHNICAL ENGLISH MASTERY:}\\[1.5mm]
     {\fontsize{6.5pt}{8.2pt}\selectfont\color{psteel}
-    $\bullet$ Equivalent to CEFR B1/B2 Working Proficiency for interpreting international construction codes (ASTM, ACI, BS).\\
+    $\bullet$ Score of 640 validates comprehensive proficiency (Listening: 400, Reading: 240) for technical literature and global engineering standards.\\
     $\bullet$ Effective professional communication within multinational project management teams.
     }
   \end{tcolorbox}
@@ -815,7 +815,7 @@ tex.append(r"""\newpage
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Institution:} & {\fontsize{6.8pt}{8pt}\selectfont Padang State Polytechnic} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Cumulative GPA:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pred} 3.72 / 4.00} \\[0.8mm]
         {\fontsize{6.8pt}{8pt}\selectfont\bfseries Distinction:} & {\fontsize{6.8pt}{8pt}\selectfont\bfseries With Honors (Cum Laude)} \\[0.8mm]
-        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Credit Load:} & {\fontsize{6.8pt}{8pt}\selectfont 112 Credits Completed}
+        {\fontsize{6.8pt}{8pt}\selectfont\bfseries Credit Load:} & {\fontsize{6.8pt}{8pt}\selectfont 115 Credits Completed}
       \end{tabularx}
     \end{tcolorbox}
     \vspace{1.5mm}
@@ -1046,7 +1046,7 @@ tex.append(r"""\newpage
     % Top Landscape: Kurva S Full Width (Authentic S-Curve)
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=73mm]
       \centering
-      \includegraphics[width=0.99\linewidth,height=64mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/kuamang_kurva_s_cropped.png}}\\[0.5mm]
+      \includegraphics[width=0.99\linewidth,height=64mm,keepaspectratio]{{X:/portfolio_pdf_export/kuamang_kurva_s_cropped.png}}\\[0.5mm]
       {\fontsize{6pt}{7pt}\selectfont\bfseries 1. S-Curve Progress Baseline \& Weekly Weight Distribution Schedule (Total: Rp 867,282,138.81 --- Duration: 13 Weeks)}
     \end{tcolorbox}
     \vspace{2mm}
@@ -1056,7 +1056,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/kuamang_rks_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{X:/portfolio_pdf_export/kuamang_rks_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Technical Specifications (RKS) \& Material Performance Criteria}
       \end{tcolorbox}
     \end{minipage}%
@@ -1065,7 +1065,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/kuamang_bv_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=66mm,keepaspectratio]{{X:/portfolio_pdf_export/kuamang_bv_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Detailed Backup Volume Quantity Take-Off Sheet for BoQ}
       \end{tcolorbox}
     \end{minipage}
@@ -1259,7 +1259,7 @@ tex.append(r"""\newpage
     % Top Landscape: CCO Spreadsheet Full Width (Enlarged)
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=70mm]
       \centering
-      \includegraphics[width=0.99\linewidth,height=61mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/slbn_cco_cropped.png}}\\[0.5mm]
+      \includegraphics[width=0.99\linewidth,height=61mm,keepaspectratio]{{X:/portfolio_pdf_export/slbn_cco_cropped.png}}\\[0.5mm]
       {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Contract Change Order (CCO) Addendum Documentation \& Contract Value Variation Summary}
     \end{tcolorbox}
     \vspace{2mm}
@@ -1269,7 +1269,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=78mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=69mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/slbn_5_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=69mm,keepaspectratio]{{X:/portfolio_pdf_export/slbn_5_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Revised Architectural Elevation Working Drawings (Front \& Rear Elevations)}
       \end{tcolorbox}
     \end{minipage}%
@@ -1278,7 +1278,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=78mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=69mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/slbn_bv_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=69mm,keepaspectratio]{{X:/portfolio_pdf_export/slbn_bv_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Backup Volume Mathematical Takeoff for CCO Addition \& Deduction Items}
       \end{tcolorbox}
     \end{minipage}
@@ -1425,7 +1425,7 @@ tex.append(r"""\newpage
     % Top Landscape: MS Project Schedule Full Width (Enlarged)
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=75mm]
       \centering
-      \includegraphics[width=0.99\linewidth,height=66mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/final_project_msp_cropped.png}}\\[0.5mm]
+      \includegraphics[width=0.99\linewidth,height=66mm,keepaspectratio]{{X:/portfolio_pdf_export/final_project_msp_cropped.png}}\\[0.5mm]
       {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Work Breakdown Structure (WBS) \& Microsoft Project Gantt Chart Baseline (240 Calendar Days)}
     \end{tcolorbox}
     \vspace{2mm}
@@ -1435,7 +1435,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=73mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/final_project_kurvas_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{X:/portfolio_pdf_export/final_project_kurvas_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 2. S-Curve Cumulative Weekly Physical Weight Distribution Baseline}
       \end{tcolorbox}
     \end{minipage}%
@@ -1444,7 +1444,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=73mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/final_project_rab_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=64mm,keepaspectratio]{{X:/portfolio_pdf_export/final_project_rab_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Detailed Bill of Quantities (BoQ) \& Cost Summary (Total: Rp 16.04 Billion)}
       \end{tcolorbox}
     \end{minipage}
@@ -1506,7 +1506,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=54mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=45mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/BBS.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=45mm,keepaspectratio]{{X:/Knowledge_Portofolio/Magang/BBS.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Bar Bending Schedule (BBS) Rebar Cutting Optimization}
       \end{tcolorbox}
     \end{minipage}%
@@ -1515,7 +1515,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=54mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=45mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/magang_daily_progress_cropped.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=45mm,keepaspectratio]{{X:/portfolio_pdf_export/magang_daily_progress_cropped.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Daily Rebar Fabrication Progress Tracking Sheet}
       \end{tcolorbox}
     \end{minipage}
@@ -1526,7 +1526,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=94mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=84mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/DAILY.png}}\\[0.8mm]
+        \includegraphics[width=0.98\linewidth,height=84mm,keepaspectratio]{{X:/Knowledge_Portofolio/Magang/DAILY.png}}\\[0.8mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Field Daily Inspection \& Fabrication Work Log}
       \end{tcolorbox}
     \end{minipage}%
@@ -1535,7 +1535,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=94mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=68mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/DOKUMEN.jpeg}}\\[1.5mm]
+        \includegraphics[width=0.98\linewidth,height=68mm,keepaspectratio]{{X:/Knowledge_Portofolio/Magang/DOKUMEN.jpeg}}\\[1.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 4. On-Site Field Team Coordination \& Documentation Management}\\[0.5mm]
         {\fontsize{5.5pt}{6.5pt}\selectfont\color{pmuted}Field coordination of PT Solusi Industri Energi engineering team on WGR plant site}
       \end{tcolorbox}
@@ -1598,7 +1598,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=48mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=39mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/Bill of quantity rework.png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=39mm,keepaspectratio]{{X:/Knowledge_Portofolio/Magang/Bill of quantity rework.png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 1. Rework Bill of Quantities (BoQ) \& Cost Take-Off}
       \end{tcolorbox}
     \end{minipage}%
@@ -1607,7 +1607,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=48mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=39mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/QTO REWORK (1).png}}\\[0.5mm]
+        \includegraphics[width=0.98\linewidth,height=39mm,keepaspectratio]{{X:/Knowledge_Portofolio/Magang/QTO REWORK (1).png}}\\[0.5mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 2. Rework Quantity Take-Off (QTO) Backup Volume Sheet}
       \end{tcolorbox}
     \end{minipage}
@@ -1618,7 +1618,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=100mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=90mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/portfolio_pdf_export/magang_weekly_report_cropped.png}}\\[0.8mm]
+        \includegraphics[width=0.98\linewidth,height=90mm,keepaspectratio]{{X:/portfolio_pdf_export/magang_weekly_report_cropped.png}}\\[0.8mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 3. Field Weekly Construction Progress Report}
       \end{tcolorbox}
     \end{minipage}%
@@ -1627,7 +1627,7 @@ tex.append(r"""\newpage
       \vspace{0pt}
       \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=1mm, right=1mm, top=1mm, bottom=1mm, height=100mm]
         \centering
-        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{{D:/whateverapp/laragon/www/ParkojiXn/Knowledge_Portofolio/Magang/MONTHLY REPORT.png}}\\[0.8mm]
+        \includegraphics[width=0.98\linewidth,height=58mm,keepaspectratio]{{X:/Knowledge_Portofolio/Magang/MONTHLY REPORT.png}}\\[0.8mm]
         {\fontsize{6pt}{7pt}\selectfont\bfseries 4. Executive Monthly Construction Progress Report}\\[1.2mm]
         \begin{tcolorbox}[sharp corners, boxrule=0.4pt, colframe=pborder, colback=pbglight, left=1.5mm, right=1.5mm, top=1mm, bottom=1mm]
           {\fontsize{5.8pt}{7.2pt}\selectfont\color{pnavy}
@@ -2181,7 +2181,7 @@ tex.append(r"""\newpage
 
     Padang, West Sumatra, Indonesia, 2026\\[1mm]
     \textbf{\color{pnavy}REZA SEPDIDE, A.Md.T.}\\
-    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}Intermediate Building Field Supervisor (BNSP Level 5)}
+    {\fontsize{6.5pt}{7.5pt}\selectfont\color{pmuted}Implementing Intermediate Building Works (BNSP Level 5)}
     }
   \end{tcolorbox}
   \vspace{2mm}
@@ -2235,7 +2235,7 @@ tex.append(r"""\newpage
   \begin{tcolorbox}[sharp corners, boxrule=0.8pt, colframe=pborder, colback=pbglight, left=3mm, right=3mm, top=2.5mm, bottom=2.5mm, height=154mm]
     \colorbox{pred}{\fontsize{7pt}{8pt}\selectfont\bfseries\color{white}\ \ QUALIFICATION SUMMARY\ \ }\\[1.5mm]
     {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{pnavy}Engineering Specialization}\\[0.5mm]
-    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pmuted}Quantity Surveyor \& Field Supervisor}\\[2.5mm]
+    {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pmuted}Quantity Surveyor \& Construction Planner}\\[2.5mm]
 
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2mm, right=2mm, top=1.8mm, bottom=1.8mm]
       {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}1. Quantity Surveying \& Estimation}\\[0.3mm]
@@ -2245,7 +2245,7 @@ tex.append(r"""\newpage
 
     \begin{tcolorbox}[sharp corners, boxrule=0.5pt, colframe=pborder, colback=white, left=2mm, right=2mm, top=1.8mm, bottom=1.8mm]
       {\fontsize{7pt}{8.5pt}\selectfont\bfseries\color{pnavy}2. Site Supervision \& K3 Safety}\\[0.3mm]
-      {\fontsize{6.3pt}{7.8pt}\selectfont\color{psteel}BNSP Level 5 Intermediate Building Field Supervisor License, SMKK Safety \& Concrete Quality Control.}
+      {\fontsize{6.3pt}{7.8pt}\selectfont\color{psteel}BNSP Level 5 Implementing Intermediate Building Works License, SMKK Safety \& Concrete Quality Control.}
     \end{tcolorbox}
     \vspace{1.5mm}
 
@@ -2315,16 +2315,16 @@ if os.path.exists(built_pdf):
     print(f"Copied to: {pdf_path}")
     
     # Copy also to public folder if wanted
-    public_target = "D:/whateverapp/laragon/www/ParkojiXn/public/Portofolio_Civil_Engineering_Reza_Sepdide_Landscape.pdf"
+    public_target = "X:/public/Portofolio_Civil_Engineering_Reza_Sepdide_Landscape.pdf"
     shutil.copyfile(built_pdf, public_target)
     print(f"Copied to: {public_target}")
 
-    root_target = "D:/whateverapp/laragon/www/ParkojiXn/Portofolio_Civil_Engineering_Reza_Sepdide_Landscape.pdf"
+    root_target = "X:/Portofolio_Civil_Engineering_Reza_Sepdide_Landscape.pdf"
     shutil.copyfile(built_pdf, root_target)
     print(f"Copied to: {root_target}")
 
     # Render all 28 pages to images for visual review
-    review_dir = "D:/whateverapp/laragon/www/ParkojiXn/scratch/pdf_review_en"
+    review_dir = "X:/scratch/pdf_review_en"
     os.makedirs(review_dir, exist_ok=True)
     pdf_doc = pdfium.PdfDocument(built_pdf)
     for idx, page in enumerate(pdf_doc):

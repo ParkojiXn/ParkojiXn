@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Reza Sepdide | Civil Engineer & Construction Planner',
   description:
-    'Engineering Portfolio of Reza Sepdide — Civil Engineer (Politeknik Negeri Padang, GPA 3.72 Magna Cum Laude), BNSP Level 5 Certified Building Construction Supervisor, Quantity Surveyor, Detailed Engineering Design (DED/BoQ), and BIM & CAD Modeler.',
+    'Engineering Portfolio of Reza Sepdide, A.Md.T. — Civil Engineer (Politeknik Negeri Padang, GPA 3.72 Cum Laude), BNSP Level 5 Certified: Pelaksana Lapangan Pekerjaan Gedung Madya (Implementing Intermediate Building Works, Reg. F7472118), Quantity Surveyor, Detailed Engineering Design (DED/BoQ), and BIM & CAD Modeler.',
   keywords: [
     'Reza Sepdide',
     'Civil Engineer',

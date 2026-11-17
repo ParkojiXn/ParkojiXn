@@ -37,7 +37,7 @@ export const EducationCertifications: React.FC = () => {
           </div>
 
           <p className="text-sm font-sans text-[#525252] max-w-lg leading-relaxed">
-            Rigorous civil engineering foundations from Politeknik Negeri Padang (GPA 3.72 Magna Cum Laude), backed by national BNSP Level 5 site supervisor licensing, BIM Revit certification, and Japanese construction industry qualifications.
+            Rigorous civil engineering foundations from Politeknik Negeri Padang (GPA 3.72, Cum Laude, 115 SKS), backed by national BNSP Level 5 license: Implementing Intermediate Building Works (Pelaksana Lapangan Pekerjaan Gedung Madya, Reg. F7472118), Revit certification, and Japanese construction industry qualifications.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export const EducationCertifications: React.FC = () => {
                 </span>
                 <span className="text-xs font-mono font-bold text-[#16A34A] bg-[#F0FDF4] border-2 border-[#16A34A] px-3.5 py-1 uppercase tracking-wider flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
-                  BNSP &amp; KEMENTERIAN PUPR ACCREDITED
+                  BNSP &amp; LPJK REGISTERED (REG. F7472118)
                 </span>
               </div>
 
@@ -151,7 +151,7 @@ export const EducationCertifications: React.FC = () => {
                       <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#0A0A0A] text-[#FAFAFA] text-xs font-mono font-bold uppercase tracking-wider mt-2">
                         <span>CUMULATIVE GPA: {edu.gpa}</span>
                         <span className="text-[#EF4444]">•</span>
-                        <span>MAGNA CUM LAUDE</span>
+                        <span>PUJIAN / CUM LAUDE</span>
                       </div>
                     )}
                   </div>
