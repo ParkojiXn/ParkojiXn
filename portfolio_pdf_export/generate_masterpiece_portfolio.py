@@ -213,17 +213,10 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
     % Bottom Box: FOKUS KOMPETENSI REKAYASA (Dipindahkan dari kolom kanan)
     \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=3mm, right=3mm, top=2mm, bottom=2mm]
       {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pnavy}FOKUS KOMPETENSI REKAYASA:}\\[0.8mm]
-      \begin{tabularx}{\linewidth}{@{}XX@{}}
-        {\fontsize{6.2pt}{7.6pt}\selectfont\color{psteel}
-        $\bullet$ Estimasi Biaya \& BoQ/RAB AHSP PUPR\\
-        $\bullet$ Bar Bending Schedule (BBS) Pembesian\\
-        $\bullet$ Pengendalian Mutu Cor \& Slump Test
-        } &
-        {\fontsize{6.2pt}{7.6pt}\selectfont\color{psteel}
-        $\bullet$ Kurva S \& Penjadwalan Waktu Proyek\\
-        $\bullet$ DED AutoCAD Multi-Viewport ke PDF\\
-        $\bullet$ Pemodelan Revit BIM \& Analisis SAP2000
-        }
+      \begin{tabularx}{\linewidth}{@{}>{\fontsize{6.5pt}{8pt}\selectfont\color{psteel}}X >{\fontsize{6.5pt}{8pt}\selectfont\color{psteel}}X@{}}
+        $\bullet$\ \ Estimasi Biaya \& BoQ/RAB AHSP PUPR & $\bullet$\ \ Kurva S \& Penjadwalan Waktu Proyek \\[0.5mm]
+        $\bullet$\ \ Bar Bending Schedule (BBS) Pembesian & $\bullet$\ \ DED AutoCAD Multi-Viewport ke PDF \\[0.5mm]
+        $\bullet$\ \ Pengendalian Mutu Cor \& Slump Test & $\bullet$\ \ Pemodelan Revit BIM \& Analisis SAP2000
       \end{tabularx}
     \end{tcolorbox}
   \end{minipage}%

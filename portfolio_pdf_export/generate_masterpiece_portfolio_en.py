@@ -214,17 +214,10 @@ tex.append(r"""% --- HALAMAN 1: COVER PAGE ---
     % Bottom Box: CORE ENGINEERING COMPETENCIES (Moved from right column)
     \begin{tcolorbox}[sharp corners, boxrule=0.6pt, colframe=pnavy, colback=pbglight, left=3mm, right=3mm, top=2mm, bottom=2mm]
       {\fontsize{6.8pt}{8pt}\selectfont\bfseries\color{pnavy}CORE ENGINEERING COMPETENCIES:}\\[0.8mm]
-      \begin{tabularx}{\linewidth}{@{}XX@{}}
-        {\fontsize{6.2pt}{7.6pt}\selectfont\color{psteel}
-        $\bullet$ Cost Estimation \& BoQ/RAB PUPR AHSP Standards\\
-        $\bullet$ Bar Bending Schedule (BBS) Detailing\\
-        $\bullet$ Concrete Quality Control \& Slump Testing
-        } &
-        {\fontsize{6.2pt}{7.6pt}\selectfont\color{psteel}
-        $\bullet$ S-Curve \& Project Scheduling (CPM)\\
-        $\bullet$ AutoCAD Multi-Viewport DED Drawings to PDF\\
-        $\bullet$ Autodesk Revit BIM \& SAP2000 Structural Modeling
-        }
+      \begin{tabularx}{\linewidth}{@{}>{\fontsize{6.5pt}{8pt}\selectfont\color{psteel}}X >{\fontsize{6.5pt}{8pt}\selectfont\color{psteel}}X@{}}
+        $\bullet$\ \ Cost Estimation \& BoQ/RAB PUPR AHSP Standards & $\bullet$\ \ S-Curve \& Project Scheduling (CPM) \\[0.5mm]
+        $\bullet$\ \ Bar Bending Schedule (BBS) Detailing & $\bullet$\ \ AutoCAD Multi-Viewport DED Drawings to PDF \\[0.5mm]
+        $\bullet$\ \ Concrete Quality Control \& Slump Testing & $\bullet$\ \ Autodesk Revit BIM \& SAP2000 Structural Modeling
       \end{tabularx}
     \end{tcolorbox}
   \end{minipage}%
