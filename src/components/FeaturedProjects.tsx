@@ -42,7 +42,7 @@ export const FeaturedProjects: React.FC = () => {
 
   return (
     <section id="projects" className="py-20 border-b-2 border-[#111111] bg-[#F3EEE3]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#111111] pb-6 mb-8 gap-6">
           <div>
@@ -170,7 +170,7 @@ export const FeaturedProjects: React.FC = () => {
             onClick={() => setActiveModalProject(null)}
           >
             <div
-              className="bg-[#F3EEE3] border-4 border-[#111111] w-full max-w-4xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 relative shadow-none rounded-none"
+              className="bg-[#F3EEE3] border-4 border-[#111111] w-full max-w-5xl lg:max-w-6xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 relative shadow-none rounded-none"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}

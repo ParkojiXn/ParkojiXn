@@ -1189,7 +1189,7 @@ export const certifications: Certification[] = [
     name: "Certificate of Completion: Revit Masterclass for Beginners",
     issuer: "Arsisten Academy",
     levelOrScore: "Total Durasi: 32 Jam 16 Menit (32hrs 16min 0sec)",
-    year: "Tanggal Selesai: 23 Juli 2026",
+    year: "23 Juli 2026",
     verificationFile: "/portfolio/certificates/sertifikat-revit.pdf",
     description: "Sertifikat kelulusan resmi kursus Revit Masterclass for Beginners yang diselenggarakan oleh Arsisten Academy (durasi 32 jam 16 menit), memverifikasi kemampuan pemodelan 3D komponen struktur dan arsitektur gedung."
   },
@@ -1197,7 +1197,7 @@ export const certifications: Certification[] = [
     name: "Specified skills evaluation exam for Construction Industry: Civil engineering (i)",
     issuer: "Japan Association for Construction Human Resources (JAC)",
     levelOrScore: "Pass (合格) • Reg Number: 40563425",
-    year: "Tanggal Ujian: 11 Juli 2026",
+    year: "11 Juli 2026",
     verificationFile: "/portfolio/certificates/ssw-japan.pdf",
     description: "Surat pemberitahuan hasil ujian (建設分野特定技能評価試験結果通知書) kelulusan evaluasi keahlian pekerja berketerampilan spesifik bidang konstruksi rekayasa sipil dari JAC Jepang."
   },
@@ -1205,7 +1205,7 @@ export const certifications: Certification[] = [
     name: "Japan Foundation Test for Basic Japanese (JFT-Basic) & JLPT N4",
     issuer: "The Japan Foundation (国際交流基金) & JEES",
     levelOrScore: "JFT-Basic: 250 / 250 (Skor Sempurna) • JLPT N4: 165 / 180 (Passed / 合格)",
-    year: "Hasil Resmi: Juli & Agustus 2026",
+    year: " Juli & Agustus 2026",
     description: "Hasil resmi kemahiran bahasa Jepang: JFT-Basic skor total 250 poin (Reg. 40558178, ujian 14 Juli 2026) dan sertifikat resmi JLPT Level N4 skor 165/180 dengan listening 60/60 sempurna dan persentil 99.2% (No. Sertifikat: N4A499511A, Reg. 26A2010601-40410).",
     files: [
       {
@@ -1232,7 +1232,7 @@ export const certifications: Certification[] = [
     name: "Notification Letter Prediction Test Score for TOEIC® Test",
     issuer: "UPT Bahasa Politeknik Negeri Padang",
     levelOrScore: "Score: 640 (Listening: 400 | Reading: 240)",
-    year: "Tanggal Ujian: 19 Maret 2023",
+    year: "19 Maret 2023",
     verificationFile: "/portfolio/certificates/toeic-640.pdf",
     description: "Surat keterangan resmi hasil uji prediksi (Prediction Test) TOEIC® No. 002/PL9.13/KM/2023 dari UPT Bahasa Politeknik Negeri Padang dengan skor Listening 400, Reading 240, dan Total Skor 640."
   },
@@ -1240,7 +1240,7 @@ export const certifications: Certification[] = [
     name: "Transkrip Akademik Resmi — Diploma III Teknik Sipil",
     issuer: "Politeknik Negeri Padang",
     levelOrScore: "IPK 3.72 / 4.00 (Predikat: Pujian / Cum Laude)",
-    year: "Lulus 11 September 2025 • 115 SKS",
+    year: "11 September 2025",
     verificationFile: "/portfolio/certificates/transkrip-nilai.pdf",
     description: "Transkrip akademik kelulusan resmi Program Studi D-3 Teknik Sipil Politeknik Negeri Padang (NIM 2201022034) dengan IPK 3.72, Predikat Pujian (Cum Laude), dan total 115 SKS."
   }

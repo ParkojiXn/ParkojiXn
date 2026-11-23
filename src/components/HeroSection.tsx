@@ -8,8 +8,8 @@ export const HeroSection: React.FC = () => {
   const officialPhoto = '/portfolio/profile/professional-photo.jpeg';
 
   return (
-    <section id="hero" className="relative border-b-2 border-[#111111] bg-[#F3EEE3] pt-8 pb-14 lg:pt-12 lg:pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="relative border-b-2 border-[#111111] bg-[#F3EEE3] min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center py-10 lg:py-16">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
         {/* Top Meta Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#111111] pb-3.5 mb-8 lg:mb-10 print:hidden">
           <div className="flex items-center gap-3">
@@ -76,28 +76,25 @@ export const HeroSection: React.FC = () => {
                 </a>
               </div>
 
-              {/* CV Downloads */}
-              <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-mono text-[#3E3E3E]">
-                <span className="font-bold text-[#111111] uppercase tracking-wider mr-1">
+              {/* Official CV Download Links (2 Options: English & Indonesian) */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="text-xs font-mono font-bold text-[#111111] uppercase tracking-wider">
                   OFFICIAL CV:
                 </span>
                 <a
                   href="/CV_Reza_Sepdide_English.docx"
                   download
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 border-2 border-[#111111] bg-[#FAF7F0] hover:bg-[#111111] text-[#111111] hover:text-[#F3EEE3] font-bold transition-colors rounded-none"
-                  title="Download Latest CV in English (.docx)"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF7F0] hover:bg-[#111111] text-[#111111] hover:text-[#F3EEE3] border-2 border-[#111111] text-xs font-mono font-bold tracking-wider transition-colors"
                 >
                   <Download className="w-3.5 h-3.5 text-[#D9541E]" />
                   <span>ENGLISH (.DOCX)</span>
                 </a>
-
                 <a
                   href="/CV_Reza_Sepdide_Profesional.docx"
                   download
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 border-2 border-[#C8C0B0] bg-[#FAF7F0] hover:border-[#111111] hover:text-[#111111] font-bold transition-colors rounded-none"
-                  title="Download Professional CV in Indonesian (.docx)"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF7F0] hover:bg-[#111111] text-[#111111] hover:text-[#F3EEE3] border-2 border-[#DDD6C7] hover:border-[#111111] text-xs font-mono font-bold tracking-wider transition-colors"
                 >
-                  <FileText className="w-3.5 h-3.5 text-[#3E3E3E]" />
+                  <FileText className="w-3.5 h-3.5 text-[#111111]" />
                   <span>INDONESIAN (.DOCX)</span>
                 </a>
               </div>

@@ -22,7 +22,7 @@ export const SkillsMatrix: React.FC = () => {
 
   return (
     <section id="skills" className="py-20 lg:py-24 border-b-2 border-[#111111] bg-[#F3EEE3]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
         {/* Section Header */}
         <div className="border-b-2 border-[#DDD6C7] pb-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>

@@ -37,7 +37,7 @@ export const PdfViewerModal: React.FC = () => {
       onClick={closePdf}
     >
       <div
-        className="bg-[#F3EEE3] border-4 border-[#111111] w-full max-w-6xl h-[92vh] flex flex-col shadow-none relative overflow-hidden"
+        className="bg-[#F3EEE3] border-4 border-[#111111] w-[96vw] max-w-none h-[95vh] flex flex-col shadow-none relative overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Header */}

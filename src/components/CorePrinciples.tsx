@@ -46,7 +46,7 @@ export const CorePrinciples: React.FC = () => {
 
   return (
     <section id="principles" className="py-14 sm:py-16 border-b-2 border-[#111111] bg-[#F3EEE3]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 space-y-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#111111] pb-5 gap-4">
           <div>

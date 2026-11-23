@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#111111] text-[#F3EEE3] border-t-4 border-[#D9541E]">
       {/* Top Banner */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b-2 border-[#262626]">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 py-12 border-b-2 border-[#262626]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div>
             <span className="font-display text-2xl sm:text-3xl text-[#F3EEE3] uppercase tracking-tight block">
@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Footer Colophon */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-sans text-[#DDD6C7] leading-relaxed">
           <div>
             <span className="text-[#F3EEE3] font-display text-sm uppercase tracking-tight block mb-2.5">

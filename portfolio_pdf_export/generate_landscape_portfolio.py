@@ -327,10 +327,10 @@ def build_html():
       position: relative;
     }}
     .cover-photo-card {{
-      width: 78mm;
-      height: 115mm;
+      width: 86mm;
+      height: 130mm;
       background: #FAF7F0;
-      padding: 3mm;
+      padding: 3.5mm;
       border: 2px solid #111111;
       box-shadow: 6px 6px 0 #D9541E;
       display: flex;
@@ -369,9 +369,9 @@ def build_html():
       justify-content: center;
     }}
     .about-arch-frame {{
-      width: 58mm;
-      height: 88mm;
-      border-radius: 29mm 29mm 4px 4px;
+      width: 76mm;
+      height: 118mm;
+      border-radius: 38mm 38mm 4px 4px;
       overflow: hidden;
       background: #FAF7F0;
       padding: 2.5mm 2.5mm 0 2.5mm;
@@ -383,7 +383,7 @@ def build_html():
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      border-radius: 26.5mm 26.5mm 2px 2px;
+      border-radius: 35.5mm 35.5mm 2px 2px;
     }}
 
     .about-right-content {{
@@ -577,7 +577,7 @@ def build_html():
     }}
     .edu-preview-landscape {{
       width: 100%;
-      height: 32mm;
+      height: 38mm;
       object-fit: contain;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
@@ -703,7 +703,7 @@ def build_html():
       margin-top: 2.5mm;
     }}
     .exp-thumb-box {{
-      height: 22mm;
+      height: 25mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -713,7 +713,8 @@ def build_html():
     .exp-thumb-box img {{
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #FFFFFF;
     }}
     .exp-thumb-tag {{
       font-size: 5.8pt;
@@ -760,7 +761,7 @@ def build_html():
       margin-top: 2.5mm;
     }}
     .proj-thumb-3 {{
-      height: 27mm;
+      height: 30mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
