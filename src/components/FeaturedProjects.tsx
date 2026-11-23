@@ -11,6 +11,7 @@ export const FeaturedProjects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+  const [cardImageIndex, setCardImageIndex] = useState<Record<string, number>>({});
 
   const categories = ['ALL', 'Planning & QS', 'BIM & CAD', 'Industrial & QC', 'Tender & Research', 'Government & Supervision'];
 
@@ -23,9 +24,28 @@ export const FeaturedProjects: React.FC = () => {
     ? featuredProjects
     : featuredProjects.filter((p) => p.category === selectedCategory);
 
-  const openProjectModal = (project: Project) => {
+  const openProjectModal = (project: Project, initialIdx = 0) => {
     setActiveModalProject(project);
-    setActiveImageIndex(0);
+    setActiveImageIndex(initialIdx);
+  };
+
+  const handleCardImageSelect = (projectId: string, index: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCardImageIndex((prev) => ({ ...prev, [projectId]: index }));
+  };
+
+  const handleCardPrevImage = (project: Project, galleryLength: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const currentIndex = cardImageIndex[project.id] ?? 0;
+    const newIndex = currentIndex === 0 ? galleryLength - 1 : currentIndex - 1;
+    setCardImageIndex((prev) => ({ ...prev, [project.id]: newIndex }));
+  };
+
+  const handleCardNextImage = (project: Project, galleryLength: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const currentIndex = cardImageIndex[project.id] ?? 0;
+    const newIndex = (currentIndex + 1) % galleryLength;
+    setCardImageIndex((prev) => ({ ...prev, [project.id]: newIndex }));
   };
 
   const handleNextImage = () => {
@@ -80,40 +100,125 @@ export const FeaturedProjects: React.FC = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="card-editorial-elevated flex flex-col justify-between group cursor-pointer overflow-hidden p-0 rounded-none page-break-avoid"
-              onClick={() => openProjectModal(project)}
-            >
-              <div>
-                {/* Visual Thumbnail Header */}
-                <div className="relative aspect-[16/10] bg-[#171717] overflow-hidden border-b-2 border-[#111111]">
-                  {project.coverImage ? (
-                    <img
-                      src={project.coverImage}
-                      alt={project.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 contrast-105"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-[#737373] font-mono text-xs">
-                      [Engineering Blueprint]
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8">
+          {filteredProjects.map((project) => {
+            const gallery =
+              project.mediaGallery && project.mediaGallery.length > 0
+                ? project.mediaGallery
+                : project.coverImage
+                ? [{ title: project.title, url: project.coverImage, caption: '' }]
+                : [];
+            const activeIdx = cardImageIndex[project.id] ?? 0;
+            const currentImg = gallery[activeIdx] || gallery[0];
+            const hasMultiple = gallery.length > 1;
+
+            return (
+              <div
+                key={project.id}
+                className="card-editorial-elevated flex flex-col justify-between group cursor-pointer overflow-hidden p-0 rounded-none page-break-avoid"
+                onClick={() => openProjectModal(project, activeIdx)}
+              >
+                <div>
+                  {/* Visual Thumbnail Header with Image Selector */}
+                  <div className="relative aspect-[16/10] bg-[#111111] overflow-hidden border-b-2 border-[#111111] select-none">
+                    {currentImg?.url ? (
+                      <img
+                        src={currentImg.url}
+                        alt={currentImg.title || project.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-300 contrast-105"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-[#737373] font-mono text-xs">
+                        [Engineering Blueprint]
+                      </div>
+                    )}
+
+                    {/* Top Badges */}
+                    <div className="absolute top-2.5 left-2.5 bg-[#111111] text-[#F3EEE3] text-[10px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider rounded-none z-10 border border-[#DDD6C7]/30">
+                      {project.category}
+                    </div>
+
+                    <div className="absolute top-2.5 right-2.5 bg-[#FAF7F0] text-[#111111] border-2 border-[#111111] text-[10px] font-mono font-bold px-2 py-0.5 rounded-none z-10">
+                      {project.period}
+                    </div>
+
+                    {/* Prev / Next Arrows (Direct Card Image Selector) */}
+                    {hasMultiple && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={(e) => handleCardPrevImage(project, gallery.length, e)}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-[#111111]/80 hover:bg-[#D9541E] text-[#F3EEE3] transition-colors rounded-none z-20 cursor-pointer shadow-md"
+                          aria-label="Previous Project Image"
+                          title="Previous Image"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => handleCardNextImage(project, gallery.length, e)}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-[#111111]/80 hover:bg-[#D9541E] text-[#F3EEE3] transition-colors rounded-none z-20 cursor-pointer shadow-md"
+                          aria-label="Next Project Image"
+                          title="Next Image"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </>
+                    )}
+
+                    {/* Bottom Metadata Bar on Image */}
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/60 to-transparent p-2.5 pt-6 flex items-end justify-between gap-2 z-10 pointer-events-none">
+                      <span className="text-[10px] font-mono text-[#F3EEE3] font-bold truncate max-w-[70%] drop-shadow-sm">
+                        {currentImg?.title || 'Technical Document'}
+                      </span>
+                      {hasMultiple && (
+                        <span className="text-[10px] font-mono font-bold bg-[#111111] text-[#F3EEE3] border border-[#DDD6C7]/40 px-1.5 py-0.5 rounded-none flex-shrink-0">
+                          {activeIdx + 1} / {gallery.length}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Interactive Thumbnail Selector Strip (Click to choose display image) */}
+                  {hasMultiple && (
+                    <div
+                      className="bg-[#111111] p-1.5 px-3 flex items-center gap-1.5 overflow-x-auto border-b-2 border-[#111111]"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span className="text-[9px] font-mono text-[#DDD6C7] uppercase font-bold tracking-wider mr-1 flex-shrink-0">
+                        DISPLAY:
+                      </span>
+                      {gallery.map((item, idx) => {
+                        const isSelected = activeIdx === idx;
+                        return (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={(e) => handleCardImageSelect(project.id, idx, e)}
+                            title={item.title || `Display image ${idx + 1}`}
+                            className={`relative h-9 w-14 sm:h-10 sm:w-16 flex-shrink-0 border-2 transition-all overflow-hidden cursor-pointer bg-[#000000] ${
+                              isSelected
+                                ? 'border-[#D9541E] ring-2 ring-[#D9541E]/40 scale-105 opacity-100'
+                                : 'border-[#333333] opacity-60 hover:opacity-100 hover:border-[#DDD6C7]'
+                            }`}
+                          >
+                            <img
+                              src={item.url}
+                              alt={item.title || `Thumb ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                            {isSelected && (
+                              <span className="absolute bottom-0 inset-x-0 h-[2.5px] bg-[#D9541E]" />
+                            )}
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
 
-                  <div className="absolute top-2.5 left-2.5 bg-[#111111] text-[#F3EEE3] text-[10px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider rounded-none">
-                    {project.category}
-                  </div>
-
-                  <div className="absolute top-2.5 right-2.5 bg-[#FFFFFF] text-[#111111] border border-[#111111] text-[10px] font-mono font-bold px-2 py-0.5 rounded-none">
-                    {project.period}
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="p-5 sm:p-6 space-y-3.5">
+                  {/* Card Content Body */}
+                  <div className="p-5 sm:p-6 space-y-3.5">
                   <div>
                     <span className="text-[10px] font-mono text-[#D9541E] uppercase font-bold tracking-wider block mb-1">
                       {project.role}
@@ -157,7 +262,8 @@ export const FeaturedProjects: React.FC = () => {
                 </span>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
 
         {/* Project Detail Modal */}
