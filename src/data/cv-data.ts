@@ -26,9 +26,9 @@ export const profileData: ProfileData = {
       description: "Pelaksana Lapangan Pekerjaan Gedung Madya / Implementing Intermediate Building Works (Reg. F7472118)",
     },
     {
-      value: "10+",
+      value: "13+",
       label: "PROJECTS & TECHNICAL STUDIES",
-      description: "School Revitalization, Industrial Waste Gas EPC, QS Re-Measurement, Tender Competition & BIM",
+      description: "School & Kindergarten Revitalization, Site Inspection, Industrial EPC, QS Re-Measurement, Tender & BIM",
     },
     {
       value: "3",
@@ -61,6 +61,232 @@ export const profileData: ProfileData = {
 };
 
 export const featuredProjects: Project[] = [
+  {
+    id: "site-inspector-sifa",
+    title: "Structural Supervision & Quality Control Inspector — CV. SIFA Design Consultant",
+    category: "Government & Supervision",
+    role: "Site Inspector (Supervision Consultant)",
+    period: "Sep 2026 – Present",
+    clientOrInstitution: "CV. SIFA DESIGN CONSULTANT / Bappeda",
+    location: "Padang Pariaman, West Sumatra, Indonesia",
+    summary:
+      "Comprehensive field supervision and construction quality assurance for public building works. Overseeing rebar reinforcement fabrication, stirrup spacing measurements, column & beam concrete works, on-site structural compliance audits in coordination with Bappeda, issuing official Site Instructions (SI) for instant corrective actions, and compiling verified weekly and monthly physical progress dossiers.",
+    architectureAndSolution: [
+      "Conducted rigorous daily and weekly structural quality control audits verifying that all field reinforcement aligns 100% with approved Detailed Engineering Design (DED) blueprints.",
+      "Inspected stirrup and tie spacing with measurement calipers and steel tapes to verify structural shear capacity in accordance with national building codes (SNI 2847).",
+      "Supervised rebar cutting, hook bending tolerances, and concrete cover spacing at the jobsite fabrication yard before concrete casting.",
+      "Collaborated directly with regional planning agency (Bappeda) officials during site audits to evaluate milestone progress and technical compliance.",
+      "Issued formal Site Instructions (SI) for instant on-site rectification of non-conformances, averting structural rework and contractor dispute.",
+      "Compiled itemized weekly and monthly site supervision progress reports tracking physical volume achievements against the master timeline."
+    ],
+    metrics: [
+      { label: "Supervision Scope", value: "Rebar, Concrete & DED Compliance" },
+      { label: "Legal Directive", value: "Formal Site Instruction (SI) System" },
+      { label: "Milestone Audit", value: "Joint Bappeda Field Oversight" }
+    ],
+    techStack: ["Site Instruction (SI)", "Reinforcement Inspection", "Structural QA/QC", "Field Progress Logging", "AutoCAD Verification"],
+    deliverables: [
+      "Official Site Instruction (SI) Defect Correction Directives",
+      "Weekly & Monthly Physical Progress Milestone Dossiers",
+      "Rebar Fabrication & Stirrup Spacing Verification Records",
+      "Joint Bappeda Site Audit & Progress Evaluation Reports"
+    ],
+    featured: true,
+    coverImage: "/portfolio/site-inspector/pengerjaan-penulangan.jpeg",
+    mediaGallery: [
+      {
+        title: "Structural Reinforcement & Rebar Installation",
+        url: "/portfolio/site-inspector/pengerjaan-penulangan.jpeg",
+        caption: "Field supervision verifying longitudinal column rebar installation, lap splices, and concrete cover spacers before casting."
+      },
+      {
+        title: "Stirrup & Tie Spacing Measurement",
+        url: "/portfolio/site-inspector/pengukuran-jarak-sengkang.jpeg",
+        caption: "Precision on-site verification of shear stirrup spacing using calipers and tape measures according to structural DED drawings."
+      },
+      {
+        title: "Structural Steel & Rebar Fabrication",
+        url: "/portfolio/site-inspector/fabrikasi-besi.jpeg",
+        caption: "Inspecting off-pour rebar cutting, hook bending tolerances, and bar schedule conformity at the jobsite fabrication yard."
+      },
+      {
+        title: "Bappeda Planning Agency Joint Inspection",
+        url: "/portfolio/site-inspector/kunjungan-badan-perencanaan-pembangunan-daerah.jpeg",
+        caption: "Coordinating technical site audit and milestone progress validation with regional planning agency (Bappeda) officials."
+      },
+      {
+        title: "Weekly Physical Construction Log (Part 1)",
+        url: "/portfolio/site-inspector/laporan-mingguan-1.png",
+        caption: "Itemized weekly progress breakdown verifying cumulative percentage and variance against planned schedule."
+      },
+      {
+        title: "Weekly Physical Construction Log (Part 2)",
+        url: "/portfolio/site-inspector/laporan-mingguan-2.png",
+        caption: "Verified work quantity tracking ensuring transparent accountability for contractor progress milestones."
+      },
+      {
+        title: "Formal Site Instruction (SI) Administrative Issuance",
+        url: "/portfolio/site-inspector/si.jpeg",
+        caption: "Official Site Instruction directive issued to contractor for immediate structural defect rectification."
+      }
+    ],
+    documents: [
+      {
+        name: "Formal Site Instruction (SI) Directive",
+        url: "/portfolio/site-inspector/si.jpeg",
+        format: "JPEG",
+        size: "123 KB"
+      }
+    ]
+  },
+  {
+    id: "kb-ar-rahma",
+    title: "Technical Revitalization Planning & DED of KB Ar-Rahma Facilities",
+    category: "Planning & QS",
+    role: "Technical Planner & Quantity Surveyor (Planning Consultant)",
+    period: "Nov 2026",
+    clientOrInstitution: "Early Childhood Education Committee (KB Ar-Rahma)",
+    location: "Pasaman, West Sumatra, Indonesia",
+    summary:
+      "Full-cycle engineering planning and cost estimation for early childhood educational facility revitalization. Delivered comprehensive AutoCAD DED multi-sheet blueprints published directly to PDF, rigorous Unit Price Analysis (AHSP) BoQ/RAB, material specifications (RKS), and Microsoft Excel weighted Time Schedule & S-Curve control charts.",
+    architectureAndSolution: [
+      "Conducted physical site survey and dimensional measurements of existing classroom and sanitation infrastructure.",
+      "Engineered full architectural and structural Detailed Engineering Design (DED) drawings with AutoCAD layout viewports published to multi-sheet PDF.",
+      "Formulated comprehensive Bill of Quantities (BoQ/RAB) based on regional Unit Price Analyses (AHSP) ensuring transparent funding allocations.",
+      "Established technical specifications (RKS) defining material quality thresholds and child-safe construction standards.",
+      "Drafted project execution timelines (Time Schedule) and distributed weekly work weights into an S-Curve chart for strict milestone monitoring."
+    ],
+    metrics: [
+      { label: "Master Blueprint", value: "Full DED Multi-Sheet PDF (5.5 MB)" },
+      { label: "Cost Formulation", value: "Itemized BoQ/RAB (2.0 MB)" },
+      { label: "Progress Control", value: "Weighted S-Curve Milestone Chart" }
+    ],
+    techStack: ["AutoCAD (Layout to PDF)", "Microsoft Excel", "Time Schedule & S-Curve", "Cost Estimation (BoQ/RAB)", "RKS Specifications"],
+    deliverables: [
+      "Complete Multi-Sheet AutoCAD DED Blueprints (5.5 MB PDF)",
+      "Comprehensive Bill of Quantities (BoQ/RAB) Dossier (2.0 MB PDF)",
+      "Technical Work Requirements & Specifications (RKS)",
+      "Master Project Execution Time Schedule & S-Curve (PDF)"
+    ],
+    featured: true,
+    coverImage: "/portfolio/kb-ar-rahma/gambar.png",
+    mediaGallery: [
+      {
+        title: "AutoCAD Architectural & Structural DED Blueprints",
+        url: "/portfolio/kb-ar-rahma/gambar.png",
+        caption: "Comprehensive multi-sheet architectural and structural floor plans, roof framing, and sanitation details for early childhood school."
+      },
+      {
+        title: "Bill of Quantities (BoQ/RAB) Cost Breakdown",
+        url: "/portfolio/kb-ar-rahma/rab.png",
+        caption: "Detailed unit price analysis (AHSP) budget recapitulation covering substructure, masonry, and architectural finishes."
+      },
+      {
+        title: "Execution Time Schedule & S-Curve Chart",
+        url: "/portfolio/kb-ar-rahma/kurva-s.png",
+        caption: "Weekly cumulative S-Curve plotting project weights and milestone targets for on-time completion."
+      },
+      {
+        title: "AutoCAD Paper Layout Viewports Configuration",
+        url: "/portfolio/kb-ar-rahma/screenshot-2026-11-20-143223.png",
+        caption: "Standardized paper space viewport publishing system generating crisp vector PDF documentation for bidding and execution."
+      }
+    ],
+    documents: [
+      {
+        name: "Full DED Engineering Blueprints (5.5 MB)",
+        url: "/portfolio/kb-ar-rahma/gambar-kb-ar-rahma.pdf",
+        format: "PDF",
+        size: "5.54 MB"
+      },
+      {
+        name: "Itemized Bill of Quantities (BoQ/RAB)",
+        url: "/portfolio/kb-ar-rahma/rab-kb-ar-rahma.pdf",
+        format: "PDF",
+        size: "1.99 MB"
+      },
+      {
+        name: "Project Time Schedule & S-Curve",
+        url: "/portfolio/kb-ar-rahma/kurva-s-kb-ar-rahma.pdf",
+        format: "PDF",
+        size: "207 KB"
+      }
+    ]
+  },
+  {
+    id: "tk-negeri-pembina",
+    title: "Technical Revitalization Planning & DED of TK Negeri Pembina",
+    category: "Planning & QS",
+    role: "Technical Planner & Quantity Surveyor (Planning Consultant)",
+    period: "Nov 2026",
+    clientOrInstitution: "TK Negeri Pembina Revitalization Committee",
+    location: "Pasaman, West Sumatra, Indonesia",
+    summary:
+      "Architectural and structural engineering design, BoQ cost estimation, and schedule formulation for TK Negeri Pembina revitalization. Engineered complete AutoCAD DED drawings exported via layout viewports to PDF, itemized Bills of Quantities, technical quality guidelines (RKS), and master Time Schedule & S-Curve monitoring.",
+    architectureAndSolution: [
+      "Conducted comprehensive on-site condition audits to establish structural requirements for kindergarten facility upgrades.",
+      "Produced detailed AutoCAD DED plans, structural elevations, roof truss drawings, and fenestration schedules published to a complete multi-sheet PDF.",
+      "Prepared transparent Bill of Quantities (BoQ/RAB) calculations strictly conforming to regional Unit Price Analyses (AHSP).",
+      "Drafted standard Technical Specifications (RKS) defining building materials, concrete mix ratios, and finish tolerances.",
+      "Formulated master project timeline (Time Schedule) and mapped weekly weightings into an S-Curve chart for field progress control."
+    ],
+    metrics: [
+      { label: "Master Blueprint", value: "Full DED Multi-Sheet PDF (6.0 MB)" },
+      { label: "Cost Formulation", value: "Itemized BoQ/RAB (1.6 MB)" },
+      { label: "Schedule Control", value: "Weighted S-Curve Progress Chart" }
+    ],
+    techStack: ["AutoCAD (Layout to PDF)", "Microsoft Excel", "Time Schedule & S-Curve", "Cost Estimation (BoQ/RAB)", "Technical Specs (RKS)"],
+    deliverables: [
+      "Complete Multi-Sheet AutoCAD DED Blueprints (6.0 MB PDF)",
+      "Comprehensive Bill of Quantities (BoQ/RAB) Dossier (1.6 MB PDF)",
+      "Technical Work Requirements & Specifications (RKS)",
+      "Master Project Execution Time Schedule & S-Curve (PDF)"
+    ],
+    featured: true,
+    coverImage: "/portfolio/tk-pembina/ded.png",
+    mediaGallery: [
+      {
+        title: "DED Architectural & Engineering Blueprint Layout",
+        url: "/portfolio/tk-pembina/ded.png",
+        caption: "Complete structural floor plans, elevations, roof truss details, and inclusive spatial planning for public kindergarten."
+      },
+      {
+        title: "Bill of Quantities (BoQ/RAB) Budget Estimation",
+        url: "/portfolio/tk-pembina/rab.png",
+        caption: "Transparent cost calculations and volume breakdown for revitalizing school infrastructure."
+      },
+      {
+        title: "Master Project Schedule & S-Curve Chart",
+        url: "/portfolio/tk-pembina/kurva-s.png",
+        caption: "Weekly milestone progress tracking and weighting curve for execution control."
+      },
+      {
+        title: "Technical Specifications & Conditions (RKS)",
+        url: "/portfolio/tk-pembina/rks.png",
+        caption: "Material specifications, SNI/ASTM compliance standards, and contractor execution guidelines."
+      }
+    ],
+    documents: [
+      {
+        name: "Full DED Engineering Blueprints (6.0 MB)",
+        url: "/portfolio/tk-pembina/gambar-tk-pembina.pdf",
+        format: "PDF",
+        size: "6.01 MB"
+      },
+      {
+        name: "Comprehensive Bill of Quantities (BoQ/RAB)",
+        url: "/portfolio/tk-pembina/rab-tk-pembina.pdf",
+        format: "PDF",
+        size: "1.65 MB"
+      },
+      {
+        name: "Project Execution S-Curve Progress Chart",
+        url: "/portfolio/tk-pembina/kurva-s-tk-pembina.pdf",
+        format: "PDF",
+        size: "208 KB"
+      }
+    ]
+  },
   {
     id: "sdn-19-kuamang",
     title: "Technical Planning & Revitalization of SDN 19 Kuamang Facilities",
@@ -749,6 +975,32 @@ export const featuredProjects: Project[] = [
 ];
 
 export const workExperiences: Experience[] = [
+  {
+    id: "exp-site-inspector-sifa",
+    role: "Site Inspector",
+    company: "CV. SIFA DESIGN CONSULTANT",
+    type: "Government Building Construction Supervision",
+    period: "Sep 2026 – Present",
+    location: "Padang Pariaman, West Sumatra, Indonesia",
+    responsibilities: [
+      "Conduct regular on-site inspections to verify that structural and architectural execution complies with approved Detailed Engineering Design (DED) drawings and quality standards.",
+      "Direct field workers to implement immediate corrective actions whenever on-site deviations from technical drawings are identified, minimizing rework.",
+      "Prepare weekly physical progress reports using verified field quantities to ensure accurate updates for project stakeholders.",
+      "Prepare daily, weekly, and monthly site supervision reports and issue formal Site Instructions (SI) to maintain complete project administration records."
+    ],
+    keyImpacts: [
+      "Enforced rigorous structural quality control on rebar reinforcement, stirrup spacing, and concrete cover across multiple building zones.",
+      "Maintained zero-deviation compliance with approved DED blueprints through proactive Site Instruction (SI) issuances and Bappeda coordination."
+    ],
+    toolsUsed: ["Site Instruction (SI)", "Reinforcement Inspection", "Field Progress Logging", "Quality Control (QC)", "AutoCAD DED Verification"],
+    mediaPreview: [
+      { title: "Reinforcement Supervision", url: "/portfolio/site-inspector/pengerjaan-penulangan.jpeg" },
+      { title: "Site Instruction (SI) Dossier", url: "/portfolio/site-inspector/si.jpeg" }
+    ],
+    documents: [
+      { name: "Site Instruction (SI) Directive", url: "/portfolio/site-inspector/si.jpeg" }
+    ]
+  },
   {
     id: "exp-sdn19-kuamang",
     role: "Technical Planner & Quantity Surveyor (School Revitalization Consultant)",
