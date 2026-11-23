@@ -94,6 +94,14 @@ def build_html():
     b64_uns_poster = to_b64("portfolio/tender-uns/poster-jaya-jaya-team.jpg")
     b64_uns_render = to_b64("portfolio/tender-uns/render-uns-2.jpg")
     b64_pkm = to_b64("portfolio/artikel-ilmiah/screenshot-2026-10-29-120442.png")
+    # Certificates & Licensing Evidence
+    b64_cert_bnsp = to_b64("portfolio_pdf_export/extracted_assets/cert_bnsp.png")
+    b64_cert_revit = to_b64("portfolio_pdf_export/extracted_assets/cert_revit.png")
+    b64_cert_ssw = to_b64("portfolio_pdf_export/extracted_assets/cert_ssw.png")
+    b64_cert_jlpt = to_b64("portfolio_pdf_export/extracted_assets/cert_jlpt.png")
+    b64_cert_toeic = to_b64("portfolio_pdf_export/extracted_assets/cert_toeic.png")
+    b64_cert_transkrip = to_b64("portfolio_pdf_export/extracted_assets/cert_transkrip.png")
+
 
     # SVG Icons
     svg_phone = """<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>"""
@@ -218,8 +226,10 @@ def build_html():
       display: flex;
       flex-direction: row;
       background-color: #F3EEE3;
-      padding: 16mm 16mm;
-      gap: 12mm;
+      padding: 12mm 16mm;
+      gap: 14mm;
+      justify-content: space-between;
+      align-items: stretch;
     }}
     .cover-left {{
       flex: 1.35;
@@ -327,8 +337,8 @@ def build_html():
       position: relative;
     }}
     .cover-photo-card {{
-      width: 86mm;
-      height: 130mm;
+      width: 102mm;
+      height: 168mm;
       background: #FAF7F0;
       padding: 3.5mm;
       border: 2px solid #111111;
@@ -369,21 +379,21 @@ def build_html():
       justify-content: center;
     }}
     .about-arch-frame {{
-      width: 76mm;
-      height: 118mm;
-      border-radius: 38mm 38mm 4px 4px;
+      width: 95mm;
+      height: 168mm;
+      border-radius: 47.5mm 47.5mm 4px 4px;
       overflow: hidden;
       background: #FAF7F0;
-      padding: 2.5mm 2.5mm 0 2.5mm;
+      padding: 3mm 3mm 0 3mm;
       border: 2px solid #111111;
-      box-shadow: 4px 4px 0 #D9541E;
+      box-shadow: 5px 5px 0 #D9541E;
     }}
     .about-arch-frame img {{
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      border-radius: 35.5mm 35.5mm 2px 2px;
+      border-radius: 44.5mm 44.5mm 2px 2px;
     }}
 
     .about-right-content {{
@@ -577,12 +587,12 @@ def build_html():
     }}
     .edu-preview-landscape {{
       width: 100%;
-      height: 38mm;
+      height: 85mm;
       object-fit: contain;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       margin-top: 2.5mm;
-      padding: 1.2mm;
+      padding: 1.5mm;
     }}
 
     /* =========================================================================
@@ -593,6 +603,34 @@ def build_html():
       grid-template-columns: repeat(3, 1fr);
       gap: 3.5mm;
       flex: 1;
+    }}
+
+    .cert-thumb-box {{
+      height: 48mm;
+      background: #FFFFFF;
+      border: 1px solid #DDD6C7;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-top: 2mm;
+    }}
+    .cert-thumb-box img {{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #FFFFFF;
+    }}
+    .cert-thumb-tag {{
+      font-size: 5.6pt;
+      font-weight: 700;
+      color: #111111;
+      text-align: center;
+      padding: 0.6mm;
+      background: #EAE4D7;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.03em;
     }}
     .cert-box {{
       background: #FAF7F0;
@@ -696,6 +734,27 @@ def build_html():
       align-items: flex-start;
       gap: 1.8mm;
     }}
+
+    .exp-gallery-2x2 {{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2mm;
+      margin-top: 2.5mm;
+    }}
+    .exp-thumb-box-p6 {{
+      height: 98mm;
+      background: #FFFFFF;
+      border: 1px solid #DDD6C7;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }}
+    .exp-thumb-box-p6 img {{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #FFFFFF;
+    }}
     .exp-gallery-row {{
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -703,7 +762,7 @@ def build_html():
       margin-top: 2.5mm;
     }}
     .exp-thumb-box {{
-      height: 25mm;
+      height: 52mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -761,7 +820,7 @@ def build_html():
       margin-top: 2.5mm;
     }}
     .proj-thumb-3 {{
-      height: 30mm;
+      height: 105mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -1105,51 +1164,93 @@ def build_html():
         <span>LISENSI &amp; SERTIFIKASI PROFESIONAL</span>
         <span class="page-header-tag">STANDAR NEGARA &amp; GLOBAL</span>
       </div>
-      <div class="page-header-sub">KUALIFIKASI RESMI TERVERIFIKASI</div>
+      <div class="page-header-sub">KUALIFIKASI RESMI TERVERIFIKASI &bull; BUKTI DOKUMEN OTENTIK</div>
     </div>
 
     <div class="page-body">
       <div class="cert-landscape-grid">
+        <!-- 1. BNSP SKK Jenjang 5 -->
         <div class="cert-box">
-          <div class="cert-badge-tag">BNSP JENJANG 5 &bull; REG. F7472118</div>
-          <div class="cert-heading">Pelaksana Lapangan Pekerjaan Gedung Madya</div>
-          <div class="cert-sub">BNSP &bull; LPJK Kementerian PUPR RI</div>
-          <div class="cert-paragraph">11 unit kompetensi kerja nasional: K3 konstruksi, telaah gambar DED, pengawasan struktur beton/baja, kontrol mutu, dan administrasi laporan lapangan.</div>
+          <div>
+            <div class="cert-badge-tag">BNSP JENJANG 5 &bull; REG. F7472118</div>
+            <div class="cert-heading">Pelaksana Lapangan Pekerjaan Gedung Madya</div>
+            <div class="cert-sub">BNSP &bull; LPJK Kementerian PUPR RI</div>
+            <div class="cert-paragraph">11 unit kompetensi kerja nasional: K3 konstruksi, telaah gambar DED, pengawasan struktur beton/baja, kontrol mutu, dan administrasi laporan lapangan.</div>
+          </div>
+          <div class="cert-thumb-box">
+            <img src="{b64_cert_bnsp}" alt="Bukti Lisensi BNSP Jenjang 5">
+            <div class="cert-thumb-tag">Bukti Lisensi Negara BNSP &bull; LPJK PUPR</div>
+          </div>
         </div>
 
+        <!-- 2. Revit BIM Masterclass -->
         <div class="cert-box">
-          <div class="cert-badge-tag">BIM MASTERCLASS &bull; ARSISTEN ACADEMY</div>
-          <div class="cert-heading">Revit Masterclass for Beginners (BIM)</div>
-          <div class="cert-sub">Arsisten Academy &bull; Building Information Modeling</div>
-          <div class="cert-paragraph">Pemodelan 3D parametrik, balok-kolom beton bertulang, penulangan rebar 3D interaktif, dan integrasi schedule kuantitas material otomatis.</div>
+          <div>
+            <div class="cert-badge-tag">BIM MASTERCLASS &bull; ARSISTEN ACADEMY</div>
+            <div class="cert-heading">Revit Masterclass for Beginners (BIM)</div>
+            <div class="cert-sub">Arsisten Academy &bull; Building Information Modeling</div>
+            <div class="cert-paragraph">Pemodelan 3D parametrik, balok-kolom beton bertulang, penulangan rebar 3D interaktif, dan integrasi schedule kuantitas material otomatis.</div>
+          </div>
+          <div class="cert-thumb-box">
+            <img src="{b64_cert_revit}" alt="Bukti Sertifikat Autodesk Revit BIM">
+            <div class="cert-thumb-tag">Sertifikat Kelulusan Revit Masterclass</div>
+          </div>
         </div>
 
+        <!-- 3. SSW Civil Engineering Japan -->
         <div class="cert-box">
-          <div class="cert-badge-tag">SSW EVALUATION EXAM &bull; JEPANG</div>
-          <div class="cert-heading">Specified Skilled Worker (Civil Engineering)</div>
-          <div class="cert-sub">Japan Association for Construction Human Resources (JAC)</div>
-          <div class="cert-paragraph">Kualifikasi teknis teknik sipil standar industri Jepang, pengendalian mutu material, keselamatan kerja tinggi, dan manajemen lapangan.</div>
+          <div>
+            <div class="cert-badge-tag">SSW EVALUATION EXAM &bull; JEPANG</div>
+            <div class="cert-heading">Specified Skilled Worker (Civil Engineering)</div>
+            <div class="cert-sub">Japan Association for Construction Human Resources (JAC)</div>
+            <div class="cert-paragraph">Kualifikasi teknis teknik sipil standar industri Jepang, pengendalian mutu material, keselamatan kerja tinggi, dan manajemen lapangan.</div>
+          </div>
+          <div class="cert-thumb-box">
+            <img src="{b64_cert_ssw}" alt="Bukti Sertifikat SSW Jepang">
+            <div class="cert-thumb-tag">Sertifikat Resmi Evaluasi SSW JAC Jepang</div>
+          </div>
         </div>
 
+        <!-- 4. JLPT N4 & JFT-Basic -->
         <div class="cert-box">
-          <div class="cert-badge-tag">BAHASA JEPANG &bull; SKOR 250 &amp; 165</div>
-          <div class="cert-heading">JFT-Basic &amp; JLPT Level N4</div>
-          <div class="cert-issuer cert-sub">The Japan Foundation &bull; Japan Educational Exchanges</div>
-          <div class="cert-paragraph">Sertifikasi kemampuan komunikasi bahasa Jepang tingkat menengah dalam konteks kerja profesional, pembacaan gambar teknik, dan koordinasi tim.</div>
+          <div>
+            <div class="cert-badge-tag">BAHASA JEPANG &bull; SKOR 250 &amp; 165</div>
+            <div class="cert-heading">JFT-Basic &amp; JLPT Level N4</div>
+            <div class="cert-issuer cert-sub">The Japan Foundation &bull; Japan Educational Exchanges</div>
+            <div class="cert-paragraph">Sertifikasi kemampuan komunikasi bahasa Jepang tingkat menengah dalam konteks kerja profesional, pembacaan gambar teknik, dan koordinasi tim.</div>
+          </div>
+          <div class="cert-thumb-box">
+            <img src="{b64_cert_jlpt}" alt="Bukti Sertifikat JLPT N4">
+            <div class="cert-thumb-tag">Sertifikat Resmi JLPT N4 / JFT-Basic</div>
+          </div>
         </div>
 
+        <!-- 5. Prediction TOEIC 640 -->
         <div class="cert-box">
-          <div class="cert-badge-tag">PROFICIENCY TEST &bull; SKOR 640</div>
-          <div class="cert-heading">Prediction Test for TOEIC</div>
-          <div class="cert-sub">UPT Bahasa Politeknik Negeri Padang</div>
-          <div class="cert-paragraph">Kemampuan bahasa Inggris tingkat menengah untuk korespondensi proyek internasional, penelaahan standar ASTM/ACI, dan koordinasi dokumen tender.</div>
+          <div>
+            <div class="cert-badge-tag">PROFICIENCY TEST &bull; SKOR 640</div>
+            <div class="cert-heading">Prediction Test for TOEIC</div>
+            <div class="cert-sub">UPT Bahasa Politeknik Negeri Padang</div>
+            <div class="cert-paragraph">Kemampuan bahasa Inggris tingkat menengah untuk korespondensi proyek internasional, penelaahan standar ASTM/ACI, dan koordinasi dokumen tender.</div>
+          </div>
+          <div class="cert-thumb-box">
+            <img src="{b64_cert_toeic}" alt="Bukti Sertifikat TOEIC">
+            <div class="cert-thumb-tag">Sertifikat Resmi TOEIC Prediction 640</div>
+          </div>
         </div>
 
+        <!-- 6. Transkrip Akademik PNP -->
         <div class="cert-box">
-          <div class="cert-badge-tag">AKADEMIK &bull; IPK 3.72 / 4.00</div>
-          <div class="cert-heading">Transkrip Nilai Akademik Resmi PNP</div>
-          <div class="cert-sub">Politeknik Negeri Padang &bull; Jurusan Teknik Sipil</div>
-          <div class="cert-paragraph">Lulus 115 SKS predikat Cum Laude. Nilai istimewa pada Rekayasa Gempa, Manajemen Konstruksi, Estimasi Biaya, Struktur Beton Bertulang, dan AutoCAD.</div>
+          <div>
+            <div class="cert-badge-tag">AKADEMIK &bull; IPK 3.72 / 4.00</div>
+            <div class="cert-heading">Transkrip Nilai Akademik Resmi PNP</div>
+            <div class="cert-sub">Politeknik Negeri Padang &bull; Jurusan Teknik Sipil</div>
+            <div class="cert-paragraph">Lulus 115 SKS predikat Cum Laude. Nilai istimewa pada Rekayasa Gempa, Manajemen Konstruksi, Estimasi Biaya, Struktur Beton Bertulang, dan AutoCAD.</div>
+          </div>
+          <div class="cert-thumb-box">
+            <img src="{b64_cert_transkrip}" alt="Bukti Transkrip Akademik PNP">
+            <div class="cert-thumb-tag">Transkrip Akademik Resmi D3 Teknik Sipil PNP</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1197,7 +1298,7 @@ def build_html():
               </li>
             </ul>
           </div>
-          <div class="exp-gallery-row">
+          <div class="exp-gallery-2x2">
             <div class="exp-thumb-box">
               <img src="{b64_si_penulangan}" alt="Penulangan">
               <div class="exp-thumb-tag">Pengecekan Rebar</div>
@@ -1240,12 +1341,12 @@ def build_html():
               </li>
             </ul>
           </div>
-          <div class="exp-gallery-row">
-            <div class="exp-thumb-box" style="grid-column: span 2; height: 22mm;">
+          <div class="exp-gallery-2x2">
+            <div class="exp-thumb-box" style="grid-column: span 2; height: 52mm;">
               <img src="{b64_fas_monitoring}" alt="Site Monitoring">
               <div class="exp-thumb-tag">Monitoring &amp; Evaluasi Lapangan</div>
             </div>
-            <div class="exp-thumb-box" style="grid-column: span 2; height: 22mm;">
+            <div class="exp-thumb-box" style="grid-column: span 2; height: 52mm;">
               <img src="{b64_fas_bimtek}" alt="Bimtek Fasilitator">
               <div class="exp-thumb-tag">Bimbingan Teknis Fasilitator</div>
             </div>
@@ -1300,19 +1401,19 @@ def build_html():
           </ul>
         </div>
         <div class="exp-gallery-row" style="margin-top: 3.5mm;">
-          <div class="exp-thumb-box" style="height: 38mm;">
+          <div class="exp-thumb-box-p6">
             <img src="{b64_mag_slump}" alt="Slump Test">
             <div class="exp-thumb-tag">Pengujian Slump Test Beton</div>
           </div>
-          <div class="exp-thumb-box" style="height: 38mm;">
+          <div class="exp-thumb-box-p6">
             <img src="{b64_mag_pembesian}" alt="Mapping Work">
             <div class="exp-thumb-tag">Mapping Area Pembesian</div>
           </div>
-          <div class="exp-thumb-box" style="height: 38mm;">
+          <div class="exp-thumb-box-p6">
             <img src="{b64_mag_daily}" alt="Daily Report">
             <div class="exp-thumb-tag">Laporan Harian Progres</div>
           </div>
-          <div class="exp-thumb-box" style="height: 38mm;">
+          <div class="exp-thumb-box-p6">
             <img src="{b64_mag_punch}" alt="Punch List">
             <div class="exp-thumb-tag">Penyusunan Punch List Cacat</div>
           </div>
@@ -1580,12 +1681,12 @@ def build_html():
             </div>
           </div>
           <div class="proj-gallery-3" style="grid-template-columns: 1fr 1fr;">
-            <div class="proj-thumb-3" style="height: 38mm;">
+            <div class="proj-thumb-3" style="height: 105mm;">
               <img src="{b64_uns_poster}" alt="Poster Tender UNS" style="object-fit: contain;">
               <div class="exp-thumb-tag">Poster Infografis Tender</div>
             </div>
-            <div class="proj-thumb-3" style="height: 38mm;">
-              <img src="{b64_uns_render}" alt="Render Metode Kerja 3D" style="object-fit: cover;">
+            <div class="proj-thumb-3" style="height: 105mm;">
+              <img src="{b64_uns_render}" alt="Render Metode Kerja 3D" style="object-fit: contain; background: #FFFFFF;">
               <div class="exp-thumb-tag">Simulasi Metode 3D SketchUp</div>
             </div>
           </div>
@@ -1603,7 +1704,7 @@ def build_html():
             </div>
           </div>
           <div class="proj-gallery-3" style="grid-template-columns: 1fr;">
-            <div class="proj-thumb-3" style="height: 38mm;">
+            <div class="proj-thumb-3" style="height: 105mm;">
               <img src="{b64_pkm}" alt="Manuskrip PKM-AI" style="object-fit: contain;">
               <div class="exp-thumb-tag">Manuskrip Artikel Ilmiah Analisa Biaya Perancah</div>
             </div>
