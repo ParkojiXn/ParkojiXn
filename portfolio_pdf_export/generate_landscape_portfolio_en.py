@@ -82,13 +82,13 @@ def build_html():
     # WWTP & Revit
     b64_wwtp_bbs = to_b64("portfolio/wwtp-perfetti/bbs.png")
     b64_wwtp_bv = to_b64("portfolio/wwtp-perfetti/backup-vol.png")
-    b64_revit_portal = to_b64("portfolio/revit/screenshot-2026-10-29-123825.png")
+    b64_revit_portal = to_b64("portfolio/revit-bim/screenshot-2026-10-29-123825.png")
 
     # Final Project & Pra Proyek
     b64_fp_msp = to_b64("portfolio_pdf_export/final_project_msp_cropped.png")
     b64_fp_ks = to_b64("portfolio_pdf_export/final_project_kurvas_cropped.png")
-    b64_sap = to_b64("portfolio/pra-proyek/sap2000.png")
-    b64_sap_gempa = to_b64("portfolio/pra-proyek/beban-gempa.png")
+    b64_sap = to_b64("portfolio/pra-proyek-sap2000/sap2000.png")
+    b64_sap_gempa = to_b64("portfolio/pra-proyek-sap2000/beban-gempa.png")
 
     # Tender UNS & PKM-AI
     b64_uns_poster = to_b64("portfolio/tender-uns/poster-jaya-jaya-team.jpg")
