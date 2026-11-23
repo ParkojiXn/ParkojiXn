@@ -11,7 +11,6 @@ export const FeaturedProjects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
-  const [cardImageIndex, setCardImageIndex] = useState<Record<string, number>>({});
 
   const categories = ['ALL', 'Planning & QS', 'BIM & CAD', 'Industrial & QC', 'Tender & Research', 'Government & Supervision'];
 
@@ -27,25 +26,6 @@ export const FeaturedProjects: React.FC = () => {
   const openProjectModal = (project: Project, initialIdx = 0) => {
     setActiveModalProject(project);
     setActiveImageIndex(initialIdx);
-  };
-
-  const handleCardImageSelect = (projectId: string, index: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCardImageIndex((prev) => ({ ...prev, [projectId]: index }));
-  };
-
-  const handleCardPrevImage = (project: Project, galleryLength: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const currentIndex = cardImageIndex[project.id] ?? 0;
-    const newIndex = currentIndex === 0 ? galleryLength - 1 : currentIndex - 1;
-    setCardImageIndex((prev) => ({ ...prev, [project.id]: newIndex }));
-  };
-
-  const handleCardNextImage = (project: Project, galleryLength: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const currentIndex = cardImageIndex[project.id] ?? 0;
-    const newIndex = (currentIndex + 1) % galleryLength;
-    setCardImageIndex((prev) => ({ ...prev, [project.id]: newIndex }));
   };
 
   const handleNextImage = () => {
@@ -108,23 +88,22 @@ export const FeaturedProjects: React.FC = () => {
                 : project.coverImage
                 ? [{ title: project.title, url: project.coverImage, caption: '' }]
                 : [];
-            const activeIdx = cardImageIndex[project.id] ?? 0;
-            const currentImg = gallery[activeIdx] || gallery[0];
+            const displayImg = project.coverImage || gallery[0]?.url;
             const hasMultiple = gallery.length > 1;
 
             return (
               <div
                 key={project.id}
                 className="card-editorial-elevated flex flex-col justify-between group cursor-pointer overflow-hidden p-0 rounded-none page-break-avoid"
-                onClick={() => openProjectModal(project, activeIdx)}
+                onClick={() => openProjectModal(project, 0)}
               >
                 <div>
-                  {/* Visual Thumbnail Header with Image Selector */}
+                  {/* Visual Thumbnail Header (Clean Display - Details & Images accessed on Click) */}
                   <div className="relative aspect-[16/10] bg-[#111111] overflow-hidden border-b-2 border-[#111111] select-none">
-                    {currentImg?.url ? (
+                    {displayImg ? (
                       <img
-                        src={currentImg.url}
-                        alt={currentImg.title || project.title}
+                        src={displayImg}
+                        alt={project.title}
                         className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-300 contrast-105"
                         loading="lazy"
                       />
@@ -143,79 +122,14 @@ export const FeaturedProjects: React.FC = () => {
                       {project.period}
                     </div>
 
-                    {/* Prev / Next Arrows (Direct Card Image Selector) */}
+                    {/* Multiple Blueprints Indicator Badge */}
                     {hasMultiple && (
-                      <>
-                        <button
-                          type="button"
-                          onClick={(e) => handleCardPrevImage(project, gallery.length, e)}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-[#111111]/80 hover:bg-[#D9541E] text-[#F3EEE3] transition-colors rounded-none z-20 cursor-pointer shadow-md"
-                          aria-label="Previous Project Image"
-                          title="Previous Image"
-                        >
-                          <ChevronLeft className="w-4 h-4" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={(e) => handleCardNextImage(project, gallery.length, e)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-[#111111]/80 hover:bg-[#D9541E] text-[#F3EEE3] transition-colors rounded-none z-20 cursor-pointer shadow-md"
-                          aria-label="Next Project Image"
-                          title="Next Image"
-                        >
-                          <ChevronRight className="w-4 h-4" />
-                        </button>
-                      </>
+                      <div className="absolute bottom-2.5 right-2.5 bg-[#111111]/90 text-[#F3EEE3] border border-[#DDD6C7]/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded-none flex items-center gap-1.5 z-10 pointer-events-none shadow-sm">
+                        <ImageIcon className="w-3 h-3 text-[#D9541E]" />
+                        <span>{gallery.length} BLUEPRINTS</span>
+                      </div>
                     )}
-
-                    {/* Bottom Metadata Bar on Image */}
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/60 to-transparent p-2.5 pt-6 flex items-end justify-between gap-2 z-10 pointer-events-none">
-                      <span className="text-[10px] font-mono text-[#F3EEE3] font-bold truncate max-w-[70%] drop-shadow-sm">
-                        {currentImg?.title || 'Technical Document'}
-                      </span>
-                      {hasMultiple && (
-                        <span className="text-[10px] font-mono font-bold bg-[#111111] text-[#F3EEE3] border border-[#DDD6C7]/40 px-1.5 py-0.5 rounded-none flex-shrink-0">
-                          {activeIdx + 1} / {gallery.length}
-                        </span>
-                      )}
-                    </div>
                   </div>
-
-                  {/* Interactive Thumbnail Selector Strip (Click to choose display image) */}
-                  {hasMultiple && (
-                    <div
-                      className="bg-[#111111] p-1.5 px-3 flex items-center gap-1.5 overflow-x-auto border-b-2 border-[#111111]"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span className="text-[9px] font-mono text-[#DDD6C7] uppercase font-bold tracking-wider mr-1 flex-shrink-0">
-                        DISPLAY:
-                      </span>
-                      {gallery.map((item, idx) => {
-                        const isSelected = activeIdx === idx;
-                        return (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={(e) => handleCardImageSelect(project.id, idx, e)}
-                            title={item.title || `Display image ${idx + 1}`}
-                            className={`relative h-9 w-14 sm:h-10 sm:w-16 flex-shrink-0 border-2 transition-all overflow-hidden cursor-pointer bg-[#000000] ${
-                              isSelected
-                                ? 'border-[#D9541E] ring-2 ring-[#D9541E]/40 scale-105 opacity-100'
-                                : 'border-[#333333] opacity-60 hover:opacity-100 hover:border-[#DDD6C7]'
-                            }`}
-                          >
-                            <img
-                              src={item.url}
-                              alt={item.title || `Thumb ${idx + 1}`}
-                              className="w-full h-full object-cover"
-                            />
-                            {isSelected && (
-                              <span className="absolute bottom-0 inset-x-0 h-[2.5px] bg-[#D9541E]" />
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
 
                   {/* Card Content Body */}
                   <div className="p-5 sm:p-6 space-y-3.5">
@@ -364,24 +278,51 @@ export const FeaturedProjects: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Thumbnails strip */}
+                  {/* Interactive Display Selector (Pilih Display Blueprint Saat Modal Terbuka) */}
                   {activeModalProject.mediaGallery.length > 1 && (
-                    <div className="flex gap-2 mt-4 overflow-x-auto pb-1">
-                      {activeModalProject.mediaGallery.map((media, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setActiveImageIndex(idx)}
-                          className={`relative w-16 h-12 flex-shrink-0 border-2 overflow-hidden rounded-none ${
-                            activeImageIndex === idx ? 'border-[#D9541E]' : 'border-[#333333] opacity-60 hover:opacity-100'
-                          }`}
-                        >
-                          <img
-                            src={media.url}
-                            alt={media.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </button>
-                      ))}
+                    <div className="mt-4 pt-3.5 border-t border-[#262626]">
+                      <div className="text-[10px] font-mono text-[#DDD6C7] uppercase font-bold tracking-wider mb-2.5 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5 text-[#D9541E]">
+                          <ImageIcon className="w-3.5 h-3.5" />
+                          PILIH DISPLAY GAMBAR ({activeModalProject.mediaGallery.length} LAMPIRAN TERSEDIA):
+                        </span>
+                        <span className="text-[#A3A3A3] font-mono hidden sm:inline">
+                          KLIK GAMBAR DI BAWAH UNTUK MENGGANTI TAMPILAN
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        {activeModalProject.mediaGallery.map((media, idx) => {
+                          const isSelected = activeImageIndex === idx;
+                          return (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() => setActiveImageIndex(idx)}
+                              className={`relative p-1.5 border-2 transition-all flex flex-col gap-1 text-left cursor-pointer bg-[#1A1A1A] ${
+                                isSelected
+                                  ? 'border-[#D9541E] bg-[#222222] ring-2 ring-[#D9541E]/40'
+                                  : 'border-[#333333] hover:border-[#DDD6C7] opacity-70 hover:opacity-100'
+                              }`}
+                            >
+                              <div className="aspect-[16/10] bg-[#000000] overflow-hidden relative">
+                                <img
+                                  src={media.url}
+                                  alt={media.title}
+                                  className="w-full h-full object-cover"
+                                />
+                                {isSelected && (
+                                  <span className="absolute top-1 right-1 bg-[#D9541E] text-[#F3EEE3] text-[9px] font-mono font-bold px-1.5 py-0.5">
+                                    ACTIVE
+                                  </span>
+                                )}
+                              </div>
+                              <span className="text-[10px] font-mono font-bold text-[#F3EEE3] truncate block">
+                                {idx + 1}. {media.title}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
                   )}
                 </div>

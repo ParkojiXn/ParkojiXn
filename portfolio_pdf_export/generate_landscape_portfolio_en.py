@@ -55,7 +55,7 @@ def build_html():
     b64_fas_bimtek = to_b64("portfolio/fasilitator/bimtek.jpeg")
 
     # Magang SIE
-    b64_mag_slump = to_b64("portfolio/magang-sie/slump-test.jpg")
+    b64_mag_inspeksi = to_b64("portfolio/magang-sie/dokumen-2.jpeg")
     b64_mag_pembesian = to_b64("portfolio/magang-sie/mapping-work.png")
     b64_mag_daily = to_b64("portfolio_pdf_export/magang_daily_progress_cropped.png")
     b64_mag_punch = to_b64("portfolio/magang-sie/punch-list.png")
@@ -606,7 +606,7 @@ def build_html():
     }}
 
     .cert-thumb-box {{
-      height: 48mm;
+      height: 50mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -639,7 +639,8 @@ def build_html():
       padding: 3mm 3.5mm;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 2mm;
     }}
     .cert-badge-tag {{
       display: inline-block;
@@ -690,7 +691,8 @@ def build_html():
       padding: 3.5mm 4.5mm;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 2.5mm;
     }}
     .exp-title-row {{
       display: flex;
@@ -762,7 +764,7 @@ def build_html():
       margin-top: 2.5mm;
     }}
     .exp-thumb-box {{
-      height: 52mm;
+      height: 67mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -794,7 +796,8 @@ def build_html():
       padding: 3.5mm 4.5mm;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 2.5mm;
     }}
     .proj-title-landscape {{
       font-family: 'Playfair Display', serif;
@@ -829,7 +832,7 @@ def build_html():
     }}
     .collage-hero-box {{
       width: 100%;
-      height: 56mm;
+      height: 82mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -848,7 +851,7 @@ def build_html():
       gap: 2mm;
     }}
     .collage-sub-box {{
-      height: 42mm;
+      height: 58mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -870,7 +873,7 @@ def build_html():
       margin-top: 3mm;
     }}
     .p6-thumb-box {{
-      height: 48mm;
+      height: 65mm;
       background: #FFFFFF;
       border: 1px solid #DDD6C7;
       overflow: hidden;
@@ -1406,11 +1409,11 @@ def build_html():
             </ul>
           </div>
           <div class="exp-gallery-2x2">
-            <div class="exp-thumb-box" style="grid-column: span 2; height: 52mm;">
+            <div class="exp-thumb-box" style="grid-column: span 2; height: 67mm;">
               <img src="{b64_fas_monitoring}" alt="Site Monitoring">
               <div class="exp-thumb-tag">Monitoring &amp; Evaluasi Lapangan</div>
             </div>
-            <div class="exp-thumb-box" style="grid-column: span 2; height: 52mm;">
+            <div class="exp-thumb-box" style="grid-column: span 2; height: 67mm;">
               <img src="{b64_fas_bimtek}" alt="Bimtek Fasilitator">
               <div class="exp-thumb-tag">Bimbingan Teknis Fasilitator</div>
             </div>
@@ -1456,7 +1459,7 @@ def build_html():
             </li>
             <li class="exp-task-item">
               <span class="edu-dot"></span>
-              <span>Melaksanakan inspeksi Quality Control (QC) harian, meliputi pengujian Slump Test beton cor segar, verifikasi bekisting, dan checklist rebar pra-pengecoran.</span>
+              <span>Melaksanakan inspeksi Quality Control (QC) harian, meliputi verifikasi fabrikasi struktur baja, checklist dimensi pra-pekerjaan, dan monitoring mutu lapangan.</span>
             </li>
             <li class="exp-task-item">
               <span class="edu-dot"></span>
@@ -1474,8 +1477,8 @@ def build_html():
             <div class="exp-thumb-tag">Penyusunan Punch List Cacat Mutu Lapangan</div>
           </div>
           <div class="p6-thumb-box">
-            <img src="{b64_mag_slump}" alt="Slump Test">
-            <div class="exp-thumb-tag">Pengujian Slump Test Mutu Beton Segar</div>
+            <img src="{b64_mag_inspeksi}" alt="Site QC Inspection">
+            <div class="exp-thumb-tag">Site QC & Structural Dimension Verification</div>
           </div>
           <div class="p6-thumb-box">
             <img src="{b64_mag_daily}" alt="Daily Report">
@@ -1776,7 +1779,7 @@ def build_html():
             </div>
             <!-- Sub Box Poster (Preserving Natural Dimensions) -->
             <div class="collage-sub-row" style="grid-template-columns: 1fr;">
-              <div class="collage-sub-box" style="height: 42mm;">
+              <div class="collage-sub-box" style="height: 58mm;">
                 <img src="{b64_uns_poster}" alt="Poster Tender UNS">
                 <div class="exp-thumb-tag">Technical Bidding Infographic Poster Dossier</div>
               </div>
@@ -1797,7 +1800,7 @@ def build_html():
           </div>
           <div class="proj-collage-arch">
             <!-- Hero Landscape Manuscript (1.33:1) -->
-            <div class="collage-hero-box" style="height: 100mm;">
+            <div class="collage-hero-box" style="height: 142.5mm;">
               <img src="{b64_pkm}" alt="Manuskrip PKM-AI">
               <div class="exp-thumb-tag">Scientific Manuscript &bull; Scaffolding Life-Cycle Cost Analysis (PKM-AI)</div>
             </div>

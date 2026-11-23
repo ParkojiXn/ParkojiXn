@@ -513,12 +513,12 @@ export const featuredProjects: Project[] = [
       "Daily, Weekly, & Monthly Executive Progress Reports"
     ],
     featured: true,
-    coverImage: "/portfolio/magang-sie/slump-test.jpg",
+    coverImage: "/portfolio/magang-sie/dokumen-2.jpeg",
     mediaGallery: [
       {
-        title: "On-Site Fresh Concrete Slump Testing",
-        url: "/portfolio/magang-sie/slump-test.jpg",
-        caption: "Standard slump cone testing of ready-mix concrete to verify workability and water-cement ratio before structural placement."
+        title: "Jobsite Quality Control & Structural Verification",
+        url: "/portfolio/magang-sie/dokumen-2.jpeg",
+        caption: "On-site dimensional verification, structural steel quality checks, and pre-installation safety inspections at PT Indo-Bharat Rayon."
       },
       {
         title: "Bar Bending Schedule (BBS) Engineering",
@@ -1123,9 +1123,9 @@ export const workExperiences: Experience[] = [
       "Verified 100% of concrete batches met slump workability and strength thresholds required in high-hazard chemical facilities.",
       "Maintained audit-ready Backup Volume documentation, securing on-time milestone Progress Billing approvals with zero deductions."
     ],
-    toolsUsed: ["Bar Bending Schedule (BBS)", "Slump Testing", "AutoCAD", "Punch List Resolution", "Progress Billing Backup", "Site Mapping"],
+    toolsUsed: ["Bar Bending Schedule (BBS)", "QC Inspection", "AutoCAD", "Punch List Resolution", "Progress Billing Backup", "Site Mapping"],
     mediaPreview: [
-      { title: "On-Site Slump Test", url: "/portfolio/magang-sie/slump-test.jpg" },
+      { title: "Jobsite QC Inspection", url: "/portfolio/magang-sie/dokumen-2.jpeg" },
       { title: "BoQ Rework Costing", url: "/portfolio/magang-sie/bill-of-quantity-rework.png" },
       { title: "Handover Punch List", url: "/portfolio/magang-sie/punch-list.png" }
     ],
