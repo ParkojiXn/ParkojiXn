@@ -2,6 +2,8 @@ export { Navbar } from './Navbar';
 export { Footer } from './Footer';
 export { HeroSection } from './HeroSection';
 export { CorePrinciples } from './CorePrinciples';
+export { MasterSidebar } from './MasterSidebar';
+export { OverviewSection } from './OverviewSection';
 export { FeaturedProjects } from './FeaturedProjects';
 export { ExperienceTimeline } from './ExperienceTimeline';
 export { SkillsMatrix } from './SkillsMatrix';

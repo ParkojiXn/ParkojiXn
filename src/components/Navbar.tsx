@@ -44,12 +44,11 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: 'ABOUT', href: '#hero', id: 'hero' },
-    { label: 'ETHIC', href: '#principles', id: 'principles' },
+    { label: 'OVERVIEW', href: '#overview', id: 'overview' },
     { label: 'PROJECTS', href: '#projects', id: 'projects' },
     { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
-    { label: 'SKILLS', href: '#skills', id: 'skills' },
     { label: 'CREDENTIALS', href: '#education', id: 'education' },
+    { label: 'SKILLS', href: '#skills', id: 'skills' },
     { label: 'CONTACT', href: '#contact', id: 'contact' },
   ];
 
@@ -62,7 +61,7 @@ export const Navbar: React.FC = () => {
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo / Masthead */}
-          <a href="#hero" className="flex flex-col group">
+          <a href="#overview" className="flex flex-col group">
             <span className="font-display text-xl sm:text-2xl text-[#111111] tracking-tight group-hover:text-[#D9541E] transition-colors">
               {profileData.name}
             </span>
