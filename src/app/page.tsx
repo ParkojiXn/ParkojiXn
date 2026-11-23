@@ -18,7 +18,7 @@ import { PdfModalProvider } from '../context/PdfModalContext';
 export default function HomePage() {
   return (
     <PdfModalProvider>
-      <main className="min-h-screen flex flex-col bg-[#FAFAFA]">
+      <main className="min-h-screen flex flex-col bg-[#F3EEE3]">
         <Navbar />
         <HeroSection />
         <CorePrinciples />

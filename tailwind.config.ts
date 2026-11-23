@@ -10,29 +10,30 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          primary: "#0A0A0A",     // Pure Black
-          secondary: "#EF4444",   // Red Accent
-          tertiary: "#FAFAFA",    // Clean White
+          primary: "#111111",     // 20% Ink Black
+          secondary: "#D9541E",   // 5% Burnt Orange
+          tertiary: "#F3EEE3",    // 75% Cream
         },
         surface: {
-          DEFAULT: "#FAFAFA",
-          muted: "#F5F5F5",
-          raised: "#E5E5E5",
+          DEFAULT: "#F3EEE3",     // 75% Cream base
+          muted: "#EAE4D7",       // Warm muted cream
+          raised: "#FAF7F0",      // Elevated cream surface
+          white: "#FFFFFF",
         },
         content: {
-          primary: "#0A0A0A",
-          secondary: "#525252",
-          tertiary: "#A3A3A3",
+          primary: "#111111",     // Ink Black
+          secondary: "#3E3E3E",   // Slate charcoal
+          tertiary: "#737373",    // Warm muted grey
         },
         editorial: {
-          subtle: "#E5E5E5",
-          medium: "#D4D4D4",
-          strong: "#0A0A0A",
+          subtle: "#DDD6C7",      // Warm sand border
+          medium: "#C8C0B0",      // Medium warm border
+          strong: "#111111",      // Ink Black border
         },
         semantic: {
-          success: "#16A34A",
-          warning: "#CA8A04",
-          error: "#EF4444",
+          success: "#2D5A27",     // Deep forest green
+          warning: "#D9541E",     // Burnt Orange
+          error: "#D9541E",       // Burnt Orange
         },
       },
       fontFamily: {
@@ -48,11 +49,11 @@ const config: Config = {
         lg: "0px",
         xl: "0px",
         "2xl": "0px",
-        full: "9999px", // Only avatar / radio
+        full: "9999px",
       },
       boxShadow: {
         none: "none",
-        focus: "0 0 0 2px #FAFAFA, 0 0 0 4px #0A0A0A",
+        focus: "0 0 0 2px #F3EEE3, 0 0 0 4px #111111",
       },
       letterSpacing: {
         tightest: "-0.03em",
