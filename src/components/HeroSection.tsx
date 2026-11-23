@@ -117,13 +117,27 @@ export const HeroSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Verified badge tag */}
-              <div className="mt-3 pt-2.5 border-t border-[#DDD6C7] flex items-center justify-between text-xs font-mono">
-                <span className="text-[#525252] font-semibold">STATE ACCREDITATION:</span>
-                <span className="font-bold text-[#111111] flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A]" />
-                  BNSP LEVEL 5
-                </span>
+              {/* Verified Telemetry Block */}
+              <div className="mt-3 pt-2.5 border-t border-[#DDD6C7] space-y-1.5 text-xs font-mono">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#525252] font-semibold text-[11px]">STATE LICENSURE:</span>
+                  <span className="font-bold text-[#111111] flex items-center gap-1 text-[11px]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A]" />
+                    BNSP LEVEL 5 MADYA
+                  </span>
+                </div>
+                <div className="flex items-center justify-between border-t border-[#EAE4D7] pt-1">
+                  <span className="text-[#525252] font-semibold text-[11px]">ACADEMIC HONORS:</span>
+                  <span className="font-bold text-[#D9541E] text-[11px]">
+                    CUM LAUDE (GPA 3.72)
+                  </span>
+                </div>
+                <div className="flex items-center justify-between border-t border-[#EAE4D7] pt-1">
+                  <span className="text-[#525252] font-semibold text-[11px]">GLOBAL ACCREDITATION:</span>
+                  <span className="font-bold text-[#111111] text-[11px]">
+                    SSW JAPAN • TOEIC 640
+                  </span>
+                </div>
               </div>
             </div>
 
