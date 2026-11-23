@@ -819,6 +819,70 @@ def build_html():
       gap: 2.2mm;
       margin-top: 2.5mm;
     }}
+
+    /* Architectural Collage Styles (Zero Forced Portrait) */
+    .proj-collage-arch {{
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+      margin-top: 2.5mm;
+    }}
+    .collage-hero-box {{
+      width: 100%;
+      height: 56mm;
+      background: #FFFFFF;
+      border: 1px solid #DDD6C7;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }}
+    .collage-hero-box img {{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #FFFFFF;
+    }}
+    .collage-sub-row {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm;
+    }}
+    .collage-sub-box {{
+      height: 42mm;
+      background: #FFFFFF;
+      border: 1px solid #DDD6C7;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }}
+    .collage-sub-box img {{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #FFFFFF;
+    }}
+
+    /* Page 6 EPC Collage: 2x2 Panoramic */
+    .p6-collage-grid {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5mm;
+      margin-top: 3mm;
+    }}
+    .p6-thumb-box {{
+      height: 48mm;
+      background: #FFFFFF;
+      border: 1px solid #DDD6C7;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }}
+    .p6-thumb-box img {{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #FFFFFF;
+    }}
     .proj-thumb-3 {{
       height: 105mm;
       background: #FFFFFF;
@@ -1400,22 +1464,22 @@ def build_html():
             </li>
           </ul>
         </div>
-        <div class="exp-gallery-row" style="margin-top: 3.5mm;">
-          <div class="exp-thumb-box-p6">
-            <img src="{b64_mag_slump}" alt="Slump Test">
-            <div class="exp-thumb-tag">Pengujian Slump Test Beton</div>
-          </div>
-          <div class="exp-thumb-box-p6">
+        <div class="p6-collage-grid">
+          <div class="p6-thumb-box">
             <img src="{b64_mag_pembesian}" alt="Mapping Work">
-            <div class="exp-thumb-tag">Mapping Area Pembesian</div>
+            <div class="exp-thumb-tag">Mapping Area Pembesian Struktur (DED AutoCAD)</div>
           </div>
-          <div class="exp-thumb-box-p6">
-            <img src="{b64_mag_daily}" alt="Daily Report">
-            <div class="exp-thumb-tag">Laporan Harian Progres</div>
-          </div>
-          <div class="exp-thumb-box-p6">
+          <div class="p6-thumb-box">
             <img src="{b64_mag_punch}" alt="Punch List">
-            <div class="exp-thumb-tag">Penyusunan Punch List Cacat</div>
+            <div class="exp-thumb-tag">Penyusunan Punch List Cacat Mutu Lapangan</div>
+          </div>
+          <div class="p6-thumb-box">
+            <img src="{b64_mag_slump}" alt="Slump Test">
+            <div class="exp-thumb-tag">Pengujian Slump Test Mutu Beton Segar</div>
+          </div>
+          <div class="p6-thumb-box">
+            <img src="{b64_mag_daily}" alt="Daily Report">
+            <div class="exp-thumb-tag">Laporan Harian Progres Fisik Lapangan</div>
           </div>
         </div>
       </div>
@@ -1452,18 +1516,22 @@ def build_html():
               Perencana Teknis Mandiri (Sep 2026 &ndash; Sekarang). Menyusun paket DED AutoCAD (5.5 MB), perhitungan volume take-off, RAB AHSP PUPR, dokumen RKS teknis, dan penjadwalan Kurva S terinci.
             </div>
           </div>
-          <div class="proj-gallery-3">
-            <div class="proj-thumb-3">
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape Blueprint -->
+            <div class="collage-hero-box">
               <img src="{b64_kb_ded}" alt="DED KB Ar-Rahma">
-              <div class="exp-thumb-tag">Gambar Kerja DED CAD</div>
+              <div class="exp-thumb-tag">Gambar Kerja DED CAD &bull; Multi-Viewport Layout</div>
             </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_kb_rab}" alt="RAB KB Ar-Rahma">
-              <div class="exp-thumb-tag">Rencana Anggaran Biaya</div>
-            </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_kb_ks}" alt="Kurva S KB Ar-Rahma">
-              <div class="exp-thumb-tag">Jadwal Kurva S</div>
+            <!-- Dual Sub Landscape -->
+            <div class="collage-sub-row">
+              <div class="collage-sub-box">
+                <img src="{b64_kb_rab}" alt="RAB KB Ar-Rahma">
+                <div class="exp-thumb-tag">Rencana Anggaran Biaya (RAB)</div>
+              </div>
+              <div class="collage-sub-box">
+                <img src="{b64_kb_ks}" alt="Kurva S KB Ar-Rahma">
+                <div class="exp-thumb-tag">Jadwal Pelaksanaan Kurva S</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1479,18 +1547,22 @@ def build_html():
               Perencana Teknis Mandiri (Sep 2026 &ndash; Sekarang). Menyusun Detailed Engineering Design (6.0 MB) rehabilitasi ruang kelas ramah anak, struktur atap baja ringan, RKS material, dan Kurva S mingguan.
             </div>
           </div>
-          <div class="proj-gallery-3">
-            <div class="proj-thumb-3">
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape Blueprint -->
+            <div class="collage-hero-box">
               <img src="{b64_tk_ded}" alt="DED TK Pembina">
-              <div class="exp-thumb-tag">Gambar Kerja DED CAD</div>
+              <div class="exp-thumb-tag">Gambar Kerja DED CAD &bull; Tampak &amp; Potongan</div>
             </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_tk_rab}" alt="RAB TK Pembina">
-              <div class="exp-thumb-tag">Rekapitulasi RAB</div>
-            </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_tk_ks}" alt="Kurva S TK Pembina">
-              <div class="exp-thumb-tag">Jadwal Kurva S</div>
+            <!-- Dual Sub Landscape -->
+            <div class="collage-sub-row">
+              <div class="collage-sub-box">
+                <img src="{b64_tk_rab}" alt="RAB TK Pembina">
+                <div class="exp-thumb-tag">Rekapitulasi RAB AHSP</div>
+              </div>
+              <div class="collage-sub-box">
+                <img src="{b64_tk_ks}" alt="Kurva S TK Pembina">
+                <div class="exp-thumb-tag">Jadwal Pelaksanaan Kurva S</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1528,18 +1600,22 @@ def build_html():
               Perencana Teknis &amp; QS (Sep 2026, Pasaman). Drafting DED multi-viewport layout AutoCAD ke PDF beresolusi tinggi, perhitungan BoQ struktur atap, formulir identifikasi kerusakan, dan dokumen RKS.
             </div>
           </div>
-          <div class="proj-gallery-3">
-            <div class="proj-thumb-3">
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape Blueprint (Wide Viewport 1.86:1) -->
+            <div class="collage-hero-box">
               <img src="{b64_kua_ded}" alt="DED Kuamang">
-              <div class="exp-thumb-tag">Layout Multi-Viewport</div>
+              <div class="exp-thumb-tag">Layout Multi-Viewport AutoCAD DED</div>
             </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_kua_rks}" alt="RKS Kuamang">
-              <div class="exp-thumb-tag">Spesifikasi Teknis (RKS)</div>
-            </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_kua_ks}" alt="Kurva S Kuamang">
-              <div class="exp-thumb-tag">Kurva S Jadwal Waktu</div>
+            <!-- Dual Sub Landscape -->
+            <div class="collage-sub-row">
+              <div class="collage-sub-box">
+                <img src="{b64_kua_rks}" alt="RKS Kuamang">
+                <div class="exp-thumb-tag">Spesifikasi Teknis (RKS)</div>
+              </div>
+              <div class="collage-sub-box">
+                <img src="{b64_kua_ks}" alt="Kurva S Kuamang">
+                <div class="exp-thumb-tag">Kurva S Jadwal Waktu</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1555,18 +1631,22 @@ def build_html():
               Perencana Teknis &amp; QS (Jul 2026, Kota Pariaman). Perancangan aksesibilitas ram ramah disabilitas (kemiringan 1:12), perhitungan backup volume terpasang, dan penerbitan addendum <em>Contract Change Order (CCO)</em>.
             </div>
           </div>
-          <div class="proj-gallery-3">
-            <div class="proj-thumb-3">
-              <img src="{b64_slb_ded}" alt="DED SLBN 2">
-              <div class="exp-thumb-tag">DED Struktur Ram</div>
-            </div>
-            <div class="proj-thumb-3">
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape CCO (Ultra Wide 2.53:1) -->
+            <div class="collage-hero-box">
               <img src="{b64_slb_cco}" alt="CCO SLBN 2">
-              <div class="exp-thumb-tag">Contract Change Order</div>
+              <div class="exp-thumb-tag">Contract Change Order (Addendum CCO &bull; MC-100)</div>
             </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_slb_ded}" alt="Denah SLBN">
-              <div class="exp-thumb-tag">Denah &amp; Tampak Elevasi</div>
+            <!-- Dual Sub Landscape -->
+            <div class="collage-sub-row">
+              <div class="collage-sub-box">
+                <img src="{b64_slb_ded}" alt="DED SLBN 2">
+                <div class="exp-thumb-tag">DED Struktur Ram Ramah Disabilitas</div>
+              </div>
+              <div class="collage-sub-box">
+                <img src="{b64_slb_ded}" alt="Denah SLBN">
+                <div class="exp-thumb-tag">Denah &amp; Tampak Elevasi Bangunan</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1604,18 +1684,22 @@ def build_html():
               Freelance Quantity Surveyor (Sep 2025, Subkon PT Mulia Djasmine Sentosa). Re-measurement aktual MC-100 di lapangan, Bar Bending Schedule (BBS) bak aerasi, rekapitulasi valuasi klaim pembayaran subkon, dan CCO.
             </div>
           </div>
-          <div class="proj-gallery-3">
-            <div class="proj-thumb-3">
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape BBS (1.31:1) -->
+            <div class="collage-hero-box">
               <img src="{b64_wwtp_bbs}" alt="BBS WWTP">
-              <div class="exp-thumb-tag">BBS Bak Aerasi</div>
+              <div class="exp-thumb-tag">Bar Bending Schedule (BBS) Pembesian Bak Aerasi</div>
             </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_wwtp_bv}" alt="Backup Volume WWTP">
-              <div class="exp-thumb-tag">Backup Volume MC-100</div>
-            </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_wwtp_bbs}" alt="CCO WWTP">
-              <div class="exp-thumb-tag">Valuasi Pembayaran</div>
+            <!-- Dual Sub Landscape -->
+            <div class="collage-sub-row">
+              <div class="collage-sub-box">
+                <img src="{b64_wwtp_bv}" alt="Backup Volume WWTP">
+                <div class="exp-thumb-tag">Backup Volume Terpasang (MC-100)</div>
+              </div>
+              <div class="collage-sub-box">
+                <img src="{b64_wwtp_bbs}" alt="Valuasi Pembayaran">
+                <div class="exp-thumb-tag">Valuasi Klaim Progres Subkontraktor</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1631,18 +1715,22 @@ def build_html():
               BIM Modeler (Arsisten Academy). Pemodelan portal 3D beton bertulang, pemodelan tulangan lentur dan sengkang secara tiga dimensi (3D Rebar), potongan analitis, dan integrasi schedule quantity otomatis.
             </div>
           </div>
-          <div class="proj-gallery-3">
-            <div class="proj-thumb-3">
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape Portal 3D -->
+            <div class="collage-hero-box">
               <img src="{b64_revit_portal}" alt="Revit Portal">
-              <div class="exp-thumb-tag">Portal 3D Revit</div>
+              <div class="exp-thumb-tag">Pemodelan Portal 3D Beton Bertulang BIM Revit</div>
             </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_revit_portal}" alt="Revit Rebar">
-              <div class="exp-thumb-tag">Detail Tulangan 3D</div>
-            </div>
-            <div class="proj-thumb-3">
-              <img src="{b64_revit_portal}" alt="Revit Schedule">
-              <div class="exp-thumb-tag">Schedule Take-Off</div>
+            <!-- Dual Sub Landscape -->
+            <div class="collage-sub-row">
+              <div class="collage-sub-box">
+                <img src="{b64_revit_portal}" alt="Revit Rebar">
+                <div class="exp-thumb-tag">Detail Tulangan 3D Interaktif</div>
+              </div>
+              <div class="collage-sub-box">
+                <img src="{b64_revit_portal}" alt="Revit Schedule">
+                <div class="exp-thumb-tag">Schedule Material Take-Off Otomatis</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1680,14 +1768,18 @@ def build_html():
               Estimator &amp; Modeler 3D tender proyek gedung di Universitas Sebelas Maret (UNS). Menyusun estimasi penawaran harga, pemodelan 3D tahapan metode kerja konstruksi (SketchUp), dan poster infografis teknis.
             </div>
           </div>
-          <div class="proj-gallery-3" style="grid-template-columns: 1fr 1fr;">
-            <div class="proj-thumb-3" style="height: 105mm;">
-              <img src="{b64_uns_poster}" alt="Poster Tender UNS" style="object-fit: contain;">
-              <div class="exp-thumb-tag">Poster Infografis Tender</div>
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape Render (16:9 Wide 1.78:1) -->
+            <div class="collage-hero-box">
+              <img src="{b64_uns_render}" alt="Render Metode Kerja 3D">
+              <div class="exp-thumb-tag">Simulasi 3D Tahapan Metode Kerja Konstruksi (SketchUp)</div>
             </div>
-            <div class="proj-thumb-3" style="height: 105mm;">
-              <img src="{b64_uns_render}" alt="Render Metode Kerja 3D" style="object-fit: contain; background: #FFFFFF;">
-              <div class="exp-thumb-tag">Simulasi Metode 3D SketchUp</div>
+            <!-- Sub Box Poster (Preserving Natural Dimensions) -->
+            <div class="collage-sub-row" style="grid-template-columns: 1fr;">
+              <div class="collage-sub-box" style="height: 42mm;">
+                <img src="{b64_uns_poster}" alt="Poster Tender UNS">
+                <div class="exp-thumb-tag">Poster Infografis Teknis Penawaran Tender Gedung</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1703,10 +1795,11 @@ def build_html():
               Penulis Utama Artikel Ilmiah: <em>&ldquo;Analisa Biaya Scaffolding pada Proyek Waste Gas Recovery IBR Purwakarta&rdquo;</em>. Evaluasi efisiensi biaya Life Cycle Cost antara skema beli dan sewa scaffolding.
             </div>
           </div>
-          <div class="proj-gallery-3" style="grid-template-columns: 1fr;">
-            <div class="proj-thumb-3" style="height: 105mm;">
-              <img src="{b64_pkm}" alt="Manuskrip PKM-AI" style="object-fit: contain;">
-              <div class="exp-thumb-tag">Manuskrip Artikel Ilmiah Analisa Biaya Perancah</div>
+          <div class="proj-collage-arch">
+            <!-- Hero Landscape Manuscript (1.33:1) -->
+            <div class="collage-hero-box" style="height: 100mm;">
+              <img src="{b64_pkm}" alt="Manuskrip PKM-AI">
+              <div class="exp-thumb-tag">Manuskrip Artikel Ilmiah Analisa Biaya Perancah (PKM-AI Kemendikbudristek)</div>
             </div>
           </div>
         </div>
