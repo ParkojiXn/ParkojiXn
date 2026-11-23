@@ -4,7 +4,7 @@ import './globals.css';
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0A0A0A',
+  themeColor: '#111111',
 };
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[#FAFAFA] text-[#0A0A0A] selection:bg-[#EF4444] selection:text-[#FAFAFA]">
+      <body className="min-h-screen bg-[#F3EEE3] text-[#111111] selection:bg-[#D9541E] selection:text-[#F3EEE3]">
         {children}
       </body>
     </html>

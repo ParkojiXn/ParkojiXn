@@ -47,15 +47,15 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-[#FAFAFA] transition-all duration-200 border-b-2 ${
-        isScrolled ? 'border-[#0A0A0A]' : 'border-[#E5E5E5]'
+      className={`sticky top-0 z-50 bg-[#F3EEE3] transition-all duration-200 border-b-2 ${
+        isScrolled ? 'border-[#111111]' : 'border-[#DDD6C7]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo / Masthead */}
           <a href="#hero" className="flex flex-col group">
-            <span className="font-display text-xl sm:text-2xl text-[#0A0A0A] tracking-tight group-hover:text-[#EF4444] transition-colors">
+            <span className="font-display text-xl sm:text-2xl text-[#111111] tracking-tight group-hover:text-[#D9541E] transition-colors">
               {profileData.name}
             </span>
             <span className="text-[10px] font-mono tracking-widest text-[#525252] uppercase font-semibold">
@@ -71,13 +71,13 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`px-3 py-2 text-xs font-bold tracking-wider transition-colors relative uppercase font-body ${
                   activeSection === link.id
-                    ? 'text-[#0A0A0A]'
-                    : 'text-[#525252] hover:text-[#0A0A0A]'
+                    ? 'text-[#111111]'
+                    : 'text-[#525252] hover:text-[#111111]'
                 }`}
               >
                 {link.label}
                 {activeSection === link.id && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-[#EF4444]" />
+                  <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-[#D9541E]" />
                 )}
               </a>
             ))}
@@ -90,23 +90,69 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setExportDropdownOpen((prev) => !prev)}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#FFFFFF] hover:bg-[#0A0A0A] text-[#0A0A0A] hover:text-[#FAFAFA] border-2 border-[#0A0A0A] text-xs font-mono font-bold tracking-wider transition-colors cursor-pointer rounded-none"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#FFFFFF] hover:bg-[#111111] text-[#111111] hover:text-[#F3EEE3] border-2 border-[#111111] text-xs font-mono font-bold tracking-wider transition-colors cursor-pointer rounded-none"
                 aria-expanded={exportDropdownOpen}
                 aria-haspopup="true"
               >
-                <Download className="w-3.5 h-3.5 text-[#EF4444]" />
+                <Download className="w-3.5 h-3.5 text-[#D9541E]" />
                 <span>EXPORT PDF</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${exportDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {/* Dropdown Menu */}
               {exportDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-76 bg-[#FFFFFF] border-2 border-[#0A0A0A] shadow-none py-2 z-50 rounded-none">
-                  <div className="px-3.5 py-1.5 border-b border-[#E5E5E5] text-[10px] font-mono text-[#525252] uppercase tracking-wider font-bold">
+                <div className="absolute right-0 mt-2 w-76 bg-[#FFFFFF] border-2 border-[#111111] shadow-none py-2 z-50 rounded-none">
+                  <div className="px-3.5 py-1.5 border-b border-[#DDD6C7] text-[10px] font-mono text-[#525252] uppercase tracking-wider font-bold">
                     Official Publications
                   </div>
 
                   {/* English Dossier */}
+                  {/* Landscape Edition (Featured) */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setExportDropdownOpen(false);
+                      openPdf(
+                        '/Portofolio_Teknik_Sipil_Reza_Sepdide_Landscape.pdf',
+                        'Reza Sepdide - Portofolio Teknik Sipil Landscape (11 Halaman)'
+                      );
+                    }}
+                    className="w-full text-left px-3.5 py-2.5 bg-[#FAF7F0] hover:bg-[#EAE4D7] transition-colors flex items-start gap-2.5 group border-b border-[#DDD6C7]"
+                  >
+                    <FileText className="w-4 h-4 text-[#D9541E] mt-0.5 flex-shrink-0" />
+                    <div>
+                      <span className="text-xs font-bold font-mono text-[#111111] group-hover:text-[#D9541E] transition-colors block">
+                        Portofolio Landscape (Edisi Resmi 2026)
+                      </span>
+                      <span className="text-[11px] text-[#3E3E3E] block mt-0.5 font-body">
+                        A4 Landscape &bull; 11 Halaman (16.6 MB)
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Portrait Edition */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setExportDropdownOpen(false);
+                      openPdf(
+                        '/Portofolio_Teknik_Sipil_Reza_Sepdide_Portrait.pdf',
+                        'Reza Sepdide - Portofolio Teknik Sipil (Portrait 11 Halaman)'
+                      );
+                    }}
+                    className="w-full text-left px-3.5 py-2.5 hover:bg-[#EAE4D7] transition-colors flex items-start gap-2.5 group border-b border-[#DDD6C7]"
+                  >
+                    <FileText className="w-4 h-4 text-[#111111] mt-0.5 flex-shrink-0" />
+                    <div>
+                      <span className="text-xs font-bold font-mono text-[#111111] group-hover:text-[#D9541E] transition-colors block">
+                        Portofolio Portrait (Edisi Vertikal)
+                      </span>
+                      <span className="text-[11px] text-[#3E3E3E] block mt-0.5 font-body">
+                        A4 Portrait &bull; 11 Halaman (16 MB)
+                      </span>
+                    </div>
+                  </button>
+
                   <button
                     type="button"
                     onClick={() => {
@@ -116,11 +162,11 @@ export const Navbar: React.FC = () => {
                         'Reza Sepdide - English Dossier (28 Pages)'
                       );
                     }}
-                    className="w-full text-left px-3.5 py-2.5 hover:bg-[#F5F5F5] transition-colors flex items-start gap-2.5 group"
+                    className="w-full text-left px-3.5 py-2.5 hover:bg-[#EAE4D7] transition-colors flex items-start gap-2.5 group"
                   >
-                    <FileText className="w-4 h-4 text-[#EF4444] mt-0.5 flex-shrink-0" />
+                    <FileText className="w-4 h-4 text-[#D9541E] mt-0.5 flex-shrink-0" />
                     <div>
-                      <span className="text-xs font-bold font-mono text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors block">
+                      <span className="text-xs font-bold font-mono text-[#111111] group-hover:text-[#D9541E] transition-colors block">
                         Portfolio (English Edition)
                       </span>
                       <span className="text-[11px] text-[#525252] block mt-0.5 font-body">
@@ -139,11 +185,11 @@ export const Navbar: React.FC = () => {
                         'Reza Sepdide - Portofolio Indonesia (28 Halaman)'
                       );
                     }}
-                    className="w-full text-left px-3.5 py-2.5 hover:bg-[#F5F5F5] transition-colors flex items-start gap-2.5 group"
+                    className="w-full text-left px-3.5 py-2.5 hover:bg-[#EAE4D7] transition-colors flex items-start gap-2.5 group"
                   >
-                    <FileText className="w-4 h-4 text-[#EF4444] mt-0.5 flex-shrink-0" />
+                    <FileText className="w-4 h-4 text-[#D9541E] mt-0.5 flex-shrink-0" />
                     <div>
-                      <span className="text-xs font-bold font-mono text-[#0A0A0A] group-hover:text-[#EF4444] transition-colors block">
+                      <span className="text-xs font-bold font-mono text-[#111111] group-hover:text-[#D9541E] transition-colors block">
                         Portofolio (Edisi Indonesia)
                       </span>
                       <span className="text-[11px] text-[#525252] block mt-0.5 font-body">
@@ -152,7 +198,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </button>
 
-                  <div className="my-1 border-t border-[#E5E5E5]" />
+                  <div className="my-1 border-t border-[#DDD6C7]" />
 
                   {/* Quick Export Modal */}
                   <button
@@ -161,7 +207,7 @@ export const Navbar: React.FC = () => {
                       setExportDropdownOpen(false);
                       openExportModal();
                     }}
-                    className="w-full text-left px-3.5 py-2 hover:bg-[#F5F5F5] text-xs font-mono font-bold text-[#0A0A0A] flex items-center justify-between"
+                    className="w-full text-left px-3.5 py-2 hover:bg-[#EAE4D7] text-xs font-mono font-bold text-[#111111] flex items-center justify-between"
                   >
                     <span>More Options (CV Word / Print)</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#525252]" />
@@ -185,16 +231,16 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => openExportModal()}
-              className="p-2 border-2 border-[#0A0A0A] bg-[#FFFFFF] text-[#0A0A0A]"
+              className="p-2 border-2 border-[#111111] bg-[#FFFFFF] text-[#111111]"
               aria-label="Export PDF"
             >
-              <Download className="w-4 h-4 text-[#EF4444]" />
+              <Download className="w-4 h-4 text-[#D9541E]" />
             </button>
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="p-2 border-2 border-[#0A0A0A] bg-[#FFFFFF] text-[#0A0A0A]"
+              className="p-2 border-2 border-[#111111] bg-[#FFFFFF] text-[#111111]"
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -205,7 +251,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t-2 border-[#0A0A0A] bg-[#FAFAFA] px-4 pt-4 pb-6 space-y-3">
+        <div className="lg:hidden border-t-2 border-[#111111] bg-[#F3EEE3] px-4 pt-4 pb-6 space-y-3">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a
@@ -214,8 +260,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 text-sm font-bold uppercase font-body tracking-wider ${
                   activeSection === link.id
-                    ? 'bg-[#0A0A0A] text-[#FAFAFA]'
-                    : 'text-[#0A0A0A] hover:bg-[#F5F5F5]'
+                    ? 'bg-[#111111] text-[#F3EEE3]'
+                    : 'text-[#111111] hover:bg-[#EAE4D7]'
                 }`}
               >
                 {link.label}
@@ -223,7 +269,7 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="pt-3 border-t-2 border-[#E5E5E5] space-y-2">
+          <div className="pt-3 border-t-2 border-[#DDD6C7] space-y-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -231,7 +277,7 @@ export const Navbar: React.FC = () => {
               }}
               className="w-full btn-secondary text-xs flex items-center justify-center gap-2"
             >
-              <Download className="w-4 h-4 text-[#EF4444]" />
+              <Download className="w-4 h-4 text-[#D9541E]" />
               <span>EXPORT DOSSIER / CV</span>
             </button>
 

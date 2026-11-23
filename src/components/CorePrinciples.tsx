@@ -8,13 +8,13 @@ export const CorePrinciples: React.FC = () => {
   const getIcon = (index: number) => {
     switch (index) {
       case 0:
-        return <HardHat className="w-5 h-5 text-[#EF4444]" />;
+        return <HardHat className="w-5 h-5 text-[#D9541E]" />;
       case 1:
-        return <FileSpreadsheet className="w-5 h-5 text-[#EF4444]" />;
+        return <FileSpreadsheet className="w-5 h-5 text-[#D9541E]" />;
       case 2:
-        return <ShieldCheck className="w-5 h-5 text-[#EF4444]" />;
+        return <ShieldCheck className="w-5 h-5 text-[#D9541E]" />;
       default:
-        return <GraduationCap className="w-5 h-5 text-[#EF4444]" />;
+        return <GraduationCap className="w-5 h-5 text-[#D9541E]" />;
     }
   };
 
@@ -45,15 +45,15 @@ export const CorePrinciples: React.FC = () => {
   };
 
   return (
-    <section id="principles" className="py-14 sm:py-16 border-b-2 border-[#0A0A0A] bg-[#FAFAFA]">
+    <section id="principles" className="py-14 sm:py-16 border-b-2 border-[#111111] bg-[#F3EEE3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#0A0A0A] pb-5 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#111111] pb-5 gap-4">
           <div>
-            <span className="text-overline text-[#EF4444] font-bold block mb-1">
+            <span className="text-overline text-[#D9541E] font-bold block mb-1">
               // ENGINEERING METHODOLOGY &amp; WORK ETHIC
             </span>
-            <h2 className="text-headline text-[#0A0A0A]">
+            <h2 className="text-headline text-[#111111]">
               HOW I WORK &amp; PERSONAL ETHIC
             </h2>
           </div>
@@ -68,29 +68,29 @@ export const CorePrinciples: React.FC = () => {
           {profileData.coreValues?.map((pillar, idx) => (
             <div
               key={idx}
-              className="card-editorial bg-[#FFFFFF] border-2 border-[#E5E5E5] hover:border-[#0A0A0A] p-6 sm:p-7 flex flex-col justify-between group transition-all duration-150 rounded-none"
+              className="card-editorial bg-[#FFFFFF] border-2 border-[#DDD6C7] hover:border-[#111111] p-6 sm:p-7 flex flex-col justify-between group transition-all duration-150 rounded-none"
             >
               <div>
                 {/* Pillar Header */}
-                <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-3 mb-4">
+                <div className="flex items-center justify-between border-b border-[#DDD6C7] pb-3 mb-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 bg-[#0A0A0A] text-[#FAFAFA] text-[10px] font-mono font-bold tracking-wider rounded-none">
+                    <span className="px-2 py-0.5 bg-[#111111] text-[#F3EEE3] text-[10px] font-mono font-bold tracking-wider rounded-none">
                       0{idx + 1} //
                     </span>
                     <span className="text-xs font-mono font-bold text-[#525252] uppercase tracking-wider">
                       {getPillarTag(idx)}
                     </span>
                   </div>
-                  <div className="p-2 bg-[#FAFAFA] border border-[#D4D4D4] group-hover:border-[#0A0A0A] transition-colors rounded-none">
+                  <div className="p-2 bg-[#F3EEE3] border border-[#C8C0B0] group-hover:border-[#111111] transition-colors rounded-none">
                     {getIcon(idx)}
                   </div>
                 </div>
 
                 {/* Pillar Title & Subtitle */}
-                <h3 className="font-display text-lg sm:text-xl text-[#0A0A0A] mb-1 group-hover:text-[#EF4444] transition-colors leading-snug">
+                <h3 className="font-display text-lg sm:text-xl text-[#111111] mb-1 group-hover:text-[#D9541E] transition-colors leading-snug">
                   {pillar.title}
                 </h3>
-                <span className="text-xs font-mono text-[#EF4444] font-bold block mb-3">
+                <span className="text-xs font-mono text-[#D9541E] font-bold block mb-3">
                   {pillar.subtitle}
                 </span>
 
@@ -101,9 +101,9 @@ export const CorePrinciples: React.FC = () => {
               </div>
 
               {/* Pillar Footer */}
-              <div className="mt-6 pt-3 border-t border-[#E5E5E5] flex items-center justify-between text-[11px] font-mono text-[#404040]">
+              <div className="mt-6 pt-3 border-t border-[#DDD6C7] flex items-center justify-between text-[11px] font-mono text-[#404040]">
                 <span className="font-semibold">ENGINEERING BENCHMARK</span>
-                <span className="text-[#0A0A0A] font-bold">{getBenchmarkBadge(idx)}</span>
+                <span className="text-[#111111] font-bold">{getBenchmarkBadge(idx)}</span>
               </div>
             </div>
           ))}
