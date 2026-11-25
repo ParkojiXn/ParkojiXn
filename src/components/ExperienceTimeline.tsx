@@ -14,21 +14,26 @@ export const ExperienceTimeline: React.FC = () => {
   };
 
   return (
-    <section id="experience" className="py-20 lg:py-24 border-b-2 border-[#111111] bg-[#F3EEE3]">
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
+    <section id="experience" className="border-b-2 border-[#111111] pb-16 sm:pb-20 pt-2">
+      <div className="w-full space-y-10">
         {/* Section Header */}
-        <div className="border-b-2 border-[#DDD6C7] pb-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="border-b-2 border-[#111111] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="text-[11px] font-mono font-bold text-[#D9541E] uppercase tracking-widest block mb-2">
-              Career History &amp; Field Record
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#111111] uppercase tracking-tight">
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="text-overline text-[#D9541E] font-bold">
+                // SECTION 03 &bull; CAREER RECORD
+              </span>
+              <span className="text-[#A3A3A3]">•</span>
+              <span className="text-[10px] font-mono font-bold bg-[#111111] text-[#F3EEE3] px-2 py-0.5">
+                {workExperiences.length} VERIFIED ROLES
+              </span>
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl text-[#111111] uppercase tracking-tight">
               PROFESSIONAL EXPERIENCE
-            </h2>
-            <div className="h-1 w-16 bg-[#D9541E] mt-3" />
+            </h3>
           </div>
 
-          <p className="text-sm font-sans text-[#525252] max-w-lg leading-relaxed">
+          <p className="text-xs sm:text-sm font-sans text-[#525252] max-w-md leading-relaxed">
             Hands-on engineering record covering municipal school revitalizations, ministry technical facilitation, industrial chemical plant QC, and subcontractor quantity surveying.
           </p>
         </div>

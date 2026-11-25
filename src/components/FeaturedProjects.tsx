@@ -1,9 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Project, ProjectCategory } from '../types';
+import { Project } from '../types';
 import { featuredProjects } from '../data/cv-data';
-import { CheckSquare, Calendar, MapPin, ArrowRight, X, FileText, Image as ImageIcon, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { 
+  MapPin, 
+  ArrowRight, 
+  X, 
+  FileText, 
+  Image as ImageIcon, 
+  ExternalLink, 
+  ChevronLeft, 
+  ChevronRight, 
+  Layers, 
+  CheckSquare 
+} from 'lucide-react';
 import { usePdfModal } from '../context/PdfModalContext';
 
 export const FeaturedProjects: React.FC = () => {
@@ -41,32 +52,32 @@ export const FeaturedProjects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 border-b-2 border-[#111111] bg-[#F3EEE3]">
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
+    <section id="projects" className="border-b-2 border-[#111111] pb-16 sm:pb-20 pt-2">
+      <div className="space-y-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#111111] pb-6 mb-8 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-[#111111] pb-5 gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-1.5">
               <span className="text-overline text-[#D9541E] font-bold">
-                // VERIFIED ENGINEERING PORTFOLIO
+                // SECTION 02 &bull; ENGINEERING PORTFOLIO
               </span>
               <span className="text-[#A3A3A3]">•</span>
-              <span className="text-[10px] font-mono font-bold bg-[#111111] text-[#F3EEE3] px-2 py-0.5 rounded-none">
+              <span className="text-[10px] font-mono font-bold bg-[#111111] text-[#F3EEE3] px-2 py-0.5">
                 {featuredProjects.length} CASE STUDIES
               </span>
             </div>
-            <h2 className="text-headline text-[#111111]">
+            <h3 className="font-display text-2xl sm:text-3xl text-[#111111] uppercase tracking-tight">
               FEATURED ENGINEERING PROJECTS
-            </h2>
+            </h3>
           </div>
 
-          <p className="text-sm text-[#525252] max-w-md font-body leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#525252] max-w-md font-body leading-relaxed">
             Detailed engineering design (DED), Bills of Quantities (BoQ/RAB), BIM Revit modeling, on-site quality control, and S-Curve scheduling.
           </p>
         </div>
 
         {/* Filter Chips Bar */}
-        <div className="flex flex-wrap gap-2 mb-8 print:hidden">
+        <div className="flex flex-wrap gap-2 print:hidden">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -79,8 +90,8 @@ export const FeaturedProjects: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8">
+        {/* UNIFORM ENGINEERING PROJECT GRID (Strictly No Tier Separation) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-7">
           {filteredProjects.map((project) => {
             const gallery =
               project.mediaGallery && project.mediaGallery.length > 0
@@ -89,104 +100,119 @@ export const FeaturedProjects: React.FC = () => {
                 ? [{ title: project.title, url: project.coverImage, caption: '' }]
                 : [];
             const displayImg = project.coverImage || gallery[0]?.url;
-            const hasMultiple = gallery.length > 1;
 
             return (
               <div
                 key={project.id}
-                className="card-editorial-elevated flex flex-col justify-between group cursor-pointer overflow-hidden p-0 rounded-none page-break-avoid"
+                className="bg-[#FAF7F0] border-2 border-[#111111] hover:border-[#D9541E] transition-all flex flex-col justify-between group cursor-pointer shadow-[3px_3px_0px_0px_#111111] hover:shadow-[5px_5px_0px_0px_#D9541E]"
                 onClick={() => openProjectModal(project, 0)}
               >
                 <div>
-                  {/* Visual Thumbnail Header (Clean Display - Details & Images accessed on Click) */}
-                  <div className="relative aspect-[16/10] bg-[#111111] overflow-hidden border-b-2 border-[#111111] select-none">
+                  {/* Card Image Banner */}
+                  <div className="relative aspect-[16/10] bg-[#111111] overflow-hidden border-b-2 border-[#111111]">
                     {displayImg ? (
                       <img
                         src={displayImg}
                         alt={project.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-300 contrast-105"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-[#737373] font-mono text-xs">
-                        [Engineering Blueprint]
+                        [Technical Blueprint]
                       </div>
                     )}
 
-                    {/* Top Badges */}
-                    <div className="absolute top-2.5 left-2.5 bg-[#111111] text-[#F3EEE3] text-[10px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider rounded-none z-10 border border-[#DDD6C7]/30">
-                      {project.category}
+                    {/* Top Overlay Badges */}
+                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
+                      <span className="bg-[#111111] text-[#F3EEE3] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider border border-[#DDD6C7]/30">
+                        {project.category}
+                      </span>
                     </div>
 
-                    <div className="absolute top-2.5 right-2.5 bg-[#FAF7F0] text-[#111111] border-2 border-[#111111] text-[10px] font-mono font-bold px-2 py-0.5 rounded-none z-10">
+                    <div className="absolute top-2.5 right-2.5 bg-[#FAF7F0] text-[#111111] border border-[#111111] text-[9px] font-mono font-bold px-2 py-0.5 z-10">
                       {project.period}
                     </div>
 
-                    {/* Multiple Blueprints Indicator Badge */}
-                    {hasMultiple && (
-                      <div className="absolute bottom-2.5 right-2.5 bg-[#111111]/90 text-[#F3EEE3] border border-[#DDD6C7]/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded-none flex items-center gap-1.5 z-10 pointer-events-none shadow-sm">
+                    {/* Bottom Blueprint Count Overlay */}
+                    {gallery.length > 0 && (
+                      <div className="absolute bottom-2 right-2 bg-[#111111]/90 text-[#F3EEE3] text-[9px] font-mono font-bold px-2 py-0.5 border border-[#DDD6C7]/30 flex items-center gap-1 z-10 pointer-events-none">
                         <ImageIcon className="w-3 h-3 text-[#D9541E]" />
                         <span>{gallery.length} BLUEPRINTS</span>
                       </div>
                     )}
                   </div>
 
-                  {/* Card Content Body */}
-                  <div className="p-5 sm:p-6 space-y-3.5">
-                  <div>
-                    <span className="text-[10px] font-mono text-[#D9541E] uppercase font-bold tracking-wider block mb-1">
-                      {project.role}
-                    </span>
-                    <h3 className="font-display text-base sm:text-lg text-[#111111] group-hover:text-[#D9541E] transition-colors leading-snug">
-                      {project.title}
-                    </h3>
-                  </div>
+                  {/* Card Header & Content */}
+                  <div className="p-5 space-y-3.5">
+                    <div>
+                      <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#737373] mb-1">
+                        <MapPin className="w-3 h-3 text-[#D9541E] shrink-0" />
+                        <span className="truncate">{project.location}</span>
+                      </div>
+                      <h4 className="font-display text-base sm:text-lg text-[#111111] group-hover:text-[#D9541E] transition-colors leading-snug line-clamp-2">
+                        {project.title}
+                      </h4>
+                      <p className="text-[11px] font-mono text-[#D9541E] font-bold mt-1">
+                        {project.role} &bull; <span className="text-[#525252] font-normal">{project.clientOrInstitution}</span>
+                      </p>
+                    </div>
 
-                  <p className="text-xs sm:text-sm text-[#404040] font-body line-clamp-3 leading-relaxed">
-                    {project.summary}
-                  </p>
+                    {/* Summary */}
+                    <p className="text-xs font-body text-[#3E3E3E] leading-relaxed line-clamp-2">
+                      {project.summary}
+                    </p>
 
-                  {/* Highlights Badges */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {project.techStack.slice(0, 3).map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] font-mono bg-[#EAE4D7] text-[#404040] border border-[#DDD6C7] px-2 py-0.5 rounded-none font-semibold"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack.length > 3 && (
-                      <span className="text-[10px] font-mono text-[#737373] py-0.5 font-bold">
-                        +{project.techStack.length - 3} more
-                      </span>
+                    {/* Key Highlights / Deliverables */}
+                    {project.deliverables && project.deliverables.length > 0 && (
+                      <div className="space-y-1 pt-1 border-t border-[#DDD6C7]">
+                        {project.deliverables.slice(0, 2).map((del, idx) => (
+                          <div key={idx} className="flex items-start gap-1.5 text-[11px] font-mono text-[#111111]">
+                            <CheckSquare className="w-3 h-3 text-[#D9541E] shrink-0 mt-0.5" />
+                            <span className="truncate">{del}</span>
+                          </div>
+                        ))}
+                      </div>
                     )}
+
+                    {/* Tech Stack Chips */}
+                    <div className="flex flex-wrap gap-1 pt-1">
+                      {project.techStack.slice(0, 3).map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="bg-[#EAE4D7] border border-[#DDD6C7] text-[#111111] text-[10px] font-mono px-2 py-0.5"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > 3 && (
+                        <span className="text-[10px] font-mono text-[#737373] self-center">
+                          +{project.techStack.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Action Bar */}
+                <div className="p-4 pt-0">
+                  <div className="border-t-2 border-[#111111] pt-3 flex items-center justify-between">
+                    <span className="text-[11px] font-mono font-bold text-[#111111] group-hover:text-[#D9541E] flex items-center gap-1.5 transition-colors">
+                      <Layers className="w-3.5 h-3.5 text-[#D9541E]" />
+                      <span>VIEW BLUEPRINTS &amp; SPECS</span>
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-[#111111] group-hover:translate-x-1 group-hover:text-[#D9541E] transition-all" />
                   </div>
                 </div>
               </div>
-
-              {/* Card Footer */}
-              <div className="px-5 py-3.5 bg-[#F3EEE3] border-t-2 border-[#DDD6C7] flex items-center justify-between text-xs font-mono group-hover:bg-[#FFFFFF] transition-colors">
-                <span className="text-[#525252] flex items-center gap-1 font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-[#A3A3A3]" />
-                  {project.location.split(',')[0]}
-                </span>
-                <span className="font-bold text-[#111111] group-hover:text-[#D9541E] flex items-center gap-1 transition-colors">
-                  VIEW DETAILS <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
         </div>
 
-        {/* Project Detail Modal */}
+        {/* Case Study Details Modal */}
         {activeModalProject && (
           <div
-            className="fixed inset-0 z-50 bg-[#111111]/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 print:hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-label={activeModalProject.title}
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#111111]/80 backdrop-blur-sm"
             onClick={() => setActiveModalProject(null)}
           >
             <div
@@ -278,7 +304,7 @@ export const FeaturedProjects: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Interactive Display Selector (Pilih Display Blueprint Saat Modal Terbuka) */}
+                  {/* Interactive Display Selector (PILIH DISPLAY GAMBAR SAAT MODAL TERBUKA) */}
                   {activeModalProject.mediaGallery.length > 1 && (
                     <div className="mt-4 pt-3.5 border-t border-[#262626]">
                       <div className="text-[10px] font-mono text-[#DDD6C7] uppercase font-bold tracking-wider mb-2.5 flex items-center justify-between">
